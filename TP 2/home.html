@@ -1,11 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <header>
+        <!-- Menú hamburguesa (izquierda) -->
+        <button type="button" aria-label="Abrir menú lateral" aria-controls="menu-lateral"
+            aria-expanded="false">☰</button>
+
+        <!-- Logo (izquierda) -->
+        <h1>
+            <a href="/" aria-label="Next Play — inicio">
+                <img src="/ruta/al/logo.png" alt="Next Play" width="56" height="56">
+            </a>
+        </h1>
+
+        <!-- Buscador (centro) -->
+        <form method="get" action="/buscar">
+            <input id="q" name="q" type="search" placeholder="Buscar...">
+        </form>
+
+        <!-- Botón de suscribirse (derecha) -->
+        <button type="button">Suscribirse</button>
+        <!-- Botón de usuario (derecha) -->
+        <button type="button" aria-label="Perfil">👤</button>
+    </header>
+
+    <main>
+        <!-- Repite una estructura por cada carrusel -->
+        <!-- Novedades -->
+        <section>
+            <h2>Novedades</h2>
+            <!-- Flechas: referencian la lista con aria-controls -->
+            <button type="button" aria-label="Anterior novedades" aria-controls="novedades-carrusel">‹</button>
+
+            <!-- Lista horizontal de tarjetas -->
+            <ul id="novedades-carrusel">
+                <li>
+                    <article>
+                        <figure>
+                            <img src="/ruta/a/thumb1.webp" alt="Red Ball 5 — miniatura" loading="lazy" width="240"
+                                height="135" />
+                        </figure>
+                    </article>
+                </li>
+                <!-- más <li>... -->
+            </ul>
+
+            <button type="button" aria-label="Siguiente novedades" aria-controls="novedades-carrusel">›</button>
+        </section>
+
+        <!-- Para ti -->
+        <section>
+            <h2>Para ti</h2>
+            <button type="button" aria-label="Anterior para ti" aria-controls="parati-carrusel">‹</button>
+
+            <ul id="parati-carrusel">
+                <li>
+                    <article>
+                        <img src="/ruta/a/thumb2.webp" alt="Yoshi — miniatura" loading="lazy" width="240"
+                            height="135" />
+                    </article>
+                </li>
+            </ul>
+
+            <button type="button" aria-label="Siguiente para ti" aria-controls="parati-carrusel">›</button>
+        </section>
+
+        <!-- Deportes -->
+        <section>
+            <h2>Para ti</h2>
+            <button type="button" aria-label="Anterior deportes" aria-controls="deportes-carrusel">‹</button>
+
+            <ul id="deportes-carrusel">
+                <li>
+                    <article>
+                        <img src="/ruta/a/thumb2.webp" alt="Yoshi — miniatura" loading="lazy" width="240"
+                            height="135" />
+                    </article>
+                </li>
+            </ul>
+
+            <button type="button" aria-label="Siguiente deportes" aria-controls="deportes-carrusel">›</button>
+        </section>
+
+        <!-- Puzzle -->
+        <section>
+            <h2>Puzzle</h2>
+            <button type="button" aria-label="Anterior puzzle" aria-controls="puzzle-carrusel">‹</button>
+
+            <ul id="puzzle-carrusel">
+                <li>
+                    <article>
+                        <img src="/ruta/a/thumb2.webp" alt="Yoshi — miniatura" loading="lazy" width="240"
+                            height="135" />
+                    </article>
+                </li>
+            </ul>
+
+            <button type="button" aria-label="Siguiente puzzle" aria-controls="puzzle-carrusel">›</button>
+        </section>
+
+        <!-- Aventura -->
+        <section>
+            <h2>Aventura</h2>
+            <button type="button" aria-label="Anterior aventura" aria-controls="aventura-carrusel">‹</button>
+
+            <ul id="aventura-carrusel">
+                <li>
+                    <article>
+                        <img src="/ruta/a/thumb2.webp" alt="Yoshi — miniatura" loading="lazy" width="240"
+                            height="135" />
+                    </article>
+                </li>
+            </ul>
+
+            <button type="button" aria-label="Siguiente aventura" aria-controls="aventura-carrusel">›</button>
+        </section>
+
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <nav>
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Juegos</a></li>
+                    <li><a href="#">Categorías</a></li>
+                    <li><a href="#">Comunidad</a></li>
+                    <li><a href="#">Destacado</a></li>
+                </ul>
+            </nav>
+
+            <nav>
+                <h3>Ayuda</h3>
+                <ul>
+                    <li><a href="#">Tutoriales</a></li>
+                    <li><a href="#">Soporte técnico</a></li>
+                    <li><a href="#">Preguntas frecuentes</a></li>
+                    <li><a href="#">Guía de usuario</a></li>
+                    <li><a href="#">Métodos de pago</a></li>
+                </ul>
+            </nav>
+
+            <nav>
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacidad</a></li>
+                    <li><a href="#">Términos</a></li>
+                    <li><a href="#">Cookies</a></li>
+                    <li><a href="#">Seguridad</a></li>
+                    <li><a href="#">Política de reembolsos</a></li>
+                </ul>
+            </nav>
+
+            <nav>
+                <h3>Sobre nosotros</h3>
+                <ul>
+                    <li><a href="#">Contactanos</a></li>
+                    <li><a href="#">Redes sociales</a></li>
+                    <li><a href="#">Equipo</a></li>
+                    <li><a href="#">Trabajos</a></li>
+                    <li><a href="#">Ubicación</a></li>
+                </ul>
+            </nav>
+
+            <!-- Logo en esquina derecha -->
+            <div class="footer-logo">
+                <img src="/ruta/al/logo.png" alt="Next Play" width="120" height="40">
+            </div>
+        </div>
+
+        <!-- Redes sociales centradas -->
+        <div class="footer-social">
+            <a href="#" aria-label="Instagram">
+                <img src="/ruta/instagram-icon.png" alt="Instagram" width="24" height="24">
+            </a>
+            <a href="#" aria-label="Facebook">
+                <img src="/ruta/facebook-icon.png" alt="Facebook" width="24" height="24">
+            </a>
+            <a href="#" aria-label="GitHub">
+                <img src="/ruta/github-icon.png" alt="GitHub" width="24" height="24">
+            </a>
+            <a href="#" aria-label="LinkedIn">
+                <img src="/ruta/linkedin-icon.png" alt="LinkedIn" width="24" height="24">
+            </a>
+            <a href="#" aria-label="Twitter">
+                <img src="/ruta/twitter-icon.png" alt="Twitter" width="24" height="24">
+            </a>
+        </div>
+
+        <!-- Copyright abajo -->
+        <p>&copy; <time datetime="2025">2025</time> Next Play. Todos los derechos reservados | Contacto: <a
+                href="mailto:nextplay@gmail.com">nextplay@gmail.com</a></p>
+    </footer>
 </body>
-</htm
+
+</html>
