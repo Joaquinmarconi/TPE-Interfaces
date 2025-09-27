@@ -5,41 +5,56 @@
     border: none;
     outline: none;
 }
-
-header section {
+body{
+    background-color: #2A2A2A;
+}
+header{
     display: flex;
     width: 1366px;
     height: 60px;
     background-color:  #1c1b1b;
+   
+}
+header section {
+    display: flex;
     align-items: center;
+     width: 1366px;
    
 }
 /*barra buscar*/
-div .alinear-buscar{
+.alinear-buscar{
+    display: flex;
     margin-left: 298px;
     position: relative;
+    width: 340px;
+    
   
 
 }
-.alinear-buscar input{
-    border-radius: 15px;
-    width: 340px;
-    height: 35px;
+.alinear-input{
+    display: flex;
+    border-radius: 20px;
+    width: 410px;
+    height: 40px;
     background-color: #2A2A2A;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-weight: bold;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: bold ;
+    font-size: 18px;
+    
     
 }
-.alinear-buscar input::placeholder{
-    transform: translateX(50px);
+.alinear-input::placeholder{
+    transform: translateX(45px);
+    color: #B3B3B3;
+
 }
 .icono-busqueda{
-    position: absolute; /* Para mover la imagen libremente */
+  position: absolute; /* Para mover la imagen libremente */
   top: 50%; /* Centra verticalmente */
-  left: 10px; /* Posiciona a la izquierda */
-  transform: translateY(-50%); /* Ajuste fino para el centrado */
-  width: 18px; /* Tamaño de la imagen */
-  height: 18px;
+  left: 15px; /* Posiciona a la izquierda */
+  transform: translateY(-12px); /* Ajuste fino para el centrado */
+  width: 21px; /* Tamaño de la imagen */
+  height: 21px;
   pointer-events: none; /* Permite que el input sea clickeable */
   margin-left: 13x;
   
@@ -47,25 +62,51 @@ div .alinear-buscar{
 /*logo pagina*/
 .logo{
     display: flex;
-    margin-left: 25px;
-    width: 125px;
+    margin-left: 21px;
+    width: 144px;
     height: 47px;
 
 }
 .logo img{
-    width: 125px;
-    height: 47px;
+    width: 128px;
+    height: 46px;
+}
+/*boton subscripcion*/
+.suscribirse {
+    display: flex;
+    margin-left: 400px;
+    margin-bottom: 11px;
+    width: 200px;
+    height: 46px;
+    
 }
 
+.suscribirse input{
+    border-radius: 20px;
+    margin-top: 12px;
+    width: 130px;
+    background-color:  #FF7904;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    color: #fafafa;
+}
 /*menu hamburguesa*/
- div button{
+
+ .menu{
     display: flex;
     width: 10px;
-    height: 20px;
+    height: 22px;
     background-color:  #4D4D4D;
     margin-left: 18px;
+    margin-bottom: 2px;
 
     
+ }
+ .menu img{
+     width: 20px;
+    height: 26px;
  }
  #btn-open{
     width: 13px;
