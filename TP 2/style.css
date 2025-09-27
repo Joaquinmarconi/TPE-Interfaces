@@ -14,18 +14,50 @@ header section {
     align-items: center;
    
 }
-
+/*barra buscar*/
 div .alinear-buscar{
-    display: flex;
-    margin-left: 500px;
+    margin-left: 298px;
+    position: relative;
+  
 
 }
+.alinear-buscar input{
+    border-radius: 15px;
+    width: 340px;
+    height: 35px;
+    background-color: #2A2A2A;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    
+}
+.alinear-buscar input::placeholder{
+    transform: translateX(50px);
+}
+.icono-busqueda{
+    position: absolute; /* Para mover la imagen libremente */
+  top: 50%; /* Centra verticalmente */
+  left: 10px; /* Posiciona a la izquierda */
+  transform: translateY(-50%); /* Ajuste fino para el centrado */
+  width: 18px; /* Tamaño de la imagen */
+  height: 18px;
+  pointer-events: none; /* Permite que el input sea clickeable */
+  margin-left: 13x;
+  
+}
+/*logo pagina*/
 .logo{
     display: flex;
-    margin-left: 30px;
-    background-color: antiquewhite;
+    margin-left: 25px;
+    width: 125px;
+    height: 47px;
+
+}
+.logo img{
+    width: 125px;
+    height: 47px;
 }
 
+/*menu hamburguesa*/
  div button{
     display: flex;
     width: 10px;
@@ -36,8 +68,8 @@ div .alinear-buscar{
     
  }
  #btn-open{
-    width: 10px;
-    height: 20px;
+    width: 13px;
+    height: 23px;
     background-color: #1c1b1b;
    border: none;
    
@@ -50,6 +82,7 @@ div .alinear-buscar{
 .main-nav.open {
     display: block;
     width: 200px;
+    height: 900px;
     text-align: left;
 }
 
