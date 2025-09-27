@@ -7,6 +7,7 @@
 }
 body{
     background-color: #2A2A2A;
+    height: 3000px;
 }
 header{
     
@@ -74,10 +75,10 @@ header section {
 /*boton subscripcion*/
 .suscribirse {
     display: flex;
-    margin-left: 400px;
-    margin-bottom: 11px;
-    width: 200px;
-    height: 46px;
+    margin-left: 300px;
+    margin-bottom: 10px;
+    width: 130px;
+    height: 48px;
     
 }
 
@@ -92,6 +93,83 @@ header section {
     text-align: center;
     color: #fafafa;
 }
+/*menu usuario*/
+.menu-usuario{
+    display: flex;
+    margin-left: 30px;
+    margin-right: 50px;  
+    width: 20px;
+    height: 20px;
+
+}
+.menu-usuario img{
+     width: 20px;
+    height: 20px;
+}
+#btn-usuario{
+    width: 13px;
+    height: 23px;
+    background-color: #1c1b1b;
+    border: none;
+
+   
+}
+.main-nav-user {
+    background-color:#1c1b1b;
+    display: none;
+}
+.main-nav-user.openUser {
+    display: block;
+    width: 200px;
+    height: 85px;
+    margin-left: 1165px;
+    background-color: #494242;
+    margin-top: 2px;
+     position: absolute;
+    
+
+}
+.main-nav-user > ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-nav-user > ul > li {
+    list-style: none;
+    height: 10px;
+    
+}
+
+.main-nav-user > ul > li  {
+    display: flex;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 600 ;
+    font-size: 17px;
+    padding: 16px;
+    color: #B3B3B3;
+    margin-left: 7px;
+   
+  
+}
+.main-nav-user > ul > li > img{
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
+
+}
+.main-nav-user > ul > li > a:visited { 
+    color: initial;
+}
+
+.main-nav-user > ul > li:hover { 
+    background-color: #494242;
+    color:#FAFAFA;
+}
+
+
+
 /*menu hamburguesa*/
 
  .menu{
@@ -125,10 +203,14 @@ header section {
     width: 200px;
     height: 900px;
     text-align: left;
+     margin-top: 2px;
+     position: absolute;
+    
+  
 }
 
 .main-nav > ul {
-    margin: 0;
+    margin: 2;
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -140,7 +222,7 @@ header section {
 }
 
 .main-nav > ul > li  {
-    display: flex;
+    display: block;
     font-family: 'Baloo 2', sans-serif;
     font-weight: 600 ;
     font-size: 17px;
@@ -160,8 +242,8 @@ header section {
     color: initial;
 }
 
-.main-nav > ul > li > a:hover { 
-    background-color: #FAFAFA;
+.main-nav > ul > li:hover { 
+    background-color: #494242;
     color:#FAFAFA;
 }
 
@@ -171,5 +253,31 @@ header section {
 
 /*juego*/
 
+.breadcumbs{
+    width: 1300px;
+    margin-left: 39px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    align-items: center;
+}
+.breadcumbs p{
+   
+   font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    color: #FAFAFA;
+}
+.breadcumbs img{
+    width: 20px;
+    height: 20px;
+}
+
+.juego{
+    width: 900px;
+    height: 500px;
+    background-color: #FF7904;
+    margin-left: 39px;
+    margin-top: 2px;
+}
 
 /*registro*/
