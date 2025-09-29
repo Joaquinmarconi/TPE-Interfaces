@@ -19,10 +19,8 @@ header{
 header section {
     display: flex;
     align-items: center;
- 
-   
-   
 }
+
 /*barra buscar*/
 .alinear-buscar{
     display: flex;
@@ -30,8 +28,6 @@ header section {
     position: relative;
     width: 340px;
     
-  
-
 }
 .alinear-input{
     display: flex;
@@ -61,6 +57,7 @@ header section {
   margin-left: 13x;
   
 }
+
 /*logo pagina*/
 .logo{
     display: flex;
@@ -300,13 +297,37 @@ header section {
     height: 500px;
     background-color: #FF7904;
     margin-left: 58px;
+    position: relative;
     
    
 }
 .juego div img{
     width: 900px;
     height: 500px;
+    filter: brightness(50%);
 }
+.boton-jugar{
+    position: absolute;
+    top:250px;
+    left:400px;
+    display: flex;
+
+
+}
+.btn-jugar{
+    border-radius: 20px;
+    width: 130px;
+    height: 40px;
+    background-color:  #FF7904;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    color: #fafafa;
+    z-index: 10;
+}
+
+
 .reglas{
     width: 324px; 
     height: 500px;
