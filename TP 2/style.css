@@ -361,3 +361,133 @@ header section {
     margin-left: 200px;
 }
 /*registro*/
+
+/*login*/
+
+.contenedor-principal { 
+    width: 100%; 
+    background-image: url('Assets/fondo forms.png');
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.section-login {
+   background-color: #2a2a2a;
+   padding: 30px 50px;
+   border-radius: 20px;
+   width: 420px;
+   text-align: center;
+   color: #fafafa;
+   opacity: 95%;
+}
+
+.logo-login {
+    max-width: 170px;
+    margin: 0 auto 2rem auto;
+}
+
+.form-login {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-login label {
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+    text-align: left;
+}
+
+.campo-input {
+    width: 92%;
+    padding: 10px 20px;
+    border-radius: 20px;
+    outline: none;
+    font-size: 1rem;
+    background-color: transparent;
+    border: 2px solid #b3b3b3;
+    color: #fafafa;
+}
+
+.usuario-form, 
+.contraseña-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.opciones-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.opciones-form input[type="checkbox"] {
+    margin-right: 0.2rem;
+}
+
+.opciones-form a {
+    color: #e44a2e;
+}
+
+.btn-login {
+    width: 60%;
+    background-color: #f1c40f;
+    color: #fafafa;
+    padding: 10px 10px;
+    border-radius: 30px;
+    font-size: 1rem;
+}
+
+.separador {
+    margin: 1.2rem 0;
+    text-align: center;
+    color: #b3b3bb;
+    position: relative;
+}
+
+.login-social {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.login-social button {
+    width: 60%;
+    padding: 0.8rem 1rem;
+    border-radius: 30px;
+    font-size: 1rem;
+}
+
+.btn-google {
+    color: #1c1b1b;
+    background-color: #fafafa;
+}
+
+.btn-facebook {
+    color: #fafafa;
+    background-color: #3b5998;
+}
+
+.btn-login,
+.login-social button {
+    display: block;      
+    margin: 5px auto;  
+    width: 60%;           
+    padding: 10px 10px;    
+    cursor: pointer;
+    text-align: center;
+}
+
+.pie-login {
+    color:#B3B3B3;
+    margin-top: 1.2rem;
+}
+
+.pie-login a {
+    color: #fafafa;
+}
+
+
+
