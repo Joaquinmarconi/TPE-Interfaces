@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Play</title>
+    <link rel="stylecheet" href="style.css">
+</head>
+<body>
+    <main class="contenedor-principal">
+        <section class="section-login">
+
+            <header class="encabezado-login">
+                <img src="Assets/nextplay_transparent.png" alt="logo Next Play" class="logo-login">
+            </header>
+
+            <form class="form-login" action="home.html" method="post">
+                <div class="usuario-form">
+                    <label for="correo">Email</label>
+                    <input type="email" id="correo" class="campo-input" required>
+                </div>
+
+               <div class="contraseña-form">
+                    <label for="contraseña">Contraseña</label>
+                    <input type="password" id="contraseña" class="campo-input">
+               </div> 
+
+               <div class="opciones-form">
+                   <label>
+                     <input type="checkbox" name="recordar">
+                     Recordarme
+                   </label> 
+                   <a class="recuperar-cuenta">Recuperar cuenta</a>
+               </div>
+
+               <button type="submit" class="btn-login">Iniciar Sesión</button>
+            </form>
+
+            <div class="separador">o</div>
+
+            <div class="login-social">
+                <button type="button" class="btn-google">Iniciar sesión con Google</button>
+                <button type="button" class="btn-facebook">Iniciar Sesión con Facebook</button>
+            </div>
+
+            <footer class="pie-login">
+                <p>No tienes una cuenta? <a href="register.html">Regístrate</a></p>
+            </footer>
+
+            <!--agregar pop-up de que el usuario ingresó correctamente-->
+            <!--agregar footer-->
+        </section>
+
+    </main>
+    
+</body>
+</html>
