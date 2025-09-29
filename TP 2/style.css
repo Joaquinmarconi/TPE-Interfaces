@@ -208,7 +208,7 @@ header section {
     text-align: left;
      margin-top: 2px;
      position: absolute;
-    
+    z-index: 10;
   
 }
 
@@ -298,7 +298,7 @@ header section {
     background-color: #FF7904;
     margin-left: 58px;
     position: relative;
-    
+    z-index: 1;
    
 }
 .juego div img{
@@ -310,7 +310,7 @@ header section {
     position: absolute;
     top:250px;
     left:400px;
-    display: flex;
+   
 
 
 }
