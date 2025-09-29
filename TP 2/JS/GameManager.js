@@ -7,20 +7,21 @@ class GameManager {
 
     async pedirJuegos() {
         try {
-            const respuesta = await fetch('https://vj.interfaces.jima.com.ar/api');
+            const respuesta = await fetch('https://vj.interfaces.jima.com.ar/api/v2');
             if (!respuesta.ok) {
                 throw new Error('Error en la respuesta de la API');
             }
 
             this.todosLosJuegos = await respuesta.json();
+            console.log(`Total de juegos cargados: ${this.todosLosJuegos.length}`);
 
-            this.llenarSeccion('novedades-carrusel', 5);
-            this.llenarSeccion('parati-carrusel', 6);
-            this.llenarSeccion('deportes-carrusel', 6);
-            this.llenarSeccion('puzzle-carrusel', 6);
-            this.llenarSeccion('aventura-carrusel', 6);
+            // Llenar los carruseles con todos los juegos disponibles de cada categoría
+            this.llenarSeccion('novedades-carrusel');
+            this.llenarSeccion('parati-carrusel');
+            this.llenarSeccion('deportes-carrusel');
+            this.llenarSeccion('puzzle-carrusel');
+            this.llenarSeccion('aventura-carrusel');
 
-            // Configurar los botones después de cargar los juegos
             this.configurarNavegacionCarruseles();
 
         } catch (error) {
@@ -29,36 +30,65 @@ class GameManager {
         }
     }
 
-    llenarSeccion(idDelContenedor, cuantosJuegos) {
+    llenarSeccion(idDelContenedor) {
         const contenedor = document.getElementById(idDelContenedor);
-        if (!contenedor) {
-            console.warn(`Contenedor ${idDelContenedor} no encontrado`);
-            return;
-        }
+        if (!contenedor) return;
+
         contenedor.innerHTML = '';
 
-        const juegosParaEstaSeccion = this.todosLosJuegos.slice(0, cuantosJuegos);
+        // Función para filtrar por género
+        const filtrarPorGenero = genero => this.todosLosJuegos.filter(juego =>
+            juego.genres && juego.genres.some(g =>
+                g.name.toLowerCase().includes(genero)));
 
-        juegosParaEstaSeccion.forEach(juego => {
+        // Mapeo de estrategias
+        const estrategias = {
+            'deportes-carrusel': () => filtrarPorGenero('sports'),
+            'puzzle-carrusel': () => filtrarPorGenero('puzzle'),
+            'aventura-carrusel': () => filtrarPorGenero('adventure'),
+            'novedades-carrusel': () => [...this.todosLosJuegos].sort((a, b) =>
+                new Date(b.released || 0) - new Date(a.released || 0)),
+            'parati-carrusel': () => [...this.todosLosJuegos].sort((a, b) =>
+                (b.rating || 0) - (a.rating || 0))
+        };
+
+        // Obtener los juegos filtrados
+        let juegosFiltrados = estrategias[idDelContenedor]
+            ? estrategias[idDelContenedor]()
+            : this.todosLosJuegos;
+
+        // Mostrar mensaje si no hay juegos
+        if (juegosFiltrados.length === 0) {
+            const mensajeVacio = document.createElement('li');
+            mensajeVacio.textContent = 'No hay juegos disponibles en esta categoría';
+            contenedor.appendChild(mensajeVacio);
+            return;
+        }
+
+        // Mostrar todos los juegos filtrados
+        juegosFiltrados.forEach(juego => {
             const tarjeta = this.crearTarjetaDeJuego(juego);
-            contenedor.appendChild(tarjeta);
+            if (tarjeta) {
+                contenedor.appendChild(tarjeta);
+            }
         });
+
+        // Registrar cuántos juegos se mostraron
+        console.log(`Carrusel ${idDelContenedor}: ${juegosFiltrados.length} juegos`);
     }
 
     crearTarjetaDeJuego(juego) {
-        if (!juego || !juego.background_image || !juego.name) {
+        if (!juego || !juego.name) {
             console.warn('Datos de juego incompletos');
             return null;
         }
 
         const tarjeta = document.createElement('li');
-
         const article = document.createElement('article');
-
         const figure = document.createElement('figure');
-
         const img = document.createElement('img');
-        img.src = juego.background_image;
+
+        img.src = juego.background_image_low_res || juego.background_image || '';
         img.alt = juego.name;
         img.loading = 'lazy';
         img.width = 240;
@@ -68,9 +98,8 @@ class GameManager {
         titulo.textContent = juego.name;
 
         const rating = document.createElement('p');
-        rating.textContent = `★ ${juego.rating}/5`;
+        rating.textContent = `★ ${juego.rating || 0}/5`;
 
-        // Armamos la estructura
         figure.appendChild(img);
         article.appendChild(figure);
         article.appendChild(titulo);
