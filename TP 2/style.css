@@ -7,7 +7,7 @@
 }
 body{
     background-color: #2A2A2A;
-    height: 3000px;
+    
 }
 header{
     
@@ -19,6 +19,7 @@ header{
 header section {
     display: flex;
     align-items: center;
+    
 }
 
 /*barra buscar*/
@@ -287,9 +288,7 @@ header section {
     display: flex;
     width: 1340px;
     height: 500px;
-    
-  
-    
+
 }
 
 .juego{
@@ -307,10 +306,12 @@ header section {
     filter: brightness(40%);
 }
 .boton-jugar{
+    width: 500px;;
     position: absolute;
     top:250px;
-    left:400px;
-    transform: translate(-5%, -50%);
+    margin-left: 200px;
+    transform: translate(30%, -50%);
+    
 
 
 }
