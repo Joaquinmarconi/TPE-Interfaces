@@ -435,9 +435,15 @@ header section {
 
 /*login*/
 
+.fondo-form {
+    background-image: url('Assets/fondo forms.png'); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    min-height: 100vh;
+}
+
 .contenedor-principal { 
     width: 100%; 
-    background-image: url('Assets/fondo forms.png');
     display: flex;
     justify-content: center; 
     align-items: center;
@@ -445,17 +451,18 @@ header section {
 
 .section-login {
    background-color: #2a2a2a;
-   padding: 30px 50px;
+   padding: 30px 70px;
    border-radius: 20px;
    width: 420px;
    text-align: center;
    color: #fafafa;
    opacity: 95%;
+   margin-top: 30px;
 }
 
 .logo-login {
     max-width: 170px;
-    margin: 0 auto 2rem auto;
+    margin: 0 auto 1rem auto;
 }
 
 .form-login {
@@ -465,20 +472,22 @@ header section {
 }
 
 .form-login label {
-    font-size: 0.95rem;
-    margin-bottom: 0.3rem;
+    font-family: 'Baloo 2', sans-serif ;
+    font-size: 16px;
+    margin-bottom: 0.1rem;
     text-align: left;
 }
 
 .campo-input {
-    width: 92%;
-    padding: 10px 20px;
+    width: 98%;
+    padding: 5px;
     border-radius: 20px;
     outline: none;
-    font-size: 1rem;
     background-color: transparent;
     border: 2px solid #b3b3b3;
     color: #fafafa;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 15px;
 }
 
 .usuario-form, 
@@ -487,11 +496,20 @@ header section {
     flex-direction: column;
 }
 
+/* Recordarme + Recuperar cuenta*/
 .opciones-form {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 14px;
+    color: #b3b3b3
+}
+
+.opciones-form label {
+    color: #b3b3b3;
+    font-size: 14px;
 }
 
 .opciones-form input[type="checkbox"] {
@@ -499,65 +517,80 @@ header section {
 }
 
 .opciones-form a {
-    color: #e44a2e;
+    color: #ff4d4d;
+    text-decoration: underline;
 }
 
 .btn-login {
+    display: block;
+    margin: 0 auto 1.5rem auto; /*centrar*/
+    margin-bottom: 5px;
+    margin-top: 8px;
     width: 60%;
-    background-color: #f1c40f;
+    background-color: #ffd600;
     color: #fafafa;
-    padding: 10px 10px;
+    font-size: 18px;
+    padding: 5px 10px;
     border-radius: 30px;
-    font-size: 1rem;
+    font-family: 'Baloo 2', sans-serif;
+    cursor: pointer;
 }
 
 .separador {
-    margin: 1.2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    margin: 1.2rem 0;
     color: #b3b3bb;
-    position: relative;
+    gap: 10px;
+}
+
+.separador::before,
+.separador::after {
+    content: "";
+    display: block;
+    width: 110px;
+    height: 1px;
+    background-color: #B3B3B3;
 }
 
 .login-social {
     display: flex;
     flex-direction: column;
-    gap: 0.1rem;
+    gap: 0.3rem;
 }
 
 .login-social button {
     width: 60%;
-    padding: 0.8rem 1rem;
+    padding: 5px;
     border-radius: 30px;
-    font-size: 1rem;
+    font-size: 15px;
+    font-family: 'Baloo 2', sans-serif;
+    cursor: pointer;
+    margin: 0 auto;
 }
 
 .btn-google {
-    color: #1c1b1b;
+    color: #1a1a1a;
     background-color: #fafafa;
 }
 
 .btn-facebook {
     color: #fafafa;
-    background-color: #3b5998;
-}
-
-.btn-login,
-.login-social button {
-    display: block;      
-    margin: 5px auto;  
-    width: 60%;           
-    padding: 10px 10px;    
-    cursor: pointer;
-    text-align: center;
+    background-color: #393586;
 }
 
 .pie-login {
     color:#B3B3B3;
     margin-top: 1.2rem;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 14px;
 }
 
 .pie-login a {
     color: #fafafa;
+    text-decoration: none;
 }
 
 
