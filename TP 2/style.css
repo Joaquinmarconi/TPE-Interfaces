@@ -11,7 +11,7 @@ body{
 }
 header{
     
-    width: 1366px;
+    width: 1350px;
     height: 60px;
     background-color:  #1c1b1b;
    
@@ -19,9 +19,8 @@ header{
 header section {
     display: flex;
     align-items: center;
-     width: 1366px;
-   
 }
+
 /*barra buscar*/
 .alinear-buscar{
     display: flex;
@@ -29,8 +28,6 @@ header section {
     position: relative;
     width: 340px;
     
-  
-
 }
 .alinear-input{
     display: flex;
@@ -60,6 +57,7 @@ header section {
   margin-left: 13x;
   
 }
+
 /*logo pagina*/
 .logo{
     display: flex;
@@ -100,11 +98,15 @@ header section {
     margin-right: 50px;  
     width: 20px;
     height: 20px;
+    background-color:  #4D4D4D;
+    
 
 }
 .menu-usuario img{
-     width: 20px;
-    height: 20px;
+     width: 25px;
+    height: 25px;
+   
+    
 }
 #btn-usuario{
     width: 13px;
@@ -115,17 +117,16 @@ header section {
    
 }
 .main-nav-user {
-    background-color:#1c1b1b;
+    background-color:#554d28;
     display: none;
 }
 .main-nav-user.openUser {
     display: block;
     width: 200px;
-    height: 85px;
-    margin-left: 1165px;
-    background-color: #494242;
+    height: 90px;
+    margin-left: 1150px;
     margin-top: 2px;
-     position: absolute;
+    position: absolute;
     
 
 }
@@ -139,7 +140,8 @@ header section {
 .main-nav-user > ul > li {
     list-style: none;
     height: 10px;
-    
+   
+  
 }
 
 .main-nav-user > ul > li  {
@@ -147,10 +149,11 @@ header section {
     font-family: 'Baloo 2', sans-serif;
     font-weight: 600 ;
     font-size: 17px;
-    padding: 16px;
+    padding: 13px;
     color: #B3B3B3;
     margin-left: 7px;
    
+    
   
 }
 .main-nav-user > ul > li > img{
@@ -160,7 +163,7 @@ header section {
 
 }
 .main-nav-user > ul > li > a:visited { 
-    color: initial;
+    color: beige;
 }
 
 .main-nav-user > ul > li:hover { 
@@ -205,7 +208,7 @@ header section {
     text-align: left;
      margin-top: 2px;
      position: absolute;
-    
+    z-index: 10;
   
 }
 
@@ -222,7 +225,7 @@ header section {
 }
 
 .main-nav > ul > li  {
-    display: block;
+    display: flex;
     font-family: 'Baloo 2', sans-serif;
     font-weight: 600 ;
     font-size: 17px;
@@ -239,7 +242,7 @@ header section {
 
 }
 .main-nav > ul > li > a:visited { 
-    color: initial;
+    color: beige;
 }
 
 .main-nav > ul > li:hover { 
@@ -254,8 +257,9 @@ header section {
 /*juego*/
 
 .breadcumbs{
-    width: 1300px;
-    margin-left: 39px;
+    display: flex;
+    width: 1000px;
+    margin-left: 58px;
     margin-bottom: 10px;
     margin-top: 20px;
     align-items: center;
@@ -263,23 +267,120 @@ header section {
 .breadcumbs p{
    
    font-family: 'Orbitron', sans-serif;
-    font-weight: bold;
-    font-size: 18px;
+    font-weight: bolder;
+    font-size: 20px;
     color: #FAFAFA;
 }
 .breadcumbs img{
-    width: 20px;
-    height: 20px;
+   
+    width: 17px;
+    height: 17px;
+}
+.breadcumbs a{
+     font-family: 'Baloo 2', sans-serif;
+    font-weight: 600 ;
+    font-size: 18px;
+    margin-left: 8px;
+    color: #B3B3B3;
+}
+.juego-reglas{
+    display: flex;
+    width: 1340px;
+    height: 500px;
+    
+  
+    
 }
 
 .juego{
     width: 900px;
     height: 500px;
     background-color: #FF7904;
-    margin-left: 39px;
-    margin-top: 2px;
+    margin-left: 58px;
+    position: relative;
+    z-index: 1;
+   
+}
+.juego div img{
+    width: 900px;
+    height: 500px;
+    filter: brightness(50%);
+}
+.boton-jugar{
+    position: absolute;
+    top:250px;
+    left:400px;
+   
+
+
+}
+.btn-jugar{
+    border-radius: 20px;
+    width: 130px;
+    height: 40px;
+    background-color:  #FF7904;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    color: #fafafa;
+    z-index: 10;
 }
 
+
+.reglas{
+    width: 324px; 
+    height: 500px;
+    margin-left: 28px;
+   background-color: #1c1b1b;
+   padding: o;
+}
+.reglas div{
+    display: block;
+    height: 200px;
+    width: 324px;
+    text-align: justify;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 500 ;
+    color: #FFDD33;
+    
+    
+    
+}
+.reglas div h3{
+    margin-top: 25px;
+    text-align: center;
+}
+.reglas div ul {
+    width: 250px;
+    height: 200px;
+    font-size: 16px;
+    font-weight: 200px;
+    color: #B3B3B3;
+    padding: 0px;
+    margin-left: 40px;
+    text-indent: -5px;
+   
+   
+
+}
+.reglas div ul li{
+    list-style-type: disc;
+    white-space: initial;
+    line-height: 19px;
+    text-align: start;
+}
+.reglas p{
+    color:#B3B3B3;
+    margin-left:22px ;
+    margin-top: 10px;
+
+}
+.reglas div img{
+    width: 70px;
+    height: 70px;
+    margin-left: 200px;
+}
 /*registro*/
 
 /*login*/

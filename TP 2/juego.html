@@ -32,7 +32,7 @@
         <div class="alinear-buscar">
             <div>
              <input type="text" placeholder="Buscar..."  class="alinear-input"> 
-            <img src="Assets/buscar.png" alt="icono busqueda" class="icono-busqueda">
+             <img src="Assets/buscar.png" alt="icono busqueda" class="icono-busqueda">
             </div>
         </div>
 
@@ -49,7 +49,7 @@
 
        <nav class="main-nav">
                     <ul>
-                        <li><img src="Assets/home.png" alt="home" >Inicio</li>
+                        <li><img src="Assets/home.png" alt="home" ><a href="home.html">Inicio</a></li>
                         <li><img src="Assets/reciente.png" alt="reciente" >Recientes</li>
                         <li><img src="Assets/user.png" alt="usuario" >Mi perfil</li>
                         <li><img src="Assets/control.png" alt="control" >Categorias</li>
@@ -66,7 +66,7 @@
     </header>
 
      <section class="breadcumbs">
-        <p>Inicio > Destacados > Puzzle > Donuts Solitarie</p>
+        <p>Inicio  >  Destacados  >  Puzzle  >  Donuts Solitarie</p>
      </section>
    
 
@@ -75,12 +75,44 @@
         <a href="home.html">Volver al inicio</a>
     </div>
     
-    <section class="juego">
+   <section class="juego-reglas">
+        <section class="juego">
+            <div>
+                <img src="Assets/homerangry.png" alt="homer" >
+                <div class="boton-jugar">
+                     <input type="button" value="Jugar" class="btn-jugar">
+                       
+                      </input>
+                </div>
+            </div>
+        </section>
+        
+        <section class="reglas">
+            <div>
+                <h3>Reglas básicas</h3>
+                <ul>
+                    <li>Solo se puede saltar en línea recta (vertical u horizontal).</li>
+                    <li>No se permiten movimientos en diagonal.</li>
+                    <li>Cada salto elimina la ficha que fue sobrepasada.</li>
+                    <li>Si no hay más movimientos posibles el juego termina.</li>
+                </ul>
+              
+                
+            </div> 
+              <p> ___________________________________</p>
+            <div>
+                 <h3>Controles</h3>
+                <ul>
+                    <li>Haz clic en una ficha para seleccionarla.</li>
+                    <li>Haz clic en el espacio vacío al que quieras moverla.</li>
+                    <li>El movimiento se realiza automáticamente si es válido.</li>
+                    <img src="Assets/touch.png" alt="click" >
+                </ul>
+           </div>
+
+        </section>
     </section>
 
-    <section>
-
-    </section>
     <script src="JS/tp2JS.js" Content-Type="text/javascript"></script>
 </body>
 </html>

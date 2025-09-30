@@ -18,3 +18,4 @@ function toggleMenu2() {
     let menu = document.querySelector('.main-nav-user');
     menu.classList.toggle('openUser');
 }
+
