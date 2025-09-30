@@ -310,15 +310,16 @@ header section {
     position: absolute;
     top:250px;
     left:400px;
-    transform: translate(-10%, -50%);
+    transform: translate(-5%, -50%);
 
 
 }
 .boton-jugar p{
     font-family: 'Baloo 2', sans-serif;
     font-weight: 600 ;
-    font-size: 18px;
+    font-size: 20px;
     color: #B3B3B3;
+    margin-left: 19px;
 }
  :root {
     --bg: #1a1e24;
@@ -326,25 +327,29 @@ header section {
     --font: Montserrat, Roboto, Helvetica, Arial, sans-serif;
 }
 .wrapper {
-    padding: 1.5rem 0;
     filter: url('#goo');
+    margin-right: 1000px;
+   
 }
+
+
 .btn-jugar{
     display: inline-block;
-    width: 130px;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 30px;
     background-color:  #FF7904;
     font-family: 'Baloo 2', sans-serif;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 22px;
     text-align: center;
     color: #fafafa;
     z-index: 8;
     position: relative;
-   
-    padding: 0.5em 0.5em 1em;
+    padding: 0.2em 0.1em 0.4em;
     line-height: 1em;
-    border-radius: 1em;
-    
+    border-radius: 15px;
     min-width: 8.23em;
     text-decoration: none;
    
@@ -357,21 +362,24 @@ header section {
     content: "";
     display: inline-block;
     background: var(--color);
-    border-radius: 50%;
-    transition: transform 1s ease;
+    border-radius: 50% ;
+    transition: transform 0.5s ease;
     transform: scale(0);
     z-index: -1;
+ 
 
 }
 
-.btn-jugar:before {
-    top: -25%;
-    left: 20%;
+.btn-jugar::before {
+    top:5%;
+    left: 57%;
+
 }
 
-.btn-jugar:after {
-    bottom: -25%;
-    right: 20%;
+.btn-jugar::after {
+     top:5%;
+     right: 57%;
+
 }
 
 .btn-jugar:hover:before,
