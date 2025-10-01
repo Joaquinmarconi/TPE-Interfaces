@@ -19,7 +19,7 @@ function toggleMenu2() {
     menu.classList.toggle('openUser');
 }
 
-/* input contraseña login */
+/* input contraseña login 2 opciones, elegir cual*/
 
 function togglePassword() {
     const input = document.querySelector("#contraseña");
@@ -43,4 +43,15 @@ function togglePassword() {
     icon.classList.add("fa-eye");
   }
 }*/
+
+document.addEventListener("DOMContentLoaded", () => {
+  const popover = document.querySelector("#acceso-popover");
+  const form = document.querySelector(".form-login");
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault(); 
+    popover.showPopover(); // muestra el cartel
+  });
+});
+
 
