@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Jomhuria&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap');
+
+
 *{
     margin: 0;
     padding: 0;
@@ -250,7 +255,196 @@ header section {
 
 /*home*/
 
+.home-body {
+    max-width: 1350px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
+.home-carrusel {
+    position: relative;
+    margin: 2rem 0;
+    padding: 0 40px;
+    padding-top: 5px;    /* Espacio arriba */
+    padding-bottom: 5px; /* Espacio abajo */
+    overflow: visible;   /* Permite que los elementos salgan del contenedor */
+}
+
+/* Importar la fuente Orbitron */
+.home-carrusel h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: white;
+}
+
+.home-carrusel:first-child h2 {
+    font-size: 24px;
+    color: #FF9933;
+}
+
+.home-carrusel button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: transparent; /* Sin fondo */
+    color: #B3B3B3; /* Color gris claro */
+    border: none;
+    width: 30px;
+    height: 30px;
+    font-family: 'Jomhuria', sans-serif;
+    font-size: 70px;
+    font-weight: 400; /* Regular */
+    line-height: 0.7; /* Ajustar alineación vertical */
+    cursor: pointer;
+    padding: 0;
+}
+
+.home-carrusel button:first-of-type {
+    left: 5px;
+}
+
+.home-carrusel button:last-of-type {
+    right: 5px;
+}
+
+.home-carrusel ul {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: visible; /* Permite que los elementos salgan verticalmente */
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 5px 0;      /* Espacio arriba y abajo */
+    margin: 0;
+}
+
+.home-carrusel ul::-webkit-scrollbar {
+    display: none;
+}
+
+.home-carrusel li {
+    flex: 0 0 auto;
+    width: 240px;
+    margin-right: 15px;
+    margin-bottom: 10px; /* Añadir margen inferior */
+    position: relative;
+}
+
+.home-carrusel img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px; /* Asegurar bordes redondeados en la imagen */
+}
+
+/* Reemplaza estas líneas */
+.home-carrusel li:hover {
+    transform: translateY(-5px);
+}
+
+.home-carrusel article {
+    border-radius: 8px; /* Asegurar bordes redondeados */
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3); /* Añadir sombra sutil */
+}
+
+.home-carrusel figure {
+    margin: 0;
+    overflow: hidden;
+}
+
+.home-carrusel article:hover img {
+    transform: scale(1.05);
+}
+
+.home-carrusel li {
+    flex: 0 0 auto;
+    width: 240px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    position: relative;
+    transition: transform 0.3s ease-out; /* Transición más lenta y suave */
+}
+
+.home-carrusel li:hover {
+    transform: translateY(-3px); /* Elevación más sutil */
+}
+
+.home-carrusel article {
+    border-radius: 10%;
+    overflow: hidden;
+    position: relative;
+}
+
+.home-carrusel article:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.home-carrusel article:hover img {
+    /* Eliminar la transformación de la imagen */
+    transform: none;
+}
+
+.home-carrusel h3 {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    padding: 8px 10px;
+    margin: 0;
+    color: #FAFAFA;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.home-carrusel p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px 10px;
+    margin: 0;
+    color: #FF7904;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 0.8rem;
+}
+
+/* Diseño responsive */
+@media (max-width: 768px) {
+    .home-carrusel li {
+        width: 180px;
+    }
+    
+    .home-carrusel button {
+        width: 30px;
+        height: 30px;
+        font-size: 1.2rem;
+    }
+    
+    .home-carrusel h2 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-carrusel li {
+        width: 140px;
+    }
+    
+    .home-carrusel h3 {
+        font-size: 0.9rem;
+    }
+    
+    .home-carrusel p {
+        font-size: 0.8rem;
+    }
+}
 
 /*juego*/
 
@@ -656,5 +850,123 @@ header section {
     text-decoration: none;
 }
 
+/*footer*/
 
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600&display=swap');
 
+footer {
+    background-color: #1C1B1B;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Baloo 2', sans-serif;
+    padding: 64px 0 20px 0;
+    box-sizing: border-box;
+}
+
+.footer-content {
+    width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) auto;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 48px;
+}
+
+/* Secciones nav */
+footer nav {
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+}
+
+footer nav h3 {
+    font-weight: 600;
+    font-size: 22px;
+    color: #FFDD33;
+    margin: 0 0 6px 0; 
+}
+
+footer nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px; 
+}
+
+footer nav li {
+    margin: 0;
+}
+
+footer nav a {
+    font-weight: 500;
+    font-size: 16px;
+    color: #B3B3B3;
+    text-decoration: none;
+    transition: color 0.2s;
+    line-height: 1.2;
+}
+
+footer nav a:hover {
+    color: #FAFAFA;
+}
+
+/* Logo */
+.footer-logo {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.footer-logo img {
+    width: 180px;
+    height: auto;
+}
+
+/* Redes sociales */
+.footer-social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-social img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+    transition: opacity 0.2s;
+}
+
+.footer-social img:hover {
+    opacity: 0.7;
+}
+
+/* Texto legal */
+footer p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #B3B3B3;
+    text-align: center;
+    margin: 0;
+    line-height: 1.5;
+}
+
+footer p a {
+    color: #5B9BD5;
+    text-decoration: none;
+}
+
+footer p a:hover {
+    text-decoration: underline;
+}
