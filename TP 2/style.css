@@ -91,6 +91,13 @@ header section {
     font-size: 18px;
     text-align: center;
     color: #fafafa;
+    box-shadow: 0 0 10px rgba(255, 121, 4, 0.6); /* brillo inicial */
+    cursor: pointer;
+    transition: all 0.3s ease; /* transición suave */
+}
+.suscribirse input:hover {
+    transform: scale(1.1); /* agranda un 10% */
+    box-shadow: 0 0 20px rgba(255, 121, 4, 1), 0 0 40px rgba(255, 121, 4, 0.5);
 }
 /*menu usuario*/
 .menu-usuario{
