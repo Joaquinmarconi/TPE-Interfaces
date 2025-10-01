@@ -428,6 +428,24 @@ header section {
     height: 70px;
     margin-left: 200px;
 }
+
+.descripcion-juego{
+    width: 900px;
+    height: 100px;
+    margin-left: 58px;
+    margin-top: 20px;
+}
+.descripcion-juego h3{
+    font-family: 'Baloo 2', sans-serif;
+    color: #B3B3B3;
+}
+.descripcion-juego  p{
+    font-family: 'Baloo 2', sans-serif;
+     font-size: 16px;
+     color: #B3B3B3;
+     text-align: justify;
+}
+  
 /*registro*/
 
 /*login*/
