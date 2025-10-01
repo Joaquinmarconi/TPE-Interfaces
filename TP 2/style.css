@@ -91,6 +91,13 @@ header section {
     font-size: 18px;
     text-align: center;
     color: #fafafa;
+    box-shadow: 0 0 10px rgba(255, 121, 4, 0.6); /* brillo inicial */
+    cursor: pointer;
+    transition: all 0.3s ease; /* transición suave */
+}
+.suscribirse input:hover {
+    transform: scale(1.1); /* agranda un 10% */
+    box-shadow: 0 0 20px rgba(255, 121, 4, 1), 0 0 40px rgba(255, 121, 4, 0.5);
 }
 /*menu usuario*/
 .menu-usuario{
@@ -99,37 +106,29 @@ header section {
     margin-right: 50px;  
     width: 20px;
     height: 20px;
-    background-color:  #4D4D4D;
-    
 
 }
 .menu-usuario img{
      width: 25px;
-    height: 25px;
-   
-    
+     height: 25px;
 }
 #btn-usuario{
     width: 13px;
     height: 23px;
     background-color: #1c1b1b;
     border: none;
-
-   
 }
 .main-nav-user {
-    background-color:#554d28;
+    background-color:#413a32;
     display: none;
 }
 .main-nav-user.openUser {
     display: block;
-    width: 200px;
+    width: 180px;
     height: 90px;
-    margin-left: 1150px;
+    margin-left: 1170px;
     margin-top: 2px;
     position: absolute;
-    
-
 }
 .main-nav-user > ul {
     margin: 0;
@@ -141,8 +140,6 @@ header section {
 .main-nav-user > ul > li {
     list-style: none;
     height: 10px;
-   
-  
 }
 
 .main-nav-user > ul > li  {
@@ -168,7 +165,7 @@ header section {
 }
 
 .main-nav-user > ul > li:hover { 
-    background-color: #494242;
+   
     color:#FAFAFA;
 }
 
@@ -431,6 +428,56 @@ header section {
     height: 70px;
     margin-left: 200px;
 }
+
+.descripcion-juego{
+    width: 900px;
+    margin-left: 58px;
+    margin-top: 20px;
+}
+.descripcion-juego h3{
+    font-family: 'Baloo 2', sans-serif;
+    color: #B3B3B3;
+}
+.descripcion-juego  p{
+    font-family: 'Baloo 2', sans-serif;
+     font-size: 16px;
+     color: #B3B3B3;
+     text-align: justify;
+}
+.btn-compartir{
+    width: 139px;
+    height: 38px;
+    border-radius: 20px;
+    border: 2px solid #b3b3bb;
+    margin-top: 15px;
+    background-color:  #2A2A2A;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    color: #b3b3b3;
+    z-index: 8;
+    position: relative;
+    display: inline-flex;          /* Activa flexbox en el botón */
+    align-items: center;          /* Centra verticalmente texto + ícono */
+    justify-content: center;      /*Centra horizontalmente*/
+    gap: 4px;    
+}
+.fila-img{
+    width: 917px;
+    height: 168px;
+    display:flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+   
+}
+.fila-img-juegos{
+    width: 300px;
+    height: 168px;
+    background-color: #393586;
+    margin-bottom: 10px;
+    margin-right: 15px;
+}
+  
 /*registro*/
 
 /*login*/
