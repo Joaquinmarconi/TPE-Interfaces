@@ -323,7 +323,10 @@ header section {
     
 }
 
-
+.btn-fire-gif-container {
+  position: relative;
+  display: inline-block;
+}
 .btn-jugar{
     width: 139px;
     height: 38px;
@@ -338,7 +341,41 @@ header section {
     display: inline-flex;          /* Activa flexbox en el botón */
     align-items: center;          /* Centra verticalmente texto + ícono */
     justify-content: center;      /*Centra horizontalmente*/
-    gap: 4px;      
+    gap: 4px;    
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;  
+}
+.btn-fire-gif-container img {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  transform: translateY(-50%) scale(0); /*img oculta*/
+  pointer-events: none;
+}
+
+/* Posición y rotación de los GIFs */
+.fire-left {
+ right: -306px;
+}
+
+.fire-right {
+  left: -306px;
+}
+
+/* Hover: mostrar GIFs y animar botón */
+.btn-fire-gif-container:hover .fire-left {
+  transform: translateY(-50%) rotate(-90deg) scale(0.06);
+  filter: brightness(80%);
+}
+
+.btn-fire-gif-container:hover .fire-right {
+  transform: translateY(-50%) rotate(90deg) scale(0.06);
+   filter: brightness(80%);
+}
+.btn-jugar:hover {
+  transform: scale(1);
+  box-shadow: 0 0 30px #ff8c00, 0 0 80px #ff4500;
 }
 
 .reglas{
