@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- íconos -->
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
 <body class="fondo-form">
@@ -30,7 +30,10 @@
 
                <div class="contraseña-form">
                     <label for="contraseña">Contraseña</label>
-                    <input type="password" id="contraseña" class="campo-input">
+                    <div class="input-contenedor">
+                        <input type="password" id="contraseña" class="campo-input">
+                        <i class="fa-solid fa-eye toggle-password" onclick="togglePassword()"></i>
+                    </div>
                </div> 
 
                <div class="opciones-form">
@@ -47,8 +50,15 @@
             <div class="separador">o</div>
 
             <div class="login-social">
-                <button type="button" class="btn-google">Iniciar sesión con Google</button>
-                <button type="button" class="btn-facebook">Iniciar Sesión con Facebook</button>
+                <button type="button" class="btn-google">
+                    <img src="Assets/icon_google.png" alt="google" class="icon">
+                    <span>Iniciar sesión con Google</span> 
+                </button>
+
+                <button type="button" class="btn-facebook">
+                    <img src="Assets/icon_facebook.png" alt="facebook" class="icon">
+                    <span>Continuar con Facebook</span> 
+                </button>
             </div>
 
             <footer class="pie-login">
@@ -61,5 +71,6 @@
 
     </main>
     
+    <script src="JS/tp2JS.js" Content-Type="text/javascript"></script>
 </body>
 </html>
