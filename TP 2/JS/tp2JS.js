@@ -19,6 +19,7 @@ function toggleMenu2() {
     menu.classList.toggle('openUser');
 }
 
+<<<<<<< HEAD
 let btnSubmenu= document.querySelector('#btn-submenu')
 btnSubmenu.addEventListener('click', toggleSubMenu)
 
@@ -61,5 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
     popover.showPopover(); // muestra el cartel
   });
 });
+=======
+>>>>>>> dbe7845cf0d819fb4437eedc75052eb613ee596d
 
 
