@@ -498,6 +498,7 @@ header section {
     height: 500px;
     filter: brightness(40%);
     object-fit: cover;
+    object-position: 0px -150px;
 }
 .boton-jugar{
     width: 500px;;
@@ -550,11 +551,11 @@ header section {
 
 /* Posición y rotación de los GIFs */
 .fire-left {
- right: -306px;
+ right: -313px;
 }
 
 .fire-right {
-  left: -306px;
+  left: -313px;
 }
 
 /* Hover: mostrar GIFs y animar botón */
