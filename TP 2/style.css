@@ -44,11 +44,13 @@ header section {
     font-family: 'Baloo 2', sans-serif;
     font-weight: bold ;
     font-size: 18px;
+    padding-left: 50px;
+    color: #FAFAFA;
     
     
 }
 .alinear-input::placeholder{
-    transform: translateX(45px);
+    transform: translateX(-1px);
     color: #B3B3B3;
 
 }
@@ -495,6 +497,7 @@ header section {
     width: 900px;
     height: 500px;
     filter: brightness(40%);
+    object-fit: cover;
 }
 .boton-jugar{
     width: 500px;;
