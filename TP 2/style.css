@@ -503,16 +503,21 @@ header section {
     align-items: center;
 }
 .breadcumbs p{
-   
-   font-family: 'Orbitron', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     font-weight: bolder;
     font-size: 20px;
     color: #FAFAFA;
 }
 .breadcumbs img{
-   
     width: 17px;
     height: 17px;
+}
+.breadcumbs p a{
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bolder;
+    font-size: 20px;
+    color: #FAFAFA;
 }
 .breadcumbs a{
     font-family: 'Baloo 2', sans-serif;
@@ -521,11 +526,12 @@ header section {
     margin-left: 8px;
     color: #B3B3B3;
 }
+
+
 .juego-reglas{
     display: flex;
     width: 1340px;
     height: 500px;
-
 }
 
 .juego{
