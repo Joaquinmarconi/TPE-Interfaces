@@ -26,6 +26,7 @@ btnSubmenu.addEventListener('click', toggleSubMenu)
 function toggleSubMenu() {
     let menu = document.querySelector('.submenu');
     menu.classList.toggle('open');
+    btnSubmenu.classList.toggle("open"); //cambiar el estilo del botón cuando el submenú está abierto
 }
 
 
