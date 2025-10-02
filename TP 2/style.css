@@ -719,6 +719,7 @@ header section {
 .campo-input {
     width: 98%;
     padding: 5px;
+    padding-left: 15px;
     border-radius: 20px;
     outline: none;
     background-color: transparent;
@@ -789,6 +790,11 @@ header section {
 .opciones-form a {
     color: #ff4d4d;
     text-decoration: underline;
+    cursor: pointer;
+}
+
+.opciones-form a:hover {
+    color: #e63939;
 }
 
 .btn-login {
@@ -804,8 +810,15 @@ header section {
     border-radius: 30px;
     font-family: 'Baloo 2', sans-serif;
     cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
+.btn-login:hover {
+    transform: rotate(-2deg) scale(1.05);
+    box-shadow: 4px 4px 0px #ff7904;
+    color: #FF7904;
+}
+ 
 .separador {
     display: flex;
     align-items: center;
@@ -865,9 +878,17 @@ header section {
     background-color: #fafafa;
 }
 
+.btn-google:hover {
+    background-color: #fafafafc;
+}
+
 .btn-facebook {
     color: #fafafa;
     background-color: #393586;
+}
+
+.btn-facebook:hover {
+    background-color: #3a3590c5;
 }
 
 .pie-login {
@@ -882,32 +903,45 @@ header section {
     text-decoration: none;
 }
 
-.popover {
-    display: none;
-    margin-top: 20px;
-    padding: 15px;
-    border-radius: 10px;
-    background-color: #e6f9e6;
-    border: 1px solid #4caf50;
-    text-align: center;
-    font-family: 'Baloo 2', sans-serif;
+.pie-login a:hover {
+    text-decoration: underline;
 }
 
-.popover p {
-    margin: 0 0 10px;
-    color: #2e7d32;
-    font-size: 16px;
+#acceso-popover {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.6);
+  background-color: #e6f9e6;
+  border: 2px solid #4caf50;
+  border-radius: 15px;
+  padding: 40px 60px;
+  text-align: center;
+  font-family: 'Baloo 2', sans-serif;
+  color: #2e7d32;
+  font-size: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 1001; /* encima del overlay */
 }
 
-/*.btn-ir {
-    display: inline-block;
-    padding: 8px 15px;
-    border-radius: 8px;
-    background-color: #4caf50;
-    color: #fff;
-    text-decoration: none;
-    font-size: 14px;
-}*/
+#acceso-popover.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+}
+
+/* tilde grande con leve pulso */
+.contenido-popover .checkmark {
+  display: block;
+  font-size: 60px;
+  margin-bottom: 10px;
+  color: #4caf50;
+  transition: transform 0.3s ease;
+}
+
+/* footer */
 
 footer {
     background-color: #1C1B1B;
