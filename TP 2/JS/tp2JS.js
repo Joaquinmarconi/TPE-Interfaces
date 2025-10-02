@@ -19,6 +19,14 @@ function toggleMenu2() {
     menu.classList.toggle('openUser');
 }
 
+let btnSubmenu= document.querySelector('#btn-submenu')
+btnSubmenu.addEventListener('click', toggleSubMenu)
+
+function toggleSubMenu() {
+    let menu = document.querySelector('.submenu');
+    menu.classList.toggle('open');
+}
+
 /* input contraseña login 2 opciones, elegir cual*/
 
 function togglePassword() {
