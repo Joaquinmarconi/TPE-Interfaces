@@ -29,5 +29,19 @@ function toggleSubMenu() {
     btnSubmenu.classList.toggle("open"); //cambiar el estilo del botón cuando el submenú está abierto
 }
 
+const btnJugar = document.querySelector('#btn-jugar');
+const homerImg = document.querySelector('.juego div img');
+
+btnJugar.addEventListener('click', () => {
+    // Quitar la clase si ya existía
+    homerImg.classList.remove('animar');
+
+    // Forzar reflow para reiniciar la animación
+    void homerImg.offsetWidth;
+
+    // Agregar la clase para que se ejecute la animación
+    homerImg.classList.add('animar');
+});
+
 
 

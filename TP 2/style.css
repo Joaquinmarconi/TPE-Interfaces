@@ -537,7 +537,7 @@ header section {
 .juego{
     width: 900px;
     height: 500px;
-    background-color: #FF7904;
+    background-color: #2A2A2A;
     margin-left: 58px;
     position: relative;
     z-index: 1;
@@ -622,7 +622,19 @@ header section {
   transform: scale(1);
   box-shadow: 0 0 30px #ff8c00, 0 0 80px #ff4500;
 }
+@keyframes homerEnojado {
+  0% { transform: translateY(0) rotate(0deg); }
+  15% { transform: translateY(-15px) rotate(-5deg); }
+  30% { transform: translateY(10px) rotate(5deg); }
+  45% { transform: translateY(-10px) rotate(-3deg); }
+  60% { transform: translateY(5px) rotate(3deg); }
+  75% { transform: translateY(-5px) rotate(-2deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
 
+.juego div img.animar {
+  animation: homerEnojado 1s ease forwards;
+}
 .reglas{
     width: 324px; 
     height: 500px;
