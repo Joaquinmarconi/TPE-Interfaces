@@ -106,6 +106,14 @@ header section {
     transform: scale(1.1); /* agranda un 10% */
     box-shadow: 0 0 20px rgba(255, 121, 4, 1), 0 0 40px rgba(255, 121, 4, 0.5);
 }
+.alinear-boton-usuario{
+   display: flex;
+   align-items: center;   /* Centra verticalmente los elementos */
+ 
+}
+.alinear-boton-usuario .menu-usuario{
+    margin-bottom: 17px;
+}
 /*menu usuario*/
 .menu-usuario{
     display: flex;
@@ -116,12 +124,12 @@ header section {
 
 }
 .menu-usuario img{
-     width: 25px;
-     height: 25px;
+     width: 40px;
+     height: 40px;  
 }
 #btn-usuario{
-    width: 13px;
-    height: 23px;
+
+  
     background-color: #1c1b1b;
     border: none;
 }
