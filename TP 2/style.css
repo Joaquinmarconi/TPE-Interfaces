@@ -134,6 +134,7 @@ header section {
     cursor: pointer;
     transition: all 0.3s ease;
     margin-bottom: 7px;
+    order: 5;
 }
 
 .suscribirse input:hover {
@@ -168,6 +169,7 @@ header section {
     border: none;
     padding: 0;
     cursor: pointer;
+    order: 6;
 }
 
 .main-nav-user {
