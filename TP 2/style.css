@@ -931,19 +931,16 @@ header section {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
     font-family: 'Orbitron', sans-serif;
     font-size: 15px;
     color: #FFDD33;
-}
-
-.encabezado-registro h2 {
-    white-space: nowrap; /*evita el salto de linea*/
+    margin-left: -30px;
 }
 
 .logo-registro {
     width: 100px;
     height: 100px;
+    margin-right: -20px;
 }
 
 .form-login,
@@ -970,7 +967,7 @@ header section {
 
 .campo-input {
     width: 100%;
-    padding: 5px;
+    padding: 7px;
     padding-left: 15px;
     border-radius: 20px;
     outline: none;
@@ -983,6 +980,12 @@ header section {
 
 .obligatorio {
     color: #ff4d4d;
+}
+
+.info-contraseña {
+    display: block;
+    font-size: 12px;
+    color: #b3b3b3;
 }
 
 .usuario-form,
@@ -1064,7 +1067,7 @@ header section {
     background-color: #ffd600;
     color: #fafafa;
     font-size: 18px;
-    padding: 5px 10px;
+    padding: 4px;
     border-radius: 30px;
     font-family: 'Baloo 2', sans-serif;
     cursor: pointer;

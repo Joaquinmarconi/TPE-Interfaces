@@ -12,7 +12,7 @@
 }*/
 
 function togglePassword(icon) {
-  let input = document.querySelector("#contraseña");
+  const input = document.querySelector("#contraseña");
 
   if (input.type === "password") {
     input.type = "text";                

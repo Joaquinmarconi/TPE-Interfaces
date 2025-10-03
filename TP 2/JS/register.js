@@ -1,7 +1,7 @@
 "use strict"
 
 function togglePassword(icon) {
-  let input = document.querySelector("#clave");
+  const input = icon.closest('.input-contenedor').querySelector(".campo-password");
 
   if (input.type === "password") {
     input.type = "text";                
@@ -13,6 +13,20 @@ function togglePassword(icon) {
     icon.classList.add("fa-eye");
   }
 }
+
+/* input contraseña error */
+
+const passwordInput = document.querySelectorAll('.campo-password');
+
+passwordInput.forEach(input => {
+    input.addEventListener('input', () => {
+        if(input.value.length < 8) {
+            input.style.border = '1px solid #ff4d4d';
+        } else {
+            input.style.border = '1px solid #fafafa';
+        }
+    });
+});
 
 /* popover */
 
