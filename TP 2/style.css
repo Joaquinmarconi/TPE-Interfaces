@@ -855,16 +855,18 @@ header section {
     height: 168px;
     display: flex;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 26px;
 
 }
 
 .fila-img-juegos {
     width: 300px;
     height: 168px;
-    background-color: #393586;
     margin-bottom: 10px;
-    margin-right: 15px;
+    margin-right: 21px;
+}
+.fila-img-juegos img{
+  width: 286px;
 }
 .img-video {
   position: relative;
