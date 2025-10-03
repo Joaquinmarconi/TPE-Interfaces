@@ -50,6 +50,9 @@ header section {
     align-items: center;
 
 }
+.menu{
+    order: 1;
+}
 .alinear-buscar {
     flex: 1;
     min-width: 150px;
@@ -58,6 +61,7 @@ header section {
     align-items: center;
     margin-right: 240px;
     margin-bottom: 7px;
+    order: 3;
 }
 
 .alinear-input {
@@ -103,6 +107,7 @@ header section {
     height: 47px;
     flex-shrink: 0;
     margin-right: auto;
+    order: 2;
 }
 
 .logo img {
@@ -142,6 +147,7 @@ header section {
     align-items: center;
     /* Centra verticalmente los elementos */
     margin-right: 20px;
+    order: 4;
 
 }
 
