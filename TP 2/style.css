@@ -183,6 +183,7 @@ header section {
     height: 155px;
     margin-left: 1170px;
     position: absolute;
+    z-index: 9;
 }
 
 .main-nav-user>ul {
@@ -190,6 +191,7 @@ header section {
     padding: 0;
     display: flex;
     flex-direction: column;
+    z-index: 10;
 }
 
 .main-nav-user>ul>li {
