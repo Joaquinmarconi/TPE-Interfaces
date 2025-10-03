@@ -1,0 +1,304 @@
+/* ============================================
+   RESPONSIVE HOME - Next Play
+   Solo contiene los estilos responsive para el home
+   ============================================ */
+
+/* Tablets grandes y pantallas medianas (hasta 1024px) */
+@media (max-width: 1024px) {
+    header section {
+        padding: 10px 15px;
+        gap: 10px;
+    }
+
+    .alinear-buscar {
+        flex: 0 1 300px;
+    }
+
+    .suscribirse {
+        margin-right: 10px;
+    }
+
+    .home-carrusel {
+        padding: 0 30px;
+    }
+
+    .home-carrusel li {
+        width: 200px;
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        align-items: start;
+    }
+
+    .footer-logo {
+        grid-column: span 2;
+        justify-content: center;
+        margin-top: 20px;
+    }
+}
+
+/* Tablets (hasta 768px) */
+@media (max-width: 768px) {
+    header section {
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .menu {
+        order: 1;
+    }
+
+    .logo {
+        width: 90px;
+        height: auto;
+        margin-right: 0;
+    }
+
+    .alinear-buscar {
+        order: 5;
+        flex: 1 1 100%;
+        max-width: 100%;
+        margin: 10px 0 0 0;
+    }
+
+    .alinear-input {
+        font-size: 16px;
+        height: 38px;
+    }
+
+    .suscribirse {
+        order: 3;
+        margin-left: 0;
+        margin-right: 10px;
+    }
+
+    .suscribirse input {
+        width: 110px;
+        font-size: 16px;
+        height: 36px;
+    }
+
+    .menu-usuario {
+        order: 4;
+        margin-left: auto;
+    }
+
+    .main-nav-user {
+        right: 10px;
+    }
+
+    .home-body {
+        padding: 15px 5px;
+    }
+
+    .home-carrusel {
+        padding: 0 25px;
+        margin: 1.5rem 0;
+    }
+
+    .home-carrusel h2 {
+        font-size: 18px;
+    }
+
+    .home-carrusel:first-child h2 {
+        font-size: 20px;
+    }
+
+    .home-carrusel li {
+        width: 180px;
+    }
+
+    .home-carrusel button {
+        font-size: 60px;
+    }
+
+    footer {
+        padding: 40px 15px 15px 15px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    .footer-logo img {
+        width: 140px;
+    }
+
+    footer nav {
+    text-align: center;
+}
+
+    footer nav h3 {
+        font-size: 18px;
+    }
+
+    footer nav a {
+        font-size: 14px;
+    }
+}
+
+/* Móviles (hasta 480px) */
+@media (max-width: 480px) {
+    header section {
+        padding: 8px;
+        gap: 8px;
+    }
+
+    .menu {
+        order: 1;
+        margin-right: 8px;
+    }
+
+    .logo {
+        order: 2;
+        width: 70px;
+        margin-right: auto;
+        flex: 0 0 auto;
+    }
+
+    .suscribirse {
+        order: 3;
+        margin-left: 0;
+        margin-right: 8px;
+    }
+
+    .suscribirse input {
+        width: 85px;
+        height: 32px;
+        font-size: 14px;
+    }
+
+    .menu-usuario {
+        order: 4;
+        margin-left: 0;
+    }
+
+    .alinear-buscar {
+        order: 5;
+        flex: 1 1 100%;
+        max-width: 100%;
+        margin: 8px 0 0 0;
+    }
+
+    .alinear-input {
+        height: 35px;
+        font-size: 14px;
+        padding-left: 40px;
+    }
+
+    .icono-busqueda {
+        width: 18px;
+        height: 18px;
+        left: 12px;
+    }
+
+    .home-body {
+        padding: 10px 0;
+    }
+
+    .home-carrusel {
+        padding: 0 15px;
+        margin: 1rem 0;
+    }
+
+    .home-carrusel h2 {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+
+    .home-carrusel:first-child h2 {
+        font-size: 18px;
+    }
+
+    .home-carrusel li {
+        width: 140px;
+    }
+
+    .home-carrusel h3 {
+        font-size: 0.8rem;
+        bottom: 25px;
+        padding: 6px 8px;
+    }
+
+    .home-carrusel p {
+        font-size: 0.7rem;
+        padding: 6px 8px;
+    }
+
+    .home-carrusel button {
+        font-size: 50px;
+        width: 25px;
+    }
+
+    .home-carrusel button:first-of-type {
+        left: 0;
+    }
+
+    .home-carrusel button:last-of-type {
+        right: 0;
+    }
+
+    footer {
+        padding: 30px 10px 10px 10px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .footer-logo {
+        grid-column: 1;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .footer-logo img {
+        width: 120px;
+    }
+    footer nav {
+    text-align: center;
+}
+
+    footer nav h3 {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+
+    footer nav a {
+        font-size: 13px;
+    }
+
+    .footer-social {
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+
+    .footer-social img {
+        width: 20px;
+        height: 20px;
+    }
+
+    footer p {
+        font-size: 12px;
+    }
+}
+
+/* Móviles muy pequeños (hasta 360px) */
+@media (max-width: 360px) {
+    .home-carrusel li {
+        width: 120px;
+    }
+
+    .logo {
+        width: 60px;
+    }
+
+    .menu-usuario img {
+        width: 20px;
+        height: 20px;
+    }
+}

@@ -6,44 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Next Play</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive-home.css">
 </head>
 
 <body>
     <header>
-        <section>
-            <!-- Menú hamburguesa (izquierda) -->
-            <button type="button" id="btn-open" class="menu" aria-label="Abrir menú lateral"
-                aria-controls="menu-lateral" aria-expanded="false">
-                <img src="Assets/menu.png" alt="barras menu">
-            </button>
+       <section>
+    <!-- Menú hamburguesa -->
+    <button type="button" id="btn-open" class="menu" aria-label="Abrir menú lateral"
+        aria-controls="menu-lateral" aria-expanded="false">
+        <img src="Assets/menu.png" alt="barras menu">
+    </button>
 
-            <!-- Logo (izquierda) -->
-            <div class="logo">
-                <a href="/" aria-label="Next Play — inicio">
-                    <img src="Assets/nextplay_transparent.png" alt="Next Play">
-                </a>
-            </div>
+    <!-- Logo -->
+    <div class="logo">
+        <a href="/" aria-label="Next Play — inicio">
+            <img src="Assets/nextplay_transparent.png" alt="Next Play">
+        </a>
+    </div>
 
-            <!-- Buscador (centro) -->
-            <div class="alinear-buscar">
-                <div>
-                    <input type="text" placeholder="Buscar..." class="alinear-input">
-                    <img src="Assets/buscar.png" alt="icono busqueda" class="icono-busqueda">
-                </div>
-            </div>
-
-            <!-- Botón de suscribirse (derecha) -->
-            <!-- Botón de suscribirse (derecha) -->
-           <div class="suscribirse">
-            <input type="button" value="Suscribirse"  >
+    <!-- Buscador -->
+    <div class="alinear-buscar">
+        <div>
+            <input type="text" placeholder="Buscar..." class="alinear-input">
+            <img src="Assets/buscar.png" alt="icono busqueda" class="icono-busqueda">
         </div>
+    </div>
 
-            <div>
-                <button id="btn-usuario" class="menu-usuario" aria-label="Perfil">
-                    <img src="Assets/user.png" alt="barras menu">
-                </button>
-            </div>
-        </section>
+    <!-- Botón de suscribirse -->
+    <div class="suscribirse">
+        <input type="button" value="Suscribirse">
+    </div>
+
+    <!-- Menu usuario -->
+    <button id="btn-usuario" class="menu-usuario" aria-label="Perfil">
+        <img src="Assets/user.png" alt="barras menu">
+    </button>
+</section>
 
         <nav class="main-nav">
             <ul>
