@@ -50,16 +50,14 @@ header section {
     align-items: center;
 
 }
-
 .alinear-buscar {
     flex: 1;
     min-width: 150px;
     max-width: 410px;
     position: relative;
     align-items: center;
+    margin-right: 240px;
 }
-
-
 
 .alinear-input {
     width: 100%;
@@ -100,7 +98,7 @@ header section {
 /*logo pagina*/
 .logo {
     display: flex;
-    width: 144px;
+    width: 140px;
     height: 47px;
     flex-shrink: 0;
     margin-right: auto;
@@ -109,7 +107,7 @@ header section {
 .logo img {
     width: auto;
     height: auto;
-    max-height: 40px;
+    max-height: 45px;
 }
 
 .suscribirse {
@@ -142,16 +140,15 @@ header section {
     display: flex;
     align-items: center;
     /* Centra verticalmente los elementos */
+    margin-right: 20px;
 
 }
 
-.alinear-boton-usuario .menu-usuario {
-    margin-bottom: 17px;
-}
 
 .menu-usuario img {
     width: 40px;
     height: 40px;
+    margin-left: 20px;
 }
 
 .menu-usuario img {
@@ -178,7 +175,6 @@ header section {
     width: 180px;
     height: 155px;
     margin-left: 1170px;
-    margin-top: 2px;
     position: absolute;
 }
 
@@ -199,7 +195,9 @@ header section {
     font-family: 'Baloo 2', sans-serif;
     font-weight: 600;
     font-size: 18px;
-    padding: 13px;
+    padding-top: 10px;
+    padding-bottom: 25px;
+    padding-left: 10px;
     color: #B3B3B3;
     margin-left: 7px;
     cursor: pointer;
@@ -230,15 +228,13 @@ header section {
     width: 10px;
     height: 22px;
     background-color: #4D4D4D;
-    margin-left: 18px;
-    margin-bottom: 2px;
-    flex-shrink: 0;
     margin-right: 5px;
+    margin-left: 9px;
 }
 
 .menu img {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
 }
 
 #btn-open {
@@ -260,7 +256,6 @@ header section {
     width: 200px;
     height: 900px;
     align-items: center;
-    margin-top: 2px;
     position: absolute;
     z-index: 10;
 }
