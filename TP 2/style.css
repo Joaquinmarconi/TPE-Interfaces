@@ -884,9 +884,8 @@ header section {
   width: 40px;
   height: auto;
 }
-/*registro*/
 
-/*login*/
+/*login y registro*/
 
 .fondo-form {
     background-image: url('Assets/fondo_form.png');
@@ -899,15 +898,17 @@ header section {
     align-items: center;
 }
 
-.section-login {
+.section-login, 
+.section-registro {
     background-color: #2a2a2a;
     padding: 30px 70px;
     border-radius: 20px;
-    width: 420px;
+    width: 560px;
     text-align: center;
     color: #fafafa;
     opacity: 95%;
     margin-top: 30px;
+    box-sizing: border-box;
 }
 
 .logo-login {
@@ -915,30 +916,62 @@ header section {
     margin: 0 auto 1rem auto;
 }
 
-.form-login {
+.encabezado-registro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 15px;
+    color: #FFDD33;
+}
+
+.encabezado-registro h2 {
+    white-space: nowrap; /*evita el salto de linea*/
+}
+
+.logo-registro {
+    width: 100px;
+    height: 100px;
+}
+
+.form-login,
+.form-registro {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.form-login label {
+.grupo-campo {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.form-login label,
+.form-registro label {
     font-family: 'Baloo 2', sans-serif;
     font-size: 16px;
     margin-bottom: 0.1rem;
     text-align: left;
+    color: #fafafa;
 }
 
 .campo-input {
-    width: 98%;
+    width: 100%;
     padding: 5px;
     padding-left: 15px;
     border-radius: 20px;
     outline: none;
     background-color: transparent;
-    border: 2px solid #b3b3b3;
+    border: 1px solid #fafafa;
     color: #fafafa;
     font-family: 'Baloo 2', sans-serif;
     font-size: 15px;
+}
+
+.obligatorio {
+    color: #ff4d4d;
 }
 
 .usuario-form,
@@ -1010,10 +1043,10 @@ header section {
     color: #e63939;
 }
 
-.btn-login {
+.btn-login,
+.btn-registro {
     display: block;
-    margin: 0 auto 1.5rem auto;
-    /*centrar*/
+    margin: 0 auto 1.5rem auto; /*centrar*/
     margin-bottom: 8px;
     margin-top: 10px;
     width: 60%;
@@ -1027,7 +1060,8 @@ header section {
     transition: transform 0.2s ease;
 }
 
-.btn-login:hover {
+.btn-login:hover,
+.btn-registro:hover {
     transform: rotate(-2deg) scale(1.05);
     box-shadow: 4px 4px 0px #ff7904;
     color: #FF7904;
@@ -1106,19 +1140,22 @@ header section {
     background-color: #3a3590c5;
 }
 
-.pie-login {
+.pie-login,
+.pie-registro {
     color: #B3B3B3;
     margin-top: 1.2rem;
     font-family: 'Baloo 2', sans-serif;
     font-size: 14px;
 }
 
-.pie-login a {
+.pie-login a,
+.pie-registro a {
     color: #fafafa;
     text-decoration: none;
 }
 
-.pie-login a:hover {
+.pie-login a:hover,
+.pie-registro a:hover {
     text-decoration: underline;
 }
 
@@ -1148,7 +1185,6 @@ header section {
     pointer-events: auto;
 }
 
-/* tilde grande con leve pulso */
 .contenido-popover .checkmark {
     display: block;
     font-size: 60px;

@@ -1,18 +1,7 @@
 "use strict"
 
-/* input contraseña login 2 opciones, elegir cual */
-
-/*function togglePassword() {
-    const input = document.querySelector("#contraseña");
-    if(input.type === "password") {
-        input.type = "text";
-    } else {
-        input.type = "password";
-    }
-}*/
-
 function togglePassword(icon) {
-  let input = document.querySelector("#contraseña");
+  let input = document.querySelector("#clave");
 
   if (input.type === "password") {
     input.type = "text";                
@@ -28,7 +17,7 @@ function togglePassword(icon) {
 /* popover */
 
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.querySelector(".form-login");
+  const form = document.querySelector(".form-registro");
   const popover = document.getElementById("acceso-popover");
 
   form.addEventListener("submit", (e) => {
