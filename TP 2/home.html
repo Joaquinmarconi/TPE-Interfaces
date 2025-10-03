@@ -10,54 +10,72 @@
 </head>
 
 <body>
-    <header>
-       <section>
-    <!-- Menú hamburguesa -->
-    <button type="button" id="btn-open" class="menu" aria-label="Abrir menú lateral"
-        aria-controls="menu-lateral" aria-expanded="false">
-        <img src="Assets/menu.png" alt="barras menu">
-    </button>
+       <header >
 
-    <!-- Logo -->
-    <div class="logo">
-        <a href="/" aria-label="Next Play — inicio">
-            <img src="Assets/nextplay_transparent.png" alt="Next Play">
-        </a>
-    </div>
+        <section>
+      
+            <div > 
+                <button id="btn-open" class="menu">
+                    <img src="Assets/menu.png" alt="barras menu">
+                </button>
+            </div>
 
-    <!-- Buscador -->
-    <div class="alinear-buscar">
-        <div>
-            <input type="text" placeholder="Buscar..." class="alinear-input">
-            <img src="Assets/buscar.png" alt="icono busqueda" class="icono-busqueda">
+        <!-- Logo (izquierda) -->
+            <div class="logo">
+                <img src="Assets/nextplay_transparent.png" alt="Next Play" >
+            </div>
+    
+            
+            <!-- Buscador (centro) -->
+        <div class="alinear-buscar">
+            <div>
+                <input type="text" placeholder="Buscar..."  class="alinear-input">
+                <img src="Assets/buscar.png" alt="icono busqueda" class="icono-busqueda">
+            </div>
         </div>
-    </div>
 
-    <!-- Botón de suscribirse -->
-    <div class="suscribirse">
-        <input type="button" value="Suscribirse">
-    </div>
+        <div class="alinear-boton-usuario">
+            <div class="suscribirse">
+                <input type="button" value="Suscribirse"  >
+            </div>
 
-    <!-- Menu usuario -->
-    <button id="btn-usuario" class="menu-usuario" aria-label="Perfil">
-        <img src="Assets/user.png" alt="barras menu">
-    </button>
-</section>
+            <div >
+                <button id="btn-usuario" class="menu-usuario">
+                    <img src="Assets/mujer.png" alt="barras menu">
+                </button>
+            </div>
+        </div>
 
-        <nav class="main-nav">
-            <ul>
-                <li><img src="Assets/home.png" alt="home"><a href="home.html">Inicio</a></li>
-                <li><img src="Assets/reciente.png" alt="reciente">Recientes</li>
-                <li><img src="Assets/control.png" alt="control">Categorias</li>
+   </section>
 
-            </ul>
+       <nav class="main-nav">
+                    <ul>
+                        <li><img src="Assets/home.png" alt="home" ><a href="home.html">Inicio</a></li>
+                        <li><img src="Assets/reciente.png" alt="reciente" >Recientes</li>
+                        <li><img src="Assets/start.png" alt="reciente" >Destacados</li>
+                        <li id="btn-submenu"><img src="Assets/control.png" alt="control" >Categorias <img src="Assets/abajo.png" class="flecha-abajo" alt="control" >
+                            <ul class="submenu">
+                                <li><img src="Assets/puzzle.png" alt="puzzle">Puzzle</li>
+                                <li><img src="Assets/belleza.png" alt="belleza">Belleza</a></li>
+                                <li><img src="Assets/adventure.png" alt="adventure">Aventura</a></li>
+                                <li><img src="Assets/futbol.png" alt="sports">Deportes</a></li>
+                                <li><img src="Assets/pets.png" alt="pets">Animales</a></li>
+                                <li><img src="Assets/chef.png" alt="cocina">Cocina</a></li>
+                                <li><img src="Assets/habilidad.png" alt="destreza">Destreza</a></li>
+                            </ul>
+                        </li>
+    
+                    </ul>
         </nav>
         <nav class="main-nav-user">
-            <ul>
-                <li><img src="Assets/user.png" alt="usuario">Mi perfil</li>
-                <li><img src="Assets/cerrar.png" alt="control">Cerrar Sesion</li>
-            </ul>
+                    <ul>
+                        <li><img src="Assets/user.png" alt="usuario" >Mi perfil</li>
+                        <li><img src="Assets/favorite.png" alt="usuario" >Favoritos</li>
+                        <li><img src="Assets/settings.png" alt="usuario" >Configuración</li>
+                        <li><img src="Assets/cerrar.png" alt="control" >Cerrar Sesion</li>
+                    </ul>
         </nav>
+
     </header>
 
     <main class="home-body">
@@ -198,6 +216,7 @@
                 href="mailto:nextplay@gmail.com">nextplay@gmail.com</a></p>
     </footer>
     <script src="JS/GameManager.js"></script>
+    <script src="JS/juego.js"></script>
 
 </body>
 
