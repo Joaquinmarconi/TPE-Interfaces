@@ -574,6 +574,7 @@ header section {
 .breadcumbs img {
     width: 17px;
     height: 17px;
+    margin-right: 9px;
 }
 
 .breadcumbs p a {
@@ -589,6 +590,7 @@ header section {
     font-weight: 600;
     font-size: 18px;
     color: #B3B3B3;
+
 }
 .juego-reglas {
     display: flex;
