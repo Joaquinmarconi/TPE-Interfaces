@@ -1,0 +1,95 @@
+/* ============================================
+   HOME - Sobrescrituras específicas
+   Solo para home.html
+   ============================================ */
+
+/* Header ajustes */
+header {
+    width: 100%;
+}
+
+header section {
+    padding: 10px 20px;
+    gap: 20px;
+    flex-wrap: nowrap; /* Anula el wrap del remoto en desktop */
+}
+
+/* Logo - anula margin-right: auto */
+.logo {
+    width: auto;
+    height: auto;
+    margin-right: 0;
+}
+
+.logo img {
+    height: 45px;
+    width: auto;
+    max-height: none;
+}
+
+/* Buscador - nueva distribución */
+.alinear-buscar {
+    flex: 0 1 410px;
+    margin-right: 0;
+    margin-left: 240px;
+    margin-bottom: 0;
+}
+
+.alinear-input::placeholder {
+    transform: none;
+}
+
+.icono-busqueda {
+    transform: translateY(-50%);
+    margin-left: 0;
+}
+
+/* Contenedor botones - alinea a la derecha */
+.alinear-boton-usuario {
+    margin-left: auto;
+    margin-right: 0;
+    gap: 15px;
+}
+
+/* Suscribirse - limpia estilos extra */
+.suscribirse input {
+    height: 40px;
+    margin-bottom: 0;
+    order: unset; /* Anula el order: 5 del remoto */
+}
+
+/* Usuario */
+.menu-usuario img {
+    width: 40px;
+    height: 40px;
+    margin-left: 0;
+    margin-bottom: 0;
+}
+
+.main-nav-user.openUser {
+    display: block;
+    position: absolute;
+    top: 60px; 
+    right: 10px;
+    left: auto;
+    margin-left: 0;
+    width: 180px;
+    height: 155px;
+    z-index: 9;
+}
+
+#btn-usuario {
+    order: unset; /* Anula el order: 6 del remoto */
+    background-color: transparent;
+}
+
+/* Menu hamburguesa - limpia duplicados */
+.menu {
+    width: auto;
+    height: auto;
+    background-color: transparent;
+}
+
+#btn-open {
+    background-color: transparent;
+}

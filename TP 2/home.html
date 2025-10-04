@@ -6,74 +6,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Next Play</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="responsive-home.css">
 </head>
 
 <body>
-       <header >
+    <header>
 
         <section>
-      
-            <div > 
+
+            <div>
                 <button id="btn-open" class="menu">
                     <img src="Assets/menu.png" alt="barras menu">
                 </button>
             </div>
 
-        <!-- Logo (izquierda) -->
+            <!-- Logo (izquierda) -->
             <div class="logo">
-                <img src="Assets/nextplay_transparent.png" alt="Next Play" >
+                <img src="Assets/nextplay_transparent.png" alt="Next Play">
             </div>
-    
-            
+
+
             <!-- Buscador (centro) -->
-        <div class="alinear-buscar">
-            <div>
-                <input type="text" placeholder="Buscar..."  class="alinear-input">
-                <img src="Assets/buscar.png" alt="icono busqueda" class="icono-busqueda">
-            </div>
-        </div>
-
-        <div class="alinear-boton-usuario">
-            <div class="suscribirse">
-                <input type="button" value="Suscribirse"  >
+            <div class="alinear-buscar">
+                <div>
+                    <input type="text" placeholder="Buscar..." class="alinear-input">
+                    <img src="Assets/buscar.png" alt="icono busqueda" class="icono-busqueda">
+                </div>
             </div>
 
-            <div >
-                <button id="btn-usuario" class="menu-usuario">
-                    <img src="Assets/mujer.png" alt="barras menu">
-                </button>
+            <div class="alinear-boton-usuario">
+                <div class="suscribirse">
+                    <input type="button" value="Suscribirse">
+                </div>
+
+                <div>
+                    <button id="btn-usuario" class="menu-usuario">
+                        <img src="Assets/mujer.png" alt="barras menu">
+                    </button>
+                </div>
             </div>
-        </div>
 
-   </section>
+        </section>
 
-       <nav class="main-nav">
-                    <ul>
-                        <li><img src="Assets/home.png" alt="home" ><a href="home.html">Inicio</a></li>
-                        <li><img src="Assets/reciente.png" alt="reciente" >Recientes</li>
-                        <li><img src="Assets/start.png" alt="reciente" >Destacados</li>
-                        <li id="btn-submenu"><img src="Assets/control.png" alt="control" >Categorias <img src="Assets/abajo.png" class="flecha-abajo" alt="control" >
-                            <ul class="submenu">
-                                <li><img src="Assets/puzzle.png" alt="puzzle">Puzzle</li>
-                                <li><img src="Assets/belleza.png" alt="belleza">Belleza</a></li>
-                                <li><img src="Assets/adventure.png" alt="adventure">Aventura</a></li>
-                                <li><img src="Assets/futbol.png" alt="sports">Deportes</a></li>
-                                <li><img src="Assets/pets.png" alt="pets">Animales</a></li>
-                                <li><img src="Assets/chef.png" alt="cocina">Cocina</a></li>
-                                <li><img src="Assets/habilidad.png" alt="destreza">Destreza</a></li>
-                            </ul>
-                        </li>
-    
+        <nav class="main-nav">
+            <ul>
+                <li><img src="Assets/home.png" alt="home"><a href="home.html">Inicio</a></li>
+                <li><img src="Assets/reciente.png" alt="reciente">Recientes</li>
+                <li><img src="Assets/start.png" alt="reciente">Destacados</li>
+                <li id="btn-submenu"><img src="Assets/control.png" alt="control">Categorias <img src="Assets/abajo.png"
+                        class="flecha-abajo" alt="control">
+                    <ul class="submenu">
+                        <li><img src="Assets/puzzle.png" alt="puzzle">Puzzle</li>
+                        <li><img src="Assets/belleza.png" alt="belleza">Belleza</a></li>
+                        <li><img src="Assets/adventure.png" alt="adventure">Aventura</a></li>
+                        <li><img src="Assets/futbol.png" alt="sports">Deportes</a></li>
+                        <li><img src="Assets/pets.png" alt="pets">Animales</a></li>
+                        <li><img src="Assets/chef.png" alt="cocina">Cocina</a></li>
+                        <li><img src="Assets/habilidad.png" alt="destreza">Destreza</a></li>
                     </ul>
+                </li>
+
+            </ul>
         </nav>
         <nav class="main-nav-user">
-                    <ul>
-                        <li><img src="Assets/user.png" alt="usuario" >Mi perfil</li>
-                        <li><img src="Assets/favorite.png" alt="usuario" >Favoritos</li>
-                        <li><img src="Assets/settings.png" alt="usuario" >Configuración</li>
-                        <li><img src="Assets/cerrar.png" alt="control" >Cerrar Sesion</li>
-                    </ul>
+            <ul>
+                <li><img src="Assets/user.png" alt="usuario">Mi perfil</li>
+                <li><img src="Assets/favorite.png" alt="usuario">Favoritos</li>
+                <li><img src="Assets/settings.png" alt="usuario">Configuración</li>
+                <li><img src="Assets/cerrar.png" alt="control">Cerrar Sesion</li>
+            </ul>
         </nav>
 
     </header>
@@ -139,7 +141,6 @@
 
 
     </main>
-
     <footer>
         <div class="footer-content">
             <nav>
@@ -186,13 +187,16 @@
                 </ul>
             </nav>
 
-            <!-- Logo en esquina derecha -->
+            <!-- Logo en la última columna del grid -->
             <div class="footer-logo">
-                <img src="Assets/nextplay_transparent.png" alt="Next Play" width="120" height="40">
+                <img src="Assets/nextplay_transparent.png" alt="Next Play" width="180" height="60">
+                <div class="suscribirse">
+                    <input type="button" value="Suscribirse">
+                </div>
             </div>
-        </div>
+        </div> <!-- ← CIERRA footer-content AQUÍ -->
 
-        <!-- Redes sociales centradas -->
+        <!-- Redes sociales FUERA del grid -->
         <div class="footer-social">
             <a href="#" aria-label="Instagram">
                 <img src="Assets/instagram-icon.png" alt="Instagram" width="24" height="24">
@@ -211,10 +215,27 @@
             </a>
         </div>
 
-        <!-- Copyright abajo -->
+        <!-- Copyright FUERA del grid -->
         <p>&copy; <time datetime="2025">2025</time> Next Play. Todos los derechos reservados | Contacto: <a
                 href="mailto:nextplay@gmail.com">nextplay@gmail.com</a></p>
     </footer>
+
+    <!-- Popup Premium -->
+    <div class="popup-overlay" id="popup-premium">
+        <div class="popup-premium">
+            <button class="popup-close" aria-label="Cerrar">&times;</button>
+
+            <h3>¡Acceso Exclusivo!</h3>
+
+            <p>Este es un juego <strong>Premium</strong>, disponible solo para usuarios suscriptos. Suscribiéndote vas a
+                poder desbloquear este y muchos más, además acceder a recompensas y contenido especial.</p>
+
+            <div class="suscribirse">
+                <input type="button" value="Suscribirse">
+            </div>
+        </div>
+    </div>
+
     <script src="JS/GameManager.js"></script>
     <script src="JS/juego.js"></script>
 

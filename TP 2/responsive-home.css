@@ -1,35 +1,50 @@
 /* ============================================
    RESPONSIVE HOME - Next Play
-   Solo contiene los estilos responsive para el home
    ============================================ */
 
-/* Tablets grandes y pantallas medianas (hasta 1024px) */
+/* ============================================
+   HEADER RESPONSIVE
+   ============================================ */
+
+/* Tablets grandes (hasta 1024px) */
 @media (max-width: 1024px) {
     header section {
         padding: 10px 15px;
-        gap: 10px;
+        gap: 15px;
+    }
+
+    .logo {
+        margin-right: 0;
+    }
+
+    .logo img {
+        height: 40px;
     }
 
     .alinear-buscar {
         flex: 0 1 300px;
+        margin-left: 150px;
     }
 
-    .suscribirse {
-        margin-right: 10px;
+    .suscribirse input {
+        width: 110px;
+        font-size: 16px;
     }
 
-    .home-carrusel {
-        padding: 0 30px;
+    .menu-usuario img {
+        width: 35px;
+        height: 35px;
     }
 
-    .home-carrusel li {
-        width: 200px;
+    /* FOOTER */
+    footer {
+        padding: 50px 20px 20px 20px;
     }
 
     .footer-content {
         grid-template-columns: repeat(2, 1fr);
         gap: 40px;
-        align-items: start;
+        margin-bottom: 40px;
     }
 
     .footer-logo {
@@ -37,156 +52,61 @@
         justify-content: center;
         margin-top: 20px;
     }
+
+    .footer-logo img {
+        width: 150px;
+    }
+
+    footer nav h3 {
+        font-size: 20px;
+    }
+
+    footer nav a {
+        font-size: 15px;
+    }
+
+    /* CARRUSELES */
+    .home-carrusel li {
+        width: 160px;
+    }
+
+    .home-carrusel img {
+        height: 100px;
+    }
+
+    .home-carrusel:first-child li {
+        width: 195px;
+    }
+
+    .home-carrusel:first-child img {
+        height: 127px;
+    }
 }
 
 /* Tablets (hasta 768px) */
 @media (max-width: 768px) {
     header section {
         padding: 10px;
-        gap: 8px;
-    }
-
-    .menu {
-        order: 1;
+        gap: 12px;
     }
 
     .logo {
-        width: 90px;
-        height: auto;
         margin-right: 0;
     }
 
-    .alinear-buscar {
-        order: 5;
-        flex: 1 1 100%;
-        max-width: 100%;
-        margin: 10px 0 0 0;
-    }
-
-    .alinear-input {
-        font-size: 16px;
-        height: 38px;
-    }
-
-    .suscribirse {
-        order: 3;
-        margin-left: 0;
-        margin-right: 10px;
-    }
-
-    .suscribirse input {
-        width: 110px;
-        font-size: 16px;
-        height: 36px;
-    }
-
-    .menu-usuario {
-        order: 4;
-        margin-left: auto;
-    }
-
-    .main-nav-user {
-        right: 10px;
-    }
-
-    .home-body {
-        padding: 15px 5px;
-    }
-
-    .home-carrusel {
-        padding: 0 25px;
-        margin: 1.5rem 0;
-    }
-
-    .home-carrusel h2 {
-        font-size: 18px;
-    }
-
-    .home-carrusel:first-child h2 {
-        font-size: 20px;
-    }
-
-    .home-carrusel li {
-        width: 180px;
-    }
-
-    .home-carrusel button {
-        font-size: 60px;
-    }
-
-    footer {
-        padding: 40px 15px 15px 15px;
-    }
-
-    .footer-content {
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
-    }
-
-    .footer-logo img {
-        width: 140px;
-    }
-
-    footer nav {
-    text-align: center;
-}
-
-    footer nav h3 {
-        font-size: 18px;
-    }
-
-    footer nav a {
-        font-size: 14px;
-    }
-}
-
-/* Móviles (hasta 480px) */
-@media (max-width: 480px) {
-    header section {
-        padding: 8px;
-        gap: 8px;
-    }
-
-    .menu {
-        order: 1;
-        margin-right: 8px;
-    }
-
-    .logo {
-        order: 2;
-        width: 70px;
-        margin-right: auto;
-        flex: 0 0 auto;
-    }
-
-    .suscribirse {
-        order: 3;
-        margin-left: 0;
-        margin-right: 8px;
-    }
-
-    .suscribirse input {
-        width: 85px;
-        height: 32px;
-        font-size: 14px;
-    }
-
-    .menu-usuario {
-        order: 4;
-        margin-left: 0;
-    }
-
-    .alinear-buscar {
-        order: 5;
-        flex: 1 1 100%;
-        max-width: 100%;
-        margin: 8px 0 0 0;
-    }
-
-    .alinear-input {
+    .logo img {
         height: 35px;
+    }
+
+    .alinear-buscar {
+        flex: 0 1 220px;
+        margin-left: 90px;
+    }
+
+    .alinear-input {
+        height: 36px;
         font-size: 14px;
-        padding-left: 40px;
+        padding-left: 35px;
     }
 
     .icono-busqueda {
@@ -195,52 +115,170 @@
         left: 12px;
     }
 
-    .home-body {
-        padding: 10px 0;
+    .alinear-boton-usuario {
+        gap: 10px;
     }
 
-    .home-carrusel {
-        padding: 0 15px;
-        margin: 1rem 0;
+    .suscribirse input {
+        width: 95px;
+        height: 34px;
+        font-size: 13px;
     }
 
-    .home-carrusel h2 {
-        font-size: 16px;
-        margin-bottom: 8px;
+    .menu-usuario img {
+        width: 30px;
+        height: 30px;
     }
 
-    .home-carrusel:first-child h2 {
+    .menu img {
+        width: 22px;
+        height: 22px;
+    }
+
+    /* FOOTER */
+    footer {
+        padding: 40px 15px 15px 15px;
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-bottom: 30px;
+    }
+
+    footer nav {
+        text-align: center;
+        align-self: center;
+    }
+
+    footer nav h3 {
         font-size: 18px;
     }
 
-    .home-carrusel li {
+    footer nav a {
+        font-size: 14px;
+    }
+
+    .footer-logo img {
         width: 140px;
     }
 
-    .home-carrusel h3 {
-        font-size: 0.8rem;
-        bottom: 25px;
-        padding: 6px 8px;
+    .footer-social {
+        gap: 18px;
+        margin-bottom: 18px;
     }
 
-    .home-carrusel p {
-        font-size: 0.7rem;
-        padding: 6px 8px;
+    .footer-social img {
+        width: 22px;
+        height: 22px;
     }
 
-    .home-carrusel button {
-        font-size: 50px;
-        width: 25px;
+    footer p {
+        font-size: 13px;
+    }
+}
+
+/* Tablets pequeñas (hasta 610px) */
+@media (max-width: 610px) {
+    header section {
+        gap: 10px;
     }
 
-    .home-carrusel button:first-of-type {
-        left: 0;
+    .logo img {
+        height: 32px;
     }
 
-    .home-carrusel button:last-of-type {
-        right: 0;
+    .alinear-buscar {
+        flex: 0 1 170px;
+        margin-left: 50px;
     }
 
+    .alinear-input {
+        font-size: 13px;
+        height: 34px;
+    }
+
+    .alinear-boton-usuario {
+        gap: 8px;
+    }
+
+    .suscribirse input {
+        width: 85px;
+        font-size: 12px;
+        height: 32px;
+    }
+
+    .menu-usuario img {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+/* Móviles (hasta 528px) - BUSCADOR BAJA */
+@media (max-width: 528px) {
+    header {
+        height: auto;
+    }
+
+    header section {
+        height: auto;
+        flex-wrap: wrap;
+        padding: 8px;
+        gap: 8px;
+        padding-bottom: 12px;
+    }
+
+    .menu img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .logo {
+        margin-right: auto;
+    }
+
+    .logo img {
+        height: 30px;
+    }
+
+    .alinear-boton-usuario {
+        margin-left: 0;
+        order: 3;
+    }
+
+    .alinear-buscar {
+        order: 4;
+        flex: 1 1 100%;
+        max-width: 100%;
+        margin-top: 8px;
+        margin-left: 0;
+    }
+
+    .alinear-input {
+        height: 35px;
+        font-size: 14px;
+    }
+
+    .suscribirse input {
+        width: 85px;
+        height: 32px;
+        font-size: 13px;
+    }
+
+    .menu-usuario img {
+        width: 28px;
+        height: 28px;
+    }
+
+    /* Menú de usuario ajustado */
+    .main-nav-user.openUser {
+        top: 110px;
+    }
+}
+
+/* Móviles (hasta 480px) */
+@media (max-width: 480px) {
+    /* FOOTER */
     footer {
         padding: 30px 10px 10px 10px;
     }
@@ -248,6 +286,7 @@
     .footer-content {
         grid-template-columns: 1fr;
         gap: 25px;
+        margin-bottom: 25px;
     }
 
     .footer-logo {
@@ -259,9 +298,10 @@
     .footer-logo img {
         width: 120px;
     }
+
     footer nav {
-    text-align: center;
-}
+        text-align: center;
+    }
 
     footer nav h3 {
         font-size: 16px;
@@ -285,20 +325,74 @@
     footer p {
         font-size: 12px;
     }
+
+    /* CARRUSELES */
+    .home-carrusel li {
+        width: 130px;
+    }
+
+    .home-carrusel img {
+        height: 82px;
+    }
+
+    .home-carrusel:first-child li {
+        width: 160px;
+    }
+
+    .home-carrusel:first-child img {
+        height: 104px;
+    }
+}
+
+/* Móviles pequeños (hasta 375px) */
+@media (max-width: 375px) {
+    .logo img {
+        height: 26px;
+    }
+
+    .suscribirse input {
+        width: 75px;
+        font-size: 12px;
+        height: 30px;
+    }
+
+    .menu-usuario img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .menu img {
+        width: 18px;
+        height: 18px;
+    }
+
+    /* Menú de usuario ajustado */
+    .main-nav-user.openUser {
+        top: 105px;
+    }
 }
 
 /* Móviles muy pequeños (hasta 360px) */
 @media (max-width: 360px) {
-    .home-carrusel li {
-        width: 120px;
+    /* FOOTER */
+    .footer-content {
+        gap: 20px;
     }
 
-    .logo {
-        width: 60px;
+    footer nav h3 {
+        font-size: 15px;
     }
 
-    .menu-usuario img {
-        width: 20px;
-        height: 20px;
+    footer nav a {
+        font-size: 12px;
+    }
+
+    .footer-logo img {
+        width: 100px;
+    }
+
+    .footer-social img {
+        width: 18px;
+        height: 18px;
     }
 }
