@@ -12,8 +12,8 @@
 
     <!-- íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 </head>
+
 <body class="fondo-form">
     <main class="contenedor-principal">
         <section class="section-login">
@@ -31,8 +31,8 @@
                <div class="contraseña-form">
                     <label for="contraseña">Contraseña</label>
                     <div class="input-contenedor">
-                        <input type="password" id="contraseña" class="campo-input">
-                        <i class="fa-solid fa-eye toggle-password" onclick="togglePassword()"></i>
+                        <input type="password" id="contraseña" class="campo-input" required>
+                        <i class="fa-solid fa-eye toggle-password" onclick="togglePassword(this)"></i>
                     </div>
                </div> 
 
@@ -74,9 +74,8 @@
 
             <!--agregar footer-->
         </section>
-
     </main>
-    
+
     <script src="JS/login.js"></script>
 </body>
 </html>

@@ -1,18 +1,7 @@
 "use strict"
 
-/* input contraseña login 2 opciones, elegir cual */
-
-/*function togglePassword() {
-    const input = document.querySelector("#contraseña");
-    if(input.type === "password") {
-        input.type = "text";
-    } else {
-        input.type = "password";
-    }
-}*/
-
 function togglePassword(icon) {
-  const input = document.querySelector("#contraseña");
+  const input = icon.closest('.input-contenedor').querySelector(".campo-password");
 
   if (input.type === "password") {
     input.type = "text";                
@@ -25,10 +14,24 @@ function togglePassword(icon) {
   }
 }
 
+/* input contraseña error */
+
+const passwordInput = document.querySelectorAll('.campo-password');
+
+passwordInput.forEach(input => {
+    input.addEventListener('input', () => {
+        if(input.value.length < 8) {
+            input.style.border = '1px solid #ff4d4d';
+        } else {
+            input.style.border = '1px solid #fafafa';
+        }
+    });
+});
+
 /* popover */
 
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.querySelector(".form-login");
+  const form = document.querySelector(".form-registro");
   const popover = document.getElementById("acceso-popover");
 
   form.addEventListener("submit", (e) => {
