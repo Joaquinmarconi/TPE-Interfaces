@@ -1,5 +1,7 @@
 "use strict"
 
+/* abrir y cerrar ícono de ojo en input contraseña */
+
 function togglePassword(icon) {
   const input = icon.closest('.input-contenedor').querySelector(".campo-password");
 
@@ -14,7 +16,7 @@ function togglePassword(icon) {
   }
 }
 
-/* input contraseña error */
+/* input contraseña error mínimo caracteres */
 
 const passwordInput = document.querySelectorAll('.campo-password');
 
@@ -32,15 +34,28 @@ passwordInput.forEach(input => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector(".form-registro");
-  const popover = document.getElementById("acceso-popover");
+  const popover = document.querySelector(".acceso-popover");
+  const overlay = document.querySelector(".overlay");
 
   form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   popover.classList.add("visible"); // aparece con animación
+  overlay.classList.add("visible");
 
   setTimeout(() => {
     window.location.href = "home.html"; // redirige automáticamente
-  }, 3000); // 3 segundos
+  }, 3500); // segundos
   });
+});
+
+/* reCAPTCHA */
+
+document.querySelector(".form-registro").addEventListener("submit", function(event) {
+  const response = grecaptcha.getResponse();
+
+  if (response.length === 0) {
+    event.preventDefault(); // frena el submit
+    alert("Por favor confirma que no eres un robot");
+  }
 });

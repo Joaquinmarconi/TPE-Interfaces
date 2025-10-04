@@ -624,7 +624,20 @@ header section {
     color: #B3B3B3;
 
 }
+.breadcumbs p a:hover{
+    color: #b3b3b3;
+}
+.breadcumbs p span:hover{
+    color: #b3b3b3;
+}
+.breadcumbs p a span{
+    color: #FF9933;
 
+}
+.breadcumbs p a span:hover{
+    color: #d18e4a;
+
+}
 .juego-reglas {
     display: flex;
     width: 1340px;
@@ -962,10 +975,10 @@ header section {
 }
 
 .usuario {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    height: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 8px;
 }
 
 .usuario p {
@@ -981,12 +994,12 @@ header section {
 }
 
 .texto {
-    display: block;
-    margin: 6px 0 1px 40px;
-    font-size: 15px;
-    color: #b3b3b3;
-    height: 19px;
-    width: 500px;
+  display: block;
+  margin: 6px 0 1px 40px;
+  font-size: 15px;
+  color: #b3b3b3;
+  height: 19px;
+  width: 500px;
 }
 
 .likes {
@@ -997,11 +1010,16 @@ header section {
     font-size: 14px;
     color: #ccc;
 }
-
+.likes span{
+    margin-top: 3px;
+}
 .icono-like {
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.icono-like.liked {
+  filter: brightness(2) invert(1); /* se vuelve blanco */
 }
 
 
@@ -1026,14 +1044,40 @@ header section {
     border: 2px solid #FF7904;
     cursor: pointer;
     margin-left: 1180px;
+    position: relative;
 }
 
-
-
+.animar-comentar{
+    animation-duration: 8s;
+     animation-name: animComentar;
+     animation-iteration-count: infinite;
+     animation-delay: 1s;
+}
+@keyframes animComentar{
+    0% {
+        -webkit-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+    50% {
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+    }
+    50.1% {
+        transform: rotateY(180deg); /* empieza la pausa */
+    }
+    100% {
+        -webkit-transform: rotateY(360deg);
+        transform: rotateY(360deg);
+    }
+ }
 /*login y registro*/
 
 .fondo-form {
     background-image: url('Assets/fondo_form.png');
+    background-repeat: no-repeat;  /* evita que se repita */
+    background-position: center;   /* centrada */
+    background-attachment: fixed;  /* hace que quede fija al scrollear (opcional) */
+    background-size: cover;        /* se adapta a la pantalla, puede recortar */
 }
 
 .contenedor-principal {
@@ -1110,6 +1154,12 @@ header section {
     color: #fafafa;
     font-family: 'Baloo 2', sans-serif;
     font-size: 15px;
+}
+
+#clave::placeholder,
+#clave2::placeholder {
+    font-size: 20px;
+    letter-spacing: 3px;
 }
 
 .obligatorio {
@@ -1194,9 +1244,7 @@ header section {
 .btn-login,
 .btn-registro {
     display: block;
-    margin: 0 auto 1.5rem auto;
-    margin-bottom: 8px;
-    margin-top: 10px;
+    margin: 0 auto; 
     width: 60%;
     background-color: #ffd600;
     color: #fafafa;
@@ -1210,36 +1258,21 @@ header section {
 .btn-login:hover,
 .btn-registro:hover {
     animation: shake 0.3s ease;
-    color: #fff;
-    background: linear-gradient(90deg, #ffd600, #ff7904);
+    color: #fafafa;
+    background: linear-gradient(90deg, #ffd600, #ff7904); 
 }
 
 @keyframes shake {
-    0% {
-        transform: translateX(0) scale(1.05);
-    }
-
-    25% {
-        transform: translateX(-3px) scale(1.05);
-    }
-
-    50% {
-        transform: translateX(3px) scale(1.05);
-    }
-
-    75% {
-        transform: translateX(-3px) scale(1.05);
-    }
-
-    100% {
-        transform: translateX(0) scale(1.05);
-    }
+    0% { transform: translateX(0) scale(1.05); }
+    25% { transform: translateX(-3px) scale(1.05); }
+    50% { transform: translateX(3px) scale(1.05); }
+    75% { transform: translateX(-3px) scale(1.05); }
+    100% { transform: translateX(0) scale(1.05); }
 }
 
 .g-recaptcha {
     transform: scale(0.8);
-    transform-origin: 0 0;
-    /* Mantiene la posición arriba a la izquierda */
+    transform-origin: 0 0; /* Mantiene la posición arriba a la izquierda */
 }
 
 .separador {
@@ -1265,7 +1298,7 @@ header section {
 .login-social {
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
+    gap: 5px;
 }
 
 .login-social button {
@@ -1273,7 +1306,6 @@ header section {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
     width: 60%;
     padding: 5px;
     border-radius: 30px;
@@ -1334,7 +1366,25 @@ header section {
     text-decoration: underline;
 }
 
-#acceso-popover {
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 1000;
+}
+
+.overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.acceso-popover {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -1344,28 +1394,47 @@ header section {
     border-radius: 15px;
     padding: 40px 60px;
     text-align: center;
-    font-family: 'Baloo 2', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     color: #2e7d32;
-    font-size: 20px;
+    font-size: 24px;
+    font-weight: bold;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.4s ease, transform 0.4s ease;
     z-index: 1001;
-    /* encima del overlay */
 }
 
-#acceso-popover.visible {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+.acceso-popover.visible {
+    animation: pop 0.5s ease forwards;
     pointer-events: auto;
 }
 
+.contenido-popover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
 .contenido-popover .checkmark {
-    display: block;
-    font-size: 60px;
-    margin-bottom: 10px;
+    font-size: 80px;
     color: #4caf50;
-    transition: transform 0.3s ease;
+    opacity: 0;
+}
+
+@keyframes pop {
+    0% { transform: translate(-50%, -50%) scale(0.6); opacity: 0; }
+    60% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+.acceso-popover.visible .checkmark {
+    animation: checkPop 0.4s ease forwards 0.3s; /* delay de 0.3s para aparecer después del pop */
+}
+
+@keyframes checkPop {
+    0% { transform: scale(0); opacity: 0; }
+    60% { transform: scale(1.3); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
 }
 
 /* footer */
