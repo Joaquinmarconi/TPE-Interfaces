@@ -1161,7 +1161,7 @@ header section {
 .btn-login,
 .btn-registro {
     display: block;
-    margin: 0 auto 1.5rem auto; /*centrar*/
+    margin: 0 auto 1.5rem auto; 
     margin-bottom: 8px;
     margin-top: 10px;
     width: 60%;
@@ -1172,14 +1172,26 @@ header section {
     border-radius: 30px;
     font-family: 'Baloo 2', sans-serif;
     cursor: pointer;
-    transition: transform 0.2s ease;
 }
 
 .btn-login:hover,
 .btn-registro:hover {
-    transform: rotate(-2deg) scale(1.05);
-    box-shadow: 4px 4px 0px #ff7904;
-    color: #FF7904;
+    animation: shake 0.3s ease;
+    color: #fff;
+    background: linear-gradient(90deg, #ffd600, #ff7904); 
+}
+
+@keyframes shake {
+    0% { transform: translateX(0) scale(1.05); }
+    25% { transform: translateX(-3px) scale(1.05); }
+    50% { transform: translateX(3px) scale(1.05); }
+    75% { transform: translateX(-3px) scale(1.05); }
+    100% { transform: translateX(0) scale(1.05); }
+}
+
+.g-recaptcha {
+    transform: scale(0.8);
+    transform-origin: 0 0; /* Mantiene la posición arriba a la izquierda */
 }
 
 .separador {

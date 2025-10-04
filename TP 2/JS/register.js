@@ -44,3 +44,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 3000); // 3 segundos
   });
 });
+
+/* reCAPTCHA */
+
+document.querySelector(".form-registro").addEventListener("submit", function(event) {
+  const response = grecaptcha.getResponse();
+  
+  if (response.length === 0) {
+    event.preventDefault(); // frena el submit
+    alert("Por favor confirma que no eres un robot");
+  }
+});
