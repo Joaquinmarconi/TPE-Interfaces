@@ -3,7 +3,6 @@
    Solo para home.html
    ============================================ */
 
-/* Header ajustes */
 header {
     width: 100%;
 }
@@ -11,10 +10,8 @@ header {
 header section {
     padding: 10px 20px;
     gap: 20px;
-    flex-wrap: nowrap; /* Anula el wrap del remoto en desktop */
 }
 
-/* Logo - anula margin-right: auto */
 .logo {
     width: auto;
     height: auto;
@@ -27,7 +24,6 @@ header section {
     max-height: none;
 }
 
-/* Buscador - nueva distribución */
 .alinear-buscar {
     flex: 0 1 410px;
     margin-right: 0;
@@ -44,18 +40,16 @@ header section {
     margin-left: 0;
 }
 
-/* Contenedor botones - alinea a la derecha */
 .alinear-boton-usuario {
     margin-left: auto;
     margin-right: 0;
     gap: 15px;
 }
 
-/* Suscribirse - limpia estilos extra */
 .suscribirse input {
     height: 40px;
     margin-bottom: 0;
-    order: unset; /* Anula el order: 5 del remoto */
+    order: unset; 
 }
 
 /* Usuario */
@@ -79,7 +73,7 @@ header section {
 }
 
 #btn-usuario {
-    order: unset; /* Anula el order: 6 del remoto */
+    order: unset; 
     background-color: transparent;
 }
 
