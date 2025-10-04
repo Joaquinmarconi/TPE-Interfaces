@@ -80,7 +80,7 @@
     </header>
 
      <section class="breadcumbs">
-        <p><a href="home.html">Inicio </a> >  Destacados  >  Puzzle  >  <span style="color: #FF9933;">Donuts Solitarie</span></p>
+        <p><a href="home.html">Inicio </a> >  <span>Destacados </span> >  <span>Puzzle </span> >  <a href="juego.html"><span>Donuts Solitarie</span></a></p>
      </section>
    
 
@@ -149,7 +149,7 @@
 
            <div>
              <button class="btn-compartir">
-                <img src="Assets/compartir.png" alt="share">
+                <img src="Assets/compartir.png" alt="share" >
                 Compartir
             </button>
            </div>
@@ -189,9 +189,12 @@
          <img src="Assets/mujer.png" alt="icono busqueda" class="icono-busqueda">
          <p class="linea"></p>   
     </section>
+
+
          
     <div class="comentar">
-             <input type="button" value="Comentar"  >
+         <input type="button" value="Comentar" id="btn-comentar" class="animar-comentar">
+    
     </div>
 
     <section class="comentarios-respondidos">
@@ -200,11 +203,56 @@
             <p>@Alfredo12</p>
         </div>
         <span class="texto">Buen juego.</span>
-        <div class="likes">
-            <img src="Assets/like.png" alt="icono like" class="icono-like">
-            <span>20</span>
+        <div class="likes" id="icono-like-1">
+            <img src="Assets/like-sin.png" alt="icono like" class="icono-like" id="icono-img-1">
+            <span id="contador-1">20</span>
         </div>
-</section>
+    </section>
+    <section class="comentarios-respondidos">
+        <div class="usuario">
+            <img src="Assets/user.png" alt="icono usuario" class="icono-usuario">
+            <p>@ChairmanLor</p>
+        </div>
+        <span class="texto">⠁⠁⠁⠁⠁⠁⠐⢶⣶⣶⣶⣤⣤⡀⠁⠁⣠⣀⣀⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁ ⠁⠁⠁⠁⠁⠁⠁⠁⠙⢿⣯⣠⣶⣦⣤⣤⣌⣛⠻⢇⣠⣤⣤⠁⠁⠁⠁⠁⠁⠁ ⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠻⣿⣿⣿⡟⢉⡤⢤⣤⣤⡍⠛⢡⢖⣥⣶⣦⣀⠁⠁ ⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⣠⣿⣿⣿⡏⣭⣶⣿⣿⠟⢿⣦⡡⣿⣿⡇⠁⡙⣷⡀ ⠁⠁⠁⠁⠁⠁⠁⣀⣴⣿⣿⣿⣿⣿⣿⡞⣿⣿⡟⢀⡀⣿⣿⢻⣿⣿⣀⣁⣿⠏ ⠁⠁⠁⢀⣠⣶⣿⣿⣿⣿⣿⣿⣿⣿⣟⢰⢻⣿⣇⣈⣴⣿⠟⢨⣛⠛⠛⠉⠁⠁ ⠁⣠⣶⣿⣿⡟⢋⠤⣤⠘⢿⣿⣧⡙⠻⠌⠒⠙⠛⢛⣫⣥⣿⣦⡈⠉⣡⣴⣾⠇ ⢰⣿⣿⣿⣿⠁⡇⠁⠙⠷⣤⡙⠻⢿⣿⣶⣶⣶⣿⣿⣿⣿⣿⣿⣿⠿⠟⠋⠁⠁ ⠘⣿⣿⣿⣿⣆⠻⣄⠁⣀⡀⠉⠙⠒⠂⠉⠍⠉⠉⠉⠉⣩⣍⣁⣂⡈⠠⠂⠁⠁ ⠁⠘⢿⣿⣿⣿⣦⡉⠳⢬⣛⠷⢦⡄⠁⠁⠁⠁⠁⣀⣼⣿⣿⠿⠛⠋⠁⠁⠁⠁ ⠁⠁⠁⠉⠻⢿⣿⣿⣷⣦⣬⣍⣓⡒⠒⣒⣂⣠⡬⠽⠓⠂⠁⠁⠁⠁⠁⠁</span>
+        <div class="likes" id="icono-like-2" style="margin-top: 240px;">
+            <img src="Assets/like-sin.png" alt="icono like" class="icono-like" id="icono-img-2">
+            <span id="contador-2">1200</span>
+        </div>
+    </section>
+    <section class="comentarios-respondidos">
+        <div class="usuario">
+            <img src="Assets/user.png" alt="icono usuario" class="icono-usuario">
+            <p>@Meemow1344</p>
+        </div>
+        <span class="texto">Primero.</span>
+        <div class="likes" id="icono-like-3">
+            <img src="Assets/like-sin.png" alt="icono like" class="icono-like" id="icono-img-3">
+            <span id="contador-3">100</span>
+        </div>
+    </section>
+     <section class="comentarios-respondidos">
+        <div class="usuario">
+            <img src="Assets/user.png" alt="icono usuario" class="icono-usuario">
+            <p>@kronoskarmas4148</p>
+        </div>
+        <span class="texto">Me encanta esta edición!!!</span>
+        <div class="likes" id="icono-like-4">
+            <img src="Assets/like-sin.png" alt="icono like" class="icono-like" id="icono-img-4">
+            <span id="contador-4">5</span>
+        </div>
+    </section>
+     <section class="comentarios-respondidos">
+        <div class="usuario">
+            <img src="Assets/user.png" alt="icono usuario" class="icono-usuario">
+            <p>@Isaacdino20</p>
+        </div>
+        <span class="texto">Qué buen juego, paso horas entretenido</span>
+        <div class="likes" id="icono-like-5">
+            <img src="Assets/like-sin.png" alt="icono like" class="icono-like" id="icono-img-5">
+            <span id="contador-5">20</span>
+        </div>
+    </section>
+    
        
 
     <script src="JS/juego.js" Content-Type="text/javascript"></script>
