@@ -966,11 +966,16 @@ header section {
   font-size: 14px;
   color: #ccc;
 }
-
+.likes span{
+    margin-top: 3px;
+}
 .icono-like {
-  width: 18px;
-  height: 18px;
+  width: 15px;
+  height: 15px;
   cursor: pointer;
+}
+.icono-like.liked {
+  filter: brightness(2) invert(1); /* se vuelve blanco */
 }
 
 
