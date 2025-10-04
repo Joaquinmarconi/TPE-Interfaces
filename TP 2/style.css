@@ -999,10 +999,32 @@ header section {
     border:2px solid #FF7904 ;
     cursor: pointer;
     margin-left: 1180px;
+    position: relative;
 }
 
-
-
+.animar-comentar{
+    animation-duration: 8s;
+     animation-name: animComentar;
+     animation-iteration-count: infinite;
+     animation-delay: 1s;
+}
+@keyframes animComentar{
+    0% {
+        -webkit-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+    50% {
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+    }
+    50.1% {
+        transform: rotateY(180deg); /* empieza la pausa */
+    }
+    100% {
+        -webkit-transform: rotateY(360deg);
+        transform: rotateY(360deg);
+    }
+ }
 /*login y registro*/
 
 .fondo-form {
