@@ -602,6 +602,20 @@ header section {
     color: #B3B3B3;
 
 }
+.breadcumbs p a:hover{
+    color: #b3b3b3;
+}
+.breadcumbs p span:hover{
+    color: #b3b3b3;
+}
+.breadcumbs p a span{
+    color: #FF9933;
+
+}
+.breadcumbs p a span:hover{
+    color: #d18e4a;
+
+}
 .juego-reglas {
     display: flex;
     width: 1340px;
