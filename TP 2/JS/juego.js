@@ -66,3 +66,10 @@ for (let i = 1; i <= 5; i++) {
   })};
 
 
+  const btn = document.getElementById('btn-suscribirse');
+  const popover = document.getElementById('mensaje-subscripcion');
+
+    // al hacer click, mostramos o cerramos el popover
+    btn.addEventListener('click', () => {
+      popover.togglePopover(); // alterna entre abierto/cerrado
+    });

@@ -145,6 +145,93 @@ header section {
     box-shadow: 0 0 20px rgba(255, 121, 4, 1), 0 0 40px rgba(255, 121, 4, 0.5);
 }
 
+
+.popover-suscripcion {
+  height: 245px;
+  width: 500px;
+  border-radius: 20px;
+  background: #2a2a2a;
+  border: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centra horizontalmente el contenido */
+  justify-content: flex-start;
+  padding: 1rem 2rem; /* margen interior a los costados */
+  box-sizing: border-box;
+}
+
+.popover-suscripcion p {
+  color: #B3B3B3;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.popover-suscripcion p span {
+  color: #ee9c30;
+}
+
+.popover-suscripcion label {
+  align-self: flex-start; /* mantiene las etiquetas alineadas a la izquierda */
+  font-family: 'Baloo 2', sans-serif;
+  color: #B3B3B3;
+  font-size: 16px;
+}
+
+.popover-suscripcion input[type="email"] {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  border-radius: 15px;
+  border: none;
+  margin-bottom: 15px;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 15px;
+  color: #fafafa;
+  background-color: #5f5d5d;
+}
+
+.opciones-pago {
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+  width: 100%;
+}
+
+.opciones-pago label {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-family: 'Baloo 2', sans-serif;
+  color: #FAFAFA;
+  font-size: 15px;
+}
+
+.popover-suscripcion::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.btn-enviar{
+  background-color: steelblue;
+  color: #FAFAFA;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: bold;
+  font-size: 16px; 
+  padding: 4px 20px; /* 8px vertical, 20px horizontal */
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-top: 10px;
+
+}
+.btn-enviar:hover{
+    background-color: rgb(50, 94, 129);
+    color: #1a1a1a;
+}
 .alinear-boton-usuario {
     display: flex;
     align-items: center;

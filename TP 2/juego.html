@@ -37,7 +37,7 @@
 
         <div class="alinear-boton-usuario">
             <div class="suscribirse">
-                <input type="button" value="Suscribirse"  >
+                <input type="button" value="Suscribirse" id="btn-suscribirse" >
             </div>
 
             <div >
@@ -78,6 +78,29 @@
         </nav>
 
     </header>
+    
+       <div id="mensaje-subscripcion" class="popover-suscripcion" popover>
+            <p>Todavía no estas suscripto? <span>Suscribete</span></p>
+
+            <label for="mail">Mail/Usuario</label>
+            <input type="email" id="mail" name="" id="">
+
+            <label>Medio de pago</label>
+                <div class="opciones-pago">
+                    <label>
+                    <input type="radio" name="medio" value="Tarjeta crédito/débito">
+                    Tarjeta crédito/débito
+                    </label>
+                    <label>
+                    <input type="radio" name="medio" value="Transferencia">
+                    Transferencia
+                    </label>
+                </div>
+
+                <button class="btn-enviar">Enviar</button>
+        
+        </div>
+
 
      <section class="breadcumbs">
         <p><a href="home.html">Inicio </a> >  <span>Destacados </span> >  <span>Puzzle </span> >  <a href="juego.html"><span>Donuts Solitarie</span></a></p>
