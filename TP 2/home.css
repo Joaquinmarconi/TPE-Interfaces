@@ -1,4 +1,7 @@
-/* HOME - Sobrescrituras específicas */
+/* ============================================
+   HOME - Sobrescrituras específicas
+   Solo para home.html
+   ============================================ */
 
 header {
     width: 100%;
@@ -7,6 +10,7 @@ header {
 header section {
     padding: 10px 20px;
     gap: 20px;
+    flex-wrap: nowrap; 
 }
 
 .logo {
@@ -22,13 +26,11 @@ header section {
 }
 
 .alinear-buscar {
-    flex: 0 1 410px;
-    margin: 0 0 0 240px;
+    margin-right: 0;
+    margin-left: 240px;
+    margin-bottom: 0;
 }
 
-.alinear-input::placeholder {
-    transform: none;
-}
 
 .icono-busqueda {
     transform: translateY(-50%);
@@ -36,36 +38,49 @@ header section {
 }
 
 .alinear-boton-usuario {
-    margin: 0 0 0 auto;
+    margin-left: auto;
+    margin-right: 0;
     gap: 15px;
 }
 
 .suscribirse input {
     height: 40px;
     margin-bottom: 0;
-    order: unset;
+    order: unset; 
 }
 
+/* Usuario */
 .menu-usuario img {
     width: 40px;
     height: 40px;
-    margin: 0;
+    margin-left: 0;
+    margin-bottom: 0;
 }
 
 .main-nav-user.openUser {
-    top: 60px;
+    display: block;
+    position: absolute;
+    top: 60px; 
     right: 10px;
     left: auto;
     margin-left: 0;
+    width: 180px;
+    height: 155px;
+    z-index: 9;
 }
 
 #btn-usuario {
-    order: unset;
+    order: unset; 
     background-color: transparent;
 }
 
+/* Menu hamburguesa - limpia duplicados */
 .menu {
     width: auto;
     height: auto;
+    background-color: transparent;
+}
+
+#btn-open {
     background-color: transparent;
 }
