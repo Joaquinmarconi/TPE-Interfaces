@@ -145,8 +145,10 @@ header section {
     box-shadow: 0 0 20px rgba(255, 121, 4, 1), 0 0 40px rgba(255, 121, 4, 0.5);
 }
 
-
 .popover-suscripcion {
+  display: none;
+}
+.popover-suscripcion.open { 
   height: 245px;
   width: 500px;
   border-radius: 20px;
@@ -156,12 +158,13 @@ header section {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: flex;
+  display: block;
   flex-direction: column;
   align-items: center; /* centra horizontalmente el contenido */
   justify-content: flex-start;
   padding: 1rem 2rem; /* margen interior a los costados */
   box-sizing: border-box;
+  z-index: 10;
 }
 
 .popover-suscripcion p {
@@ -226,6 +229,7 @@ header section {
   border-radius: 15px;
   cursor: pointer;
   margin-top: 10px;
+  margin-left: 160px;
 
 }
 .btn-enviar:hover{
@@ -272,7 +276,7 @@ header section {
     height: 155px;
     margin-left: 1170px;
     position: absolute;
-    z-index: 9;
+    z-index: 8;
 }
 
 .main-nav-user>ul {
@@ -355,7 +359,7 @@ header section {
     height: 900px;
     align-items: center;
     position: absolute;
-    z-index: 10;
+    z-index: 9;
 }
 
 .main-nav>ul {
