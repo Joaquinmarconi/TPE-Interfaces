@@ -37,7 +37,8 @@
 
             <div class="alinear-boton-usuario">
                 <div class="suscribirse">
-                    <input type="button" value="Suscribirse">
+                    <input type="button" value="Suscribirse" id="btn-suscribirse">
+
                 </div>
 
                 <div>
@@ -79,6 +80,26 @@
         </nav>
 
     </header>
+
+    <div class="overlay">
+        <dialog id="mensaje-subscripcion" class="popover-suscripcion">
+            <p>Todavía no estas suscripto? <span>Suscribete</span></p>
+            <label for="mail">Mail/Usuario</label>
+            <input type="email" id="mail" name="mail">
+            <label>Medio de pago</label>
+            <div class="opciones-pago">
+                <label>
+                    <input type="radio" name="medio" value="Tarjeta crédito/débito">
+                    Tarjeta crédito/débito
+                </label>
+                <label>
+                    <input type="radio" name="medio" value="Transferencia">
+                    Transferencia
+                </label>
+            </div>
+            <button class="btn-enviar">Enviar</button>
+        </dialog>
+    </div>
 
     <main class="home-body">
         <!-- Repite una estructura por cada carrusel -->
@@ -191,10 +212,13 @@
             <div class="footer-logo">
                 <img src="Assets/nextplay_transparent.png" alt="Next Play" width="180" height="60">
                 <div class="suscribirse">
-                    <input type="button" value="Suscribirse">
+                    <input type="button" value="Suscribirse" id="btn-suscribirse-footer">
                 </div>
             </div>
         </div> <!-- ← CIERRA footer-content AQUÍ -->
+
+
+
 
         <!-- Redes sociales FUERA del grid -->
         <div class="footer-social">
@@ -237,7 +261,7 @@
     </div>
 
     <script src="JS/GameManager.js"></script>
-    <script src="JS/juego.js"></script>
+    <script src="JS/home.js"></script>
 
 </body>
 
