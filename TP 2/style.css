@@ -1612,7 +1612,8 @@ footer {
     grid-template-columns: repeat(4, 1fr) auto;
     gap: 80px;
     align-items: center;
-    margin-bottom: 120px;  /* ← Aumentar más la separación */
+    margin-bottom: 120px;  
+    margin-top: 30px;
 }
 
 .footer-social {
