@@ -66,45 +66,31 @@ for (let i = 1; i <= 5; i++) {
   })};
 
 
-  const btnSus = document.getElementById('btn-suscribirse');
 
-    // al hacer click, mostramos o cerramos el popover
-    btnSus.addEventListener('click', togglePopoverSus)
+const btnCom = document.getElementById('btn-compartir');
+const popcom = document.querySelector('.popover-compartir');
+const botonSus = document.getElementById('btn-suscribirse');
+const popoversus = document.querySelector('.popover-suscripcion');
+const overlay = document.querySelector('.overlayJuego');
 
-    function togglePopoverSus() {
-    let popsus = document.querySelector('.popover-suscripcion');
-    popsus.classList.toggle('open');
+// al hacer click en el botón, mostramos o cerramos el popover + overlay
+btnCom.addEventListener('click', togglePopoverCom);
+botonSus.addEventListener('click', togglePopoverSus);
+
+// al hacer click en el overlay, cerramos todo
+ overlay.addEventListener('click', () => {
+  popcom.classList.remove('open');
+  popoversus.classList.remove('open');
+  overlay.classList.remove('active');
+});
+
+function togglePopoverCom() {
+  popcom.classList.toggle('open');
+  overlay.classList.toggle('active');
 }
-
-let popsus = document.querySelector('.popover-suscripcion');
-    // cerrar popover al hacer click fuera de él
-    window.addEventListener('click', function(e) {
-   // si el click NO es dentro del popover y NO es en el botón
-    if (!popsus.contains(e.target) && e.target !== btnSus) {
-      popsus.classList.remove('open');
-    }
-   });
-
-
-
-    const btnCom = document.getElementById('btn-compartir');
-
-    // al hacer click, mostramos o cerramos el popover
-    btnCom.addEventListener('click', togglePopoverCom)
-
-    function togglePopoverCom() {
-    let popcom = document.querySelector('.popover-compartir');
-
-    popcom.classList.toggle('open');
-  
-    
-      }
+function togglePopoverSus() {
+  popoversus.classList.toggle('open');
+  overlay.classList.toggle('active');
+}
  
-   let popcom = document.querySelector('.popover-compartir');
-    // cerrar popover al hacer click fuera de él
-    window.addEventListener('click', function(e) {
-   // si el click NO es dentro del popover y NO es en el botón
-    if (!popcom.contains(e.target) && e.target !== btnCom) {
-      popcom.classList.remove('open');
-    }
-   });
+  
