@@ -79,7 +79,7 @@
 
     </header>
     
-       <div id="mensaje-subscripcion" class="popover-suscripcion" popover>
+       <dialog id="mensaje-subscripcion" class="popover-suscripcion" popover>
             <p>Todavía no estas suscripto? <span>Suscribete</span></p>
 
             <label for="mail">Mail/Usuario</label>
@@ -99,7 +99,7 @@
 
                 <button class="btn-enviar">Enviar</button>
         
-        </div>
+       </dialog>
 
 
      <section class="breadcumbs">
@@ -159,7 +159,23 @@
 
         </section>
     </section>
-      
+      <div class="overlay"></div>
+     <div id="mensaje-compartir" class="popover-compartir" popover>
+            <p><span>Comparte este juego</span></p>
+          <div>
+            <div><img src="Assets/instagram-share.png" alt=""></div>
+            <div><img src="Assets/facebook-share.png" alt=""></div>
+            <div><img src="Assets/mail-share.png" alt=""></div>
+            <div><img src="Assets/twitter-share.png" alt=""></div>
+            <div><img src="Assets/whatsapp -share2.png" alt=""></div>
+           
+          </div>
+          <div class="contenedor-copiar">
+            <input type="url" id="mail" name="" id="" value="  https://www.nextplay.com/inicio/juego/donutssolitaire">
+            <button><span>Copiar</span></button>
+         </div>
+        </div>
+
     <section class="descripcion-juego">
         <h3>Donuts Solitarie</h3>
         <p>En esta edición especial de Peg Solitaire con temática de Los Simpson,
@@ -171,7 +187,7 @@
            sin opciones… ¡adiós rosquillas!</p>
 
            <div>
-             <button class="btn-compartir">
+             <button class="btn-compartir" id="btn-compartir">
                 <img src="Assets/compartir.png" alt="share" >
                 Compartir
             </button>
