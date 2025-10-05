@@ -1,27 +1,23 @@
 "use strict"
 
+/*menus*/
 let btnOpen = document.querySelector('#btn-open');
+let btnMenuUsuario= document.querySelector('#btn-usuario');
+let btnSubmenu= document.querySelector('#btn-submenu');
+
+btnSubmenu.addEventListener('click', toggleSubMenu)
 btnOpen.addEventListener('click', toggleMenu);
+btnMenuUsuario.addEventListener('click', toggleMenu2);
 
-
-
-/* Abre o cierra el menú responsive*/
 function toggleMenu() {
     let menu = document.querySelector('.main-nav');
     menu.classList.toggle('open');
 }
 
-let btnMenuUsuario= document.querySelector('#btn-usuario')
-btnMenuUsuario.addEventListener('click', toggleMenu2)
-
 function toggleMenu2() {
     let menu = document.querySelector('.main-nav-user');
     menu.classList.toggle('openUser');
 }
-
-
-let btnSubmenu= document.querySelector('#btn-submenu')
-btnSubmenu.addEventListener('click', toggleSubMenu)
 
 function toggleSubMenu() {
     let menu = document.querySelector('.submenu');
@@ -29,18 +25,18 @@ function toggleSubMenu() {
     btnSubmenu.classList.toggle("open"); //cambiar el estilo del botón cuando el submenú está abierto
 }
 
+
+//movimiento img
 const btnJugar = document.querySelector('#btn-jugar');
 const homerImg = document.querySelector('.juego div img');
 
 btnJugar.addEventListener('click', () => {
-    // Quitar la clase si ya existía
+  
     homerImg.classList.remove('animar');
 
-    // Forzar reflow para reiniciar la animación
-    void homerImg.offsetWidth;
+    void homerImg.offsetWidth;// Forzar reflow para reiniciar la animación
 
-    // Agregar la clase para que se ejecute la animación
-    homerImg.classList.add('animar');
+    homerImg.classList.add('animar'); // Agregar la clase para que se ejecute la animación
 });
 
 
@@ -52,59 +48,49 @@ for (let i = 1; i <= 5; i++) {
   const img=document.querySelector(`#icono-img-${i}`);
 
   likeIcon.addEventListener('click', () => {
+     
     let likes = parseInt(contador.textContent);
 
-    if (likeIcon.classList.contains('liked')) {
-      likeIcon.classList.remove('liked');
-      img.src = 'Assets/like-sin.png';
-      contador.textContent = likes - 1;
-    } else {
-      likeIcon.classList.add('liked');
-      img.src = 'Assets/like-con.png';
-      contador.textContent = likes + 1;
-    }
-  })};
+        if (likeIcon.classList.contains('liked')) {
+          likeIcon.classList.remove('liked');
+          img.src = 'Assets/like-sin.png';
+          contador.textContent = likes - 1;
+        } else {
+          likeIcon.classList.add('liked');
+          img.src = 'Assets/like-con.png';
+          contador.textContent = likes + 1;
+        }
+  })
+};
 
+//popovers
 
-  const btnSus = document.getElementById('btn-suscribirse');
+const btnCom = document.getElementById('btn-compartir');
+const popcom = document.querySelector('.popover-compartir');
+const botonSus = document.querySelectorAll('.suscribirse');
+const popoversus = document.querySelector('.popover-suscripcion');
+const overlay = document.querySelector('.overlayJuego');
 
-    // al hacer click, mostramos o cerramos el popover
-    btnSus.addEventListener('click', togglePopoverSus)
+// al hacer click en el botón, mostramos o cerramos el popover + overlay
+btnCom.addEventListener('click', togglePopoverCom);
+botonSus.forEach(btn => {
+  btn.addEventListener('click', togglePopoverSus);
+});
 
-    function togglePopoverSus() {
-    let popsus = document.querySelector('.popover-suscripcion');
-    popsus.classList.toggle('open');
+// al hacer click en el overlay, cerramos todo
+ overlay.addEventListener('click', () => {
+  popcom.classList.remove('open');
+  popoversus.classList.remove('open');
+  overlay.classList.remove('active');
+});
+
+function togglePopoverCom() {
+  popcom.classList.toggle('open');
+  overlay.classList.toggle('active');
 }
-
-let popsus = document.querySelector('.popover-suscripcion');
-    // cerrar popover al hacer click fuera de él
-    window.addEventListener('click', function(e) {
-   // si el click NO es dentro del popover y NO es en el botón
-    if (!popsus.contains(e.target) && e.target !== btnSus) {
-      popsus.classList.remove('open');
-    }
-   });
-
-
-
-    const btnCom = document.getElementById('btn-compartir');
-
-    // al hacer click, mostramos o cerramos el popover
-    btnCom.addEventListener('click', togglePopoverCom)
-
-    function togglePopoverCom() {
-    let popcom = document.querySelector('.popover-compartir');
-
-    popcom.classList.toggle('open');
-  
-    
-      }
+function togglePopoverSus() {
+  popoversus.classList.toggle('open');
+  overlay.classList.toggle('active');
+}
  
-   let popcom = document.querySelector('.popover-compartir');
-    // cerrar popover al hacer click fuera de él
-    window.addEventListener('click', function(e) {
-   // si el click NO es dentro del popover y NO es en el botón
-    if (!popcom.contains(e.target) && e.target !== btnCom) {
-      popcom.classList.remove('open');
-    }
-   });
+  

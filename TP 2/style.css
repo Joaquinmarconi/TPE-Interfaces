@@ -1070,6 +1070,23 @@ header section {
 .contenedor-copiar button:hover{
     background-color: #fd9c46;
 }
+.overlayJuego {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+
+.overlayJuego.active {
+  opacity: 1;
+  visibility: visible;
+}
 
 .fila-img {
     width: 917px;
