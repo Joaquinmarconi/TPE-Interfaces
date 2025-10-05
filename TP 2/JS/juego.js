@@ -69,13 +69,15 @@ for (let i = 1; i <= 5; i++) {
 
 const btnCom = document.getElementById('btn-compartir');
 const popcom = document.querySelector('.popover-compartir');
-const botonSus = document.getElementById('btn-suscribirse');
+const botonSus = document.querySelectorAll('.suscribirse');
 const popoversus = document.querySelector('.popover-suscripcion');
 const overlay = document.querySelector('.overlayJuego');
 
 // al hacer click en el botón, mostramos o cerramos el popover + overlay
 btnCom.addEventListener('click', togglePopoverCom);
-botonSus.addEventListener('click', togglePopoverSus);
+botonSus.forEach(btn => {
+  btn.addEventListener('click', togglePopoverSus);
+});
 
 // al hacer click en el overlay, cerramos todo
  overlay.addEventListener('click', () => {
