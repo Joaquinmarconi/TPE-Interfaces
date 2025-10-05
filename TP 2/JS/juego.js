@@ -77,10 +77,34 @@ for (let i = 1; i <= 5; i++) {
 }
 
 let popsus = document.querySelector('.popover-suscripcion');
-// cerrar popover al hacer click fuera de él
-window.addEventListener('click', function(e) {
-  // si el click NO es dentro del popover y NO es en el botón
-  if (!popsus.contains(e.target) && e.target !== btnSus) {
-    popsus.classList.remove('open');
-  }
-});
+    // cerrar popover al hacer click fuera de él
+    window.addEventListener('click', function(e) {
+   // si el click NO es dentro del popover y NO es en el botón
+    if (!popsus.contains(e.target) && e.target !== btnSus) {
+      popsus.classList.remove('open');
+    }
+   });
+
+
+
+    const btnCom = document.getElementById('btn-compartir');
+
+    // al hacer click, mostramos o cerramos el popover
+    btnCom.addEventListener('click', togglePopoverCom)
+
+    function togglePopoverCom() {
+    let popcom = document.querySelector('.popover-compartir');
+
+    popcom.classList.toggle('open');
+  
+    
+      }
+ 
+   let popcom = document.querySelector('.popover-compartir');
+    // cerrar popover al hacer click fuera de él
+    window.addEventListener('click', function(e) {
+   // si el click NO es dentro del popover y NO es en el botón
+    if (!popcom.contains(e.target) && e.target !== btnCom) {
+      popcom.classList.remove('open');
+    }
+   });

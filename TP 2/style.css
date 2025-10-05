@@ -215,9 +215,7 @@ header section {
   font-size: 15px;
 }
 
-.popover-suscripcion::backdrop {
-  background-color: rgba(0, 0, 0, 0.5);
-}
+
 .btn-enviar{
   background-color: steelblue;
   color: #FAFAFA;
@@ -236,6 +234,7 @@ header section {
     background-color: rgb(50, 94, 129);
     color: #1a1a1a;
 }
+
 .alinear-boton-usuario {
     display: flex;
     align-items: center;
@@ -978,6 +977,93 @@ header section {
     justify-content: center;
     /*Centra horizontalmente*/
     gap: 4px;
+}
+.popover-compartir {
+  display: none;
+}
+.popover-compartir.open { 
+  height: 199px;
+  width: 558px;
+  border-radius: 20px;
+  background: #1C1B1B;
+  border: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  flex-direction: column;
+  align-items: center; /* centra horizontalmente el contenido */
+  justify-content: flex-start;
+  padding: 1rem 2rem; /* margen interior a los costados */
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+.popover-compartir p {
+  color: #B3B3B3;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.popover-compartir p span {
+  color: #ee9c30;
+}
+.popover-compartir div{
+    display: flex;
+    gap: 10px;                  /* Espacio entre cada elemento */
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.popover-compartir div div{
+    height: 40px;
+    width: 40px;
+    background-color: #2A2A2A;
+    border-radius: 100%;
+}
+.popover-compartir div div:hover{
+    background-color: #686464;
+}
+.popover-compartir div div img{
+    width: 19px;
+    height: 19px;
+}
+.contenedor-copiar{
+  border-radius: 15px;
+  background-color: #2A2A2A;
+  width: 480px;
+  height: 55px;
+  border: 1px solid #FAFAFA;
+  margin-left: 7px;
+}
+.contenedor-copiar input{
+  align-self: center; /* mantiene las etiquetas alineadas a la izquierda */
+  font-family: 'Baloo 2', sans-serif;
+  color: #fafafa;
+  font-size: 16px;
+  background-color: #2a2a2a;
+  width: 390px;
+  padding-left: 10px;
+}
+.contenedor-copiar  button{
+    border-radius: 15px;
+    width: 70px;
+    height: 30px;
+    background-color: #FF7904;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+    color: #fafafa;
+    cursor: pointer;
+    margin-right: 5px;
+}
+.contenedor-copiar button:hover{
+    background-color: #fd9c46;
 }
 
 .fila-img {
