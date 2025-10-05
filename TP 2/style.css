@@ -513,7 +513,7 @@ header section {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 10;
+    z-index: 8;
     background: transparent;
     /* Sin fondo */
     color: #B3B3B3;
