@@ -66,3 +66,21 @@ for (let i = 1; i <= 5; i++) {
   })};
 
 
+  const btnSus = document.getElementById('btn-suscribirse');
+
+    // al hacer click, mostramos o cerramos el popover
+    btnSus.addEventListener('click', togglePopoverSus)
+
+    function togglePopoverSus() {
+    let popsus = document.querySelector('.popover-suscripcion');
+    popsus.classList.toggle('open');
+}
+
+let popsus = document.querySelector('.popover-suscripcion');
+// cerrar popover al hacer click fuera de él
+window.addEventListener('click', function(e) {
+  // si el click NO es dentro del popover y NO es en el botón
+  if (!popsus.contains(e.target) && e.target !== btnSus) {
+    popsus.classList.remove('open');
+  }
+});
