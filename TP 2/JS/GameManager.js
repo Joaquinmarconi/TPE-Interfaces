@@ -43,8 +43,8 @@ class GameManager {
 
         // Mapeo de estrategias
         const estrategias = {
-            'deportes-carrusel': () => filtrarPorGenero('sports'),
-            'puzzle-carrusel': () => filtrarPorGenero('puzzle'),
+            'deportes-carrusel': () => filtrarPorGenero('action'),
+            'puzzle-carrusel': () => filtrarPorGenero('shooter'),
             'aventura-carrusel': () => filtrarPorGenero('adventure'),
             'novedades-carrusel': () => [...this.todosLosJuegos].sort((a, b) =>
                 new Date(b.released || 0) - new Date(a.released || 0)),
