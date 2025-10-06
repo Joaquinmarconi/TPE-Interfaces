@@ -468,7 +468,7 @@ header section {
 
 .home-carrusel {
     position: relative;
-    margin: 0;
+    margin: 0 25px;
     padding: 0 40px;
     padding-top: 0px;
     /* Espacio arriba */
@@ -487,7 +487,7 @@ header section {
 }
 
 .home-carrusel:first-child {
-    margin: 0rem 0;
+    margin: 0rem 25px;
     padding: 10px 40px;
 }
 
@@ -539,11 +539,11 @@ header section {
 }
 
 .home-carrusel button:first-of-type {
-    left: 5px;
+    left: 9px;
 }
 
 .home-carrusel button:last-of-type {
-    right: 5px;
+    right: 13px;
 }
 
 .home-carrusel ul {
@@ -553,7 +553,7 @@ header section {
     scroll-behavior: smooth;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    padding: 20px 0;
+    padding: 7px 0;
     margin: 0;
     gap: 15px;
     clip-path: none;
@@ -1820,7 +1820,7 @@ footer {
     align-items: center;
     justify-content: space-evenly;
     font-family: 'Baloo 2', sans-serif;
-    padding: 48px 20px 0px 20px;
+    padding: 20px 20px 20px 20px;
     /* ← Reducir padding inferior a 16px */
     box-sizing: border-box;
 }
@@ -1833,7 +1833,7 @@ footer {
     grid-template-columns: repeat(4, 1fr) auto;
     gap: 80px;
     align-items: center;
-    margin-bottom: 120px;
+    margin-bottom: 108px;
     margin-top: 30px;
 }
 
@@ -1898,6 +1898,7 @@ footer nav a:hover {
 .footer-logo img {
     width: 180px;
     height: auto;
+    margin-left: 9px;
 }
 
 /* Redes sociales */
@@ -1934,7 +1935,7 @@ footer p {
     color: #B3B3B3;
     text-align: center;
     line-height: 0;
-    margin-bottom: 8px;
+    margin-bottom: 27px;
 }
 
 footer p a {
@@ -1944,4 +1945,8 @@ footer p a {
 
 footer p a:hover {
     text-decoration: underline;
+}
+
+.footer-social img {
+  filter: brightness(10) contrast(10);
 }
