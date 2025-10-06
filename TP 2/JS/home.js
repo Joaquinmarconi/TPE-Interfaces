@@ -34,39 +34,42 @@ function toggleSubMenu() {
 }
 
 /* === POPOVERS DE SUSCRIPCIÓN === */
-// Botón del header
 const btnSus = document.getElementById('btn-suscribirse');
-if (btnSus) {
-    btnSus.addEventListener('click', () => {
-        const overlay = document.querySelector('.overlay');
-        const dialog = document.querySelector('.popover-suscripcion');
-        if (overlay && dialog) {
-            overlay.classList.add('visible');
-            dialog.classList.add('open');
-        }
-    });
-}
-
-// Botón del footer
 const btnFooter = document.getElementById('btn-suscribirse-footer');
 const overlay = document.querySelector('.overlay');
-const dialog = document.querySelector('.popover-suscripcion');
 
-if (btnFooter && overlay && dialog) {
-    btnFooter.addEventListener('click', () => {
+function abrirSuscripcion() {
+    const dialogSuscripcion = document.getElementById('mensaje-subscripcion');
+
+    // Abrir suscripción
+    if (overlay && dialogSuscripcion) {
         overlay.classList.add('visible');
-        dialog.classList.add('open');
-    });
+        dialogSuscripcion.classList.add('open');
+    }
+}
+
+if (btnSus) {
+    btnSus.addEventListener('click', abrirSuscripcion);
+}
+
+if (btnFooter) {
+    btnFooter.addEventListener('click', abrirSuscripcion);
 }
 
 // Cerrar al hacer click fuera
-if (overlay && dialog) {
+if (overlay) {
     window.addEventListener('click', function (e) {
+        const dialogSuscripcion = document.getElementById('mensaje-subscripcion');
+        const popupPremium = document.getElementById('popup-premium');
         const isBtn = (btnSus && e.target === btnSus) || (btnFooter && e.target === btnFooter);
-        
-        if (!dialog.contains(e.target) && !isBtn) {
+
+        // Solo cerrar si no es click en ningún popup ni en botones
+        if (!dialogSuscripcion.contains(e.target) &&
+            !popupPremium.contains(e.target) &&
+            !isBtn) {
             overlay.classList.remove('visible');
-            dialog.classList.remove('open');
+            dialogSuscripcion.classList.remove('open');
+            popupPremium.classList.remove('open');
         }
     });
 }

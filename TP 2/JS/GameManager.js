@@ -76,7 +76,6 @@ class GameManager {
         // Registrar cuántos juegos se mostraron
         console.log(`Carrusel ${idDelContenedor}: ${juegosFiltrados.length} juegos`);
     }
-
     crearTarjetaDeJuego(juego) {
         if (!juego || !juego.name) {
             console.warn('Datos de juego incompletos');
@@ -94,19 +93,78 @@ class GameManager {
         img.width = 240;
         img.height = 135;
 
+        // Determinar si el juego es premium
+        const esPremium = this.esJuegoPremium(juego);
+
+        // Si es premium, agregar badge y evento
+        if (esPremium) {
+            const badge = document.createElement('div');
+            badge.className = 'premium-badge';
+
+            const coronaImg = document.createElement('img');
+            coronaImg.src = './assets/etiqueta-premium.png'; // ← Verificar que la ruta sea correcta
+            coronaImg.alt = 'Premium';
+            coronaImg.className = 'corona-icon';
+
+            badge.appendChild(coronaImg);
+            figure.appendChild(badge);
+
+            // Marcar el article como premium
+            article.dataset.premium = 'true';
+            article.dataset.juegoId = juego.id;
+            article.style.cursor = 'pointer';
+
+            // Evento click aquí con stopPropagation
+            article.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const overlay = document.querySelector('.overlay');
+                const popup = document.getElementById('popup-premium');
+
+                if (overlay && popup) {
+                    overlay.classList.add('visible');
+                    popup.classList.add('open');
+                }
+            });
+        }
+        figure.appendChild(img);
+
         const titulo = document.createElement('h3');
         titulo.textContent = juego.name;
 
         const rating = document.createElement('p');
         rating.textContent = `★ ${juego.rating || 0}/5`;
 
-        figure.appendChild(img);
         article.appendChild(figure);
         article.appendChild(titulo);
         article.appendChild(rating);
         tarjeta.appendChild(article);
 
         return tarjeta;
+    }
+
+    esJuegoPremium(juego) {
+        return juego.rating >= 4.5;
+    }
+
+    mostrarPopoverPremium(juego) {
+        console.log('Función ejecutada para:', juego.name); // ← TEMPORAL
+
+        const overlay = document.querySelector('.overlay');
+        const popup = document.getElementById('popup-premium');
+
+        console.log('Overlay encontrado:', overlay); // ← TEMPORAL
+        console.log('Popup encontrado:', popup); // ← TEMPORAL
+
+        overlay.classList.add('visible');
+        popup.classList.add('open');
+
+        const btnCerrar = popup.querySelector('.popup-close');
+        btnCerrar.onclick = () => {
+            overlay.classList.remove('visible');
+            popup.classList.remove('open');
+        };
     }
 
     configurarNavegacionCarruseles() {

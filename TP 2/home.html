@@ -93,7 +93,7 @@
     </header>
 
     <div class="overlay">
-        <dialog id="mensaje-subscripcion" class="popover-suscripcion">
+        <div id="mensaje-subscripcion" class="popover-suscripcion">
             <p>Todavía no estas suscripto? <span>Suscribete</span></p>
             <label for="mail">Mail/Usuario</label>
             <input type="email" id="mail" name="mail">
@@ -109,7 +109,19 @@
                 </label>
             </div>
             <button class="btn-enviar">Enviar</button>
-        </dialog>
+        </div>
+
+        <!-- Popup Premium -->
+        <div id="popup-premium" class="popup-premium">
+            <h3>¡Acceso Exclusivo!</h3>
+
+            <p>Este es un juego <strong>Premium</strong>, disponible solo para usuarios suscriptos. Suscribiéndote vas a
+                poder desbloquear este y muchos más, además acceder a recompensas y contenido especial.</p>
+
+            <div class="suscribirse">
+                <input type="button" value="Suscribirse">
+            </div>
+        </div>
     </div>
 
     <main class="home-body">
@@ -255,26 +267,9 @@
                 href="mailto:nextplay@gmail.com">nextplay@gmail.com</a></p>
     </footer>
 
-    <!-- Popup Premium -->
-    <!-- <div class="popup-overlay" id="popup-premium">
-        <div class="popup-premium">
-            <button class="popup-close" aria-label="Cerrar">&times;</button>
-
-            <h3>¡Acceso Exclusivo!</h3>
-
-            <p>Este es un juego <strong>Premium</strong>, disponible solo para usuarios suscriptos. Suscribiéndote vas a
-                poder desbloquear este y muchos más, además acceder a recompensas y contenido especial.</p>
-
-            <div class="suscribirse">
-                <input type="button" value="Suscribirse">
-            </div>
-        </div> -->
-    </div>
-
     <script src="JS/GameManager.js"></script>
     <script src="JS/home.js"></script>
     <script src="JS/loading.js"></script>
-
 </body>
 
 </html>

@@ -70,17 +70,19 @@
         width: 160px;
     }
 
-    .home-carrusel img {
+    .home-carrusel figure>img {
         height: 100px;
+    }
+
+    .home-carrusel:first-child figure>img {
+        height: 127px;
     }
 
     .home-carrusel:first-child li {
         width: 195px;
     }
 
-    .home-carrusel:first-child img {
-        height: 127px;
-    }
+
 }
 
 /* Tablets (hasta 768px) */
@@ -133,6 +135,54 @@
     .menu img {
         width: 22px;
         height: 22px;
+    }
+
+    .popover-suscripcion.open {
+        width: 90%;
+        max-width: 450px;
+        height: auto;
+        min-height: 245px;
+        padding: 1rem 1.5rem;
+    }
+
+    .popover-suscripcion p {
+        font-size: 16px;
+    }
+
+    .popover-suscripcion label {
+        font-size: 15px;
+    }
+
+    .popup-premium.open {
+        width: 90%;
+        max-width: 450px;
+        height: auto;
+        min-height: 199px;
+        padding: 20px 25px;
+    }
+
+    .popup-premium h3 {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .popup-premium p {
+        font-size: 15px;
+        line-height: 19px;
+    }
+
+    .popup-premium .suscribirse input {
+        width: 110px;
+        /* Reducir para pantallas como 540x720 */
+        height: 36px;
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+
+    .btn-enviar {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
     }
 
     /* FOOTER */
@@ -274,10 +324,70 @@
     .main-nav-user.openUser {
         top: 110px;
     }
+
+    .popover-suscripcion.open {
+        width: 95%;
+        padding: 1rem;
+    }
+
+    .popover-suscripcion p {
+        font-size: 15px;
+        margin-bottom: 0.8rem;
+    }
+
+    .popover-suscripcion label {
+        font-size: 14px;
+    }
+
+    .popover-suscripcion input[type="email"] {
+        font-size: 14px;
+        padding: 0.35rem 0.5rem;
+    }
+
+    .opciones-pago {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .opciones-pago label {
+        font-size: 14px;
+    }
+
+    .btn-enviar {
+        font-size: 15px;
+        padding: 6px 18px;
+        margin-top: 15px;
+    }
+
+    .popup-premium.open {
+        width: 95%;
+        padding: 18px;
+    }
+
+    .popup-premium h3 {
+        font-size: 15px;
+        line-height: 24px;
+        margin-bottom: 12px;
+    }
+
+    .popup-premium p {
+        font-size: 14px;
+        line-height: 18px;
+        margin-bottom: 18px;
+    }
+
+    .popup-premium .suscribirse input {
+        width: 100px;
+        height: 34px;
+        font-size: 13px;
+        padding: 6px 8px;
+        line-height: 1.1;
+    }
 }
 
 /* Móviles (hasta 480px) */
 @media (max-width: 480px) {
+
     /* FOOTER */
     footer {
         padding: 30px 10px 10px 10px;
@@ -331,17 +441,19 @@
         width: 130px;
     }
 
-    .home-carrusel img {
+    .home-carrusel figure>img {
         height: 82px;
+    }
+
+    .home-carrusel:first-child figure>img {
+        height: 104px;
     }
 
     .home-carrusel:first-child li {
         width: 160px;
     }
 
-    .home-carrusel:first-child img {
-        height: 104px;
-    }
+
 }
 
 /* Móviles pequeños (hasta 375px) */
@@ -370,10 +482,59 @@
     .main-nav-user.openUser {
         top: 105px;
     }
+
+    .popover-suscripcion.open {
+        width: 98%;
+        padding: 0.8rem;
+    }
+
+    .popover-suscripcion p {
+        font-size: 14px;
+    }
+
+    .popover-suscripcion label {
+        font-size: 13px;
+    }
+
+    .popover-suscripcion input[type="email"] {
+        font-size: 13px;
+    }
+
+    .opciones-pago label {
+        font-size: 13px;
+    }
+
+    .btn-enviar {
+        font-size: 14px;
+        width: 100%;
+        margin-top: 12px;
+    }
+
+    .popup-premium.open {
+        width: 98%;
+        padding: 15px;
+    }
+
+    .popup-premium h3 {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .popup-premium p {
+        font-size: 13px;
+        line-height: 17px;
+    }
+
+    .popup-premium .suscribirse input {
+        width: 100%;
+        height: 34px;
+        font-size: 14px;
+    }
 }
 
 /* Móviles muy pequeños (hasta 360px) */
 @media (max-width: 360px) {
+
     /* FOOTER */
     .footer-content {
         gap: 20px;
