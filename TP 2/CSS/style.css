@@ -1813,7 +1813,7 @@ footer {
     align-items: center;
     justify-content: space-evenly;
     font-family: 'Baloo 2', sans-serif;
-    padding: 20px 20px 20px 20px;
+    padding: 40px 20px 0px 20px;
     /* ← Reducir padding inferior a 16px */
     box-sizing: border-box;
 }
@@ -1899,7 +1899,7 @@ footer nav a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
     margin-bottom: 18px;
     /* ← Aumentado */
 }
@@ -1910,17 +1910,6 @@ footer nav a:hover {
     justify-content: center;
 }
 
-.footer-social img {
-    width: 24px;
-    height: 24px;
-    filter: brightness(0) invert(1);
-    transition: opacity 0.2s;
-}
-
-.footer-social img:hover {
-    opacity: 0.7;
-}
-
 /* Texto legal */
 footer p {
     font-size: 14px;
@@ -1928,7 +1917,7 @@ footer p {
     color: #B3B3B3;
     text-align: center;
     line-height: 0;
-    margin-bottom: 27px;
+    margin-bottom: 25px;
 }
 
 footer p a {
@@ -1938,8 +1927,4 @@ footer p a {
 
 footer p a:hover {
     text-decoration: underline;
-}
-
-.footer-social img {
-  filter: brightness(10) contrast(10);
 }
