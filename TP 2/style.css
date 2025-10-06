@@ -61,7 +61,7 @@ header section {
     max-width: 410px;
     position: relative;
     align-items: center;
-    margin-right: 248px;
+    margin-right: 258px;
     margin-bottom: 7px;
     order: 3;
 }
@@ -120,7 +120,7 @@ header section {
 
 .suscribirse {
     flex-shrink: 0;
-    margin-right: 10px;
+   
 }
 
 .suscribirse input {
@@ -264,7 +264,7 @@ header section {
 #btn-usuario {
     width: auto;
     height: auto;
-    background-color: #1c1b1b;
+    background-color:transparent;
     border: none;
     padding: 0;
     cursor: pointer;
