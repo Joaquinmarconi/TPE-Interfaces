@@ -363,7 +363,7 @@ header section {
 .main-nav.open {
     display: block;
     width: 200px;
-    height: 900px;
+    height: 1002px;
     align-items: center;
     position: absolute;
     z-index: 9;
