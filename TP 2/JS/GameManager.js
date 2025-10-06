@@ -1,8 +1,6 @@
 class GameManager {
     constructor() {
         this.todosLosJuegos = [];
-        this.itemsVisibles = 4; // Cuántos elementos se ven a la vez
-        this.anchoItem = 250; // Ancho aproximado de cada item (incluye margen)
     }
 
     async pedirJuegos() {
@@ -102,7 +100,7 @@ class GameManager {
             badge.className = 'premium-badge';
 
             const coronaImg = document.createElement('img');
-            coronaImg.src = './assets/etiqueta-premium.png'; // ← Verificar que la ruta sea correcta
+            coronaImg.src = './assets/etiqueta-premium.png'; 
             coronaImg.alt = 'Premium';
             coronaImg.className = 'corona-icon';
 
@@ -149,13 +147,9 @@ class GameManager {
     }
 
     mostrarPopoverPremium(juego) {
-        console.log('Función ejecutada para:', juego.name); // ← TEMPORAL
-
+        
         const overlay = document.querySelector('.overlay');
         const popup = document.getElementById('popup-premium');
-
-        console.log('Overlay encontrado:', overlay); // ← TEMPORAL
-        console.log('Popup encontrado:', popup); // ← TEMPORAL
 
         overlay.classList.add('visible');
         popup.classList.add('open');
