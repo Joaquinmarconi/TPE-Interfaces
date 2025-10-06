@@ -61,7 +61,7 @@ header section {
     max-width: 410px;
     position: relative;
     align-items: center;
-    margin-right: 258px;
+    margin-right: 248px;
     margin-bottom: 7px;
     order: 3;
 }
@@ -248,6 +248,7 @@ header section {
     /* Centra verticalmente los elementos */
     margin-right: 20px;
     order: 4;
+    gap: 10px;
 
 }
 
