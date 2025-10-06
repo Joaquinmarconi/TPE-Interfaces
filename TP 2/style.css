@@ -61,7 +61,7 @@ header section {
     max-width: 410px;
     position: relative;
     align-items: center;
-    margin-right: 240px;
+    margin-right: 248px;
     margin-bottom: 7px;
     order: 3;
 }
@@ -120,6 +120,7 @@ header section {
 
 .suscribirse {
     flex-shrink: 0;
+    margin-right: 10px;
 }
 
 .suscribirse input {
@@ -256,7 +257,7 @@ header section {
 .menu-usuario img {
     width: 34px;
     height: 34px;
-    margin-left: 20px;
+    margin-left: 10px;
     margin-bottom: 2px;
 }
 
