@@ -152,7 +152,7 @@ class GameManager {
         const figure = document.createElement('figure');
         const img = document.createElement('img');
 
-        img.src = 'Assets/homerangry.png'; // ← Cambiar por la ruta correcta
+        img.src = 'Assets/homer_card.png'; // ← Cambiar por la ruta correcta
         img.alt = 'Los Simpson Game';
         img.loading = 'lazy';
         img.width = 240;
@@ -188,6 +188,8 @@ class GameManager {
 
         const overlay = document.querySelector('.overlay');
         const popup = document.getElementById('popup-premium');
+         const popoversus = document.getElementById('mensaje-subscripcion');
+       const btnSuscribirse = popup.querySelector('.suscribirse input');
 
         overlay.classList.add('visible');
         popup.classList.add('open');
@@ -196,8 +198,9 @@ class GameManager {
         btnCerrar.onclick = () => {
             overlay.classList.remove('visible');
             popup.classList.remove('open');
+            
         };
-    }
+    } 
 
     configurarNavegacionCarruseles() {
         // Obtener todos los botones de navegación
