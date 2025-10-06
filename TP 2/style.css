@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap');
 
-
 * {
     margin: 0;
     padding: 0;
@@ -17,9 +16,9 @@ body {
     overflow-x: hidden
 }
 
-/* ============================================
-   HEADER
-   ============================================ */
+/* ===================== */
+/*        HEADER         */
+/* ===================== */
 
 header {
     width: 100vw;
@@ -81,7 +80,6 @@ header section {
 .alinear-input::placeholder {
     transform: translateX(-1px);
     color: #B3B3B3;
-
 }
 
 .icono-busqueda {
@@ -99,7 +97,6 @@ header section {
     pointer-events: none;
     /* Permite que el input sea clickeable */
     margin-left: 13x;
-
 }
 
 /*logo pagina*/
@@ -252,8 +249,9 @@ header section {
 
 }
 
-/*menu usuario*/
-
+/* ===================== */
+/*      MENÚ USUARIO     */
+/* ===================== */
 
 .menu-usuario img {
     width: 34px;
@@ -316,7 +314,6 @@ header section {
     width: 22px;
     height: 22px;
     margin-right: 10px;
-
 }
 
 .main-nav-user>ul>li>a:visited {
@@ -328,9 +325,9 @@ header section {
     color: #FAFAFA;
 }
 
-
-
-/*menu hamburguesa*/
+/* ===================== */
+/*    MENÚ HAMBURGUESA   */
+/* ===================== */
 
 .menu {
     display: flex;
@@ -457,7 +454,9 @@ header section {
     align-items: center;
 }
 
-/*home*/
+/* ===================== */
+/*         HOME          */
+/* ===================== */
 
 .home-body {
     width: 100%;
@@ -468,7 +467,7 @@ header section {
 
 .home-carrusel {
     position: relative;
-    margin: 0;
+    margin: 0 25px;
     padding: 0 40px;
     padding-top: 0px;
     /* Espacio arriba */
@@ -487,7 +486,7 @@ header section {
 }
 
 .home-carrusel:first-child {
-    margin: 0rem 0;
+    margin: 0rem 25px;
     padding: 10px 40px;
 }
 
@@ -539,11 +538,11 @@ header section {
 }
 
 .home-carrusel button:first-of-type {
-    left: 5px;
+    left: 9px;
 }
 
 .home-carrusel button:last-of-type {
-    right: 5px;
+    right: 13px;
 }
 
 .home-carrusel ul {
@@ -553,7 +552,7 @@ header section {
     scroll-behavior: smooth;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    padding: 20px 0;
+    padding: 7px 0;
     margin: 0;
     gap: 15px;
     clip-path: none;
@@ -655,8 +654,40 @@ header section {
     font-size: 0.8rem;
 }
 
+/* Diseño responsive */
+@media (max-width: 768px) {
+    .home-carrusel li {
+        width: 180px;
+    }
 
-/*juego*/
+    .home-carrusel button {
+        width: 30px;
+        height: 30px;
+        font-size: 1.2rem;
+    }
+
+    .home-carrusel h2 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-carrusel li {
+        width: 140px;
+    }
+
+    .home-carrusel h3 {
+        font-size: 0.9rem;
+    }
+
+    .home-carrusel p {
+        font-size: 0.8rem;
+    }
+}
+
+/* ===================== */
+/*         JUEGO         */
+/* ===================== */
 
 .breadcumbs {
     display: flex;
@@ -867,9 +898,6 @@ header section {
     font-family: 'Baloo 2', sans-serif;
     font-weight: 500;
     color: #FFDD33;
-
-
-
 }
 
 .reglas div h3 {
@@ -886,9 +914,6 @@ header section {
     padding: 0px;
     margin-left: 40px;
     text-indent: -5px;
-
-
-
 }
 
 .reglas div ul li {
@@ -1120,7 +1145,6 @@ header section {
 
 }
 
-
 .youtube-icon {
     position: absolute;
     top: 50%;
@@ -1157,7 +1181,6 @@ header section {
     padding-left: 50px;
     color: #FAFAFA;
 }
-
 
 .comentarios-respondidos {
     background-color: #2A2A2A;
@@ -1275,7 +1298,9 @@ header section {
     }
 }
 
-/* LOGIN Y REGISTRO */
+/* ===================== */
+/*    LOGIN Y REGISTRO   */
+/* ===================== */
 
 .fondo-form {
     background-image: url('Assets/fondo_form.png');
@@ -1681,7 +1706,9 @@ header section {
     }
 }
 
-/* LOADING */
+/* ===================== */
+/*       LOADING         */
+/* ===================== */
 
 .loading {
     position: fixed;
@@ -1770,7 +1797,9 @@ header section {
     }
 }
 
-/* footer */
+/* ===================== */
+/*        FOOTER         */
+/* ===================== */
 
 footer {
     background-color: #1C1B1B;
@@ -1781,7 +1810,7 @@ footer {
     align-items: center;
     justify-content: space-evenly;
     font-family: 'Baloo 2', sans-serif;
-    padding: 48px 20px 0px 20px;
+    padding: 20px 20px 20px 20px;
     /* ← Reducir padding inferior a 16px */
     box-sizing: border-box;
 }
@@ -1794,7 +1823,7 @@ footer {
     grid-template-columns: repeat(4, 1fr) auto;
     gap: 80px;
     align-items: center;
-    margin-bottom: 120px;
+    margin-bottom: 108px;
     margin-top: 30px;
 }
 
@@ -1859,6 +1888,7 @@ footer nav a:hover {
 .footer-logo img {
     width: 180px;
     height: auto;
+    margin-left: 9px;
 }
 
 /* Redes sociales */
@@ -1895,7 +1925,7 @@ footer p {
     color: #B3B3B3;
     text-align: center;
     line-height: 0;
-    margin-bottom: 8px;
+    margin-bottom: 27px;
 }
 
 footer p a {
@@ -1905,4 +1935,8 @@ footer p a {
 
 footer p a:hover {
     text-decoration: underline;
+}
+
+.footer-social img {
+  filter: brightness(10) contrast(10);
 }
