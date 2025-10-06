@@ -1,6 +1,6 @@
 "use strict"
 
-/* abrir y cerrar ícono de ojo en input contraseña */
+/* Mostrar-Ocultar contraseña */
 
 function togglePassword(icon) {
   const input = icon.closest('.input-contenedor').querySelector(".campo-password");
@@ -16,7 +16,7 @@ function togglePassword(icon) {
   }
 }
 
-/* input contraseña error mínimo caracteres */
+/* Validar longitud mínima de contraseña */
 
 const passwordInput = document.querySelectorAll('.campo-password');
 
@@ -30,7 +30,7 @@ passwordInput.forEach(input => {
     });
 });
 
-/* popover */
+/* Popover */
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector(".form-registro");
