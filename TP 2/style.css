@@ -655,36 +655,6 @@ header section {
     font-size: 0.8rem;
 }
 
-/* Diseño responsive */
-@media (max-width: 768px) {
-    .home-carrusel li {
-        width: 180px;
-    }
-
-    .home-carrusel button {
-        width: 30px;
-        height: 30px;
-        font-size: 1.2rem;
-    }
-
-    .home-carrusel h2 {
-        font-size: 1.2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .home-carrusel li {
-        width: 140px;
-    }
-
-    .home-carrusel h3 {
-        font-size: 0.9rem;
-    }
-
-    .home-carrusel p {
-        font-size: 0.8rem;
-    }
-}
 
 /*juego*/
 

@@ -240,6 +240,7 @@ class GameManager {
         // Posición actual + desplazamiento
         const nuevaPosicion = contenedor.scrollLeft + desplazamiento;
 
+        
         // Aplicar el desplazamiento con animación suave
         contenedor.scrollTo({
             left: nuevaPosicion,
@@ -284,3 +285,5 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameManager = new GameManager();
     gameManager.pedirJuegos();
 });
+
+
