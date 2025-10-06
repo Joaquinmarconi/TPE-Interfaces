@@ -80,6 +80,10 @@ class GameManager {
             return null;
         }
 
+        if (juego.id === this.todosLosJuegos[0].id) {
+            return this.crearCardSimpson();
+        }
+
         const tarjeta = document.createElement('li');
         const article = document.createElement('article');
         const figure = document.createElement('figure');
@@ -100,7 +104,7 @@ class GameManager {
             badge.className = 'premium-badge';
 
             const coronaImg = document.createElement('img');
-            coronaImg.src = './assets/etiqueta-premium.png'; 
+            coronaImg.src = './assets/etiqueta-premium.png';
             coronaImg.alt = 'Premium';
             coronaImg.className = 'corona-icon';
 
@@ -142,12 +146,46 @@ class GameManager {
         return tarjeta;
     }
 
+    crearCardSimpson() {
+        const tarjeta = document.createElement('li');
+        const article = document.createElement('article');
+        const figure = document.createElement('figure');
+        const img = document.createElement('img');
+
+        img.src = 'Assets/homerangry.png'; // ← Cambiar por la ruta correcta
+        img.alt = 'Los Simpson Game';
+        img.loading = 'lazy';
+        img.width = 240;
+        img.height = 135;
+
+        const titulo = document.createElement('h3');
+        titulo.textContent = 'Los Simpson: Peg Solitaire';
+
+        const rating = document.createElement('p');
+        rating.textContent = '★ 4.8/5';
+
+        figure.appendChild(img);
+        article.appendChild(figure);
+        article.appendChild(titulo);
+        article.appendChild(rating);
+        tarjeta.appendChild(article);
+
+        // Click redirecciona a la página
+        article.style.cursor = 'pointer';
+        article.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'juego.html';
+        });
+
+        return tarjeta;
+    }
+
     esJuegoPremium(juego) {
         return juego.rating >= 4.5;
     }
 
     mostrarPopoverPremium(juego) {
-        
+
         const overlay = document.querySelector('.overlay');
         const popup = document.getElementById('popup-premium');
 
