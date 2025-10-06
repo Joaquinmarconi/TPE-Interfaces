@@ -276,7 +276,7 @@ header section {
 .main-nav-user.openUser {
     display: block;
     width: 180px;
-    height: 155px;
+    height: 190px;
     margin-left: 1170px;
     position: absolute;
     z-index: 8;
@@ -313,8 +313,13 @@ header section {
     margin-right: 10px;
 }
 
-.main-nav-user>ul>li>a:visited {
-    color: beige;
+.main-nav-user>ul>li>a {
+    color: rgb(226, 62, 56);
+    text-decoration: none;
+}
+.main-nav-user>ul>li>a:hover {
+    color: rgb(187, 54, 49);
+    
 }
 
 .main-nav-user>ul>li:hover {
