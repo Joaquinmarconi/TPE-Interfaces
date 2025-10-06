@@ -1308,7 +1308,7 @@ header section {
 /* ===================== */
 
 .fondo-form {
-    background-image: url('Assets/fondo_form.png');
+    background-image: url('../Assets/fondo_form.png');
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
