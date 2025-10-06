@@ -27,7 +27,7 @@ header section {
     height: 45px;
     width: auto;
     max-height: none;
-    
+
 }
 
 .alinear-buscar {
@@ -37,7 +37,8 @@ header section {
 }
 
 .alinear-input {
-    text-indent: -0.7px; /* Mueve el texto hacia la izquierda */
+    text-indent: -0.7px;
+    /* Mueve el texto hacia la izquierda */
 }
 
 
@@ -200,4 +201,26 @@ article[data-premium="true"]:hover {
 #btn-suscribirse-footer {
     line-height: 2.3;
     /* Valor mayor a 1 para bajar el texto */
+}
+
+
+
+.home-carrusel li.quick-bounce {
+    animation: bounceTilt 0.3s ease-out;
+}
+
+@keyframes bounceTilt {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    25% {
+        transform: translateY(-3px) rotate(1deg);
+    }
+
+    75% {
+        transform: translateY(-2px) rotate(-1deg);
+    }
 }

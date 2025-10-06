@@ -223,32 +223,37 @@ class GameManager {
             });
         });
     }
-
     moverCarrusel(carruselId, esAnterior) {
-        // Obtener el contenedor del carrusel
         const contenedor = document.getElementById(carruselId);
         if (!contenedor) return;
 
-        // Calcular el ancho real del primer elemento si existe
         const primerElemento = contenedor.querySelector('li');
         if (!primerElemento) return;
 
-        // Obtener el ancho real del elemento (incluye el margen)
         const anchoElemento = primerElemento.offsetWidth +
             parseInt(window.getComputedStyle(primerElemento).marginRight);
 
-        // Calcular cuánto desplazar
         const desplazamiento = anchoElemento * (esAnterior ? -1 : 1);
-
-        // Posición actual + desplazamiento
         const nuevaPosicion = contenedor.scrollLeft + desplazamiento;
 
-        
-        // Aplicar el desplazamiento con animación suave
+        const tarjetas = contenedor.querySelectorAll('li');
+
+        // Animación rápida + scroll nativo
+        tarjetas.forEach(tarjeta => {
+            tarjeta.classList.add('quick-bounce');
+        });
+
         contenedor.scrollTo({
             left: nuevaPosicion,
             behavior: 'smooth'
         });
+
+        // Limpiar rápido
+        setTimeout(() => {
+            tarjetas.forEach(tarjeta => {
+                tarjeta.classList.remove('quick-bounce');
+            });
+        }, 300);
     }
 
     mostrarErrorEnCarruseles() {
