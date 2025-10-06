@@ -467,7 +467,7 @@ header section {
 
 .home-carrusel {
     position: relative;
-    margin: 0 25px;
+    margin: 20px 25px;
     padding: 0 40px;
     padding-top: 0px;
     /* Espacio arriba */
@@ -486,7 +486,7 @@ header section {
 }
 
 .home-carrusel:first-child {
-    margin: 0rem 25px;
+    margin: 20px 25px;
     padding: 10px 40px;
 }
 
@@ -502,7 +502,7 @@ header section {
 
 .home-carrusel:first-child h3 {
     font-size: 1rem;
-    bottom: 35px;
+    bottom: 25px;
 }
 
 .home-carrusel:first-child li {
@@ -610,7 +610,12 @@ header section {
     z-index: 5;
     /* Elevación más sutil */
 }
-
+.home-carrusel li:hover img{
+    filter: brightness(45%);
+}
+.home-carrusel img{
+    filter: brightness(70%);
+}
 .home-carrusel article {
     border-radius: 10%;
     overflow: visible;
@@ -628,11 +633,10 @@ header section {
 
 .home-carrusel h3 {
     position: absolute;
-    bottom: 30px;
+    bottom: 25px;
     left: 0;
     right: 0;
-    padding: 8px 10px;
-    margin: 0;
+    margin-left: 10px;
     color: #FAFAFA;
     font-family: 'Baloo 2', sans-serif;
     font-size: 0.9rem;
@@ -651,13 +655,11 @@ header section {
     margin: 0;
     color: #FF7904;
     font-family: 'Baloo 2', sans-serif;
-    font-size: 0.8rem;
+    font-size: 13px;
+    font-weight: 800;
 }
 
-/* ===================== */
-/*      RESPONSIVE       */
-/* ===================== */
-
+/* Diseño responsive */
 @media (max-width: 768px) {
     .home-carrusel li {
         width: 180px;
