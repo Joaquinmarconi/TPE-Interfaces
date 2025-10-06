@@ -363,7 +363,7 @@ header section {
 .main-nav.open {
     display: block;
     width: 200px;
-    height: 900px;
+    height: 1002px;
     align-items: center;
     position: absolute;
     z-index: 9;
@@ -1452,8 +1452,7 @@ header section {
 }
 
 .opciones-form input[type="checkbox"] {
-    appearance: none;
-    /*desactiva el estilo nativo*/
+    appearance: none; /*desactiva el estilo nativo*/
     width: 14px;
     height: 14px;
     border: 1px solid #b3b3b3;
@@ -1526,8 +1525,7 @@ header section {
 
 .g-recaptcha {
     transform: scale(0.8);
-    transform-origin: 0 0;
-    /* Mantiene la posición arriba a la izquierda */
+    transform-origin: 0 0; /* Mantiene la posición arriba a la izquierda */
 }
 
 .separador {
@@ -1536,7 +1534,7 @@ header section {
     justify-content: center;
     text-align: center;
     margin: 1.2rem 0;
-    color: #b3b3bb;
+    color: #b3b3b3;
     gap: 10px;
     font-size: 20px;
 }
@@ -1575,8 +1573,7 @@ header section {
     left: 15px;
     width: 20px;
     height: 20px;
-    object-fit: contain;
-    /*para que el ícono no se deforme*/
+    object-fit: contain; /*para que el ícono no se deforme*/
 }
 
 .login-social button span {
@@ -1694,8 +1691,7 @@ header section {
 }
 
 .acceso-popover.visible .checkmark {
-    animation: checkPop 0.4s ease forwards 0.3s;
-    /* delay de 0.3s para aparecer después del pop */
+    animation: checkPop 0.4s ease forwards 0.3s; /* delay de 0.3s para aparecer después del pop */
 }
 
 @keyframes checkPop {
@@ -1734,16 +1730,13 @@ header section {
     color: #FFD600;
 }
 
-/* Contenido central */
-.loading-content {
+.loading-contenido {
     text-align: center;
     width: 90%;
-    max-width: 500px;
-    /* más ancho */
+    max-width: 500px; /* más ancho */
 }
 
-/* Porcentaje */
-.loading-percent {
+.loading-porcentaje {
     font-size: 26px;
     margin-bottom: 15px;
     letter-spacing: 2px;
@@ -1760,8 +1753,7 @@ header section {
     margin-bottom: 15px;
 }
 
-/* Progreso */
-.loading-progress {
+.loading-progreso {
     width: 0%;
     height: 100%;
     background: linear-gradient(90deg, #FFD600, #FF7904);
@@ -1770,8 +1762,7 @@ header section {
     animation: shine 2s linear infinite;
 }
 
-/* Texto de frase */
-.loading-text {
+.loading-texto {
     font-size: 18px;
     letter-spacing: 1px;
     color: #FFB800;
