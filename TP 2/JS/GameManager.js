@@ -236,7 +236,6 @@ class GameManager {
         const desplazamiento = anchoElemento * (esAnterior ? -1 : 1);
         const nuevaPosicion = contenedor.scrollLeft + desplazamiento;
 
-        // ← AQUÍ SE AGREGA LA PARTE DE ANIMACIÓN
         if (carruselId === 'novedades-carrusel') {
             const tarjetas = contenedor.querySelectorAll('li');
             tarjetas.forEach(tarjeta => tarjeta.classList.add('quick-bounce'));
@@ -246,7 +245,6 @@ class GameManager {
             }, 600);
         }
 
-        // Scroll normal (esto ya estaba)
         contenedor.scrollTo({
             left: nuevaPosicion,
             behavior: 'smooth'
