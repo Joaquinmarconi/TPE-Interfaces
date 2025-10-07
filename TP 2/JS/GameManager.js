@@ -104,7 +104,7 @@ class GameManager {
             badge.className = 'premium-badge';
 
             const coronaImg = document.createElement('img');
-            coronaImg.src = './assets/etiqueta-premium.png';
+            coronaImg.src = './Assets/etiqueta-premium.png';
             coronaImg.alt = 'Premium';
             coronaImg.className = 'corona-icon';
 
