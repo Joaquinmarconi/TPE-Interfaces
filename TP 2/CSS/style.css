@@ -551,7 +551,12 @@ header section {
 .home-carrusel button:last-of-type {
     right: 13px;
 }
-
+.home-carrusel button:first-of-type:hover{
+    color: #ec930e;
+}
+.home-carrusel button:last-of-type:hover{
+    color: #ec930e;
+}
 .home-carrusel ul {
     display: flex;
     overflow-x: auto;
@@ -1907,7 +1912,7 @@ footer nav a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 13px;
     margin-bottom: 18px;
     /* ← Aumentado */
 }
@@ -1916,6 +1921,9 @@ footer nav a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.footer-social img:hover{
+ filter: brightness(70%);
 }
 
 /* Texto legal */
