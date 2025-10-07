@@ -85,18 +85,13 @@ header section {
 
 .icono-busqueda {
     position: absolute;
-    /* Para mover la imagen libremente */
     top: 50%;
-    /* Centra verticalmente */
     left: 15px;
-    /* Posiciona a la izquierda */
     transform: translateY(-12px);
     /* Ajuste fino para el centrado */
     width: 21px;
-    /* Tamaño de la imagen */
     height: 21px;
     pointer-events: none;
-    /* Permite que el input sea clickeable */
     margin-left: 13x;
 }
 
@@ -160,10 +155,8 @@ header section {
     display: block;
     flex-direction: column;
     align-items: center;
-    /* centra horizontalmente el contenido */
     justify-content: flex-start;
     padding: 1rem 2rem;
-    /* margen interior a los costados */
     box-sizing: border-box;
     z-index: 10;
 }
@@ -183,7 +176,6 @@ header section {
 
 .popover-suscripcion label {
     align-self: flex-start;
-    /* mantiene las etiquetas alineadas a la izquierda */
     font-family: 'Baloo 2', sans-serif;
     color: #B3B3B3;
     font-size: 16px;
@@ -225,7 +217,6 @@ header section {
     font-weight: bold;
     font-size: 16px;
     padding: 4px 20px;
-    /* 8px vertical, 20px horizontal */
     border: none;
     border-radius: 15px;
     margin-top: 10px;
@@ -241,7 +232,6 @@ header section {
 .alinear-boton-usuario {
     display: flex;
     align-items: center;
-    /* Centra verticalmente los elementos */
     margin-right: 20px;
     order: 4;
     gap: 10px;
@@ -823,11 +813,8 @@ header section {
     z-index: 8;
     position: relative;
     display: inline-flex;
-    /* Activa flexbox en el botón */
     align-items: center;
-    /* Centra verticalmente texto + ícono */
     justify-content: center;
-    /*Centra horizontalmente*/
     gap: 4px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -842,7 +829,7 @@ header section {
     pointer-events: none;
 }
 
-/* Posición y rotación de los GIFs */
+/* Posición y rotación de imagenes */
 .fire-left {
     right: -313px;
 }
@@ -851,7 +838,6 @@ header section {
     left: -313px;
 }
 
-/* Hover: mostrar GIFs y animar botón */
 .btn-fire-gif-container:hover .fire-left {
     transform: translateY(-50%) rotate(-90deg) scale(0.06);
     filter: brightness(80%);
@@ -1001,11 +987,8 @@ header section {
     z-index: 8;
     position: relative;
     display: inline-flex;
-    /* Activa flexbox en el botón */
     align-items: center;
-    /* Centra verticalmente texto + ícono */
     justify-content: center;
-    /*Centra horizontalmente*/
     gap: 4px;
 }
 
@@ -1026,10 +1009,8 @@ header section {
     display: block;
     flex-direction: column;
     align-items: center;
-    /* centra horizontalmente el contenido */
     justify-content: flex-start;
     padding: 1rem 2rem;
-    /* margen interior a los costados */
     box-sizing: border-box;
     z-index: 10;
 }
@@ -1050,7 +1031,6 @@ header section {
 .popover-compartir div {
     display: flex;
     gap: 10px;
-    /* Espacio entre cada elemento */
     align-items: center;
     justify-content: center;
     margin-bottom: 10px;
@@ -1083,7 +1063,6 @@ header section {
 
 .contenedor-copiar input {
     align-self: center;
-    /* mantiene las etiquetas alineadas a la izquierda */
     font-family: 'Baloo 2', sans-serif;
     color: #fafafa;
     font-size: 16px;
