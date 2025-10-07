@@ -15,4 +15,4 @@ Hacer clic derecho sobre register.html → Open with Live Server o usar el botó
 La página se abrirá en una URL local http://127.0.0.1:5500/register.html y el reCAPTCHA funcionará correctamente.
 Las demás páginas pueden abrirse con doble click normalmente.
 
-**La plataforma está probada en Google Chrome, Microsoft Edge(Versión 141.0.3537.57)**
+**La plataforma está probada en Google Chrome Y Microsoft Edge(Versión 141.0.3537.57)**
