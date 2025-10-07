@@ -201,14 +201,11 @@ article[data-premium="true"]:hover {
 
 #btn-suscribirse-footer {
     line-height: 2.3;
-    /* Valor mayor a 1 para bajar el texto */
 }
 
 
 .home-carrusel:first-child li.quick-bounce {
     animation: dramaticBounce 0.8s ease-out;
-    position: relative;
-
 }
 
 @keyframes dramaticBounce {

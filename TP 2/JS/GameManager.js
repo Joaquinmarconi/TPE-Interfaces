@@ -238,11 +238,15 @@ class GameManager {
 
         if (carruselId === 'novedades-carrusel') {
             const tarjetas = contenedor.querySelectorAll('li');
-            tarjetas.forEach(tarjeta => tarjeta.classList.add('quick-bounce'));
+            tarjetas.forEach(t => {
+                t.addEventListener('animationend', (e) => {
+                    t.classList.remove('quick-bounce');
+                }, { once: true });
 
-            setTimeout(() => {
-                tarjetas.forEach(tarjeta => tarjeta.classList.remove('quick-bounce'));
-            }, 600);
+                t.classList.remove('quick-bounce');
+                void t.offsetWidth;
+                t.classList.add('quick-bounce');
+            });
         }
 
         contenedor.scrollTo({

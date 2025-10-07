@@ -434,6 +434,15 @@
 
     footer p {
         font-size: 12px;
+        line-height: 1.6;
+        margin-top: 15px;
+        padding: 0 10px;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    footer p a {
+        display: inline-block;
     }
 
     /* CARRUSELES */
