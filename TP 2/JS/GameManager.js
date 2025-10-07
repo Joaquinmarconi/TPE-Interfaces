@@ -152,7 +152,7 @@ class GameManager {
         const figure = document.createElement('figure');
         const img = document.createElement('img');
 
-        img.src = 'Assets/homer_card.png'; // ← Cambiar por la ruta correcta
+        img.src = 'Assets/homer_card.png';
         img.alt = 'Los Simpson Game';
         img.loading = 'lazy';
         img.width = 240;
@@ -188,8 +188,8 @@ class GameManager {
 
         const overlay = document.querySelector('.overlay');
         const popup = document.getElementById('popup-premium');
-         const popoversus = document.getElementById('mensaje-subscripcion');
-       const btnSuscribirse = popup.querySelector('.suscribirse input');
+        const popoversus = document.getElementById('mensaje-subscripcion');
+        const btnSuscribirse = popup.querySelector('.suscribirse input');
 
         overlay.classList.add('visible');
         popup.classList.add('open');
@@ -198,9 +198,9 @@ class GameManager {
         btnCerrar.onclick = () => {
             overlay.classList.remove('visible');
             popup.classList.remove('open');
-            
+
         };
-    } 
+    }
 
     configurarNavegacionCarruseles() {
         // Obtener todos los botones de navegación
@@ -236,24 +236,21 @@ class GameManager {
         const desplazamiento = anchoElemento * (esAnterior ? -1 : 1);
         const nuevaPosicion = contenedor.scrollLeft + desplazamiento;
 
-        const tarjetas = contenedor.querySelectorAll('li');
+        // ← AQUÍ SE AGREGA LA PARTE DE ANIMACIÓN
+        if (carruselId === 'novedades-carrusel') {
+            const tarjetas = contenedor.querySelectorAll('li');
+            tarjetas.forEach(tarjeta => tarjeta.classList.add('quick-bounce'));
 
-        // Animación rápida + scroll nativo
-        tarjetas.forEach(tarjeta => {
-            tarjeta.classList.add('quick-bounce');
-        });
+            setTimeout(() => {
+                tarjetas.forEach(tarjeta => tarjeta.classList.remove('quick-bounce'));
+            }, 600);
+        }
 
+        // Scroll normal (esto ya estaba)
         contenedor.scrollTo({
             left: nuevaPosicion,
             behavior: 'smooth'
         });
-
-        // Limpiar rápido
-        setTimeout(() => {
-            tarjetas.forEach(tarjeta => {
-                tarjeta.classList.remove('quick-bounce');
-            });
-        }, 300);
     }
 
     mostrarErrorEnCarruseles() {

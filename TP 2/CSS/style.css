@@ -117,7 +117,7 @@ header section {
 
 .suscribirse {
     flex-shrink: 0;
-   
+
 }
 
 .suscribirse input {
@@ -263,7 +263,7 @@ header section {
 #btn-usuario {
     width: auto;
     height: auto;
-    background-color:transparent;
+    background-color: transparent;
     border: none;
     padding: 0;
     cursor: pointer;
@@ -488,11 +488,22 @@ header section {
 .home-carrusel:first-child {
     margin: 20px 25px;
     padding: 10px 40px;
+    background: transparent;
+
+}
+
+.home-carrusel:first-child button {
+    top: calc(50% + 10px);
+}
+
+.home-carrusel:first-child figure {
+    background: transparent;
 }
 
 .home-carrusel:first-child figure>img {
     height: 150px;
 }
+
 
 .home-carrusel:first-child h2 {
     font-size: 28px;
@@ -505,9 +516,16 @@ header section {
     bottom: 25px;
 }
 
+.home-carrusel:first-child ul {
+    overflow-y: visible;
+    background: transparent;
+}
+
 .home-carrusel:first-child li {
     width: 230px;
     margin-bottom: 5px;
+    margin-top: 15px;
+    background: transparent;
 }
 
 .home-carrusel:first-child p {
@@ -578,10 +596,7 @@ header section {
 
 .home-carrusel article {
     border-radius: 8px;
-    /* Asegurar bordes redondeados */
     position: relative;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    /* Añadir sombra sutil */
 }
 
 .home-carrusel figure {
@@ -610,12 +625,15 @@ header section {
     z-index: 5;
     /* Elevación más sutil */
 }
-.home-carrusel li:hover img{
+
+.home-carrusel li:hover img {
     filter: brightness(45%);
 }
-.home-carrusel img{
+
+.home-carrusel img {
     filter: brightness(70%);
 }
+
 .home-carrusel article {
     border-radius: 10%;
     overflow: visible;
@@ -1452,7 +1470,8 @@ header section {
 }
 
 .opciones-form input[type="checkbox"] {
-    appearance: none; /*desactiva el estilo nativo*/
+    appearance: none;
+    /*desactiva el estilo nativo*/
     width: 14px;
     height: 14px;
     border: 1px solid #b3b3b3;
@@ -1525,7 +1544,8 @@ header section {
 
 .g-recaptcha {
     transform: scale(0.8);
-    transform-origin: 0 0; /* Mantiene la posición arriba a la izquierda */
+    transform-origin: 0 0;
+    /* Mantiene la posición arriba a la izquierda */
 }
 
 .separador {
@@ -1573,7 +1593,8 @@ header section {
     left: 15px;
     width: 20px;
     height: 20px;
-    object-fit: contain; /*para que el ícono no se deforme*/
+    object-fit: contain;
+    /*para que el ícono no se deforme*/
 }
 
 .login-social button span {
@@ -1691,7 +1712,8 @@ header section {
 }
 
 .acceso-popover.visible .checkmark {
-    animation: checkPop 0.4s ease forwards 0.3s; /* delay de 0.3s para aparecer después del pop */
+    animation: checkPop 0.4s ease forwards 0.3s;
+    /* delay de 0.3s para aparecer después del pop */
 }
 
 @keyframes checkPop {
@@ -1735,7 +1757,8 @@ header section {
 .loading-contenido {
     text-align: center;
     width: 90%;
-    max-width: 500px; /* más ancho */
+    max-width: 500px;
+    /* más ancho */
 }
 
 .loading-porcentaje {
