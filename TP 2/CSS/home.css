@@ -125,7 +125,8 @@ header section {
 
 .home-carrusel:first-child figure {
     margin: 0;
-    position: relative !important;
+    position: relative;
+    overflow-y: visible;
     /* temporalmente para confirmar que es esto */
 }
 
@@ -206,6 +207,8 @@ article[data-premium="true"]:hover {
 
 .home-carrusel:first-child li.quick-bounce {
     animation: dramaticBounce 0.8s ease-out;
+    position: relative;
+
 }
 
 @keyframes dramaticBounce {

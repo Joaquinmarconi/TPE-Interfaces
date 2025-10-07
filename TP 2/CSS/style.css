@@ -317,9 +317,10 @@ header section {
     color: rgb(226, 62, 56);
     text-decoration: none;
 }
+
 .main-nav-user>ul>li>a:hover {
     color: rgb(187, 54, 49);
-    
+
 }
 
 .main-nav-user>ul>li:hover {
@@ -487,22 +488,19 @@ header section {
 .home-carrusel:first-child {
     margin: 20px 25px;
     padding: 10px 40px;
-    background: transparent;
-
 }
 
-.home-carrusel:first-child button {
-    top: calc(50% + 10px);
-}
-
-.home-carrusel:first-child figure {
+.home-carrusel:first-child ul {
+    overflow-y: visible;
+    overflow-x: auto;
     background: transparent;
+    padding-top: 20px;
+    margin-top: -13px;
 }
 
 .home-carrusel:first-child figure>img {
     height: 150px;
 }
-
 
 .home-carrusel:first-child h2 {
     font-size: 28px;
@@ -515,16 +513,9 @@ header section {
     bottom: 25px;
 }
 
-.home-carrusel:first-child ul {
-    overflow-y: visible;
-    background: transparent;
-}
-
 .home-carrusel:first-child li {
     width: 230px;
     margin-bottom: 5px;
-    margin-top: 15px;
-    background: transparent;
 }
 
 .home-carrusel:first-child p {
@@ -594,7 +585,10 @@ header section {
 
 .home-carrusel article {
     border-radius: 8px;
+    /* Asegurar bordes redondeados */
     position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    /* Añadir sombra sutil */
 }
 
 .home-carrusel figure {
