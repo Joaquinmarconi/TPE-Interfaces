@@ -63,6 +63,16 @@ for (let i = 1; i <= 5; i++) {
   })
 };
 
+
+const btnComentar = document.getElementById('btn-comentar');
+
+btnComentar.addEventListener('click', () => {
+  // Reinicia la animación si ya se había hecho antes
+  btnComentar.classList.remove('animar-comentar');
+  void btnComentar.offsetWidth; // truco para forzar el reinicio
+  btnComentar.classList.add('animar-comentar');
+});
+
 //popovers
 
 const btnCom = document.getElementById('btn-compartir');

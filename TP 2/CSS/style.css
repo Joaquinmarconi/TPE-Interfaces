@@ -1265,10 +1265,7 @@ header section {
 }
 
 .animar-comentar {
-    animation-duration: 8s;
-    animation-name: animComentar;
-    animation-iteration-count: infinite;
-    animation-delay: 1s;
+    animation: animComentar 2s ease-in-out;
 }
 
 @keyframes animComentar {
