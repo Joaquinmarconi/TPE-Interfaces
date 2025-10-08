@@ -1,110 +1,157 @@
 /* ============================================
-   HOME - Sobrescrituras específicas
-   Solo para home.html
+   HOME.CSS - MOBILE FIRST
    ============================================ */
+
+/* BASE: MÓVIL (320px - 528px) */
+body {
+    overflow-x: hidden;
+    max-width: 100vw;
+    position: relative;
+}
 
 header {
     width: 100%;
+    max-width: 100vw;
+    height: auto;
+    position: relative;
+    z-index: 100;
 }
 
 header section {
-    padding: 8px 15px;
-    /* Menos padding para mover elementos más a la izquierda */
-    gap: 18px;
-    /* Ligeramente menos gap */
-    flex-wrap: nowrap;
-}
-
-.logo {
-    width: auto;
     height: auto;
-    margin-right: 0;
-    margin-top: 6px;
-    margin-left: -10px;
+    min-height: auto;
+    padding: 8px;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding-bottom: 12px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
-.logo img {
-    height: 45px;
-    width: auto;
-    max-height: none;
-
+header .menu {
+    order: 1;
+    margin-left: 2px;
+    margin-top: 4px;
 }
 
-.alinear-buscar {
-    margin-right: 0;
-    margin-left: 268px;
-    margin-bottom: 0;
+header .menu img {
+    width: 20px;
+    height: 20px;
 }
 
-.alinear-input {
-    text-indent: -0.7px;
-    /* Mueve el texto hacia la izquierda */
+header .logo {
+    order: 2;
+    margin-right: auto;
+    margin-left: -5px;
+    margin-top: 4px;
 }
 
-
-.icono-busqueda {
-    transform: translateY(-57%);
+header .logo img {
+    height: 30px;
 }
 
-.alinear-boton-usuario {
-    margin-left: auto;
-    margin-right: 15px;
-    gap: 20px;
+header .alinear-boton-usuario {
+    order: 3;
+    margin-left: 0;
+    margin-right: 8px;
+    gap: 8px;
     margin-top: 2px;
 }
 
-.suscribirse input {
-    height: 39px;
-    margin-bottom: 1px;
-    margin-right: 0px;
-    order: unset;
-    padding-bottom: 1px;
+header .alinear-buscar {
+    order: 4;
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 100%;
+    margin: 8px 0 0 0;
+    box-sizing: border-box;
 }
 
-/* Usuario */
-.menu-usuario img {
-    width: 34px;
-    height: 34px;
-    margin-top: 3px;
-    margin-left: 0;
-    margin-bottom: 0;
+header .alinear-input {
+    height: 35px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.main-nav-user.openUser {
-    display: block;
-    position: absolute;
-    top: 60px;
-    right: 1px;
+header .suscribirse input {
+    width: 85px;
+    height: 32px;
+    font-size: 13px;
+}
+
+header .menu-usuario img {
+    width: 28px;
+    height: 28px;
+}
+
+header .main-nav-user.openUser {
+    position: fixed;
+    top: 122px;
+    right: 10px;
     left: auto;
     margin-left: 0;
-    width: 180px;
-    height: 190px;
-    z-index: 9;
+    z-index: 1000;
 }
 
-#btn-usuario {
-    order: unset;
-    background-color: transparent;
+
+header .main-nav.open {
+    position: fixed;
+    top: 122px;
+    left: 0;
+    z-index: 1000;
 }
 
-/* Menu hamburguesa - limpia duplicados */
-.menu {
-    width: auto;
-    height: auto;
-    background-color: transparent;
-    margin-left: 4px;
-    margin-top: 6px;
+footer {
+    padding: 30px 10px 10px 10px;
+    overflow-x: hidden;
 }
 
-#btn-open {
-    background-color: transparent;
+footer .footer-content {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+    justify-items: center;
 }
 
-.home-carrusel figure {
-    margin: 0;
-    position: relative;
-    overflow-y: visible;
+footer .footer-logo {
+    order: 5;
 }
+
+footer .footer-logo img {
+    width: 120px;
+}
+
+footer nav h3 {
+    font-size: 16px;
+}
+
+footer nav {
+    text-align: center;
+    width: 100%;
+    /* agregar */
+}
+
+footer nav a {
+    font-size: 13px;
+}
+
+footer .footer-social img {
+    width: 20px;
+    height: 20px;
+}
+
+footer p {
+    font-size: 12px;
+    line-height: 1.6;
+    margin-top: 15px;
+    padding: 0 10px;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
 
 .premium-badge {
     position: absolute;
@@ -123,86 +170,102 @@ header section {
     border-radius: 0;
 }
 
-.home-carrusel:first-child figure {
-    margin: 0;
-    position: relative;
-    overflow-y: visible;
-    /* temporalmente para confirmar que es esto */
-}
-
-/* Badge para novedades */
 .home-carrusel:first-child .premium-badge {
     width: 45.57px;
     height: 24px;
     left: -1.5px;
 }
 
-/* Efecto hover para juegos premium */
-article[data-premium="true"]:hover {
-    transform: scale(1.02);
-    transition: transform 0.2s ease;
+.home-carrusel figure {
+    margin: 0;
+    position: relative;
+    overflow-y: visible;
 }
 
+/* POPUPS - BASE MÓVIL */
 .popup-premium {
     display: none;
 }
 
 .popup-premium.open {
-    height: 199px;
-    width: 558px;
-    border-radius: 15px;
-    background: #2a2a2a;
-    border: 0;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 20px 30px;
+    width: 90%;
+    max-width: 350px;
+    height: auto;
+    min-height: 180px;
+    padding: 18px;
+    background: #2a2a2a;
+    border: 0;
+    border-radius: 15px;
     box-sizing: border-box;
-    z-index: 1000;
+    z-index: 10000;
 }
 
 .popup-premium h3 {
     color: #FF9933;
     font-family: 'Baloo 2', sans-serif;
     font-weight: 600;
-    font-size: 18px;
-    line-height: 29px;
+    font-size: 15px;
+    line-height: 24px;
     text-align: center;
-    margin: 0 0 10px 0;
+    margin: 0 0 12px 0;
+    position: relative;
 }
 
 .popup-premium p {
     color: #b3b3b3;
     font-family: 'Baloo 2', sans-serif;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 14px;
+    line-height: 18px;
     text-align: center;
-    margin: 0 0 15px 0;
+    margin: 0 0 18px 0;
+    padding: 0;
+    position: relative;
 }
 
 .popup-premium .suscribirse input {
-    width: 139px;
-    height: 38px;
+    width: 100px;
+    height: 34px;
+    font-size: 13px;
 }
 
 .popup-close:hover {
     color: #fff;
 }
 
-.footer-logo {
-    margin-top: -6px;
+.popover-suscripcion {
+    display: none;
 }
 
-#btn-suscribirse-footer {
-    line-height: 2.3;
+.popover-suscripcion .btn-enviar {
+    margin-bottom: 10px;
+    margin-top: 20px;
 }
 
+.popover-suscripcion.open {
+    display: block !important;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 350px;
+    height: auto;
+    min-height: 280px;
+    padding: 1.5rem;
+    background: #2a2a2a;
+    border-radius: 20px;
+    box-sizing: border-box;
+    z-index: 10001;
+}
 
 .home-carrusel:first-child li.quick-bounce {
     animation: dramaticBounce 0.8s ease-out;
@@ -239,5 +302,447 @@ article[data-premium="true"]:hover {
 
     100% {
         transform: translateY(0px) scale(1) rotate(0deg);
+    }
+}
+
+@media (min-width: 529px) {
+    header section {
+        height: 60px;
+        flex-wrap: nowrap;
+        gap: 10px;
+    }
+
+    header .logo img {
+        height: 32px;
+    }
+
+    header .alinear-buscar {
+        order: 3;
+        flex: 0 1 250px;
+        margin: 0;
+    }
+
+    header .alinear-boton-usuario {
+        order: 4;
+        margin-left: auto;
+    }
+
+    header .main-nav-user.openUser {
+        top: 60px;
+    }
+
+    header .main-nav.open {
+        top: 60px;
+    }
+
+    /* POPUPS */
+    .popup-premium.open {
+        width: 85%;
+        max-width: 400px;
+        min-height: 190px;
+        padding: 20px;
+    }
+
+    .popover-suscripcion.open {
+        width: 85%;
+        max-width: 400px;
+        min-height: 280px;
+        padding: 1.5rem;
+    }
+
+    footer .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        justify-items: center;
+    }
+
+    footer .footer-logo {
+        grid-column: span 2;
+        order: 5;
+    }
+}
+
+@media (min-width: 769px) {
+    header section {
+        padding: 10px;
+        gap: 12px;
+    }
+
+    header .logo {
+        margin-left: -8px;
+        margin-top: 5px;
+    }
+
+    header .logo img {
+        height: 35px;
+    }
+
+    header .menu img {
+        width: 22px;
+        height: 22px;
+    }
+
+    header .alinear-buscar {
+        flex: 0 1 300px;
+    }
+
+    header .alinear-input {
+        height: 36px;
+    }
+
+    footer {
+        padding: 40px 15px 15px 15px;
+    }
+
+    footer .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        justify-items: center;
+    }
+
+    footer .footer-logo {
+        grid-column: span 2;
+    }
+
+    footer .footer-logo img {
+        width: 140px;
+    }
+
+    /* POPUPS */
+    .popup-premium.open {
+        width: 80%;
+        max-width: 450px;
+        min-height: 199px;
+        padding: 20px 25px;
+    }
+
+    .popup-premium h3 {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .popup-premium p {
+        font-size: 15px;
+        line-height: 19px;
+    }
+
+    .popover-suscripcion.open {
+        width: 80%;
+        max-width: 450px;
+        min-height: 280px;
+        padding: 1.5rem;
+    }
+}
+
+/* 1025px+ */
+@media (min-width: 1025px) {
+    header .logo {
+        margin-left: -10px;
+        margin-top: 6px;
+    }
+
+    header .logo img {
+        height: 40px;
+    }
+
+    /* POPUPS */
+    .popup-premium.open {
+        width: 558px;
+        max-width: none;
+    }
+
+    .popover-suscripcion.open {
+        width: 500px;
+        max-width: none;
+    }
+
+    /* FOOTER */
+    footer {
+        padding: 50px 20px 20px 20px;
+    }
+
+    footer .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        justify-items: center;
+        /* CAMBIAR de start a center */
+    }
+
+    footer .footer-logo {
+        grid-column: span 2;
+        order: 5;
+        /* mantener abajo */
+        justify-content: center;
+    }
+
+    footer .footer-logo img {
+        width: 150px;
+    }
+
+    footer nav {
+        text-align: center;
+    }
+}
+
+/* 1200px+ DESKTOP - USA VALORES DEL STYLE.CSS COMPARTIDO */
+@media (min-width: 1200px) {
+
+    header section {
+        padding: 8px 15px;
+        gap: 18px;
+    }
+
+    header .menu {
+        margin-left: 4px;
+        margin-top: 6px;
+    }
+
+    header .menu img {
+        width: 25px;
+        height: 25px;
+    }
+
+    header .logo {
+        margin-right: 0;
+        margin-top: 6px;
+        margin-left: -10px;
+    }
+
+    header .logo img {
+        height: 45px;
+    }
+
+    header .alinear-buscar {
+        flex: 1;
+        min-width: 150px;
+        max-width: 410px;
+        margin-right: 0;
+        margin-left: 248px;
+        margin-bottom: 0;
+    }
+
+    header .alinear-input {
+        height: 40px;
+        font-size: 18px;
+    }
+
+    header .icono-busqueda {
+        transform: translateY(-57%);
+    }
+
+    header .alinear-boton-usuario {
+        margin-left: auto;
+        margin-right: 15px;
+        gap: 20px;
+        margin-top: 2px;
+    }
+
+    header .suscribirse input {
+        height: 39px;
+        width: 130px;
+        font-size: 18px;
+        margin-bottom: 1px;
+        margin-right: 0px;
+        order: unset;
+        padding-bottom: 1px;
+    }
+
+    header .menu-usuario img {
+        width: 34px;
+        height: 34px;
+        margin-top: 3px;
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+
+    header .main-nav-user.openUser {
+        top: 60px;
+        right: 1px;
+        left: auto;
+        margin-left: 0;
+    }
+
+    header #btn-usuario {
+        order: unset;
+        background-color: transparent;
+    }
+
+    header #btn-open {
+        background-color: transparent;
+    }
+
+    /* FOOTER - valores exactos */
+    footer {
+        padding: 40px 20px 0px 20px;
+        height: 392px;
+    }
+
+    footer .footer-content {
+        grid-template-columns: repeat(4, 1fr) auto;
+        gap: 80px;
+        margin-top: 30px;
+        margin-bottom: 108px;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+    }
+
+    footer .footer-logo {
+        grid-column: auto;
+        order: unset;
+        margin-top: 0;
+        /* cambiar de -6px a 0 */
+        margin-bottom: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    footer .footer-logo img {
+        width: 180px;
+        height: auto;
+        margin-left: 9px;
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-right: 0;
+    }
+
+    footer nav {
+        text-align: left;
+        align-self: start;
+    }
+
+    footer nav h3 {
+        font-size: 22px;
+        margin: 0 0 4px 0;
+    }
+
+    footer nav a {
+        font-size: 16px;
+    }
+
+    footer .footer-social {
+        gap: 13px;
+        margin-bottom: 18px;
+        margin-top: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    footer .footer-social img {
+        width: 24px;
+        height: 24px;
+    }
+
+    footer p {
+        font-size: 14px;
+        line-height: 0;
+        margin-bottom: 25px;
+        margin-top: 0;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+    }
+
+    footer #btn-suscribirse-footer {
+        width: 130px;
+        height: 39px;
+        line-height: 2.3;
+    }
+
+    /* POPUPS */
+
+    .popover-suscripcion.open {
+        width: 500px;
+        height: 245px;
+        max-width: none;
+        min-height: auto;
+        padding: 1rem 2rem 0.5rem 2rem;
+        display: flex;
+        /* CAMBIAR de block a flex */
+        flex-direction: column;
+        z-index: 10;
+    }
+
+    .popover-suscripcion p {
+        color: #B3B3B3;
+        font-family: 'Baloo 2', sans-serif;
+        font-weight: bold;
+        font-size: 18px;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .popover-suscripcion label {
+        align-self: flex-start;
+        font-family: 'Baloo 2', sans-serif;
+        color: #B3B3B3;
+        font-size: 16px;
+    }
+
+    .popover-suscripcion input[type="email"] {
+        width: 100%;
+        padding: 0.4rem 0.6rem;
+        border-radius: 15px;
+        margin-bottom: 15px;
+        font-family: 'Baloo 2', sans-serif;
+        font-size: 15px;
+        color: #fafafa;
+        background-color: #5f5d5d;
+    }
+
+    .opciones-pago {
+        display: flex;
+        align-items: flex-start;
+        gap: 25px;
+        width: 100%;
+        flex-direction: row;
+        /* horizontal en desktop */
+    }
+
+    .opciones-pago label {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        font-family: 'Baloo 2', sans-serif;
+        color: #FAFAFA;
+        font-size: 15px;
+    }
+
+    .popover-suscripcion .btn-enviar {
+        background-color: steelblue;
+        color: #FAFAFA;
+        font-family: 'Baloo 2', sans-serif;
+        font-weight: bold;
+        font-size: 16px;
+        padding: 4px 20px;
+        border-radius: 15px;
+        margin-top: 10px;
+        margin-left: 160px;
+        margin-bottom: 0;
+        /* quitar el que agregamos antes */
+    }
+
+    .popup-premium.open {
+        height: 199px;
+        width: 558px;
+        padding: 20px 30px;
+    }
+
+    .popup-premium h3 {
+        font-size: 18px;
+        line-height: 29px;
+        margin: 0 0 10px 0;
+    }
+
+    .popup-premium p {
+        font-size: 16px;
+        line-height: 20px;
+        margin: 0 0 15px 0;
+    }
+
+    .popup-premium .suscribirse input {
+        width: 139px;
+        height: 38px;
+        font-size: 18px;
     }
 }
