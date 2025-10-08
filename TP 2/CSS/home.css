@@ -15,6 +15,7 @@ header {
     height: auto;
     position: relative;
     z-index: 100;
+    overflow: visible;
 }
 
 header section {
@@ -87,7 +88,7 @@ header .menu-usuario img {
 }
 
 header .main-nav-user.openUser {
-    position: fixed;
+    position: absolute;
     top: 122px;
     right: 10px;
     left: auto;
@@ -97,7 +98,7 @@ header .main-nav-user.openUser {
 
 
 header .main-nav.open {
-    position: fixed;
+    position: absolute;
     top: 122px;
     left: 0;
     z-index: 1000;
