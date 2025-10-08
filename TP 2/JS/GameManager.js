@@ -159,7 +159,7 @@ class GameManager {
         img.height = 135;
 
         const titulo = document.createElement('h3');
-        titulo.textContent = 'Los Simpson: Peg Solitaire';
+        titulo.textContent = 'Donuts Solitaire';
 
         const rating = document.createElement('p');
         rating.textContent = '★ 4.8/5';
