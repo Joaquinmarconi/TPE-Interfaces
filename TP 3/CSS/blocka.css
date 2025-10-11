@@ -3,9 +3,6 @@ body{
       background-color: #2A2A2A;
 }
 .canvas-contenedor{
-    width: 600px;
-    height: 400px;
-    background-color: rgb(92, 157, 214);
     margin-left: 70px; 
     padding:20px;
     margin-top: 20px;
@@ -13,12 +10,11 @@ body{
 .contenedor-blocka{
     width: 800px;
     height: 590px;
-    background-color: aliceblue;
    
 }
 .contenedor-blocka .reloj{
     margin-top: 10px;
-   margin-left: 600px;
+   margin-left: 570px;
 }
 .reloj {
     text-align: center;
@@ -34,4 +30,45 @@ body{
     font-size: 20px;
     margin: 0;
     color: chocolate;
+}
+#ganasteOverlay {
+    position: absolute;
+    top: 20px; /* un poco abajo del borde superior del canvas */
+    left: 50%;
+    transform: translateX(-125%) translateY(150%); /* centrar horizontalmente */
+    width: 400px;  /* más pequeño que el canvas */
+    height: 150px; /* más compacto */
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    z-index: 10;
+    text-align: center;
+}
+
+#ganasteOverlay h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 5px #000;
+
+}
+
+#nextLevelBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 20px;
+    background: linear-gradient(45deg, #ff6b6b, #feca57);
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#nextLevelBtn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
