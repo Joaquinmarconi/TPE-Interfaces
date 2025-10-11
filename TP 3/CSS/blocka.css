@@ -1,0 +1,37 @@
+body{
+   
+      background-color: #2A2A2A;
+}
+.canvas-contenedor{
+    width: 600px;
+    height: 400px;
+    background-color: rgb(92, 157, 214);
+    margin-left: 70px; 
+    padding:20px;
+    margin-top: 20px;
+}
+.contenedor-blocka{
+    width: 800px;
+    height: 590px;
+    background-color: aliceblue;
+   
+}
+.contenedor-blocka .reloj{
+    margin-top: 10px;
+   margin-left: 600px;
+}
+.reloj {
+    text-align: center;
+    width: 100px;
+    height: 40px;
+    padding-top: 6px;
+    border: 2px solid #ee9f28;
+    border-radius: 10px;
+    background-color: rgb(57, 58, 59);
+}
+
+.reloj h1 {
+    font-size: 20px;
+    margin: 0;
+    color: chocolate;
+}

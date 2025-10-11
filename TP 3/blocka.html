@@ -5,11 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blocka</title>
     <link rel="stylesheet" href="CSS/blocka.css">
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
-    <canvas id="canva-Blocka" style="width: 600px; height: 500px; background-color: rgb(92, 157, 214); margin-left: 350px; padding:20px;">
+     <header >
 
-    </canvas>
+        <section>
+      
+            <div > 
+                <button id="btn-open" class="menu">
+                    <img src="Assets/menu.png" alt="barras menu">
+                </button>
+            </div>
+
+        <!-- Logo (izquierda) -->
+            <div class="logo">
+                <img src="Assets/nextplay_transparent.png" alt="Next Play" >
+            </div>
+    
+            
+            <!-- Buscador (centro) -->
+        <div class="alinear-buscar">
+            <div>
+                <input type="text" placeholder="Buscar..."  class="alinear-input">
+                <img src="Assets/buscar.png" alt="icono busqueda" class="icono-busqueda">
+            </div>
+        </div>
+
+        <div class="alinear-boton-usuario">
+            <div class="suscribirse">
+                <input type="button" value="Suscribirse" >
+            </div>
+
+            <div >
+                <button id="btn-usuario" class="menu-usuario">
+                    <img src="Assets/mujer.png" alt="barras menu">
+                </button>
+            </div>
+        </div>
+
+   </section>
+
+       <nav class="main-nav" style="height: 2342px;">
+                    <ul>
+                        <li><img src="Assets/home.png" alt="home" ><a href="home.html">Inicio</a></li>
+                        <li><img src="Assets/reciente.png" alt="reciente" >Recientes</li>
+                        <li><img src="Assets/start.png" alt="reciente" >Destacados</li>
+                        <li id="btn-submenu"><img src="Assets/control.png" alt="control" >Categorias <img src="Assets/abajo.png" class="flecha-abajo" alt="control" >
+                            <ul class="submenu">
+                                <li><img src="Assets/puzzle.png" alt="puzzle">Puzzle</li>
+                                <li><img src="Assets/belleza.png" alt="belleza">Belleza</a></li>
+                                <li><img src="Assets/adventure.png" alt="adventure">Aventura</a></li>
+                                <li><img src="Assets/futbol.png" alt="sports">Deportes</a></li>
+                                <li><img src="Assets/pets.png" alt="pets">Animales</a></li>
+                                <li><img src="Assets/chef.png" alt="cocina">Cocina</a></li>
+                                <li><img src="Assets/habilidad.png" alt="destreza">Destreza</a></li>
+                            </ul>
+                        </li>
+    
+                    </ul>
+        </nav>
+        <nav class="main-nav-user">
+                    <ul>
+                        <li><img src="Assets/user.png" alt="usuario" >Mi perfil</li>
+                        <li><img src="Assets/favorite.png" alt="fav" >Favoritos</li>
+                        <li><img src="Assets/settings.png" alt="configuracion" >Configuración</li>
+                         <li><img src="Assets/help.png" alt="ayuda" >Ayuda</li>
+                        <li><img src="Assets/logout-rojo.png" alt="cerrae" ><a href="login.html">Cerrar Sesion</a></li>
+                    </ul>
+        </nav>
+
+    </header>
+
+
+    <section class="contenedor-blocka">
+        <div class="reloj">
+            <h1 id="tiempo">00:00</h1>
+        </div>
+        <canvas id="canva-Blocka" class="canvas-contenedor">
+
+            </canvas>
+
+    </section>
+
+    
+   <!--  <div style="background-color: aqua;width: 200px;height: 200px; margin-top: 370px;margin-left: 20px;"> </div>-->
     
 </body>
 </html>
