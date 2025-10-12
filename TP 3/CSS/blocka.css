@@ -1,18 +1,20 @@
 body{
-   
-      background-color: #2A2A2A;
+    background-color: #2A2A2A;
 }
+
 .canvas-contenedor{
     margin-left: 70px; 
     padding:20px;
     margin-top: 5px;
 }
+
 .contenedor-blocka{
     position: relative;
     width: 800px;
     height: 590px;
    
 }
+
 .contenedor-blocka .reloj{
     margin-top: 20px;
    margin-left: 45px;
@@ -49,6 +51,7 @@ body{
     margin: 0;
     color: chocolate;
 }
+
 #ganasteOverlay {
     position: absolute;
     top: 20px; /* un poco abajo del borde superior del canvas */
