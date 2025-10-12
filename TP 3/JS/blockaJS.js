@@ -9,10 +9,14 @@ window.onload = function() {
 
     const filters = ["grayscale", "brightness", "negative"];
     const imagePool = [
-        "Assets/nubes.jpg",
-        "Assets/planetas.jpg",
-        "Assets/planetas-complejo.jpg",
-        "Assets/mandala.jpg"
+        "Assets/gato.jpeg",
+        "Assets/luna.jpeg",
+        "Assets/zootopia.jpeg",
+        "Assets/flowerBoy.jpeg",
+        "Assets/caballos.jpeg",
+        "Assets/mineCraft.jpeg",
+        "Assets/tierra.jpeg",
+        "Assets/estrella.jpeg"
     ];
 
     const levels = shuffleArray([...imagePool]);
