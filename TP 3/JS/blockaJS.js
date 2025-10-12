@@ -3,6 +3,7 @@ window.onload = function() {
     const ctx = canvas.getContext("2d");
     const overlay = document.getElementById("ganasteOverlay");
     const nextBtn = document.getElementById("nextLevelBtn");
+    const retryBtn = document.getElementById("retryLevelBtn"); // 👈 nuevo botón en el overlay
     const startBtn = document.getElementById("startBtn");
     const tiempoElem = document.getElementById("tiempo");
     const nivelTexto = document.getElementById("nivelTexto");
@@ -19,18 +20,15 @@ window.onload = function() {
         "Assets/estrella.jpeg"
     ];
 
-    const levels = shuffleArray([...imagePool]);
     let currentLevel = 0;
+    const levels = [...imagePool];
     const pieces = [];
     const gridSize = 2;
 
     let timer;
     let seconds = 0;
-    let gameOver = false;
-
-    function shuffleArray(arr) {
-        return arr.sort(() => Math.random() - 0.5);
-    }
+    let gameActive = false;
+    let timeLimit = 5; // ⏱️ tiempo máximo de cada nivel (5 segundos)
 
     function startTimer() {
         clearInterval(timer);
@@ -38,10 +36,21 @@ window.onload = function() {
         tiempoElem.textContent = "00:00";
 
         timer = setInterval(() => {
+            if (!gameActive) return;
+
             seconds++;
             const mins = Math.floor(seconds / 60).toString().padStart(2, "0");
             const secs = (seconds % 60).toString().padStart(2, "0");
             tiempoElem.textContent = `${mins}:${secs}`;
+
+            if (seconds >= timeLimit) {
+                clearInterval(timer);
+                gameActive = false;
+                overlay.style.display = "block";
+                overlay.querySelector("h2").textContent = "⏰ ¡Tiempo agotado!";
+                nextBtn.style.display = "none";
+                retryBtn.style.display = "block";
+            }
         }, 1000);
     }
 
@@ -56,11 +65,11 @@ window.onload = function() {
         nivelTexto.textContent = `Nivel ${currentLevel + 1}`;
     }
 
-    function startLevel(startTimerFlag = true) {
+    function startLevel() {
         pieces.length = 0;
         overlay.style.display = "none";
+        gameActive = true;
         updateLevelText();
-        gameOver = false;
 
         if (currentLevel >= levels.length) {
             alert("🎉 ¡Has completado todos los niveles!");
@@ -68,35 +77,32 @@ window.onload = function() {
             return;
         }
 
-        if (startTimerFlag) startTimer(); // ✅ Solo activa el timer si corresponde
+        startTimer();
 
         const img = new Image();
         img.src = levels[currentLevel];
-
         img.onload = function() {
             const pieceWidth = img.width / gridSize;
             const pieceHeight = img.height / gridSize;
 
+            const randomRotations = [0, 90, 180, 270];
             for (let row = 0; row < gridSize; row++) {
                 for (let col = 0; col < gridSize; col++) {
                     pieces.push({
                         x: col * pieceWidth,
                         y: row * pieceHeight,
-                        rotation: [0, 90, 180, 270][Math.floor(Math.random() * 4)],
+                        rotation: randomRotations[Math.floor(Math.random() * randomRotations.length)],
                         filter: getFilterForLevel(),
                         img: img
                     });
                 }
             }
-
-            draw(); // dibuja las piezas mezcladas
+            draw();
         };
     }
 
     function draw(original = false) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        if (pieces.length === 0) return;
-
         const pieceWidth = pieces[0].img.width / gridSize;
         const pieceHeight = pieces[0].img.height / gridSize;
 
@@ -124,13 +130,12 @@ window.onload = function() {
                 -canvas.width / (gridSize * 2), -canvas.height / (gridSize * 2),
                 canvas.width / gridSize, canvas.height / gridSize
             );
-
             ctx.restore();
         });
     }
 
     canvas.addEventListener("mousedown", (e) => {
-        if (gameOver) return;
+        if (!gameActive) return;
 
         e.preventDefault();
         const rect = canvas.getBoundingClientRect();
@@ -141,6 +146,8 @@ window.onload = function() {
         const row = Math.floor(y / (canvas.height / gridSize));
         const index = row * gridSize + col;
 
+        if (index < 0 || index >= pieces.length) return;
+
         if (e.button === 0) pieces[index].rotation -= 90;
         else if (e.button === 2) pieces[index].rotation += 90;
 
@@ -149,8 +156,16 @@ window.onload = function() {
         if (pieces.every(p => p.rotation === 0)) {
             draw(true);
             overlay.style.display = "block";
+            overlay.querySelector("h2").textContent = "🎉 ¡Ganaste!";
             clearInterval(timer);
-            gameOver = true;
+            gameActive = false;
+
+            retryBtn.style.display = "none";
+            if (currentLevel < levels.length - 1) {
+                nextBtn.style.display = "block";
+            } else {
+                nextBtn.style.display = "none";
+            }
         } else {
             draw();
         }
@@ -159,15 +174,47 @@ window.onload = function() {
     canvas.addEventListener("contextmenu", e => e.preventDefault());
 
     nextBtn.addEventListener("click", () => {
-        currentLevel++;
+        if (currentLevel < levels.length - 1) {
+            currentLevel++;
+            startLevel();
+        } else {
+            alert("🏁 ¡Juego terminado!");
+        }
+    });
+
+    retryBtn.addEventListener("click", () => {
         startLevel();
     });
 
     startBtn.addEventListener("click", () => {
         startBtn.style.display = "none";
-        startLevel(true); // ✅ activamos el timer al presionar Start
+        startLevel();
     });
 
-    // ✅ Mostramos la primera imagen desordenada al cargar la página
-    startLevel(false); // no activa el timer aún
+    // Mostrar primera imagen desordenada desde el inicio
+    (function previewLevel() {
+        pieces.length = 0;
+        updateLevelText();
+
+        const img = new Image();
+        img.src = levels[currentLevel];
+        img.onload = function() {
+            const pieceWidth = img.width / gridSize;
+            const pieceHeight = img.height / gridSize;
+            const randomRotations = [0, 90, 180, 270];
+
+            for (let row = 0; row < gridSize; row++) {
+                for (let col = 0; col < gridSize; col++) {
+                    pieces.push({
+                        x: col * pieceWidth,
+                        y: row * pieceHeight,
+                        rotation: randomRotations[Math.floor(Math.random() * randomRotations.length)],
+                        filter: getFilterForLevel(),
+                        img: img
+                    });
+                }
+            }
+            draw();
+        };
+    })();
 };
