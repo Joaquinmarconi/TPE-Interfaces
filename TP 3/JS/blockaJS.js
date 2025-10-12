@@ -1,4 +1,3 @@
-
 window.onload = function() {
     const canvas = document.getElementById("canva-Blocka");
     const ctx = canvas.getContext("2d");
@@ -6,25 +5,32 @@ window.onload = function() {
     const nextBtn = document.getElementById("nextLevelBtn");
     const startBtn = document.getElementById("startBtn");
     const tiempoElem = document.getElementById("tiempo");
+    const nivelTexto = document.getElementById("nivelTexto");
 
     const filters = ["grayscale", "brightness", "negative"];
-    const levels = [
+    const imagePool = [
         "Assets/nubes.jpg",
         "Assets/planetas.jpg",
         "Assets/planetas-complejo.jpg",
         "Assets/mandala.jpg"
     ];
 
+    const levels = shuffleArray([...imagePool]);
     let currentLevel = 0;
     const pieces = [];
     const gridSize = 2;
 
-    let timer;      // variable para setInterval
+    let timer;
     let seconds = 0;
+    let gameOver = false;
+
+    function shuffleArray(arr) {
+        return arr.sort(() => Math.random() - 0.5);
+    }
 
     function startTimer() {
-        clearInterval(timer); // limpiar cualquier intervalo previo
-        seconds = 0;          // reiniciar contador
+        clearInterval(timer);
+        seconds = 0;
         tiempoElem.textContent = "00:00";
 
         timer = setInterval(() => {
@@ -35,9 +41,22 @@ window.onload = function() {
         }, 1000);
     }
 
-    function startLevel() {
+    function getFilterForLevel() {
+        if (currentLevel === 0) return "grayscale";
+        if (currentLevel === 1) return "brightness";
+        if (currentLevel === 2) return "negative";
+        return filters[Math.floor(Math.random() * filters.length)];
+    }
+
+    function updateLevelText() {
+        nivelTexto.textContent = `Nivel ${currentLevel + 1}`;
+    }
+
+    function startLevel(startTimerFlag = true) {
         pieces.length = 0;
         overlay.style.display = "none";
+        updateLevelText();
+        gameOver = false;
 
         if (currentLevel >= levels.length) {
             alert("🎉 ¡Has completado todos los niveles!");
@@ -45,7 +64,7 @@ window.onload = function() {
             return;
         }
 
-        startTimer(); // reiniciar el reloj en cada nivel
+        if (startTimerFlag) startTimer(); // ✅ Solo activa el timer si corresponde
 
         const img = new Image();
         img.src = levels[currentLevel];
@@ -60,30 +79,31 @@ window.onload = function() {
                         x: col * pieceWidth,
                         y: row * pieceHeight,
                         rotation: [0, 90, 180, 270][Math.floor(Math.random() * 4)],
-                        filter: filters[Math.floor(Math.random() * filters.length)],
+                        filter: getFilterForLevel(),
                         img: img
                     });
                 }
             }
 
-            draw();
+            draw(); // dibuja las piezas mezcladas
         };
     }
 
     function draw(original = false) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (pieces.length === 0) return;
+
         const pieceWidth = pieces[0].img.width / gridSize;
         const pieceHeight = pieces[0].img.height / gridSize;
 
         pieces.forEach((p, i) => {
             const col = i % gridSize;
             const row = Math.floor(i / gridSize);
-
             const destX = col * (canvas.width / gridSize);
             const destY = row * (canvas.height / gridSize);
 
             ctx.save();
-            ctx.translate(destX + canvas.width / (gridSize*2), destY + canvas.height / (gridSize*2));
+            ctx.translate(destX + canvas.width / (gridSize * 2), destY + canvas.height / (gridSize * 2));
             ctx.rotate((p.rotation * Math.PI) / 180);
 
             if (!original) {
@@ -97,7 +117,7 @@ window.onload = function() {
             ctx.drawImage(
                 p.img,
                 p.x, p.y, pieceWidth, pieceHeight,
-                -canvas.width / (gridSize*2), -canvas.height / (gridSize*2),
+                -canvas.width / (gridSize * 2), -canvas.height / (gridSize * 2),
                 canvas.width / gridSize, canvas.height / gridSize
             );
 
@@ -106,6 +126,8 @@ window.onload = function() {
     }
 
     canvas.addEventListener("mousedown", (e) => {
+        if (gameOver) return;
+
         e.preventDefault();
         const rect = canvas.getBoundingClientRect();
         const x = e.clientX - rect.left;
@@ -123,7 +145,8 @@ window.onload = function() {
         if (pieces.every(p => p.rotation === 0)) {
             draw(true);
             overlay.style.display = "block";
-            clearInterval(timer); // detener reloj al completar nivel
+            clearInterval(timer);
+            gameOver = true;
         } else {
             draw();
         }
@@ -137,7 +160,10 @@ window.onload = function() {
     });
 
     startBtn.addEventListener("click", () => {
-        startBtn.style.display = "none"; // ocultar botón
-        startLevel();
+        startBtn.style.display = "none";
+        startLevel(true); // ✅ activamos el timer al presionar Start
     });
+
+    // ✅ Mostramos la primera imagen desordenada al cargar la página
+    startLevel(false); // no activa el timer aún
 };
