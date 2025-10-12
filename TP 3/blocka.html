@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blocka</title>
+    <link rel="stylesheet" href="CSS/blocka.css">
+</head>
+<body>
+     <header >
+
+        <section>
+      
+            <div > 
+                <button id="btn-open" class="menu">
+                    <img src="Assets/menu.png" alt="barras menu">
+                </button>
+            </div>
+
+        <!-- Logo (izquierda) -->
+            <div class="logo">
+                <img src="Assets/nextplay_transparent.png" alt="Next Play" >
+            </div>
+    
+            
+            <!-- Buscador (centro) -->
+        <div class="alinear-buscar">
+            <div>
+                <input type="text" placeholder="Buscar..."  class="alinear-input">
+                <img src="Assets/buscar.png" alt="icono busqueda" class="icono-busqueda">
+            </div>
+        </div>
+
+        <div class="alinear-boton-usuario">
+            <div class="suscribirse">
+                <input type="button" value="Suscribirse" >
+            </div>
+
+            <div >
+                <button id="btn-usuario" class="menu-usuario">
+                    <img src="Assets/mujer.png" alt="barras menu">
+                </button>
+            </div>
+        </div>
+
+   </section>
+
+    </header>
+
+
+    <section class="contenedor-blocka">
+        <div class="reloj">
+            <h1 id="tiempo">00:00</h1>
+        </div>
+        <button id="startBtn">Comenzar</button>
+        <canvas id="canva-Blocka" width="600" height="380" class="canvas-contenedor">
+
+            </canvas>
+       <!-- Overlay de mensaje de victoria -->
+    <div id="ganasteOverlay" style="display:none;">
+        <h2>🎉 ¡Ganaste! 🎉</h2>
+        <button id="nextLevelBtn">Siguiente Nivel</button>
+    </div>
+
+    </section>
+
+    
+   <!--  <div style="background-color: aqua;width: 200px;height: 200px; margin-top: 370px;margin-left: 20px;"> </div>-->
+    
+</body>
+<script src="JS/blockaJS.js"></script>
+</html>
