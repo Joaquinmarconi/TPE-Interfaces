@@ -16,7 +16,9 @@ window.onload = function() {
         "Assets/caballos.jpeg",
         "Assets/mineCraft.jpeg",
         "Assets/tierra.jpeg",
-        "Assets/estrella.jpeg"
+        "Assets/estrella.jpeg",
+        "Assets/lineas.jpeg",
+        "Assets/bloques.jpeg"
     ];
 
     const levels = shuffleArray([...imagePool]);
