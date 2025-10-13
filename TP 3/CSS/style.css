@@ -444,6 +444,61 @@ header section {
     align-items: center;
 }
 
+.breadcumbs {
+    display: flex;
+    width: 1000px;
+    margin-left: 58px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.breadcumbs p {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bolder;
+    font-size: 20px;
+    color: #FAFAFA;
+}
+
+.breadcumbs img {
+    width: 17px;
+    height: 17px;
+    margin-right: 9px;
+}
+
+.breadcumbs p a {
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bolder;
+    font-size: 20px;
+    color: #FAFAFA;
+}
+
+.breadcumbs a {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #B3B3B3;
+
+}
+
+.breadcumbs p a:hover {
+    color: #b3b3b3;
+}
+
+.breadcumbs p span:hover {
+    color: #b3b3b3;
+}
+
+.breadcumbs p a span {
+    color: #FF9933;
+
+}
+
+.breadcumbs p a span:hover {
+    color: #d18e4a;
+
+}
 
 /* ===================== */
 /*        FOOTER         */
