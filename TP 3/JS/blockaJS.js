@@ -79,12 +79,8 @@ window.onload = function() {
     updateLevelText();
 
     if (currentLevel >= levels.length) {
-           overlay.querySelector("h2").textContent = "🎉 ¡Ganaste, superaste todos los niveles!";
-    overlay.style.display = "block";
     clearInterval(timer);
-    gameActive = false;
-    nextBtn.style.display = "none";
-    retryBtn.style.display = "none";
+    
     return;
     }
 
