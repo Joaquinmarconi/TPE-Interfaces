@@ -5,6 +5,7 @@ window.onload = function() {
     const nextBtn = document.getElementById("nextLevelBtn");
     const retryBtn = document.getElementById("retryLevelBtn"); // 👈 nuevo botón en el overlay
     const startBtn = document.getElementById("startBtn");
+    const backBtn=document.getElementById("backBtn");
     const tiempoElem = document.getElementById("tiempo");
     const nivelTexto = document.getElementById("nivelTexto");
 
@@ -30,7 +31,7 @@ window.onload = function() {
     let timer;
     let seconds = 0;
     let gameActive = false;
-    let timeLimit = 5; // ⏱️ tiempo máximo de cada nivel (5 segundos)
+    let timeLimit = 10; // ⏱️ tiempo máximo de cada nivel (5 segundos)
 
     function startTimer() {
         clearInterval(timer);
@@ -45,11 +46,13 @@ window.onload = function() {
             const secs = (seconds % 60).toString().padStart(2, "0");
             tiempoElem.textContent = `${mins}:${secs}`;
 
-            if (seconds >= timeLimit) {
+            if (seconds > timeLimit) {
                 clearInterval(timer);
                 gameActive = false;
                 overlay.style.display = "block";
-                overlay.querySelector("h2").textContent = "⏰ ¡Tiempo agotado!";
+                overlay.querySelector("h2").textContent = "¡Tiempo agotado!";
+                overlay.querySelector("h2").style.color = "#ff6666";
+                overlay.querySelector("h2").style.textShadow = "#ee0e0eff";
                 nextBtn.style.display = "none";
                 retryBtn.style.display = "block";
             }
@@ -67,41 +70,54 @@ window.onload = function() {
         nivelTexto.textContent = `Nivel ${currentLevel + 1}`;
     }
 
-    function startLevel() {
-        pieces.length = 0;
-        overlay.style.display = "none";
-        gameActive = true;
-        updateLevelText();
 
-        if (currentLevel >= levels.length) {
-            alert("🎉 ¡Has completado todos los niveles!");
-            clearInterval(timer);
-            return;
-        }
 
-        startTimer();
+  function startLevel() {
+    pieces.length = 0;
+    overlay.style.display = "none";
+    gameActive = true;
+    updateLevelText();
 
-        const img = new Image();
-        img.src = levels[currentLevel];
-        img.onload = function() {
-            const pieceWidth = img.width / gridSize;
-            const pieceHeight = img.height / gridSize;
-
-            const randomRotations = [0, 90, 180, 270];
-            for (let row = 0; row < gridSize; row++) {
-                for (let col = 0; col < gridSize; col++) {
-                    pieces.push({
-                        x: col * pieceWidth,
-                        y: row * pieceHeight,
-                        rotation: randomRotations[Math.floor(Math.random() * randomRotations.length)],
-                        filter: getFilterForLevel(),
-                        img: img
-                    });
-                }
-            }
-            draw();
-        };
+    if (currentLevel >= levels.length) {
+           overlay.querySelector("h2").textContent = "🎉 ¡Ganaste, superaste todos los niveles!";
+    overlay.style.display = "block";
+    clearInterval(timer);
+    gameActive = false;
+    nextBtn.style.display = "none";
+    retryBtn.style.display = "none";
+    return;
     }
+
+    // ⏱️ Ajuste de tiempo según el nivel
+    if (currentLevel < 6) {
+        timeLimit = 10; // primeros 6 niveles (del 1 al 6 → índice 0 a 5)
+    } else {
+        timeLimit = 7; // a partir del nivel 7 en adelante
+    }
+
+    startTimer();
+
+    const img = new Image();
+    img.src = levels[currentLevel];
+    img.onload = function() {
+        const pieceWidth = img.width / gridSize;
+        const pieceHeight = img.height / gridSize;
+
+        const randomRotations = [0, 90, 180, 270];
+        for (let row = 0; row < gridSize; row++) {
+            for (let col = 0; col < gridSize; col++) {
+                pieces.push({
+                    x: col * pieceWidth,
+                    y: row * pieceHeight,
+                    rotation: randomRotations[Math.floor(Math.random() * randomRotations.length)],
+                    filter: getFilterForLevel(),
+                    img: img
+                });
+            }
+        }
+        draw();
+    };
+}
 
     function draw(original = false) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -155,20 +171,25 @@ window.onload = function() {
 
         pieces[index].rotation = (pieces[index].rotation + 360) % 360;
 
-        if (pieces.every(p => p.rotation === 0)) {
-            draw(true);
-            overlay.style.display = "block";
-            overlay.querySelector("h2").textContent = "🎉 ¡Ganaste!";
-            clearInterval(timer);
-            gameActive = false;
+       if (pieces.every(p => p.rotation === 0)) {
+    draw(true);
+    clearInterval(timer);
+    gameActive = false;
+    retryBtn.style.display = "none";
 
-            retryBtn.style.display = "none";
-            if (currentLevel < levels.length - 1) {
-                nextBtn.style.display = "block";
-            } else {
-                nextBtn.style.display = "none";
-            }
-        } else {
+    if (currentLevel < levels.length - 1) {
+        overlay.querySelector("h2").textContent = "¡Nivel superado!";
+        overlay.querySelector("h2").style.color = "#000000ff";
+        nextBtn.style.display = "block";
+    } else {
+        overlay.querySelector("h2").textContent = "¡Ganaste todos los niveles!";
+        overlay.querySelector("h2").style.color = "#188f18ff";
+        nextBtn.style.display = "none";
+        backBtn.style.display = "block";
+    }
+
+    overlay.style.display = "block";
+} else {
             draw();
         }
     });
@@ -180,7 +201,7 @@ window.onload = function() {
             currentLevel++;
             startLevel();
         } else {
-            alert("🏁 ¡Juego terminado!");
+            overlay.querySelector("h2").textContent = "¡Ganaste, superaste todos los niveles!";
         }
     });
 

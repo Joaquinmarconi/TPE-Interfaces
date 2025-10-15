@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Jomhuria&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap');
 body{
     background-color: #2A2A2A;
 }
@@ -59,42 +62,84 @@ body{
     position: absolute;
     top: 20px; /* un poco abajo del borde superior del canvas */
     left: 50%;
-    transform: translateX(-50%) translateY(120%); /* centrar horizontalmente */
-    width: 400px;  /* más pequeño que el canvas */
-    height: 150px; /* más compacto */
-    background-color: rgba(0, 0, 0, 0.7);
+    transform: translateX(-62%) translateY(220%); /* centrar horizontalmente */
+    width: 250px;  /* más pequeño que el canvas */
+    height: 100px; /* más compacto */
+    background-color: transparent;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 15px;
-    color: #fff;
-    font-family: Arial, sans-serif;
+    border-radius: 10px;
+    color: #beb9b9;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: bold;
     z-index: 10;
     text-align: center;
 }
 
 #ganasteOverlay h2 {
-    font-size: 28px;
-    margin-bottom: 15px;
-    text-shadow: 2px 2px 5px #000;
-
+    font-size: 20px;
+    margin-bottom: 2px;
+    margin-right: 10px;
 }
 
 #nextLevelBtn {
-    padding: 10px 20px;
+    width: 130px;
+    height: 39px;
     font-size: 16px;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: bold;
     border: none;
     border-radius: 20px;
-    background: linear-gradient(45deg, #ff6b6b, #feca57);
-    color: #fff;
+    background: #ffc400;
+    color: #e4e4e4;
+    text-shadow: 2px 2px 5px #9c5f03;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
+    margin-left: 55px;
 }
 
 #nextLevelBtn:hover {
     transform: scale(1.1);
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+#retryLevelBtn{
+    width: 130px;
+    height: 39px;
+    font-size: 16px;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    background: #ffc400;
+    color: #0c0b0b;
+    text-shadow: 2px 2px 5px #9c5f03;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-left: 55px;
+}
+
+#retryLevelBtn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(70, 68, 68, 0.3);
+}
+
+#backBtn {
+    width: 130px;
+    height: 39px;
+    font-size: 16px;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    background: #ffc400;
+    color: #e4e4e4;
+    text-shadow: 2px 2px 5px #9c5f03;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-left: 55px;
 }
 #canva-Blocka {
     border: 2px solid #ee9f28;
@@ -106,17 +151,23 @@ body{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 12px 30px;
+    transform: translate(-72%, -120%);
+    width: 130px;
+    height: 40px;
     font-size: 20px;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: bold;
     border: none;
     border-radius: 25px;
-    background: linear-gradient(45deg, #feca57, #ff6b6b);
-    color: #fff;
+    background: linear-gradient(45deg, #ffa114, #ffee03);
+    color: #fafafa;
     cursor: pointer;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     z-index: 5; /* para que quede por encima del canvas */
 }
 #startBtn:hover {
-    transform: translate(-50%, -50%) scale(1.1);
+    background: linear-gradient(45deg, #ffa114, #ffee03);
+    color: #ffeedb;
+    text-shadow: 2px 2px 5px #cc7979;
+    box-shadow: 0 0 20px rgb(150, 107, 70), 0 0 40px rgba(255, 121, 4, 0.5);
 }
