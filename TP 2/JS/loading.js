@@ -17,7 +17,7 @@ const loadingProgreso = document.querySelector(".loading-progreso");
 const contenido = document.querySelector(".contenido");
 
 const interval = setInterval(() => {
-  progreso += 2; /* aumenta 2% cada 100ms → total 5 segundos */
+  progreso += 1; /* aumenta 2% cada 100ms → total 5 segundos */
   loadingProgreso.style.width = `${progreso}%`;
   loadingPorcentaje.textContent = `${progreso}%`;
 
