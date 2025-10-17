@@ -815,8 +815,10 @@ footer p a:hover {
 
 .fila-img-juegos img {
     width: 253px;
+    transition: transform 0.5s ease;
 }
 .fila-img-juegos img:hover{
+     transform: scale(1.08);
      box-shadow: 0 5px 15px rgba(211, 211, 211, 0.3);
 }
 

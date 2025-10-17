@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
-     <header >
+       <header >
 
         <section>
       
@@ -46,7 +46,59 @@
 
    </section>
 
+       <nav class="main-nav" style="height: 2342px;">
+                    <ul>
+                        <li><img src="Assets/home.png" alt="home" ><a href="home.html">Inicio</a></li>
+                        <li><img src="Assets/reciente.png" alt="reciente" >Recientes</li>
+                        <li><img src="Assets/start.png" alt="reciente" >Destacados</li>
+                        <li id="btn-submenu"><img src="Assets/control.png" alt="control" >Categorias <img src="Assets/abajo.png" class="flecha-abajo" alt="control" >
+                            <ul class="submenu">
+                                <li><img src="Assets/puzzle.png" alt="puzzle">Puzzle</li>
+                                <li><img src="Assets/belleza.png" alt="belleza">Belleza</a></li>
+                                <li><img src="Assets/adventure.png" alt="adventure">Aventura</a></li>
+                                <li><img src="Assets/futbol.png" alt="sports">Deportes</a></li>
+                                <li><img src="Assets/pets.png" alt="pets">Animales</a></li>
+                                <li><img src="Assets/chef.png" alt="cocina">Cocina</a></li>
+                                <li><img src="Assets/habilidad.png" alt="destreza">Destreza</a></li>
+                            </ul>
+                        </li>
+    
+                    </ul>
+        </nav>
+        <nav class="main-nav-user">
+                    <ul>
+                        <li><img src="Assets/user.png" alt="usuario" >Mi perfil</li>
+                        <li><img src="Assets/favorite.png" alt="fav" >Favoritos</li>
+                        <li><img src="Assets/settings.png" alt="configuracion" >Configuración</li>
+                         <li><img src="Assets/help.png" alt="ayuda" >Ayuda</li>
+                        <li><img src="Assets/logout-rojo.png" alt="cerrae" ><a href="login.html">Cerrar Sesion</a></li>
+                    </ul>
+        </nav>
+
     </header>
+
+    <dialog id="mensaje-subscripcion" class="popover-suscripcion" popover>
+            <p>Todavía no estas suscripto? <span>Suscribete</span></p>
+
+            <label for="mail">Mail/Usuario</label>
+            <input type="email" id="mail" name="" id="">
+
+            <label>Medio de pago</label>
+                <div class="opciones-pago">
+                    <label>
+                    <input type="radio" name="medio" value="Tarjeta crédito/débito">
+                    Tarjeta crédito/débito
+                    </label>
+                    <label>
+                    <input type="radio" name="medio" value="Transferencia">
+                    Transferencia
+                    </label>
+                </div>
+
+                <button class="btn-enviar">Enviar</button>
+        
+       </dialog>
+
     <section class="breadcumbs">
         <p><a href="home.html">Inicio </a> >  <span>Destacados </span> >  <span>Puzzle </span> >  <a href="blocka.html"><span>Blocka</span></a></p>
      </section>
@@ -83,6 +135,26 @@
         </div>
 
     </section>
+
+
+     
+     <div class="overlayJuego"></div>
+     <div id="mensaje-compartir" class="popover-compartir" popover>
+            <p><span>Comparte este juego</span></p>
+          <div>
+            <div><img src="Assets/instagram-share.png" alt="instagram"></div>
+            <div><img src="Assets/facebook-share.png" alt="facebook"></div>
+            <div><img src="Assets/mail-share.png" alt="mail"></div>
+            <div><img src="Assets/twitter-share.png" alt="x"></div>
+            <div><img src="Assets/whatsapp -share2.png" alt="whatsapp"></div>
+           
+          </div>
+          <div class="contenedor-copiar">
+            <input type="url" id="mail" value="  https://www.nextplay.com/inicio/juego/blocka">
+            <button><span>Copiar</span></button>
+         </div>
+        </div>
+
     <section class="descripcion-juego">
         <h3>Blocka</h3>
         <p>En esta edición especial de Blocka,
@@ -140,7 +212,7 @@
 
          
     <div class="comentar">
-         <input type="button" value="Comentar" id="btn-comentar" class="animar-comentar">
+         <input type="button" value="Comentar" id="btn-comentar" >
     
     </div>
 
@@ -160,10 +232,10 @@
             <img src="Assets/user.png" alt="icono usuario" class="icono-usuario">
             <p>@Meemow1344</p>
         </div>
-        <span class="texto">Primero.</span>
-        <div class="likes" id="icono-like-3">
-            <img src="Assets/like-sin.png" alt="icono like" class="icono-like" id="icono-img-3">
-            <span id="contador-3">100</span>
+        <span class="texto">Enamorada</span>
+        <div class="likes" id="icono-like-2">
+            <img src="Assets/like-sin.png" alt="icono like" class="icono-like" id="icono-img-2">
+            <span id="contador-2">100</span>
         </div>
     </section>
      <section class="comentarios-respondidos">
@@ -172,9 +244,9 @@
             <p>@kronoskarmas4148</p>
         </div>
         <span class="texto">Me encanta esta edición!!!</span>
-        <div class="likes" id="icono-like-4">
-            <img src="Assets/like-sin.png" alt="icono like" class="icono-like" id="icono-img-4">
-            <span id="contador-4">5</span>
+        <div class="likes" id="icono-like-3">
+            <img src="Assets/like-sin.png" alt="icono like" class="icono-like" id="icono-img-3">
+            <span id="contador-3">5</span>
         </div>
     </section>
      <section class="comentarios-respondidos">
@@ -182,10 +254,10 @@
             <img src="Assets/user.png" alt="icono usuario" class="icono-usuario">
             <p>@Isaacdino20</p>
         </div>
-        <span class="texto">Qué buen juego, paso horas entretenido</span>
-        <div class="likes" id="icono-like-5">
-            <img src="Assets/like-sin.png" alt="icono like" class="icono-like" id="icono-img-5">
-            <span id="contador-5">20</span>
+        <span class="texto">Qué buen juego, gracias desarrolladores!!!</span>
+        <div class="likes" id="icono-like-4">
+            <img src="Assets/like-sin.png" alt="icono like" class="icono-like" id="icono-img-4">
+            <span id="contador-4">20</span>
         </div>
     </section>
 
@@ -270,7 +342,8 @@
     </footer>
 
 
-   <script src="JS/blockaJS.js"></script> 
+   <script src="JS/blockaJS.js" Content-Type="text/javascript"></script> 
+   <script src="JS/juego.js" Content-Type="text/javascript"></script> 
 </body>
 
 </html>
