@@ -23,12 +23,12 @@ body{
 
 .contenedor-blocka .reloj{
     margin-top: 5px;
-    margin-right: 45px;
+    margin-right: 50px;
 }
 .header-juego {
     display: flex;
     width: 650px;
-    margin-left: 72px; 
+    margin-left: 100px; 
     margin-top: 10px;
     margin-bottom: 18px;
 }
@@ -82,7 +82,10 @@ body{
 #ganasteOverlay h2 {
     font-size: 20px;
     margin-bottom: 2px;
-    margin-right: 10px;
+    margin-left: 40px;
+    background-color: #afabab80;
+    border-radius: 10px;
+    width: 180px;
 }
 
 #nextLevelBtn {
