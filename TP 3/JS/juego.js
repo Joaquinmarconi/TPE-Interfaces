@@ -27,7 +27,15 @@ function toggleSubMenu() {
 
 
 
+//animacion mouse click//
+const mouseIcon = document.getElementById("mouseIcon");
+  const icons = ["Assets/left-click.png", "Assets/right-click.png"];
+  let index = 0;
 
+  setInterval(() => {
+    index = (index + 1) % icons.length; 
+    mouseIcon.src = icons[index];
+  }, 5000); // cambia cada 5 segundos
 //interaccion like comentario//
 
 for (let i = 1; i <= 4; i++) {

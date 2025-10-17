@@ -632,10 +632,83 @@ footer p a:hover {
     text-decoration: underline;
 }
 
+.juego-reglas {
+    display: flex;
+    width: 1340px;
+    height: 500px;
+}
+
+.reglas {
+    width: 390px;
+    height: 470px;
+    margin-left: 20px;
+    background-color: #1c1b1b;
+}
+
+.reglas div {
+    display: block;
+    height: 200px;
+    width: 324px;
+    text-align: justify;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 500;
+    color: #FFDD33;
+}
+
+.reglas div h3 {
+    margin-top: 25px;
+    margin-left: 130px;
+}
+
+.reglas div ul {
+    width: 300px;
+    height: 200px;
+    font-size: 16px;
+    font-weight: 200px;
+    color: #B3B3B3;
+    padding: 0px;
+    margin-left: 40px;
+    text-indent: -5px;
+}
+
+.reglas div ul li {
+    list-style-type: disc;
+    white-space: initial;
+    line-height: 19px;
+    text-align: start;
+    margin-bottom: 8px;
+}
+
+.reglas p {
+    color: #B3B3B3;
+    margin-left: 22px;
+    margin-top: 10px;
+
+}
+
+.reglas div img {
+    width: 70px;
+    height: 70px;
+    margin-left: 250px;
+}
+#mouseIcon {
+  width: 64px;
+  height: 64px;
+  filter: drop-shadow(0 0 10px #ffcc00);
+
+}
+
+.linea-separadora {
+  border: none;
+  border-top: 2px solid #444;
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
 .descripcion-juego {
     width: 800px;
     margin-left: 50px;
-    margin-top: 20px;
+    margin-top: 105px;
 }
 
 .descripcion-juego h3 {
