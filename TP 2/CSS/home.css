@@ -269,7 +269,7 @@ footer p {
 }
 
 .home-carrusel:first-child li.quick-bounce {
-    animation: dramaticBounce 0.8s ease-out;
+    animation: dramaticBounce 0.7s ease-out;
 }
 
 @keyframes dramaticBounce {
@@ -278,27 +278,27 @@ footer p {
     }
 
     30% {
-        transform: translateY(-12px) scale(1.08);
+        transform: translateY(-12px) scale(1.25);
     }
 
     50% {
-        transform: translateY(0px) scale(1) rotate(4deg);
+        transform: translateY(0px) scale(1) rotate(16deg);
     }
 
     60% {
-        transform: translateY(0px) rotate(-4deg);
+        transform: translateY(0px) rotate(-16deg);
     }
 
     70% {
-        transform: translateY(0px) rotate(2deg);
+        transform: translateY(0px) rotate(12deg);
     }
 
     80% {
-        transform: translateY(0px) rotate(-1deg);
+        transform: translateY(0px) rotate(-12deg);
     }
 
     90% {
-        transform: translateY(0px) rotate(0.5deg);
+        transform: translateY(0px) rotate(6deg);
     }
 
     100% {
