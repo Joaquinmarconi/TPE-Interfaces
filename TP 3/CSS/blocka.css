@@ -15,7 +15,7 @@ body{
     position: relative;
     width: 800px;
     height: 640px;
-    background-color: #3f3b36;
+    background-color: #363636;
     margin: 50px;
     margin-top: 2px;
    
@@ -179,6 +179,7 @@ body{
     align-items: center; /* centra horizontalmente thumbnails y botón */
     justify-content: center;
     margin-top: 15px;
+    margin-bottom: 4px;
 }
 #preNivel h3{
     font-size: 18px;
@@ -208,7 +209,7 @@ body{
 .thumbnails img.highlight {
     transform: scale(1.2);
     opacity: 1;
-    border: 2px solid #00ff00;
+    border: 2px solid #ffed48;
 }
 
 /* Botón Iniciar Nivel */
