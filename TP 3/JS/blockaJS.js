@@ -3,14 +3,15 @@ window.onload = function() {
     const ctx = canvas.getContext("2d");
     const overlay = document.getElementById("ganasteOverlay");
     const nextBtn = document.getElementById("nextLevelBtn");
-    const retryBtn = document.getElementById("retryLevelBtn"); // 👈 nuevo botón en el overlay
+    const retryBtn = document.getElementById("retryLevelBtn");
     const startBtn = document.getElementById("startBtn");
-    const backBtn=document.getElementById("backBtn");
+    const startLevelBtn = document.getElementById("startLevelBtn");
+    const backBtn = document.getElementById("backBtn");
     const tiempoElem = document.getElementById("tiempo");
     const nivelTexto = document.getElementById("nivelTexto");
 
     const filters = ["grayscale", "brightness", "negative"];
-    const imagePool = [
+    let imagePool = [
         "Assets/gato.jpeg",
         "Assets/luna.jpeg",
         "Assets/zootopia.jpeg",
@@ -24,14 +25,16 @@ window.onload = function() {
     ];
 
     let currentLevel = 0;
-    const levels = [...imagePool];
+    let currentImage = null;
     const pieces = [];
     const gridSize = 2;
-
     let timer;
     let seconds = 0;
     let gameActive = false;
-    let timeLimit = 10; // ⏱️ tiempo máximo de cada nivel (5 segundos)
+    const levelsUsed = [];
+    let retrying = false; // indica si estamos reintentando la misma imagen
+
+    function shuffle(array) { return array.sort(() => Math.random() - 0.5); }
 
     function startTimer() {
         clearInterval(timer);
@@ -40,7 +43,6 @@ window.onload = function() {
 
         timer = setInterval(() => {
             if (!gameActive) return;
-
             seconds++;
             const mins = Math.floor(seconds / 60).toString().padStart(2, "0");
             const secs = (seconds % 60).toString().padStart(2, "0");
@@ -70,53 +72,98 @@ window.onload = function() {
         nivelTexto.textContent = `Nivel ${currentLevel + 1}`;
     }
 
+    function showThumbnailsAndSelectImage() {
+    const container = document.querySelector(".thumbnails");
+    container.innerHTML = "";
 
+    // Ocultar botón de iniciar nivel al empezar
+    startLevelBtn.style.display = "none";
 
-  function startLevel() {
-    pieces.length = 0;
-    overlay.style.display = "none";
-    gameActive = true;
-    updateLevelText();
+    if (imagePool.length === 0) return;
 
-    if (currentLevel >= levels.length) {
-    clearInterval(timer);
-    
-    return;
-    }
+    // Mostrar todas las miniaturas restantes
+    imagePool.forEach((src) => {
+        const img = document.createElement("img");
+        img.src = src;
+        container.appendChild(img);
+    });
 
-    // ⏱️ Ajuste de tiempo según el nivel
-    if (currentLevel < 6) {
-        timeLimit = 10; // primeros 6 niveles (del 1 al 6 → índice 0 a 5)
-    } else {
-        timeLimit = 7; // a partir del nivel 7 en adelante
-    }
+    // Elegir imagen al azar para el nivel actual
+    const selectedIdx = Math.floor(Math.random() * imagePool.length);
+    currentImage = imagePool[selectedIdx];
 
-    startTimer();
+    const imgs = container.querySelectorAll("img");
 
-    const img = new Image();
-    img.src = levels[currentLevel];
-    img.onload = function() {
-        const pieceWidth = img.width / gridSize;
-        const pieceHeight = img.height / gridSize;
+    // Animación secuencial tipo "highlight"
+    let i = 0;
+    const highlightInterval = setInterval(() => {
+        if (i > 0) imgs[i - 1].classList.remove("highlight");
+        if (i >= imgs.length) {
+            clearInterval(highlightInterval);
 
-        const randomRotations = [0, 90, 180, 270];
-        for (let row = 0; row < gridSize; row++) {
-            for (let col = 0; col < gridSize; col++) {
-                pieces.push({
-                    x: col * pieceWidth,
-                    y: row * pieceHeight,
-                    rotation: randomRotations[Math.floor(Math.random() * randomRotations.length)],
-                    filter: getFilterForLevel(),
-                    img: img
+            // Resaltar la imagen seleccionada
+            const finalImg = Array.from(imgs).find(img => img.src.includes(currentImage.split("/").pop()));
+            if (finalImg) {
+                finalImg.classList.add("highlight");
+
+                // Mostrar botón de iniciar nivel después de resaltar
+                startLevelBtn.style.display = "block";
+
+                // Opcional: hacer clic en la imagen también puede iniciar el botón
+                finalImg.addEventListener("click", () => {
+                    startLevelBtn.style.display = "block";
                 });
             }
+            return;
         }
-        draw();
-    };
+        imgs[i].classList.add("highlight");
+        i++;
+    }, 300);
+
+    // Nivel actual según cantidad de imágenes completadas
+    currentLevel = levelsUsed.length;
 }
+    function startLevel() {
+        pieces.length = 0;
+        overlay.style.display = "none";
+        gameActive = true;
+        updateLevelText();
+        canvas.style.display = "block";
+
+        if (!currentImage) return;
+
+        // Solo guardar si no es reintento
+        if (!retrying) levelsUsed.push(currentImage);
+        retrying = false; // reinicia indicador
+
+        timeLimit = currentLevel < 6 ? 10 : 7;
+        startTimer();
+
+        const img = new Image();
+        img.src = currentImage;
+        img.onload = function() {
+            const pieceWidth = img.width / gridSize;
+            const pieceHeight = img.height / gridSize;
+            const randomRotations = [0, 90, 180, 270];
+
+            for (let row = 0; row < gridSize; row++) {
+                for (let col = 0; col < gridSize; col++) {
+                    pieces.push({
+                        x: col * pieceWidth,
+                        y: row * pieceHeight,
+                        rotation: randomRotations[Math.floor(Math.random() * randomRotations.length)],
+                        filter: getFilterForLevel(),
+                        img: img
+                    });
+                }
+            }
+            draw();
+        };
+    }
 
     function draw(original = false) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (pieces.length === 0) return;
         const pieceWidth = pieces[0].img.width / gridSize;
         const pieceHeight = pieces[0].img.height / gridSize;
 
@@ -150,90 +197,70 @@ window.onload = function() {
 
     canvas.addEventListener("mousedown", (e) => {
         if (!gameActive) return;
-
         e.preventDefault();
+
         const rect = canvas.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-
         const col = Math.floor(x / (canvas.width / gridSize));
         const row = Math.floor(y / (canvas.height / gridSize));
         const index = row * gridSize + col;
-
         if (index < 0 || index >= pieces.length) return;
 
         if (e.button === 0) pieces[index].rotation -= 90;
         else if (e.button === 2) pieces[index].rotation += 90;
-
         pieces[index].rotation = (pieces[index].rotation + 360) % 360;
 
-       if (pieces.every(p => p.rotation === 0)) {
-    draw(true);
-    clearInterval(timer);
-    gameActive = false;
-    retryBtn.style.display = "none";
+        if (pieces.every(p => p.rotation === 0)) {
+            draw(true);
+            clearInterval(timer);
+            gameActive = false;
+            retryBtn.style.display = "none";
 
-    if (currentLevel < levels.length - 1) {
-        overlay.querySelector("h2").textContent = "¡Nivel superado!";
-        overlay.querySelector("h2").style.color = "#000000ff";
-        nextBtn.style.display = "block";
-    } else {
-        overlay.querySelector("h2").textContent = "¡Ganaste todos los niveles!";
-        overlay.querySelector("h2").style.color = "#188f18ff";
-        nextBtn.style.display = "none";
-        backBtn.style.display = "block";
-    }
+            // Eliminar imagen del pool solo si se completó correctamente
+            const idx = imagePool.indexOf(currentImage);
+            if (idx !== -1) imagePool.splice(idx, 1);
 
-    overlay.style.display = "block";
-} else {
+            if (imagePool.length > 0) {
+                overlay.querySelector("h2").textContent = "¡Nivel superado!";
+                overlay.querySelector("h2").style.color = "#000000ff";
+                nextBtn.style.display = "block";
+            } else {
+                overlay.querySelector("h2").textContent = "¡Ganaste todos los niveles!";
+                overlay.querySelector("h2").style.color = "#188f18ff";
+                nextBtn.style.display = "none";
+                backBtn.style.display = "block";
+            }
+            overlay.style.display = "block";
+        } else {
             draw();
         }
     });
 
     canvas.addEventListener("contextmenu", e => e.preventDefault());
 
+    startBtn.addEventListener("click", () => {
+        startBtn.style.display = "none";
+        document.getElementById("preNivel").style.display = "flex";
+        showThumbnailsAndSelectImage();
+    });
+
+    startLevelBtn.addEventListener("click", () => {
+        document.getElementById("preNivel").style.display = "none";
+        canvas.style.display = "block";
+        startLevel();
+    });
+
     nextBtn.addEventListener("click", () => {
-        if (currentLevel < levels.length - 1) {
-            currentLevel++;
-            startLevel();
-        } else {
-            overlay.querySelector("h2").textContent = "¡Ganaste, superaste todos los niveles!";
-        }
+        overlay.style.display = "none";
+        document.getElementById("preNivel").style.display = "flex";
+        showThumbnailsAndSelectImage();
     });
 
     retryBtn.addEventListener("click", () => {
+        overlay.style.display = "none";
+        document.getElementById("preNivel").style.display = "none";
+        retrying = true; // reintentar misma imagen
         startLevel();
     });
-
-    startBtn.addEventListener("click", () => {
-        startBtn.style.display = "none";
-        startLevel();
-    });
-
-    // Mostrar primera imagen desordenada desde el inicio
-    (function previewLevel() {
-        pieces.length = 0;
-        updateLevelText();
-
-        const img = new Image();
-        img.src = levels[currentLevel];
-        img.onload = function() {
-            const pieceWidth = img.width / gridSize;
-            const pieceHeight = img.height / gridSize;
-            const randomRotations = [0, 90, 180, 270];
-
-            for (let row = 0; row < gridSize; row++) {
-                for (let col = 0; col < gridSize; col++) {
-                    pieces.push({
-                        x: col * pieceWidth,
-                        y: row * pieceHeight,
-                        rotation: randomRotations[Math.floor(Math.random() * randomRotations.length)],
-                        filter: getFilterForLevel(),
-                        img: img
-                    });
-                }
-            }
-            draw();
-        };
-    })();
 };
