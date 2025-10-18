@@ -75,56 +75,43 @@ window.onload = function() {
     }
 
     function showThumbnailsAndSelectImage() {
-    const container = document.querySelector(".thumbnails");
-    container.innerHTML = "";
+        const container = document.querySelector(".thumbnails");
+        container.innerHTML = "";
+        startLevelBtn.style.display = "none";
+        if (imagePool.length === 0) return;
 
-    // Ocultar botón de iniciar nivel al empezar
-    startLevelBtn.style.display = "none";
+        imagePool.forEach((src) => {
+            const img = document.createElement("img");
+            img.src = src;
+            container.appendChild(img);
+        });
 
-    if (imagePool.length === 0) return;
+        const selectedIdx = Math.floor(Math.random() * imagePool.length);
+        currentImage = imagePool[selectedIdx];
+        const imgs = container.querySelectorAll("img");
 
-    // Mostrar todas las miniaturas restantes
-    imagePool.forEach((src) => {
-        const img = document.createElement("img");
-        img.src = src;
-        container.appendChild(img);
-    });
-
-    // Elegir imagen al azar para el nivel actual
-    const selectedIdx = Math.floor(Math.random() * imagePool.length);
-    currentImage = imagePool[selectedIdx];
-
-    const imgs = container.querySelectorAll("img");
-
-    // Animación secuencial tipo "highlight"
-    let i = 0;
-    const highlightInterval = setInterval(() => {
-        if (i > 0) imgs[i - 1].classList.remove("highlight");
-        if (i >= imgs.length) {
-            clearInterval(highlightInterval);
-
-            // Resaltar la imagen seleccionada
-            const finalImg = Array.from(imgs).find(img => img.src.includes(currentImage.split("/").pop()));
-            if (finalImg) {
-                finalImg.classList.add("highlight");
-
-                // Mostrar botón de iniciar nivel después de resaltar
-                startLevelBtn.style.display = "block";
-
-                // Opcional: hacer clic en la imagen también puede iniciar el botón
-                finalImg.addEventListener("click", () => {
+        let i = 0;
+        const highlightInterval = setInterval(() => {
+            if (i > 0) imgs[i - 1].classList.remove("highlight");
+            if (i >= imgs.length) {
+                clearInterval(highlightInterval);
+                const finalImg = Array.from(imgs).find(img => img.src.includes(currentImage.split("/").pop()));
+                if (finalImg) {
+                    finalImg.classList.add("highlight");
                     startLevelBtn.style.display = "block";
-                });
+                    finalImg.addEventListener("click", () => {
+                        startLevelBtn.style.display = "block";
+                    });
+                }
+                return;
             }
-            return;
-        }
-        imgs[i].classList.add("highlight");
-        i++;
-    }, 300);
+            imgs[i].classList.add("highlight");
+            i++;
+        }, 300);
 
-    // Nivel actual según cantidad de imágenes completadas
-    currentLevel = levelsUsed.length;
-}
+        currentLevel = levelsUsed.length;
+    }
+
     function startLevel() {
         pieces.length = 0;
         overlay.style.display = "none";
@@ -133,11 +120,8 @@ window.onload = function() {
         canvas.style.display = "block";
 
         if (!currentImage) return;
-
-        // Solo guardar si no es reintento
         if (!retrying) levelsUsed.push(currentImage);
-        retrying = false; // reinicia indicador
-
+        retrying = false;
         timeLimit = currentLevel < 6 ? 9 : 6;
         startTimer();
 
@@ -147,7 +131,6 @@ window.onload = function() {
             const pieceWidth = img.width / gridSize;
             const pieceHeight = img.height / gridSize;
             const randomRotations = [0, 90, 180, 270];
-
             for (let row = 0; row < gridSize; row++) {
                 for (let col = 0; col < gridSize; col++) {
                     pieces.push({
@@ -219,7 +202,6 @@ window.onload = function() {
             gameActive = false;
             retryBtn.style.display = "none";
 
-            // Eliminar imagen del pool solo si se completó correctamente
             const idx = imagePool.indexOf(currentImage);
             if (idx !== -1) imagePool.splice(idx, 1);
 
@@ -232,6 +214,8 @@ window.onload = function() {
             } else {
                 overlay.querySelector("h2").textContent = "¡Ganaste todos los niveles!";
                 overlay.querySelector("h2").style.color = "#188f18ff";
+                overlay.querySelector("h2").style.width= "170px";
+                overlay.style.transform = "translate(-37%, 200%)"; 
                 nextBtn.style.display = "none";
                 backBtn.style.display = "block";
             }
@@ -264,7 +248,42 @@ window.onload = function() {
     retryBtn.addEventListener("click", () => {
         overlay.style.display = "none";
         document.getElementById("preNivel").style.display = "none";
-        retrying = true; // reintentar misma imagen
+        retrying = true;
         startLevel();
     });
+
+    // ----- NUEVO: Función de reinicio compartida -----
+    function resetGameToStart() {
+        overlay.style.display = "none";
+        document.getElementById("preNivel").style.display = "none";
+        canvas.style.display = "none";
+        startBtn.style.display = "block";
+
+        clearInterval(timer);
+        gameActive = false;
+        retrying = false;
+        currentLevel = 0;
+        seconds = 0;
+        tiempoElem.textContent = "00:00";
+        nivelTexto.textContent = "";
+        levelsUsed.length = 0;
+
+        imagePool = [
+            "Assets/gato.jpeg",
+            "Assets/luna.jpeg",
+            "Assets/flowerBoy.jpeg",
+            "Assets/lineas.jpeg",
+            "Assets/caballos.jpeg",
+            "Assets/tierra.jpeg",
+            "Assets/mineCraft.jpeg",
+            "Assets/estrella.jpeg",
+            "Assets/cubos.jpeg",
+            "Assets/bloques.jpeg"
+        ];
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    document.getElementById("menuBtn").addEventListener("click", resetGameToStart);
+    backBtn.addEventListener("click", resetGameToStart);
 };

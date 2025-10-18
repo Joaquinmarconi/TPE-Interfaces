@@ -194,7 +194,7 @@ body{
     text-shadow: 2px 2px 5px #9c5f03;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-    margin-left: 55px;
+    margin-left: 15px;
 }
 #canva-Blocka {
     border: 2px solid #ee9f28;
