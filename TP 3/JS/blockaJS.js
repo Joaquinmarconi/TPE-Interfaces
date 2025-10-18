@@ -56,7 +56,7 @@ window.onload = function() {
                 overlay.querySelector("h2").style.color = "#f73d3dff";
                 overlay.querySelector("h2").style.textShadow = "#ee0e0eff";
                 overlay.querySelector("h2").style.width= "170px";
-                overlay.querySelector("h2").style.marginLeft="35px";
+                overlay.querySelector("h2").style.marginLeft="88px";
                 nextBtn.style.display = "none";
                 retryBtn.style.display = "block";
             }
@@ -227,7 +227,7 @@ window.onload = function() {
                 overlay.querySelector("h2").textContent = "¡Nivel superado!";
                 overlay.querySelector("h2").style.color = "#d3d3d3ff";
                 overlay.querySelector("h2").style.width= "152px";
-                overlay.querySelector("h2").style.marginLeft="46px";
+                overlay.querySelector("h2").style.marginLeft="100px";
                 nextBtn.style.display = "block";
             } else {
                 overlay.querySelector("h2").textContent = "¡Ganaste todos los niveles!";
