@@ -14,22 +14,23 @@ body{
 .contenedor-blocka{
     position: relative;
     width: 800px;
-    height: 590px;
-    background-color: #3f3b36;
+    height: 640px;
+    background-color: #363636;
     margin: 50px;
     margin-top: 2px;
    
 }
 
 .contenedor-blocka .reloj{
-    margin-top: 20px;
-   margin-left: 45px;
+    margin-top: 5px;
+    margin-right: 50px;
 }
 .header-juego {
     display: flex;
     width: 650px;
-    margin-left: 70px; 
+    margin-left: 100px; 
     margin-top: 10px;
+    margin-bottom: 18px;
 }
 
 .nivel-texto {
@@ -38,7 +39,7 @@ body{
     font-size: 1.4rem;
     font-weight: bold;
     color: #feca57;
-    margin-top: 33px;
+    margin-top: 50px;
 }
 
 .reloj {
@@ -46,7 +47,7 @@ body{
     width: 120px;
     height: 40px;
     padding-top: 6px;
-    border: 2px solid #ee9f28;
+    border: 2px solid #814e00;
     border-radius: 10px;
     background-color: rgb(57, 58, 59);
 
@@ -62,7 +63,7 @@ body{
     position: absolute;
     top: 20px; /* un poco abajo del borde superior del canvas */
     left: 50%;
-    transform: translateX(-62%) translateY(220%); /* centrar horizontalmente */
+    transform: translateX(-50%) translateY(220%); /* centrar horizontalmente */
     width: 250px;  /* más pequeño que el canvas */
     height: 100px; /* más compacto */
     background-color: transparent;
@@ -81,7 +82,10 @@ body{
 #ganasteOverlay h2 {
     font-size: 20px;
     margin-bottom: 2px;
-    margin-right: 10px;
+    margin-left: 40px;
+    background-color: #afabab80;
+    border-radius: 10px;
+    width: 180px;
 }
 
 #nextLevelBtn {
@@ -146,12 +150,13 @@ body{
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0,0,0,0.5);
     padding: 0;
+    margin-left: 95px;
 }
 #startBtn {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-72%, -120%);
+    transform: translate(-52%, -120%);
     width: 130px;
     height: 40px;
     font-size: 20px;
@@ -169,5 +174,66 @@ body{
     background: linear-gradient(45deg, #ffa114, #ffee03);
     color: #ffeedb;
     text-shadow: 2px 2px 5px #cc7979;
+    box-shadow: 0 0 20px rgb(150, 107, 70), 0 0 40px rgba(255, 121, 4, 0.5);
+}
+#preNivel {
+    display: none;
+    flex-direction: column;
+    align-items: center; /* centra horizontalmente thumbnails y botón */
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 4px;
+}
+#preNivel h3{
+    font-size: 18px;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: bold;
+    color: #fafafa;
+}
+
+.thumbnails {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap; /* que no se salga del contenedor si hay muchas */
+    justify-content: center; /* centra las miniaturas */
+    max-width:800px; /* igual al ancho del canvas */
+}
+
+.thumbnails img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    opacity: 0.6;
+    transition: transform 0.3s ease, opacity 0.3s ease, border 0.3s ease;
+    border-radius: 5px;
+}
+
+.thumbnails img.highlight {
+    transform: scale(1.2);
+    opacity: 1;
+    border: 2px solid #ffed48;
+}
+
+/* Botón Iniciar Nivel */
+#startLevelBtn {
+    margin-top: 15px;
+    width: 140px;
+    height: 40px;
+    font-size: 16px;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #ffa114, #ffee03);
+    color: #fafafa;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+}
+
+#startLevelBtn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(45deg, #ffd55b, #ffeeaa);
     box-shadow: 0 0 20px rgb(150, 107, 70), 0 0 40px rgba(255, 121, 4, 0.5);
 }
