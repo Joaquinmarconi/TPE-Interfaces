@@ -631,3 +631,353 @@ footer p a {
 footer p a:hover {
     text-decoration: underline;
 }
+
+.descripcion-juego {
+    width: 800px;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+.descripcion-juego h3 {
+    font-family: 'Baloo 2', sans-serif;
+    color: #fafafa;
+}
+
+.descripcion-juego p {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 16px;
+    color: #B3B3B3;
+    text-align: justify;
+}
+
+.descripcion-juego ul {
+    margin-bottom: 20px;
+}
+
+.descripcion-juego ul li {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 16px;
+    color: #B3B3B3;
+}
+
+.descripcion-juego ul li span {
+    color: #FAFAFA;
+}
+
+.btn-compartir {
+    width: 139px;
+    height: 38px;
+    border-radius: 20px;
+    border: 2px solid #b3b3bb;
+    margin-top: 15px;
+    background-color: #2A2A2A;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    color: #b3b3b3;
+    z-index: 8;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.popover-compartir {
+    display: none;
+}
+
+.popover-compartir.open {
+    height: 199px;
+    width: 558px;
+    border-radius: 20px;
+    background: #1C1B1B;
+    border: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+.popover-compartir p {
+    color: #B3B3B3;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.popover-compartir p span {
+    color: #ee9c30;
+}
+
+.popover-compartir div {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.popover-compartir div div {
+    height: 40px;
+    width: 40px;
+    background-color: #2A2A2A;
+    border-radius: 100%;
+}
+
+.popover-compartir div div:hover {
+    background-color: #686464;
+}
+
+.popover-compartir div div img {
+    width: 19px;
+    height: 19px;
+}
+
+.contenedor-copiar {
+    border-radius: 15px;
+    background-color: #2A2A2A;
+    width: 480px;
+    height: 55px;
+    border: 1px solid #FAFAFA;
+    margin-left: 7px;
+}
+
+.contenedor-copiar input {
+    align-self: center;
+    font-family: 'Baloo 2', sans-serif;
+    color: #fafafa;
+    font-size: 16px;
+    background-color: #2a2a2a;
+    width: 390px;
+    padding-left: 10px;
+}
+
+.contenedor-copiar button {
+    border-radius: 15px;
+    width: 70px;
+    height: 30px;
+    background-color: #FF7904;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+    color: #fafafa;
+    margin-right: 5px;
+}
+
+.contenedor-copiar button:hover {
+    background-color: #fd9c46;
+}
+
+.overlayJuego {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 5;
+}
+
+.overlayJuego.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.fila-img {
+    width: 800px;
+    height: 168px;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 26px;
+
+}
+
+.fila-img-juegos {
+    width: 300px;
+    height: 168px;
+    margin-bottom: 10px;
+    margin-right: 21px;
+}
+
+.fila-img-juegos img {
+    width: 253px;
+}
+.fila-img-juegos img:hover{
+     box-shadow: 0 5px 15px rgba(211, 211, 211, 0.3);
+}
+
+.img-video {
+    position: relative;
+    width: 500px;
+    height: 260px;
+    margin-bottom: 20px;
+}
+
+.img-video img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(30%);
+    display: block;
+
+}
+.youtube-icon {
+    position: absolute;
+    top: 50%;
+    /* centro vertical */
+    left: 50%;
+    /* centro horizontal */
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.youtube-icon img {
+    width: 40px;
+    height: auto;
+}
+
+.youtube-icon img:hover {
+    transform: scale(1.3);
+}
+.comentarios {
+    margin-left: 44px;
+    margin-top: 30px;
+    position: relative;
+}
+
+.comentarios input {
+    width: 100%;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #2A2A2A;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    padding-left: 50px;
+    color: #FAFAFA;
+}
+
+.comentarios-respondidos {
+    background-color: #2A2A2A;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+    width: 280px;
+    font-family: 'Baloo 2', sans-serif;
+    margin-left: 47px;
+}
+
+.usuario {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 8px;
+}
+
+.usuario p {
+    margin: 0;
+    font-weight: bold;
+    font-size: 16px;
+    color: #FAFAFA;
+}
+
+.icono-usuario {
+    width: 20px;
+    height: 20px;
+}
+
+.texto {
+    display: block;
+    margin: 6px 0 1px 40px;
+    font-size: 15px;
+    color: #b3b3b3;
+    height: 19px;
+    width: 500px;
+}
+
+.likes {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 40px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+.likes span {
+    margin-top: 3px;
+}
+
+.icono-like {
+    width: 15px;
+    height: 15px;
+}
+
+.icono-like.liked {
+    filter: brightness(2) invert(1);
+    /* se vuelve blanco */
+}
+
+
+.linea {
+    background-color: #FAFAFA;
+    height: 1px;
+    width: 1212px;
+    margin-bottom: 8px;
+    margin-left: 45px;
+}
+
+.comentar input {
+    border-radius: 20px;
+    width: 130px;
+    height: 39px;
+    background-color: #2A2A2A;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    color: #ff7904;
+    border: 2px solid #FF7904;
+    margin-left: 1180px;
+    position: relative;
+}
+
+.animar-comentar {
+    animation: animComentar 2s ease-in-out;
+}
+
+@keyframes animComentar {
+    0% {
+        -webkit-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+    }
+
+    50% {
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+    }
+
+    50.1% {
+        transform: rotateY(180deg);
+        /* empieza la pausa */
+    }
+
+    100% {
+        -webkit-transform: rotateY(360deg);
+        transform: rotateY(360deg);
+    }
+}

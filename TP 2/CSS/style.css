@@ -558,6 +558,10 @@ header section {
     margin: 0;
     gap: 15px;
     clip-path: none;
+    background-color: transparent;
+}
+.home-carrusel li{
+    border-radius: 23px;
 }
 
 .home-carrusel ul::-webkit-scrollbar {
@@ -574,9 +578,6 @@ header section {
 }
 
 /* Reemplaza estas líneas */
-.home-carrusel li:hover {
-    transform: translateY(-5px);
-}
 
 .home-carrusel article {
     border-radius: 8px;
@@ -593,7 +594,7 @@ header section {
 }
 
 .home-carrusel article:hover img {
-    transform: scale(1.05);
+    transform: scale(5);
 }
 
 .home-carrusel li {
@@ -607,15 +608,20 @@ header section {
     z-index: 1;
     /* Transición más lenta y suave */
 }
-
+.home-carrusel:first-child li:hover {
+    transform: translateY(-5px) scale(1.05);
+     box-shadow: 0px 0px  10px rgb(255, 174, 0);
+}
 .home-carrusel li:hover {
-    transform: translateY(-3px);
+    transform: translateY(-5px) scale(1);
+    box-shadow: 0px 0px  10px rgb(255, 174, 0);
     z-index: 5;
     /* Elevación más sutil */
 }
 
 .home-carrusel li:hover img {
     filter: brightness(45%);
+    
 }
 
 .home-carrusel img {
@@ -1717,6 +1723,7 @@ header section {
     transition: opacity 0.8s ease, visibility 0.8s ease;
     font-family: 'Orbitron', sans-serif;
     color: #FFD600;
+    
 }
 
 .loading-contenido {
@@ -1730,6 +1737,7 @@ header section {
     font-size: 26px;
     margin-bottom: 15px;
     letter-spacing: 2px;
+    animation: girarNumero 1s ease-in-out 9s ;
 }
 
 /* Barra base */
@@ -1741,8 +1749,12 @@ header section {
     overflow: hidden;
     box-shadow: 0 0 12px #FF7904;
     margin-bottom: 15px;
+    animation: girarNumero 1s ease-in-out 9s ;
+    
 }
-
+.loading-bar-animar{
+    
+}
 .loading-progreso {
     width: 0%;
     height: 100%;
@@ -1750,6 +1762,7 @@ header section {
     transition: width 0.1s linear;
     border-radius: 12px 0 0 12px;
     animation: shine 2s linear infinite;
+   
 }
 
 .loading-texto {
@@ -1763,6 +1776,19 @@ header section {
 .loading.hidden {
     opacity: 0;
     visibility: hidden;
+}
+@keyframes girarNumero{
+    0%{
+        transform: rotateX(0deg);
+    }
+
+    50%{
+        transform: rotateX(0deg);
+    }
+    80%{
+        transform: rotateX(180deg);
+    }
+
 }
 
 @keyframes fadeText {
