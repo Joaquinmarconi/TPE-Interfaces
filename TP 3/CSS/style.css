@@ -640,8 +640,9 @@ footer p a:hover {
 
 .reglas {
     width: 390px;
-    height: 470px;
+    height: 640px;
     margin-left: 20px;
+    margin-top:2px;
     background-color: #1c1b1b;
 }
 
@@ -656,8 +657,9 @@ footer p a:hover {
 }
 
 .reglas div h3 {
-    margin-top: 25px;
+    margin-top: 10px;
     margin-left: 130px;
+   
 }
 
 .reglas div ul {

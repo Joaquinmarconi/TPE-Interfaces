@@ -53,8 +53,10 @@ window.onload = function() {
                 gameActive = false;
                 overlay.style.display = "block";
                 overlay.querySelector("h2").textContent = "¡Tiempo agotado!";
-                overlay.querySelector("h2").style.color = "#ff6666";
+                overlay.querySelector("h2").style.color = "#f73d3dff";
                 overlay.querySelector("h2").style.textShadow = "#ee0e0eff";
+                overlay.querySelector("h2").style.width= "170px";
+                overlay.querySelector("h2").style.marginLeft="35px";
                 nextBtn.style.display = "none";
                 retryBtn.style.display = "block";
             }
@@ -136,7 +138,7 @@ window.onload = function() {
         if (!retrying) levelsUsed.push(currentImage);
         retrying = false; // reinicia indicador
 
-        timeLimit = currentLevel < 6 ? 10 : 7;
+        timeLimit = currentLevel < 6 ? 9 : 6;
         startTimer();
 
         const img = new Image();
@@ -223,7 +225,9 @@ window.onload = function() {
 
             if (imagePool.length > 0) {
                 overlay.querySelector("h2").textContent = "¡Nivel superado!";
-                overlay.querySelector("h2").style.color = "#000000ff";
+                overlay.querySelector("h2").style.color = "#d3d3d3ff";
+                overlay.querySelector("h2").style.width= "152px";
+                overlay.querySelector("h2").style.marginLeft="46px";
                 nextBtn.style.display = "block";
             } else {
                 overlay.querySelector("h2").textContent = "¡Ganaste todos los niveles!";

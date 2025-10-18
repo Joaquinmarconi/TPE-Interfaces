@@ -36,29 +36,32 @@ body{
 .nivel-texto {
     width: 700px;
     height: 20px;
-    font-size: 1.4rem;
-    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    font-size: 23px;
     color: #feca57;
     margin-top: 50px;
 }
 
 .reloj {
-    text-align: center;
+    display: flex;
+    justify-content: center; /* centra horizontalmente */
+    align-items: center; /* centra verticalmente */
     width: 120px;
     height: 40px;
-    padding-top: 6px;
     border: 2px solid #814e00;
     border-radius: 10px;
     background-color: rgb(57, 58, 59);
-
+    text-align: center;
 }
 
 .reloj h1 {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 550;
     font-size: 20px;
-    margin: 0;
     color: chocolate;
+    margin: 0; /* importante para evitar desajustes verticales */
 }
-
 #ganasteOverlay {
     position: absolute;
     top: 20px; /* un poco abajo del borde superior del canvas */
@@ -82,10 +85,10 @@ body{
 #ganasteOverlay h2 {
     font-size: 20px;
     margin-bottom: 2px;
-    margin-left: 40px;
-    background-color: #afabab80;
+    margin-left: 46px;
+    background-color: #00000095;
     border-radius: 10px;
-    width: 180px;
+    width: 150px;
 }
 
 #nextLevelBtn {
