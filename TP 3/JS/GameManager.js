@@ -81,7 +81,21 @@ class GameManager {
         }
 
         if (juego.id === this.todosLosJuegos[0].id) {
-            return this.crearCardSimpson();
+            return this.crearCardPersonalizada(
+                'Assets/homer_card.png',
+                'Donuts Solitaire',
+                4.8,
+                'juego.html'
+            );
+        }
+
+        if (juego.id === this.todosLosJuegos[3].id) {
+            return this.crearCardPersonalizada(
+                'Assets/blocka.jpeg',
+                'Blocka',
+                4.5,
+                'blocka.html'
+            );
         }
 
         const tarjeta = document.createElement('li');
@@ -146,35 +160,48 @@ class GameManager {
         return tarjeta;
     }
 
-    crearCardSimpson() {
+    crearCardPersonalizada(imagen, titulo, rating, urlDestino) {
         const tarjeta = document.createElement('li');
         const article = document.createElement('article');
         const figure = document.createElement('figure');
         const img = document.createElement('img');
 
-        img.src = 'Assets/homer_card.png';
-        img.alt = 'Los Simpson Game';
+        img.src = imagen;
+        img.alt = titulo;
         img.loading = 'lazy';
         img.width = 240;
         img.height = 135;
 
-        const titulo = document.createElement('h3');
-        titulo.textContent = 'Donuts Solitaire';
+        if (rating >= 4.5) {
+            const badge = document.createElement('div');
+            badge.className = 'premium-badge';
 
-        const rating = document.createElement('p');
-        rating.textContent = '★ 4.8/5';
+            const coronaImg = document.createElement('img');
+            coronaImg.src = './Assets/etiqueta-premium.png';
+            coronaImg.alt = 'Premium';
+            coronaImg.className = 'corona-icon';
+
+            badge.appendChild(coronaImg);
+            figure.appendChild(badge);
+        }
 
         figure.appendChild(img);
+
+        const tituloElement = document.createElement('h3');
+        tituloElement.textContent = titulo;
+
+        const ratingElement = document.createElement('p');
+        ratingElement.textContent = `★ ${rating}/5`;
+
         article.appendChild(figure);
-        article.appendChild(titulo);
-        article.appendChild(rating);
+        article.appendChild(tituloElement);
+        article.appendChild(ratingElement);
         tarjeta.appendChild(article);
 
-        // Click redirecciona a la página
         article.style.cursor = 'pointer';
         article.addEventListener('click', (e) => {
             e.preventDefault();
-            window.location.href = 'juego.html';
+            window.location.href = urlDestino;
         });
 
         return tarjeta;
