@@ -632,6 +632,266 @@ footer p a:hover {
     text-decoration: underline;
 }
 
+
+/* ===================== */
+/*         HOME          */
+/* ===================== */
+
+.home-body {
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.home-carrusel {
+    position: relative;
+    margin: 20px 25px;
+    padding: 0 40px;
+    padding-top: 0px;
+    /* Espacio arriba */
+    padding-bottom: 0px;
+    /* Espacio abajo */
+    overflow: visible;
+    /* Permite que los elementos salgan del contenedor */
+}
+
+/* Importar la fuente Orbitron */
+.home-carrusel h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: white;
+}
+
+.home-carrusel:first-child {
+    margin: 20px 25px;
+    padding: 10px 40px;
+}
+
+.home-carrusel:first-child ul {
+    overflow-y: visible;
+    overflow-x: auto;
+    background: transparent;
+    padding-top: 20px;
+    margin-top: -13px;
+}
+
+.home-carrusel:first-child figure>img {
+    height: 150px;
+}
+
+.home-carrusel:first-child h2 {
+    font-size: 28px;
+    color: #FF9933;
+    margin-bottom: 0px;
+}
+
+.home-carrusel:first-child h3 {
+    font-size: 1rem;
+    bottom: 25px;
+}
+
+.home-carrusel:first-child li {
+    width: 230px;
+    margin-bottom: 5px;
+}
+
+.home-carrusel:first-child p {
+    font-size: 0.9rem;
+    /* Era 0.8rem */
+}
+
+.home-carrusel button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 8;
+    background: transparent;
+    /* Sin fondo */
+    color: #B3B3B3;
+    /* Color gris claro */
+    border: none;
+    width: 30px;
+    height: 30px;
+    font-family: 'Jomhuria', sans-serif;
+    font-size: 70px;
+    font-weight: 400;
+    /* Regular */
+    line-height: 0.7;
+    /* Ajustar alineación vertical */
+    padding: 0;
+}
+
+.home-carrusel button:first-of-type {
+    left: 9px;
+}
+
+.home-carrusel button:last-of-type {
+    right: 13px;
+}
+.home-carrusel button:first-of-type:hover{
+    color: #ec930e;
+}
+.home-carrusel button:last-of-type:hover{
+    color: #ec930e;
+}
+.home-carrusel ul {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 7px 0;
+    margin: 0;
+    gap: 15px;
+    clip-path: none;
+    background-color: transparent;
+}
+.home-carrusel li{
+    border-radius: 23px;
+}
+
+.home-carrusel ul::-webkit-scrollbar {
+    display: none;
+}
+
+
+.home-carrusel figure>img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+    border-radius: 23px;
+}
+
+/* Reemplaza estas líneas */
+
+.home-carrusel article {
+    border-radius: 8px;
+    /* Asegurar bordes redondeados */
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    /* Añadir sombra sutil */
+}
+
+.home-carrusel figure {
+    margin: 0;
+    overflow: visible;
+    background: transparent;
+}
+
+.home-carrusel article:hover img {
+    transform: scale(5);
+}
+
+.home-carrusel li {
+    flex: 0 0 auto;
+    overflow: visible;
+    width: 189px;
+    margin-right: 0px;
+    margin-bottom: 3px;
+    position: relative;
+    transition: transform 0.3s ease-out;
+    z-index: 1;
+    /* Transición más lenta y suave */
+}
+.home-carrusel:first-child li:hover {
+    transform: translateY(-5px) scale(1.05);
+     box-shadow: 0px 0px  10px rgb(255, 174, 0);
+}
+.home-carrusel li:hover {
+    transform: translateY(-2px) ;
+    box-shadow: 0px 0px  10px rgb(255, 174, 0);
+    z-index: 5;
+    /* Elevación más sutil */
+}
+
+.home-carrusel li:hover img {
+    filter: brightness(45%);
+    
+}
+
+.home-carrusel img {
+    filter: brightness(70%);
+}
+
+.home-carrusel article {
+    border-radius: 10%;
+    overflow: visible;
+    position: relative;
+}
+
+.home-carrusel article:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.home-carrusel article:hover img {
+    /* Eliminar la transformación de la imagen */
+    transform: none;
+}
+
+.home-carrusel h3 {
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+    right: 0;
+    margin-left: 10px;
+    color: #FAFAFA;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.home-carrusel p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px 10px;
+    margin: 0;
+    color: #FF7904;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+/* Diseño responsive */
+@media (max-width: 768px) {
+    .home-carrusel li {
+        width: 180px;
+    }
+
+    .home-carrusel button {
+        width: 30px;
+        height: 30px;
+        font-size: 1.2rem;
+    }
+
+    .home-carrusel h2 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-carrusel li {
+        width: 140px;
+    }
+
+    .home-carrusel h3 {
+        font-size: 0.9rem;
+    }
+
+    .home-carrusel p {
+        font-size: 0.8rem;
+    }
+}
+
+
 .juego-reglas {
     display: flex;
     width: 1340px;
@@ -1056,5 +1316,116 @@ footer p a:hover {
     100% {
         -webkit-transform: rotateY(360deg);
         transform: rotateY(360deg);
+    }
+}
+/* ===================== */
+/*       LOADING         */
+/* ===================== */
+
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #2A2A2A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+    font-family: 'Orbitron', sans-serif;
+    color: #FFD600;
+    
+}
+
+.loading-contenido {
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+    /* más ancho */
+}
+
+.loading-porcentaje {
+    font-size: 26px;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    animation: girarNumero 1s ease-in-out 9s ;
+}
+
+/* Barra base */
+.loading-bar {
+    width: 100%;
+    height: 18px;
+    background-color: #444;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 12px #FF7904;
+    margin-bottom: 15px;
+    animation: girarNumero 1s ease-in-out 9s ;
+    
+}
+.loading-bar-animar{
+    
+}
+.loading-progreso {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #FFD600, #FF7904);
+    transition: width 0.1s linear;
+    border-radius: 12px 0 0 12px;
+    animation: shine 2s linear infinite;
+   
+}
+
+.loading-texto {
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: #FFB800;
+    animation: fadeText 1s ease-in-out infinite alternate;
+}
+
+/* Efecto desaparición */
+.loading.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+@keyframes girarNumero{
+    0%{
+        transform: rotateX(0deg);
+    }
+
+    50%{
+        transform: rotateX(0deg);
+    }
+    80%{
+        transform: rotateX(180deg);
+    }
+
+}
+
+@keyframes fadeText {
+    0% {
+        opacity: 0.2;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Efecto de brillo que se mueve por la barra */
+@keyframes shine {
+    0% {
+        filter: brightness(1);
+    }
+
+    50% {
+        filter: brightness(1.3);
+    }
+
+    100% {
+        filter: brightness(1);
     }
 }
