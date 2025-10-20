@@ -30,7 +30,7 @@ body{
     width: 650px;
     margin-left: 100px; 
     margin-top: 5px;
-    margin-bottom: 18px;
+    margin-bottom: 10px;
 }
 
 .nivel-texto {
@@ -40,7 +40,7 @@ body{
     font-weight: 600;
     font-size: 23px;
     color: #feca57;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .reloj {
@@ -66,7 +66,7 @@ body{
     position: absolute;
     top: 20px;
     left: 50%;
-    transform: translateX(-40%) translateY(290%);
+    transform: translateX(-40%) translateY(265%);
     width: auto;
     background-color: transparent;
     display: flex;
@@ -211,7 +211,7 @@ body{
     flex-direction: column;
     align-items: center; /* centra horizontalmente thumbnails y botón */
     justify-content: center;
-    margin-top: 15px;
+    margin-top: 0px;
     margin-bottom: 4px;
 }
 #preNivel h3{
@@ -225,6 +225,7 @@ body{
     display: flex;
     gap: 10px;
     margin-top: 10px;
+    margin-bottom: 2px;
     flex-wrap: wrap; /* que no se salga del contenedor si hay muchas */
     justify-content: center; /* centra las miniaturas */
     max-width:800px; /* igual al ancho del canvas */

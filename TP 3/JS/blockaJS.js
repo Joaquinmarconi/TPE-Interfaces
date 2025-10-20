@@ -7,7 +7,7 @@ window.onload = function() {
     const startBtn = document.getElementById("startBtn");
     const startLevelBtn = document.getElementById("startLevelBtn");
     const backBtn = document.getElementById("backBtn");
-    const menuBtn= document.getElementById("menuBtn");
+    const menuBtn = document.getElementById("menuBtn");
     const tiempoElem = document.getElementById("tiempo");
     const nivelTexto = document.getElementById("nivelTexto");
     const instruccionesOverlay = document.getElementById("instruccionesOverlay");
@@ -30,7 +30,6 @@ window.onload = function() {
     let currentLevel = 0;
     let currentImage = null;
     const pieces = [];
-    const gridSize = 2;
     let timer;
     let seconds = 0;
     let gameActive = false;
@@ -41,8 +40,6 @@ window.onload = function() {
 
     function startTimer() {
         clearInterval(timer);
-        seconds = 0;
-        tiempoElem.textContent = "00:00";
 
         timer = setInterval(() => {
             if (!gameActive) return;
@@ -75,6 +72,15 @@ window.onload = function() {
 
     function updateLevelText() {
         nivelTexto.textContent = `Nivel ${currentLevel + 1}`;
+    }
+
+    function getGridSizeForLevel(level) {
+        // Retorna filas y columnas según el nivel
+        if (level === 0) return { filas: 2, columnas: 2 }; // 4 piezas
+        if (level === 1) return { filas: 2, columnas: 3 }; // 6 piezas
+        if (level === 2) return { filas: 2, columnas: 4 }; // 8 piezas
+        if (level === 3) return { filas: 3, columnas: 3 }; // 9 piezas
+        return { filas: 3, columnas: 4 }; // niveles avanzados
     }
 
     function showThumbnailsAndSelectImage() {
@@ -115,54 +121,74 @@ window.onload = function() {
         currentLevel = levelsUsed.length;
     }
 
-    function startLevel() {
-        pieces.length = 0;
-        overlay.style.display = "none";
-        gameActive = true;
-        updateLevelText();
-        canvas.style.display = "block";
+   function startLevel() {
+    pieces.length = 0;
+    overlay.style.display = "none";
+    gameActive = true;
+    updateLevelText();
+    canvas.style.display = "block";
 
-        if (!currentImage) return;
-        if (!retrying) levelsUsed.push(currentImage);
-        retrying = false;
-        timeLimit = currentLevel < 6 ? 9 : 6;
-        startTimer();
+    // ---- RESET BOTONES ----
+   overlay.style.transform = "translate(-40%, 265%)"; 
+    nextBtn.style.display = "none";
+    retryBtn.style.display = "none";
+    backBtn.style.display = "none";
+    backBtn.style.marginLeft = "auto"; // o el valor original de CSS
+    menuBtn.style.display = "block";   // asegurarse que el menú aparezca
 
-        const img = new Image();
-        img.src = currentImage;
-        img.onload = function() {
-            const pieceWidth = img.width / gridSize;
-            const pieceHeight = img.height / gridSize;
-            const randomRotations = [0, 90, 180, 270];
-            for (let row = 0; row < gridSize; row++) {
-                for (let col = 0; col < gridSize; col++) {
-                    pieces.push({
-                        x: col * pieceWidth,
-                        y: row * pieceHeight,
-                        rotation: randomRotations[Math.floor(Math.random() * randomRotations.length)],
-                        filter: getFilterForLevel(),
-                        img: img
-                    });
-                }
+    if (!currentImage) return;
+    if (!retrying) levelsUsed.push(currentImage);
+    retrying = false;
+
+    // ---- REINICIAR RELOJ ----
+    clearInterval(timer);
+    seconds = 0;
+    tiempoElem.textContent = "00:00";
+
+    // ---- AJUSTE DE DIFICULTAD ----
+    timeLimit = currentLevel < 6 ? 29 : 19;
+    startTimer();
+
+    const img = new Image();
+    img.src = currentImage;
+    img.onload = function() {
+        const { filas, columnas } = getGridSizeForLevel(currentLevel);
+        const pieceWidth = img.width / columnas;
+        const pieceHeight = img.height / filas;
+        const randomRotations = [0, 90, 180, 270];
+
+        for (let row = 0; row < filas; row++) {
+            for (let col = 0; col < columnas; col++) {
+                pieces.push({
+                    x: col * pieceWidth,
+                    y: row * pieceHeight,
+                    rotation: randomRotations[Math.floor(Math.random() * randomRotations.length)],
+                    filter: getFilterForLevel(),
+                    img: img
+                });
             }
-            draw();
-        };
-    }
+        }
+        draw(filas, columnas);
+    };
+}
 
-    function draw(original = false) {
+
+
+    function draw(filas = 2, columnas = 2, original = false) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         if (pieces.length === 0) return;
-        const pieceWidth = pieces[0].img.width / gridSize;
-        const pieceHeight = pieces[0].img.height / gridSize;
+
+        const pieceWidth = pieces[0].img.width / columnas;
+        const pieceHeight = pieces[0].img.height / filas;
 
         pieces.forEach((p, i) => {
-            const col = i % gridSize;
-            const row = Math.floor(i / gridSize);
-            const destX = col * (canvas.width / gridSize);
-            const destY = row * (canvas.height / gridSize);
+            const col = i % columnas;
+            const row = Math.floor(i / columnas);
+            const destX = col * (canvas.width / columnas);
+            const destY = row * (canvas.height / filas);
 
             ctx.save();
-            ctx.translate(destX + canvas.width / (gridSize * 2), destY + canvas.height / (gridSize * 2));
+            ctx.translate(destX + canvas.width / (columnas * 2), destY + canvas.height / (filas * 2));
             ctx.rotate((p.rotation * Math.PI) / 180);
 
             if (!original) {
@@ -176,8 +202,8 @@ window.onload = function() {
             ctx.drawImage(
                 p.img,
                 p.x, p.y, pieceWidth, pieceHeight,
-                -canvas.width / (gridSize * 2), -canvas.height / (gridSize * 2),
-                canvas.width / gridSize, canvas.height / gridSize
+                -canvas.width / (columnas * 2), -canvas.height / (filas * 2),
+                canvas.width / columnas, canvas.height / filas
             );
             ctx.restore();
         });
@@ -187,12 +213,14 @@ window.onload = function() {
         if (!gameActive) return;
         e.preventDefault();
 
+        const { filas, columnas } = getGridSizeForLevel(currentLevel);
+
         const rect = canvas.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        const col = Math.floor(x / (canvas.width / gridSize));
-        const row = Math.floor(y / (canvas.height / gridSize));
-        const index = row * gridSize + col;
+        const col = Math.floor(x / (canvas.width / columnas));
+        const row = Math.floor(y / (canvas.height / filas));
+        const index = row * columnas + col;
         if (index < 0 || index >= pieces.length) return;
 
         if (e.button === 0) pieces[index].rotation -= 90;
@@ -200,7 +228,7 @@ window.onload = function() {
         pieces[index].rotation = (pieces[index].rotation + 360) % 360;
 
         if (pieces.every(p => p.rotation === 0)) {
-            draw(true);
+            draw(filas, columnas, true);
             clearInterval(timer);
             gameActive = false;
             retryBtn.style.display = "none";
@@ -218,7 +246,7 @@ window.onload = function() {
                 overlay.querySelector("h2").textContent = "¡Ganaste todos los niveles!";
                 overlay.querySelector("h2").style.color = "#58af58ff";
                 overlay.querySelector("h2").style.width= "170px";
-                overlay.style.transform = "translate(-48%, 200%)"; 
+                overlay.style.transform = "translate(-48%, 180%)"; 
                 backBtn.style.marginLeft="130px";
                 nextBtn.style.display = "none";
                 menuBtn.style.display= "none";
@@ -226,27 +254,23 @@ window.onload = function() {
             }
             overlay.style.display = "block";
         } else {
-            draw();
+            draw(filas, columnas);
         }
     });
 
     canvas.addEventListener("contextmenu", e => e.preventDefault());
 
-    startBtn.addEventListener("click", () => {
-    // Muestra las instrucciones primero
+    startBtn.addEventListener("click", () => instruccionesOverlay.style.display = "flex");
 
-    instruccionesOverlay.style.display = "flex";
-    });
-
-    // Cuando el usuario presiona "Entendido", recién inicia la selección de imagen
     entendidoBtn.addEventListener("click", () => {
         instruccionesOverlay.style.display = "none";
         startBtn.style.display = "none";
         document.querySelector('.header-juego').style.display="flex";
         document.getElementById("preNivel").style.display = "flex";
-         updateLevelText();
+        updateLevelText();
         showThumbnailsAndSelectImage();
     });
+
     startLevelBtn.addEventListener("click", () => {
         document.getElementById("preNivel").style.display = "none";
         canvas.style.display = "block";
@@ -266,7 +290,6 @@ window.onload = function() {
         startLevel();
     });
 
-    // ----- NUEVO: Función de reinicio compartida -----
     function resetGameToStart() {
         overlay.style.display = "none";
         document.getElementById("preNivel").style.display = "none";
