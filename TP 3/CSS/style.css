@@ -1168,7 +1168,7 @@ footer p a:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(30%);
+    filter: brightness(60%);
     display: block;
 
 }
@@ -1183,7 +1183,7 @@ footer p a:hover {
 }
 
 .youtube-icon img {
-    width: 40px;
+    width: 50px;
     height: auto;
 }
 
@@ -1202,7 +1202,7 @@ footer p a:hover {
     border-radius: 20px;
     background-color: #2A2A2A;
     font-family: 'Baloo 2', sans-serif;
-    font-weight: bold;
+    font-weight: 550;
     font-size: 16px;
     padding-left: 50px;
     color: #FAFAFA;
@@ -1227,7 +1227,7 @@ footer p a:hover {
 
 .usuario p {
     margin: 0;
-    font-weight: bold;
+    font-weight: 550;
     font-size: 16px;
     color: #FAFAFA;
 }
