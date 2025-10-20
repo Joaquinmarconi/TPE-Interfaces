@@ -12,6 +12,7 @@ window.onload = function() {
     const nivelTexto = document.getElementById("nivelTexto");
     const instruccionesOverlay = document.getElementById("instruccionesOverlay");
     const entendidoBtn = document.getElementById("entendidoBtn");
+    const menuPrincipal= document.querySelector('.contendor-menuPrincipal')
 
     const filters = ["grayscale", "brightness", "negative"];
     let imagePool = [
@@ -127,9 +128,11 @@ window.onload = function() {
     gameActive = true;
     updateLevelText();
     canvas.style.display = "block";
+    
 
     // ---- RESET BOTONES ----
    overlay.style.transform = "translate(-40%, 265%)"; 
+
     nextBtn.style.display = "none";
     retryBtn.style.display = "none";
     backBtn.style.display = "none";
@@ -260,17 +263,25 @@ window.onload = function() {
 
     canvas.addEventListener("contextmenu", e => e.preventDefault());
 
-    startBtn.addEventListener("click", () => instruccionesOverlay.style.display = "flex");
+   // --- BOTÓN COMENZAR ---
+startBtn.addEventListener("click", () => {
+    document.querySelector(".contenedor-menuPrincipal").style.display = "none"; // oculta el menú
+    document.querySelector('.header-juego').style.display = "flex";
+    document.getElementById("preNivel").style.display = "flex";
+    updateLevelText();
+    showThumbnailsAndSelectImage();
+});
 
-    entendidoBtn.addEventListener("click", () => {
-        instruccionesOverlay.style.display = "none";
-        startBtn.style.display = "none";
-        document.querySelector('.header-juego').style.display="flex";
-        document.getElementById("preNivel").style.display = "flex";
-        updateLevelText();
-        showThumbnailsAndSelectImage();
-    });
+// --- BOTÓN COMO JUGAR ---
+const reglasBtn = document.getElementById("reglasBtn");
+reglasBtn.addEventListener("click", () => {
+    instruccionesOverlay.style.display = "flex"; // muestra las instrucciones
+});
 
+// --- BOTÓN ENTENDIDO (dentro del overlay de instrucciones) ---
+entendidoBtn.addEventListener("click", () => {
+    instruccionesOverlay.style.display = "none"; // cierra las instrucciones
+});
     startLevelBtn.addEventListener("click", () => {
         document.getElementById("preNivel").style.display = "none";
         canvas.style.display = "block";
