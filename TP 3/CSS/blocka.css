@@ -12,6 +12,10 @@ body{
 }
 
 .contenedor-blocka{
+    background-image: url('../Assets/fondo.png');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
     position: relative;
     width: 800px;
     height: 640px;
@@ -122,61 +126,76 @@ body{
     transform: scale(1.08);
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
-/* ===== MENÚ PRINCIPAL ===== */
+
 .contenedor-menuPrincipal {
- position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  background-color: rgba(0, 0, 0, 0.4);
-  padding: 40px 60px;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(255, 196, 0, 0.3);
-  animation: aparecerMenu 0.6s ease;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* centrado fijo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    background: rgba(0, 0, 0, 0.45);
+    padding: 35px 45px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(255, 196, 0, 0.3), 0 0 50px rgba(255, 145, 0, 0.1);
+    backdrop-filter: blur(5px);
+    /*animation: aparecerMenu 1.5s ease-out forwards;*/
 }
 
 .titulo-menu {
-  font-family: 'Baloo 2', sans-serif;
-  font-size: 64px;
-  color: #FFDD33;
-  margin-bottom: 40px;
-  text-shadow: 0 0 15px rgba(255, 221, 51, 0.6);
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 58px;
+    color: #FFDD33;
+    letter-spacing: 1px;
+    animation: brilloTitulo 1s ease-in-out infinite alternate;
 }
+
 .contenedor-menuPrincipal button{
-    top: 50%;
-    left: 50%;
-    transform: translate(-5%, -60%);
-    width: 130px;
-    height: 40px;
+    width: 140px;
+    height: 36px;
     font-size: 19px;
     font-family: 'Baloo 2', sans-serif;
-    font-weight: 550;
+    font-weight: 600;
     border: none;
     border-radius: 25px;
     background: linear-gradient(45deg, #ffa114, #ffee03);
     color: #fafafa;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    z-index: 5; /* para que quede por encima del canvas */
-}
-.contenedor-menuPrincipal button:hover{
-  background: linear-gradient(45deg, #ffa114, #ffee03);
-    color: #ffeedb;
-    text-shadow: 2px 2px 5px #cc7979;
-    box-shadow: 0 0 20px rgb(150, 107, 70), 0 0 40px rgba(255, 121, 4, 0.5);
-}
-/* Opcional: efecto de entrada suave */
-/* Animación de aparición */
-@keyframes aparecerMenu {
-  from { opacity: 0; transform: translate(-5%, -60%); }
-  to { opacity: 1; transform: translate(-5%, -50%); }
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
 }
 
+.contenedor-menuPrincipal button:hover{
+    transform: scale(1.10);
+    color: #fff7e0;
+    text-shadow: 0 0 8px rgba(255, 220, 160, 0.8);
+    box-shadow: 0 0 20px rgba(255, 170, 40, 0.8), 0 0 40px rgba(255, 170, 40, 0.4);
+}
+
+/*@keyframes aparecerMenu {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -52%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}*/
+
+@keyframes brilloTitulo {
+  0% {
+    color: #FFDD33;
+    text-shadow: 0 0 10px rgba(255, 210, 70, 0.9), 0 0 20px rgba(255, 150, 0, 0.6), 0 0 30px rgba(255, 120, 0, 0.5);
+  }
+  100% {
+    color: #fff6c0; 
+    text-shadow: 0 0 20px rgba(255, 255, 200, 1), 0 0 40px rgba(255, 200, 50, 0.9), 0 0 60px rgba(255, 150, 0, 0.9);
+  }
+}
 
 #menuBtn{
 
