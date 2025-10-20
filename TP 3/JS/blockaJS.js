@@ -7,8 +7,11 @@ window.onload = function() {
     const startBtn = document.getElementById("startBtn");
     const startLevelBtn = document.getElementById("startLevelBtn");
     const backBtn = document.getElementById("backBtn");
+    const menuBtn= document.getElementById("menuBtn");
     const tiempoElem = document.getElementById("tiempo");
     const nivelTexto = document.getElementById("nivelTexto");
+    const instruccionesOverlay = document.getElementById("instruccionesOverlay");
+    const entendidoBtn = document.getElementById("entendidoBtn");
 
     const filters = ["grayscale", "brightness", "negative"];
     let imagePool = [
@@ -213,10 +216,12 @@ window.onload = function() {
                 nextBtn.style.display = "block";
             } else {
                 overlay.querySelector("h2").textContent = "¡Ganaste todos los niveles!";
-                overlay.querySelector("h2").style.color = "#188f18ff";
+                overlay.querySelector("h2").style.color = "#58af58ff";
                 overlay.querySelector("h2").style.width= "170px";
-                overlay.style.transform = "translate(-37%, 200%)"; 
+                overlay.style.transform = "translate(-50%, 200%)"; 
+                backBtn.style.marginLeft="130px";
                 nextBtn.style.display = "none";
+                menuBtn.style.display= "none";
                 backBtn.style.display = "block";
             }
             overlay.style.display = "block";
@@ -228,11 +233,20 @@ window.onload = function() {
     canvas.addEventListener("contextmenu", e => e.preventDefault());
 
     startBtn.addEventListener("click", () => {
-        startBtn.style.display = "none";
-        document.getElementById("preNivel").style.display = "flex";
-        showThumbnailsAndSelectImage();
+    // Muestra las instrucciones primero
+
+    instruccionesOverlay.style.display = "flex";
     });
 
+    // Cuando el usuario presiona "Entendido", recién inicia la selección de imagen
+    entendidoBtn.addEventListener("click", () => {
+        instruccionesOverlay.style.display = "none";
+        startBtn.style.display = "none";
+        document.querySelector('.header-juego').style.display="flex";
+        document.getElementById("preNivel").style.display = "flex";
+         updateLevelText();
+        showThumbnailsAndSelectImage();
+    });
     startLevelBtn.addEventListener("click", () => {
         document.getElementById("preNivel").style.display = "none";
         canvas.style.display = "block";
@@ -256,6 +270,7 @@ window.onload = function() {
     function resetGameToStart() {
         overlay.style.display = "none";
         document.getElementById("preNivel").style.display = "none";
+        document.querySelector('.header-juego').style.display="none";
         canvas.style.display = "none";
         startBtn.style.display = "block";
 

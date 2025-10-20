@@ -111,9 +111,9 @@
 
 
  <section class="juego-reglas">
-    <section class="contenedor-blocka">
+    <section class="contenedor-blocka" >
 
-        <div class="header-juego">
+        <div class="header-juego"   style="display: none;">
             <div class="nivel-texto">
             <p id="nivelTexto" >Nivel 1</p>
             </div>
@@ -131,7 +131,7 @@
             <button id="startLevelBtn">Iniciar Nivel</button>
         </div>
 
-        <canvas id="canva-Blocka" width="600" height="380" class="canvas-contenedor">
+        <canvas id="canva-Blocka" width="600" height="380" class="canvas-contenedor" style="display: none;" >
 
             </canvas>
        <!-- Overlay de mensaje de victoria -->
@@ -144,6 +144,19 @@
                     <button id="backBtn" style="display:none;">Volver a iniciar</button>
                 </div>
           </div>
+
+          <div id="instruccionesOverlay" class="overlay-instrucciones">
+            <div class="contenido-instrucciones">
+                <h2>Cómo jugar</h2>
+                <p>Gira las piezas hasta formar la imagen correcta.</p>
+                <ul>
+                <li><strong>Clic izquierdo:</strong> gira a la izquierda.</li>
+                <li><strong>Clic derecho:</strong> gira a la derecha.</li>
+                <li>Completa la imagen antes de que el tiempo se acabe.</li>
+                </ul>
+                <button id="entendidoBtn">Entendido</button>
+            </div>
+</div>
            
     </section>
 
@@ -166,8 +179,8 @@
                  <h3>Controles</h3>
                 <ul>
                     <li>Haz clic en un bloque para moverlo de lugar.</li>
-                    <li>Mover a la derecha : <b>click derecho</b> .</li>
-                    <li>Mover a la izquierda : <b>click izquierdo</b>.</li>
+                    <li>Girar a la derecha : <b>click derecho</b> .</li>
+                    <li>Girar a la izquierda : <b>click izquierdo</b>.</li>
                     <img id="mouseIcon" src="Assets/left-click.png" alt="click" >
                 </ul>
            </div>
