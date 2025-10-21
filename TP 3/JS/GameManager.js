@@ -84,16 +84,16 @@ class GameManager {
             return this.crearCardPersonalizada(
                 'Assets/homer_card.png',
                 'Donuts Solitaire',
-                4.8,
+                4.4,
                 'juego.html'
             );
         }
 
-        if (juego.id === this.todosLosJuegos[3].id) {
+        if (juego.id === this.todosLosJuegos[1].id) {
             return this.crearCardPersonalizada(
                 'Assets/blocka.jpeg',
                 'Blocka',
-                4.5,
+                4.3,
                 'blocka.html'
             );
         }
