@@ -266,6 +266,7 @@ window.onload = function() {
    // --- BOTÓN COMENZAR ---
 startBtn.addEventListener("click", () => {
     document.querySelector(".contenedor-menuPrincipal").style.display = "none"; // oculta el menú
+     document.querySelector(".contenedor-blocka").style.backgroundImage =  "none"; // oculta el menú 
     document.querySelector('.header-juego').style.display = "flex";
     document.getElementById("preNivel").style.display = "flex";
     updateLevelText();
@@ -301,37 +302,44 @@ entendidoBtn.addEventListener("click", () => {
         startLevel();
     });
 
-    function resetGameToStart() {
-        overlay.style.display = "none";
-        document.getElementById("preNivel").style.display = "none";
-        document.querySelector('.header-juego').style.display="none";
-        canvas.style.display = "none";
-        startBtn.style.display = "block";
+   function resetGameToStart() {
+    overlay.style.display = "none";
+    document.getElementById("preNivel").style.display = "none";
+    document.querySelector('.header-juego').style.display = "none";
+    canvas.style.display = "none";
+    startBtn.style.display = "block";
 
-        clearInterval(timer);
-        gameActive = false;
-        retrying = false;
-        currentLevel = 0;
-        seconds = 0;
-        tiempoElem.textContent = "00:00";
-        nivelTexto.textContent = "";
-        levelsUsed.length = 0;
+    // Mostrar el menú principal
+    document.querySelector('.contenedor-menuPrincipal').style.display = "flex"; // o block según tu CSS
 
-        imagePool = [
-            "Assets/gato.jpeg",
-            "Assets/luna.jpeg",
-            "Assets/flowerBoy.jpeg",
-            "Assets/lineas.jpeg",
-            "Assets/caballos.jpeg",
-            "Assets/tierra.jpeg",
-            "Assets/mineCraft.jpeg",
-            "Assets/estrella.jpeg",
-            "Assets/cubos.jpeg",
-            "Assets/bloques.jpeg"
-        ];
+    const contenedorBlocka = document.querySelector('.contenedor-blocka');
+    contenedorBlocka.style.backgroundImage = ""; // esto recupera la del CSS original
 
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }
+    clearInterval(timer);
+    gameActive = false;
+    retrying = false;
+    currentLevel = 0;
+    seconds = 0;
+    tiempoElem.textContent = "00:00";
+    nivelTexto.textContent = "";
+    levelsUsed.length = 0;
+
+    imagePool = [
+        "Assets/gato.jpeg",
+        "Assets/luna.jpeg",
+        "Assets/flowerBoy.jpeg",
+        "Assets/lineas.jpeg",
+        "Assets/caballos.jpeg",
+        "Assets/tierra.jpeg",
+        "Assets/mineCraft.jpeg",
+        "Assets/estrella.jpeg",
+        "Assets/cubos.jpeg",
+        "Assets/bloques.jpeg"
+    ];
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
 
     document.getElementById("menuBtn").addEventListener("click", resetGameToStart);
     backBtn.addEventListener("click", resetGameToStart);

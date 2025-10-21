@@ -129,9 +129,9 @@ body{
 
 .contenedor-menuPrincipal {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* centrado fijo */
+    top: 20%;
+    left: 30%;
+    transform: scale(0.9); /* empieza más pequeño */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -139,16 +139,19 @@ body{
     gap: 14px;
     background: rgba(0, 0, 0, 0.45);
     padding: 35px 45px;
+    padding-top: 10px;
     border-radius: 20px;
     box-shadow: 0 0 25px rgba(255, 196, 0, 0.3), 0 0 50px rgba(255, 145, 0, 0.1);
     backdrop-filter: blur(5px);
-    /*animation: aparecerMenu 1.5s ease-out forwards;*/
+    opacity: 0;
+    animation: aparecerMenu 0.5s ease-out forwards;
 }
 
 .titulo-menu {
+    height: 78px;
     font-family: 'Baloo 2', sans-serif;
     font-size: 58px;
-    color: #FFDD33;
+    color: #111110;
     letter-spacing: 1px;
     animation: brilloTitulo 1s ease-in-out infinite alternate;
 }
@@ -166,37 +169,78 @@ body{
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
+    opacity: 0; /* empiezan invisibles */
+    animation: aparecerBoton 0.5s forwards; /* forwards para mantener el estado final */
+}
+.contenedor-blocka a{
+  text-decoration-line: none;
+  text-decoration: none;
+}
+.contenedor-blocka a:visited{
+    color: #fafafa;
 }
 
-.contenedor-menuPrincipal button:hover{
-    transform: scale(1.10);
-    color: #fff7e0;
-    text-shadow: 0 0 8px rgba(255, 220, 160, 0.8);
-    box-shadow: 0 0 20px rgba(255, 170, 40, 0.8), 0 0 40px rgba(255, 170, 40, 0.4);
+/* Escalonar la aparición de cada botón */
+.contenedor-menuPrincipal button:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.contenedor-menuPrincipal button:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.contenedor-menuPrincipal button:nth-child(4) {
+  animation-delay: 0.9s;
+}
+.contenedor-menuPrincipal button:nth-child(5) {
+  animation-delay: 1.2s;
 }
 
-/*@keyframes aparecerMenu {
+/* Hover */
+.contenedor-menuPrincipal button:hover {
+  transform: scale(1.10);
+  color: #fff7e0;
+  text-shadow: 0 0 8px rgba(255, 220, 160, 0.8);
+  box-shadow: 0 0 20px rgba(255, 170, 40, 0.8), 0 0 40px rgba(255, 170, 40, 0.4);
+}
+/* Animación de entrada del contenedor */
+
+@keyframes aparecerMenu {
+    0% {
+        opacity: 0;
+        transform:  scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform:  scale(1);
+    }
+}
+
+@keyframes aparecerBoton {
   0% {
     opacity: 0;
-    transform: translate(-50%, -52%) scale(0.5);
+    transform: translateY(20px) scale(0.9);
   }
   100% {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-}*/
-
-@keyframes brilloTitulo {
-  0% {
-    color: #FFDD33;
-    text-shadow: 0 0 10px rgba(255, 210, 70, 0.9), 0 0 20px rgba(255, 150, 0, 0.6), 0 0 30px rgba(255, 120, 0, 0.5);
-  }
-  100% {
-    color: #fff6c0; 
-    text-shadow: 0 0 20px rgba(255, 255, 200, 1), 0 0 40px rgba(255, 200, 50, 0.9), 0 0 60px rgba(255, 150, 0, 0.9);
+    transform: translateY(0) scale(1);
   }
 }
 
+@keyframes brilloTitulo {
+  0% {
+    color: #161614;
+    text-shadow: 
+      0 0 2px rgba(255, 180, 50, 0.7),   /* menos intenso */
+      0 0 4px rgba(255, 140, 0, 0.5),
+      0 0 15px rgba(255, 120, 0, 0.4);
+  }
+  100% {
+    color: #1a1917; 
+    text-shadow: 
+      0 0 4px rgba(248, 248, 89, 0.6), 
+      0 0 8px rgba(255, 180, 50, 0.7), 
+      0 0 15px rgba(255, 140, 0, 0.6);
+  }
+}
 #menuBtn{
 
     width: 130px;
