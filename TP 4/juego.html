@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=play_circle" />
+
+
+
+    <title>Next Play</title>
+</head>
+
+<body>
+    <header>
+
+        <section>
+
+            <div>
+                <button id="btn-open" class="menu">
+                    <img src="Assets/menu.png" alt="barras menu">
+                </button>
+            </div>
+
+            <!-- Logo (izquierda) -->
+            <div class="logo">
+                <img src="Assets/nextplay_transparent.png" alt="Next Play">
+            </div>
+
+
+            <!-- Buscador (centro) -->
+            <div class="alinear-buscar">
+                <div>
+                    <input type="text" placeholder="Buscar..." class="alinear-input">
+                    <img src="Assets/buscar.png" alt="icono busqueda" class="icono-busqueda">
+                </div>
+            </div>
+
+            <div class="alinear-boton-usuario">
+                <div class="suscribirse">
+                    <input type="button" value="Suscribirse">
+                </div>
+
+                <div>
+                    <button id="btn-usuario" class="menu-usuario">
+                        <img src="Assets/mujer.png" alt="barras menu">
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+        <nav class="main-nav" style="height: 2342px;">
+            <ul>
+                <li><img src="Assets/home.png" alt="home"><a href="home.html">Inicio</a></li>
+                <li><img src="Assets/reciente.png" alt="reciente">Recientes</li>
+                <li><img src="Assets/start.png" alt="reciente">Destacados</li>
+                <li id="btn-submenu"><img src="Assets/control.png" alt="control">Categorias <img src="Assets/abajo.png"
+                        class="flecha-abajo" alt="control">
+                    <ul class="submenu">
+                        <li><img src="Assets/puzzle.png" alt="puzzle">Puzzle</li>
+                        <li><img src="Assets/belleza.png" alt="belleza">Belleza</a></li>
+                        <li><img src="Assets/adventure.png" alt="adventure">Aventura</a></li>
+                        <li><img src="Assets/futbol.png" alt="sports">Deportes</a></li>
+                        <li><img src="Assets/pets.png" alt="pets">Animales</a></li>
+                        <li><img src="Assets/chef.png" alt="cocina">Cocina</a></li>
+                        <li><img src="Assets/habilidad.png" alt="destreza">Destreza</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+        <nav class="main-nav-user">
+            <ul>
+                <li><img src="Assets/user.png" alt="usuario">Mi perfil</li>
+                <li><img src="Assets/favorite.png" alt="fav">Favoritos</li>
+                <li><img src="Assets/settings.png" alt="configuracion">Configuración</li>
+                <li><img src="Assets/help.png" alt="ayuda">Ayuda</li>
+                <li><img src="Assets/logout-rojo.png" alt="cerrae"><a href="login.html">Cerrar Sesion</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <dialog id="mensaje-subscripcion" class="popover-suscripcion" popover>
+        <p>Todavía no estas suscripto? <span>Suscribete</span></p>
+
+        <label for="mail">Mail/Usuario</label>
+        <input type="email" id="mail" name="" id="">
+
+        <label>Medio de pago</label>
+        <div class="opciones-pago">
+            <label>
+                <input type="radio" name="medio" value="Tarjeta crédito/débito">
+                Tarjeta crédito/débito
+            </label>
+            <label>
+                <input type="radio" name="medio" value="Transferencia">
+                Transferencia
+            </label>
+        </div>
+
+        <button class="btn-enviar">Enviar</button>
+
+    </dialog>
+
+
+    <section class="breadcumbs">
+        <p><a href="home.html">Inicio </a> > <span>Destacados </span> > <span>Puzzle </span> > <a
+                href="juego.html"><span>Donuts Solitarie</span></a></p>
+    </section>
+
+
+    <div class="breadcumbs">
+        <img src="Assets/flecha.png" alt="volver">
+        <a href="home.html">Volver al inicio</a>
+    </div>
+
+    <section class="juego-reglas">
+        <section class="juego">
+            <div>
+                <img src="Assets/homerangry.png" alt="homer">
+
+                <div class="boton-jugar">
+                    <p>Donuts Solitarie</p>
+
+                    <div class="btn-fire-gif-container">
+                        <button class="btn-jugar" id="btn-jugar">Jugar
+                            <span class="material-symbols-outlined">play_circle</span>
+                        </button>
+                        <img src="https://pngimg.com/uploads/fire/fire_PNG6031.png" class="fire-left"
+                            alt="Fuego izquierdo">
+                        <img src="https://pngimg.com/uploads/fire/fire_PNG6031.png" class="fire-right"
+                            alt="Fuego derecho">
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="reglas">
+            <div>
+                <h3>Reglas básicas</h3>
+                <ul>
+                    <li>Solo se puede saltar en línea recta (vertical u horizontal).</li>
+                    <li>No se permiten movimientos en diagonal.</li>
+                    <li>Cada salto elimina la ficha que fue sobrepasada.</li>
+                    <li>Si no hay más movimientos posibles el juego termina.</li>
+                </ul>
+
+
+            </div>
+            <p> ___________________________________</p>
+            <div>
+                <h3>Controles</h3>
+                <ul>
+                    <li>Haz clic en una ficha para seleccionarla.</li>
+                    <li>Haz clic en el espacio vacío al que quieras moverla.</li>
+                    <li>El movimiento se realiza automáticamente si es válido.</li>
+                    <img src="Assets/touch.png" alt="click" id="mouseIcon">
+                </ul>
+            </div>
+
+        </section>
+    </section>
+
+    <div class="overlayJuego"></div>
+    <div id="mensaje-compartir" class="popover-compartir" popover>
+        <p><span>Comparte este juego</span></p>
+        <div>
+            <div><img src="Assets/instagram-share.png" alt="instagram"></div>
+            <div><img src="Assets/facebook-share.png" alt="facebook"></div>
+            <div><img src="Assets/mail-share.png" alt="mail"></div>
+            <div><img src="Assets/twitter-share.png" alt="x"></div>
+            <div><img src="Assets/whatsapp -share2.png" alt="whatsapp"></div>
+
+        </div>
+        <div class="contenedor-copiar">
+            <input type="url" id="mail" value="  https://www.nextplay.com/inicio/juego/donutssolitaire">
+            <button><span>Copiar</span></button>
+        </div>
+    </div>
+
+    <section class="descripcion-juego">
+        <h3>Donuts Solitarie</h3>
+        <p>En esta edición especial de Peg Solitaire con temática de Los Simpson,
+            tu misión es ayudar a Homero a comerse todas las rosquillas del tablero.
+            Cada ficha es una deliciosa dona, y deberás ir ‘comiéndotelas’ saltando
+            unas sobre otras hasta que solo quede una en pie. El verdadero reto es que
+            la última dona quede en el centro, como símbolo de la victoria de Homero
+            frente a su insaciable apetito. Piensa bien cada movimiento, porque si te quedas
+            sin opciones… ¡adiós rosquillas!</p>
+
+        <div>
+            <button class="btn-compartir" id="btn-compartir">
+                <img src="Assets/compartir.png" alt="share">
+                Compartir
+            </button>
+        </div>
+
+        <section class="fila-img">
+            <div class="fila-img-juegos"><img src="Assets/juegopeg.jpeg" alt="juego"></div>
+            <div class="fila-img-juegos"><img src="Assets/menupeg.jpeg" alt="menu"> </div>
+            <div class="fila-img-juegos"><img src="Assets/scorepeg.jpeg" alt="puntos"> </div>
+        </section>
+
+
+        <ul>
+            <li>Desarrollador/es:<span> Cejas Mazzocchi Magalí, Maciel Fonte Bernardina, Marconi Joaquin</span></li>
+            <li>Clasificación:<span> 8,3 (13.453 votos)</span></li>
+            <li>Publicado en:<span> Enero de 2025</span></li>
+        </ul>
+
+        <h3>Links</h3>
+        <ul>
+            <li>Guia completa del juego</li>
+            <li>Wikipedia - Peg Solitaire</li>
+            <li>Curiosidades sobre Los Simpson </li>
+        </ul>
+
+        <h3>Video: Cómo jugar Peg Solitaire edición Los Simpson</h3>
+        <div class="img-video">
+            <img src="Assets/tablero.png" alt="">
+            <div class="youtube-icon">
+                <img src="Assets/youtube.png" alt="">
+            </div>
+        </div>
+
+    </section>
+
+    <section class="comentarios">
+        <input type="text" placeholder="Añade un comentario...">
+        <img src="Assets/mujer.png" alt="icono busqueda" class="icono-busqueda">
+        <p class="linea"></p>
+    </section>
+
+
+
+    <div class="comentar">
+        <input type="button" value="Comentar" id="btn-comentar" class="animar-comentar">
+
+    </div>
+
+    <section class="comentarios-respondidos">
+        <div class="usuario">
+            <img src="Assets/user.png" alt="icono usuario" class="icono-usuario">
+            <p>@Alfredo12</p>
+        </div>
+        <span class="texto">Buen juego.</span>
+        <div class="likes" id="icono-like-1">
+            <img src="Assets/like-sin.png" alt="icono like" class="icono-like" id="icono-img-1">
+            <span id="contador-1">20</span>
+        </div>
+    </section>
+    <section class="comentarios-respondidos">
+        <div class="usuario">
+            <img src="Assets/user.png" alt="icono usuario" class="icono-usuario">
+            <p>@ChairmanLor</p>
+        </div>
+        <span
+            class="texto">⠁⠁⠁⠁⠁⠁⠐⢶⣶⣶⣶⣤⣤⡀⠁⠁⣠⣀⣀⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁ ⠁⠁⠁⠁⠁⠁⠁⠁⠙⢿⣯⣠⣶⣦⣤⣤⣌⣛⠻⢇⣠⣤⣤⠁⠁⠁⠁⠁⠁⠁ ⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⠻⣿⣿⣿⡟⢉⡤⢤⣤⣤⡍⠛⢡⢖⣥⣶⣦⣀⠁⠁ ⠁⠁⠁⠁⠁⠁⠁⠁⠁⠁⣠⣿⣿⣿⡏⣭⣶⣿⣿⠟⢿⣦⡡⣿⣿⡇⠁⡙⣷⡀ ⠁⠁⠁⠁⠁⠁⠁⣀⣴⣿⣿⣿⣿⣿⣿⡞⣿⣿⡟⢀⡀⣿⣿⢻⣿⣿⣀⣁⣿⠏ ⠁⠁⠁⢀⣠⣶⣿⣿⣿⣿⣿⣿⣿⣿⣟⢰⢻⣿⣇⣈⣴⣿⠟⢨⣛⠛⠛⠉⠁⠁ ⠁⣠⣶⣿⣿⡟⢋⠤⣤⠘⢿⣿⣧⡙⠻⠌⠒⠙⠛⢛⣫⣥⣿⣦⡈⠉⣡⣴⣾⠇ ⢰⣿⣿⣿⣿⠁⡇⠁⠙⠷⣤⡙⠻⢿⣿⣶⣶⣶⣿⣿⣿⣿⣿⣿⣿⠿⠟⠋⠁⠁ ⠘⣿⣿⣿⣿⣆⠻⣄⠁⣀⡀⠉⠙⠒⠂⠉⠍⠉⠉⠉⠉⣩⣍⣁⣂⡈⠠⠂⠁⠁ ⠁⠘⢿⣿⣿⣿⣦⡉⠳⢬⣛⠷⢦⡄⠁⠁⠁⠁⠁⣀⣼⣿⣿⠿⠛⠋⠁⠁⠁⠁ ⠁⠁⠁⠉⠻⢿⣿⣿⣷⣦⣬⣍⣓⡒⠒⣒⣂⣠⡬⠽⠓⠂⠁⠁⠁⠁⠁⠁</span>
+        <div class="likes" id="icono-like-2" style="margin-top: 240px;">
+            <img src="Assets/like-sin.png" alt="icono like" class="icono-like" id="icono-img-2">
+            <span id="contador-2">1200</span>
+        </div>
+    </section>
+    <section class="comentarios-respondidos">
+        <div class="usuario">
+            <img src="Assets/user.png" alt="icono usuario" class="icono-usuario">
+            <p>@Meemow1344</p>
+        </div>
+        <span class="texto">Primero.</span>
+        <div class="likes" id="icono-like-3">
+            <img src="Assets/like-sin.png" alt="icono like" class="icono-like" id="icono-img-3">
+            <span id="contador-3">100</span>
+        </div>
+    </section>
+    <section class="comentarios-respondidos">
+        <div class="usuario">
+            <img src="Assets/user.png" alt="icono usuario" class="icono-usuario">
+            <p>@kronoskarmas4148</p>
+        </div>
+        <span class="texto">Me encanta esta edición!!!</span>
+        <div class="likes" id="icono-like-4">
+            <img src="Assets/like-sin.png" alt="icono like" class="icono-like" id="icono-img-4">
+            <span id="contador-4">5</span>
+        </div>
+    </section>
+    <section class="comentarios-respondidos">
+        <div class="usuario">
+            <img src="Assets/user.png" alt="icono usuario" class="icono-usuario">
+            <p>@Isaacdino20</p>
+        </div>
+        <span class="texto">Qué buen juego, paso horas entretenido</span>
+        <div class="likes" id="icono-like-5">
+            <img src="Assets/like-sin.png" alt="icono like" class="icono-like" id="icono-img-5">
+            <span id="contador-5">20</span>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <nav>
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Juegos</a></li>
+                    <li><a href="#">Categorías</a></li>
+                    <li><a href="#">Comunidad</a></li>
+                    <li><a href="#">Destacado</a></li>
+                </ul>
+            </nav>
+
+            <nav>
+                <h3>Ayuda</h3>
+                <ul>
+                    <li><a href="#">Tutoriales</a></li>
+                    <li><a href="#">Soporte técnico</a></li>
+                    <li><a href="#">Preguntas frecuentes</a></li>
+                    <li><a href="#">Guía de usuario</a></li>
+                    <li><a href="#">Métodos de pago</a></li>
+                </ul>
+            </nav>
+
+            <nav>
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacidad</a></li>
+                    <li><a href="#">Términos</a></li>
+                    <li><a href="#">Cookies</a></li>
+                    <li><a href="#">Seguridad</a></li>
+                    <li><a href="#">Política de reembolsos</a></li>
+                </ul>
+            </nav>
+
+            <nav>
+                <h3>Sobre nosotros</h3>
+                <ul>
+                    <li><a href="#">Contactanos</a></li>
+                    <li><a href="#">Redes sociales</a></li>
+                    <li><a href="#">Equipo</a></li>
+                    <li><a href="#">Trabajos</a></li>
+                    <li><a href="#">Ubicación</a></li>
+                </ul>
+            </nav>
+
+            <!-- Logo en la última columna del grid -->
+            <div class="footer-logo">
+                <img src="Assets/nextplay_transparent.png" alt="Next Play" width="180" height="60">
+                <div class="suscribirse">
+                    <input type="button" value="Suscribirse">
+                </div>
+            </div>
+        </div> <!-- ← CIERRA footer-content AQUÍ -->
+
+        <!-- Redes sociales FUERA del grid -->
+        <div class="footer-social">
+            <a href="#" aria-label="Instagram">
+                <img src="Assets/logotipo-de-instagram.png" alt="Instagram" width="24" height="24">
+            </a>
+            <a href="#" aria-label="Facebook">
+                <img src="Assets/facebook.png" alt="Facebook" width="24" height="24">
+            </a>
+            <a href="#" aria-label="GitHub">
+                <img src="Assets/github.png" alt="GitHub" width="24" height="24">
+            </a>
+            <a href="#" aria-label="LinkedIn">
+                <img src="Assets/logotipo-de-linkedin.png" alt="LinkedIn" width="24" height="24">
+            </a>
+            <a href="#" aria-label="Twitter">
+                <img src="Assets/X.png" alt="Twitter" width="24" height="24">
+            </a>
+        </div>
+
+        <!-- Copyright FUERA del grid -->
+        <p>&copy; <time datetime="2025">2025</time> Next Play. Todos los derechos reservados | Contacto: <a
+                href="mailto:nextplay@gmail.com">nextplay@gmail.com</a></p>
+    </footer>
+
+
+    <!-- 1️⃣ PRIMERO: GameStateManager (antes de Game.js) -->
+    <script src="JS/Donut Solitaire/GameStateManager.js"></script>
+
+    <!-- 2️⃣ Componente base -->
+    <script src="JS/Donut Solitaire/VisualComponent.js"></script>
+
+    <!-- 3️⃣ Componentes visuales -->
+    <script src="JS/Donut Solitaire/Piece.js"></script>
+    <script src="JS/Donut Solitaire/Board.js"></script>
+    <script src="JS/Donut Solitaire/Timer.js"></script>
+
+    <!-- 4️⃣ Lógica del juego -->
+    <script src="JS/Donut Solitaire/MoveValidator.js"></script>
+    <script src="JS/Donut Solitaire/HintManager.js"></script>
+
+    <!-- 5️⃣ Presentación -->
+    <script src="JS/Donut Solitaire/Renderer.js"></script>
+    <script src="JS/Donut Solitaire/InputManager.js"></script>
+
+    <!-- 6️⃣ Controlador principal -->
+    <script src="JS/Donut Solitaire/Game.js"></script>
+
+    <!-- 7️⃣ ÚLTIMO: Inicializador -->
+    <script src="JS/juego.js"></script>
+</body>
+
+</html>
