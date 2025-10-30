@@ -355,11 +355,14 @@ window.onload = function() {
         updateLevelText();
         showThumbnailsAndSelectImage();
     });
-
+   // --- BOTÓN COMO JUGAR --- 
+   const reglasBtn = document.getElementById("reglasBtn"); 
+   reglasBtn.addEventListener("click", () => { instruccionesOverlay.style.display = "flex"; // muestra las instrucciones 
+   });
     entendidoBtn.addEventListener("click", () => {
         instruccionesOverlay.style.display = "none";
     });
-
+    
     startLevelBtn.addEventListener("click", () => {
         document.getElementById("preNivel").style.display = "none";
         startLevel();
