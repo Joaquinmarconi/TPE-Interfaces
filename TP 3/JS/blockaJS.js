@@ -356,9 +356,10 @@ window.onload = function() {
         showThumbnailsAndSelectImage();
     });
    // --- BOTÓN COMO JUGAR --- 
-   const reglasBtn = document.getElementById("reglasBtn"); 
-   reglasBtn.addEventListener("click", () => { instruccionesOverlay.style.display = "flex"; // muestra las instrucciones 
-   });
+    const reglasBtn = document.getElementById("reglasBtn");
+        reglasBtn.addEventListener("click", () => {
+            instruccionesOverlay.style.display = "flex";
+        });
     entendidoBtn.addEventListener("click", () => {
         instruccionesOverlay.style.display = "none";
     });
