@@ -74,62 +74,12 @@ window.onload = function() {
         }, 1000);
     }
 
-        // --- FILTROS ---
-        function getFilterForLevel() {
-            if (currentLevel === 0) return "grayscale";
-            if (currentLevel === 1) return "brightness";
-            if (currentLevel === 2) return "negative";
-            if (currentLevel === 3) return "blur";
-            return filters[Math.floor(Math.random() * filters.length)];
-        }
-
-        function applyFilter(imageData, filter) {
-            const data = imageData.data;
-            const width = imageData.width;
-            const height = imageData.height;
-
-            if (filter === "blur") {
-                const copy = new Uint8ClampedArray(data);
-                for (let y = 1; y < height - 1; y++) {
-                    for (let x = 1; x < width - 1; x++) {
-                        let i = (y * width + x) * 4;
-                        let r = 0, g = 0, b = 0;
-                        for (let dy = -1; dy <= 1; dy++) {
-                            for (let dx = -1; dx <= 1; dx++) {
-                                let ni = ((y + dy) * width + (x + dx)) * 4;
-                                r += copy[ni];
-                                g += copy[ni + 1];
-                                b += copy[ni + 2];
-                            }
-                        }
-                        data[i] = r / 9;
-                        data[i + 1] = g / 9;
-                        data[i + 2] = b / 9;
-                    }
-                }
-                return imageData;
-            }
-
-            for (let i = 0; i < data.length; i += 4) {
-                let r = data[i], g = data[i + 1], b = data[i + 2];
-                
-                if (filter === "grayscale") {
-                    const avg = (r + g + b) / 3;
-                    data[i] = data[i + 1] = data[i + 2] = avg;
-                } 
-                else if (filter === "brightness") {
-                    data[i] = Math.min(255, r * 1.3);
-                    data[i + 1] = Math.min(255, g * 1.5);
-                    data[i + 2] = Math.min(255, b * 1.5);
-                } 
-                else if (filter === "negative") {
-                    data[i] = 255 - r;
-                    data[i + 1] = 255 - g;
-                    data[i + 2] = 255 - b;
-                }
-            }
-            return imageData;
-        }
+    function getFilterForLevel() {
+        if (currentLevel === 0) return "grayscale";
+        if (currentLevel === 1) return "brightness";
+        if (currentLevel === 2) return "negative";
+        return filters[Math.floor(Math.random() * filters.length)];
+    }
 
         function updateLevelText() {
             nivelTexto.textContent = `Nivel ${currentLevel + 1}`;
@@ -202,25 +152,13 @@ window.onload = function() {
         timeLimit = currentLevel < 6 ? 29 : 19;
         startTimer();
 
-        const img = new Image();
-        img.src = currentImage;
-        img.onload = function() {
-            const { filas, columnas } = getGridSizeForLevel(currentLevel);
-
-            // 🔸 Ajuste del tamaño máximo visible del canvas
-            const maxCanvasSize = 400;
-            const pieceSize = Math.floor(maxCanvasSize / Math.max(filas, columnas));
-            canvas.width = pieceSize * columnas;
-            canvas.height = pieceSize * filas;
-
-            // 🔸 Escalado proporcional (mantiene toda la imagen visible)
-            const scale = Math.min(canvas.width / img.width, canvas.height / img.height);
-            const scaledWidth = img.width * scale;
-            const scaledHeight = img.height * scale;
-            const offsetX = (canvas.width - scaledWidth) / 2;
-            const offsetY = (canvas.height - scaledHeight) / 2;
-
-            const randomRotations = [0, 90, 180, 270];
+    const img = new Image();
+    img.src = currentImage;
+    img.onload = function() {
+        const { filas, columnas } = getGridSizeForLevel(currentLevel);
+        const pieceWidth = img.width / columnas;
+        const pieceHeight = img.height / filas;
+        const randomRotations = [0, 90, 180, 270];
 
             for (let row = 0; row < filas; row++) {
                 for (let col = 0; col < columnas; col++) {
@@ -311,59 +249,48 @@ window.onload = function() {
 
             if (imagePool.length > 0) { 
                 overlay.querySelector("h2").textContent = "¡Nivel superado!";
-                 overlay.querySelector("h2").style.color = "#d3d3d3ff";
-                  overlay.querySelector("h2").style.width= "152px";
-                   overlay.querySelector("h2").style.marginLeft="100px";
-                    nextBtn.style.display = "block";
-                    if(currentLevel===0){ 
-                        overlay.style.transform = "translate(-41%, 280%)";
-                    }else if(currentLevel===1){
-                     overlay.style.transform = "translate(-41%, 200%)"; 
-                        } else if(currentLevel===2){ 
-                            overlay.style.transform = "translate(-41%, 150%)"; 
-
-                        } else if(currentLevel===3){
-                             overlay.style.transform = "translate(-41%, 280%)";
-                             }
-                         else{ 
-                            overlay.style.transform = "translate(-41%, 220%)"; } 
-                        } else {
-                             overlay.querySelector("h2").textContent = "¡Ganaste todos los niveles!";
-                              overlay.querySelector("h2").style.color = "#58af58ff";
-                               overlay.querySelector("h2").style.width= "170px"; 
-                               overlay.style.transform = "translate(-48%, 150%)";
-                                backBtn.style.marginLeft="115px"; 
-                                nextBtn.style.display = "none"; 
-                                menuBtn.style.display= "none"; 
-                                backBtn.style.display = "block"; 
-                            } 
-                            overlay.style.display = "block"; 
-                        } 
-                          else { draw(filas, columnas);
-
-                          }
+                overlay.querySelector("h2").style.color = "#d3d3d3ff";
+                overlay.querySelector("h2").style.width= "152px";
+                overlay.querySelector("h2").style.marginLeft="100px";
+                nextBtn.style.display = "block";
+            } else {
+                overlay.querySelector("h2").textContent = "¡Ganaste todos los niveles!";
+                overlay.querySelector("h2").style.color = "#58af58ff";
+                overlay.querySelector("h2").style.width= "170px";
+                overlay.style.transform = "translate(-48%, 180%)"; 
+                backBtn.style.marginLeft="135px";
+                nextBtn.style.display = "none";
+                menuBtn.style.display= "none";
+                backBtn.style.display = "block";
+            }
+            overlay.style.display = "block";
+        } else {
+            draw(filas, columnas);
+        }
     });
 
     canvas.addEventListener("contextmenu", e => e.preventDefault());
 
-    // --- BOTONES ---
-    startBtn.addEventListener("click", () => {
-        document.querySelector(".contenedor-menuPrincipal").style.display = "none";
-        document.querySelector(".contenedor-blocka").style.backgroundImage = "none";
-        document.querySelector('.header-juego').style.display = "flex";
-        document.getElementById("preNivel").style.display = "flex";
-        updateLevelText();
-        showThumbnailsAndSelectImage();
-    });
-   // --- BOTÓN COMO JUGAR --- 
-    const reglasBtn = document.getElementById("reglasBtn");
-        reglasBtn.addEventListener("click", () => {
-            instruccionesOverlay.style.display = "flex";
-        });
-    entendidoBtn.addEventListener("click", () => {
-        instruccionesOverlay.style.display = "none";
-    });
-    
+   // --- BOTÓN COMENZAR ---
+startBtn.addEventListener("click", () => {
+    document.querySelector(".contenedor-menuPrincipal").style.display = "none"; // oculta el menú
+     document.querySelector(".contenedor-blocka").style.backgroundImage =  "none"; // oculta el menú 
+    document.querySelector('.header-juego').style.display = "flex";
+    document.getElementById("preNivel").style.display = "flex";
+    updateLevelText();
+    showThumbnailsAndSelectImage();
+});
+
+// --- BOTÓN COMO JUGAR ---
+const reglasBtn = document.getElementById("reglasBtn");
+reglasBtn.addEventListener("click", () => {
+    instruccionesOverlay.style.display = "flex"; // muestra las instrucciones
+});
+
+// --- BOTÓN ENTENDIDO (dentro del overlay de instrucciones) ---
+entendidoBtn.addEventListener("click", () => {
+    instruccionesOverlay.style.display = "none"; // cierra las instrucciones
+});
     startLevelBtn.addEventListener("click", () => {
         document.getElementById("preNivel").style.display = "none";
         startLevel();
