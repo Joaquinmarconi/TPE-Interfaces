@@ -6,7 +6,7 @@ body{
 }
 
 .canvas-contenedor{
-    margin-left: 70px; 
+    margin-left: 120px; 
     padding:20px;
     margin-top: 5px;
 }
@@ -131,7 +131,7 @@ body{
     position: absolute;
     top: 20%;
     left: 30%;
-    transform: scale(0.9); /* empieza más pequeño */
+    /*  transform: scale(0.9);empieza más pequeño , habria que sacarlo para que funcione el scale de botones*/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -180,6 +180,8 @@ body{
     color: #fafafa;
 }
 
+
+/*animacion menu principal*/
 /* Escalonar la aparición de cada botón */
 .contenedor-menuPrincipal button:nth-child(2) {
   animation-delay: 0.3s;
@@ -195,15 +197,16 @@ body{
 }
 
 /* Hover */
+
 .contenedor-menuPrincipal button:hover {
-  transform: scale(1.10);
+  transform: scale(1.10) ; /*scale(1.05) !important*/
   color: #fff7e0;
   text-shadow: 0 0 8px rgba(255, 220, 160, 0.8);
   box-shadow: 0 0 20px rgba(255, 170, 40, 0.8), 0 0 40px rgba(255, 170, 40, 0.4);
 }
 /* Animación de entrada del contenedor */
 
-@keyframes aparecerMenu {
+@keyframes aparecerMenu { /*filter blur=mas notorio el cambio*/
     0% {
         opacity: 0;
         transform:  scale(0.9);
@@ -298,7 +301,8 @@ body{
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0,0,0,0.5);
     padding: 0;
-    margin-left: 95px;
+    margin-top: 15px;
+    margin-left: 190px;
 }
 
 
