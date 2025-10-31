@@ -1,4 +1,10 @@
+/**
+ * Clase Piece - Representa una ficha (usando imagen)
+ */
 class Piece extends VisualComponent {
+    static sharedImage = null; // 🔸 optimización: misma imagen para todas las fichas
+    static sharedImageLoaded = false;
+
     constructor(row, col, board) {
         super();
         this.row = row;
@@ -8,36 +14,40 @@ class Piece extends VisualComponent {
         const cellCenter = this.board.getCellCenter(row, col);
         this.x = cellCenter.x;
         this.y = cellCenter.y;
-
         this.originalX = this.x;
         this.originalY = this.y;
         this.originalRow = this.row;
         this.originalCol = this.col;
 
+        this.radius = board.cellSize * 0.40;
         this.isDragging = false;
         this.isSelected = false;
         this.dragOffsetX = 0;
         this.dragOffsetY = 0;
 
-        this.radius = board.cellSize * 0.40;
+        // Animación de movimiento
+        this.targetX = this.x;
+        this.targetY = this.y;
+        this.isAnimating = false;
+        this.animationSpeed = 0.15;
 
-        this.image = null;
-        this.imageLoaded = false;
-        this.loadImage();
+        // Cargar imagen compartida
+        this.loadSharedImage();
     }
 
-    loadImage() {
-        this.image = new Image();
-        this.image.onload = () => {
-            this.imageLoaded = true;
+    loadSharedImage() {
+        if (Piece.sharedImageLoaded) return;
+        Piece.sharedImage = new Image();
+        Piece.sharedImage.src = 'Assets/dona.png'; // 🟣 cambiá la ruta si es necesario
+        Piece.sharedImage.onload = () => {
+            Piece.sharedImageLoaded = true;
         };
-        this.image.src = 'Assets/dona.png';
     }
 
     draw(ctx) {
         ctx.save();
 
-        // Efecto de selección CON GLOW
+        // Glow al seleccionar
         if (this.isSelected) {
             ctx.shadowColor = '#FFD700';
             ctx.shadowBlur = 25;
@@ -51,18 +61,13 @@ class Piece extends VisualComponent {
             ctx.shadowOffsetY = 5;
         }
 
-        // Dibujar la dona
-        if (this.imageLoaded && this.image) {
+        // Dibujar imagen de dona
+        if (Piece.sharedImageLoaded && Piece.sharedImage) {
             const size = this.radius * 2.5;
-            ctx.drawImage(
-                this.image,
-                this.x - size / 2,
-                this.y - size / 2,
-                size,
-                size
-            );
+            ctx.drawImage(Piece.sharedImage, this.x - size / 2, this.y - size / 2, size, size);
         } else {
-            ctx.fillStyle = '#FF1493';
+            // Fallback visual si no cargó
+            ctx.fillStyle = '#FF69B4';
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
             ctx.fill();
@@ -82,8 +87,6 @@ class Piece extends VisualComponent {
         this.isSelected = true;
         this.dragOffsetX = mouseX - this.x;
         this.dragOffsetY = mouseY - this.y;
-        this.originalX = this.x;
-        this.originalY = this.y;
     }
 
     updateDrag(mouseX, mouseY) {
@@ -96,25 +99,48 @@ class Piece extends VisualComponent {
         this.isDragging = false;
     }
 
-    returnToOriginal() {
-        this.x = this.originalX;
-        this.y = this.originalY;
-    }
-
+    /**
+     * Movimiento con animación hacia celda destino
+     */
     moveTo(row, col) {
-        if (row === undefined || col === undefined) return;
-
         const cellCenter = this.board.getCellCenter(row, col);
         if (!cellCenter) return;
 
-        this.x = cellCenter.x;
-        this.y = cellCenter.y;
+        this.targetX = cellCenter.x;
+        this.targetY = cellCenter.y;
         this.row = row;
         this.col = col;
-        this.originalX = this.x;
-        this.originalY = this.y;
-        this.originalRow = row;
-        this.originalCol = col;
+        this.isAnimating = true;
+    }
+
+    /**
+     * Animación de interpolación
+     */
+    updateAnimation() {
+        if (!this.isAnimating) return;
+
+        const dx = this.targetX - this.x;
+        const dy = this.targetY - this.y;
+
+        this.x += dx * this.animationSpeed;
+        this.y += dy * this.animationSpeed;
+
+        if (Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5) {
+            this.x = this.targetX;
+            this.y = this.targetY;
+            this.isAnimating = false;
+        }
+    }
+
+    returnToOriginal(animated = false) {
+        if (animated) {
+            this.targetX = this.originalX;
+            this.targetY = this.originalY;
+            this.isAnimating = true;
+        } else {
+            this.x = this.originalX;
+            this.y = this.originalY;
+        }
     }
 
     select() {

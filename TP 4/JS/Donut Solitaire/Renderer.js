@@ -19,8 +19,8 @@ class Renderer {
      */
     drawBackground() {
         const gradient = this.ctx.createLinearGradient(0, 0, 0, this.canvas.height);
-        gradient.addColorStop(0, '#1a1a2e');
-        gradient.addColorStop(1, '#16213e');
+        gradient.addColorStop(0, '#585755ff');
+        gradient.addColorStop(1, '#42413eff');
         this.ctx.fillStyle = gradient;
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     }
@@ -39,19 +39,34 @@ class Renderer {
     /**
      * Dibuja el tablero
      */
-    drawBoard(board) {
-        if (!board) return;
+   drawBoard(board) {
+    if (!board) return;
 
-        // Dibuja todas las celdas (lo que antes estaba en Board)
-        for (let row = 0; row < board.rows; row++) {
-            for (let col = 0; col < board.cols; col++) {
-                const cell = board.getCell(row, col);
-                if (cell && cell.isValid) {
-                    this.drawCell(board, cell);
-                }
+    const ctx = this.ctx;
+
+    // 🔸 Dibujar imagen de fondo del tablero con esquinas redondeadas
+    if (board.imageLoaded && board.backgroundImage) {
+        const radius = 30; // ← ajustá el radio a gusto
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.roundRect(board.x, board.y, board.size, board.size, radius);
+        ctx.clip();
+
+        ctx.drawImage(board.backgroundImage, board.x, board.y, board.size, board.size);
+        ctx.restore();
+    }
+
+    // 🔸 Luego dibujar las celdas (agujeros)
+    for (let row = 0; row < board.rows; row++) {
+        for (let col = 0; col < board.cols; col++) {
+            const cell = board.getCell(row, col);
+            if (cell && cell.isValid) {
+                this.drawCell(board, cell);
             }
         }
     }
+}
 
     /**
      * Dibuja una celda individual (lo que antes estaba en Board)
@@ -178,7 +193,7 @@ class Renderer {
         }
 
         // Dibujar texto
-        this.ctx.font = `bold 24px Arial`;
+        this.ctx.font = `bold 20px Arial`;
         this.ctx.fillStyle = textColor;
         this.ctx.globalAlpha = alpha;
         this.ctx.textAlign = 'left';
@@ -188,7 +203,7 @@ class Renderer {
         this.ctx.fillText(label, timer.x + 15, timer.y + 10);
 
         // Tiempo
-        this.ctx.font = `bold 28px Arial`;
+        this.ctx.font = `bold 24px Arial`;
         const labelWidth = this.ctx.measureText(label).width;
         this.ctx.fillText(timeString, timer.x + 15 + labelWidth, timer.y + 10);
 
