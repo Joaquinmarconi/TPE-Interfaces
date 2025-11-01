@@ -104,7 +104,7 @@ window.onload = function() {
     // Rutas de imágenes
     const boardImageSrc = "Assets/tableroDonuts.jpg";
     const pieceImageSrc1 = "Assets/fichaDona.png";
-    const pieceImageSrc2 = "Assets/fichaDona2.png";
+    const pieceImageSrc2 = "Assets/donaAmarilla.png";
 
     let game;
 
