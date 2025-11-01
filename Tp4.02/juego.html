@@ -114,31 +114,37 @@
     </div>
     
    <section class="juego-reglas">
-        <section class="juego">
-            <div>
-                <img src="Assets/homerangry.png" alt="homer" id="img-homer" >
+       <section class="juego">
+    <div>
+        <img src="Assets/homerangry.png" alt="homer" id="img-homer">
 
-                   <div class="boton-jugar">
-                        <p>Donuts Solitarie</p>
+        <div class="boton-jugar">
+            <p>Donuts Solitarie</p>
+            <div class="btn-fire-gif-container">
+                <button class="btn-jugar" id="btn-jugar">Jugar 
+                    <span class="material-symbols-outlined">play_circle</span>
+                </button>
+                <img src="https://pngimg.com/uploads/fire/fire_PNG6031.png" class="fire-left" alt="Fuego izquierdo">
+                <img src="https://pngimg.com/uploads/fire/fire_PNG6031.png" class="fire-right" alt="Fuego derecho">
+           </div>
+       </div> 
+    </div>
 
-                        <div class="btn-fire-gif-container">
-                            <button class="btn-jugar" id="btn-jugar">Jugar 
-                                <span class="material-symbols-outlined">play_circle</span>
-                            </button>
-                            <img src="https://pngimg.com/uploads/fire/fire_PNG6031.png" class="fire-left" alt="Fuego izquierdo">
-                            <img src="https://pngimg.com/uploads/fire/fire_PNG6031.png" class="fire-right" alt="Fuego derecho">
-                       </div>
+    <div class="ui" style="display: none;">
+        <span id="timer">00:00</span>
+    </div>
 
-                   </div> 
-            </div>
-             <div class="ui" style="display: none;">
-            <span id="timer">00:00</span>
-            <button id="btn-restart">Reiniciar</button>
-            </div>
-             <canvas id="canva-Peg" width="400" height="400" class="canvas-contenedor"  >
+    <div id="moves-container" style="display: none;">Movimientos posibles: 0</div>
 
-            </canvas>
-        </section>
+    <canvas id="canva-Peg" width="400" height="400" class="canvas-contenedor"></canvas>
+
+    <div id="overlay-Peg" class="overlay-Peg hidden">
+        <div class="overlay-content">
+            <h2>¡Juego terminado!</h2>
+            <button id="btn-reiniciar">Reiniciar</button>
+        </div>
+    </div>
+</section>
         
         
        
