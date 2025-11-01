@@ -27,11 +27,21 @@ class Piece extends VisualComponent {
     }
 
     loadImage() {
+        // ✅ Array con las 3 skins de donas
+        const donaSkins = [
+            'Assets/dona.png',
+            'Assets/dona1.png',
+            'Assets/dona2.png'
+        ];
+
+        // ✅ Elegir una aleatoriamente
+        const randomIndex = Math.floor(Math.random() * donaSkins.length);
+
         this.image = new Image();
         this.image.onload = () => {
             this.imageLoaded = true;
         };
-        this.image.src = 'Assets/dona.png';
+        this.image.src = donaSkins[randomIndex];
     }
 
     draw(ctx) {
@@ -123,5 +133,9 @@ class Piece extends VisualComponent {
 
     deselect() {
         this.isSelected = false;
+    }
+
+    isDraggable() {
+        return this.draggable;
     }
 }
