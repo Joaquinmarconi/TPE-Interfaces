@@ -1,0 +1,25 @@
+.canvas-contenedor {
+  display: none; /* oculto hasta presionar jugar */
+  border-radius: 20px;
+  border: 6px solid #3e2f19;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, #7b5a34, #5c4224);
+  background-size: cover;
+  background-position: center;
+}
+
+#timer {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 15px;
+
+    width: 200px;             /* ancho fijo */
+    padding: 10px;            /* espacio interno */
+    border-radius: 10px;      /* bordes redondeados */
+    background: linear-gradient(135deg, #f39c12, #e74c3c); /* degradado bonito */
+    color: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* sombra */
+    margin-left: auto;        /* centrado horizontal */
+    margin-right: auto;
+}
