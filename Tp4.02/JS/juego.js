@@ -104,7 +104,7 @@ window.onload = function() {
      const movimiento=document.getElementById('moves-container');
 
     // Rutas de imágenes
-    const boardImageSrc = "Assets/fondoFichas.jpeg";
+    const boardImageSrc = "Assets/MADERA.png";
     const pieceImageSrc1 = "Assets/fichaDona.png";
     const pieceImageSrc2 = "Assets/donaAmarilla.png";
     const pieceImageSrc3 = "Assets/donaVioleta.png";
@@ -126,5 +126,5 @@ window.onload = function() {
         game = new GamePeg(canvas, boardImageSrc, pieceImageSrc1, pieceImageSrc2,pieceImageSrc3);
     });
 };
- const boardImageSrc = "Assets/fondoFichas.jpeg";
+ const boardImageSrc = "Assets/MADERA.png";
     const pieceImageSrc = "Assets/fichaDona.png";
