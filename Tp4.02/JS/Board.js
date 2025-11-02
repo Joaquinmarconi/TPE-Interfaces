@@ -8,7 +8,6 @@ class Board {
         this.cols = 7;
         this.cellSize = size / 7;
 
-        // Matriz original del tablero
         this.originalMatrix = [
             [0, 0, 2, 3, 4, 0, 0],
             [0, 0, 4, 3, 2, 0, 0],
@@ -19,10 +18,8 @@ class Board {
             [0, 0, 3, 2, 4, 0, 0]
         ];
 
-        // Matriz activa
         this.matrix = JSON.parse(JSON.stringify(this.originalMatrix));
 
-        // Cargar imágenes
         this.boardImage = new Image();
         this.boardImage.src = boardImageSrc;
 
@@ -38,17 +35,14 @@ class Board {
             this.pieceImages[2].src = pieceImageSrc3;
         }
 
-        // Flags de carga
         this.boardLoaded = false;
         this.piecesLoaded = [false, false, !!pieceImageSrc3 ? false : true];
 
-        // Cargar fondo
         this.boardImage.onload = () => {
             this.boardLoaded = true;
             this.tryDraw();
         };
 
-        // Cargar fichas
         this.pieceImages.forEach((img, i) => {
             img.onload = () => {
                 this.piecesLoaded[i] = true;
@@ -63,16 +57,24 @@ class Board {
         }
     }
 
-    drawBoard() {
-        // Fondo del tablero
+    /**
+     * @param {number} limitRow - opcional: dibuja fichas solo hasta esta fila (para animación)
+     * @param {number} limitCol - opcional: dibuja fichas solo hasta esta columna en la fila actual
+     */
+    drawBoard(limitRow = this.rows, limitCol = this.cols) {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.drawImage(this.boardImage, 0, 0, this.canvas.width, this.canvas.height);
 
-        // Dibujar huecos y fichas
         for (let row = 0; row < this.rows; row++) {
             for (let col = 0; col < this.cols; col++) {
                 if (this.matrix[row][col] !== 0) this.drawHole(row, col);
-                if (this.matrix[row][col] >= 2) this.drawPiece(row, col);
+                
+                // dibujar solo hasta la fila y columna límite
+                if (this.matrix[row][col] >= 2) {
+                    if (row < limitRow || (row === limitRow && col < limitCol)) {
+                        this.drawPiece(row, col);
+                    }
+                }
             }
         }
     }
@@ -86,7 +88,7 @@ class Board {
 
         this.ctx.beginPath();
         this.ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-        this.ctx.fillStyle = "rgba(0, 0, 0, 10)";
+        this.ctx.fillStyle = "rgba(0, 0, 0, 1)";
         this.ctx.fill();
     }
 
@@ -101,7 +103,6 @@ class Board {
         }
     }
 
-    // -------------------- RESET --------------------
     reset() {
         this.matrix = JSON.parse(JSON.stringify(this.originalMatrix));
         this.drawBoard();
