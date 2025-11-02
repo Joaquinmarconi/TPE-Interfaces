@@ -19,7 +19,7 @@ class GamePeg {
         // Timer y su contenedor
         this.timerContainer = document.querySelector(".ui");
         this.timerDisplay = document.getElementById("timer");
-        this.timer = new Timer(this.timerDisplay, 300, () => this.handleTimeOver()); // 300 segundos = 5 min
+        this.timer = new Timer(this.timerDisplay, 300, () => this.handleTimeOver()); // 5 min
 
         // Escucha fin del tiempo
         this.timer.onTimeUp = () => this.handleTimeUp();
@@ -28,6 +28,9 @@ class GamePeg {
             this.btnReiniciar.addEventListener("click", () => this.resetGame());
 
         this.updateMovesCount();
+
+        // Iniciar animación de llenado
+        this.animateFillBoard();
     }
 
     // -------------------- EVENTOS --------------------
@@ -67,18 +70,20 @@ class GamePeg {
 
         const cellType = this.board.matrix[row][col];
         if (cellType >= 2 && cellType <= 4) {
-            // Inicia el timer al seleccionar la primera ficha
             if (!this.timer.running) {
                 this.timer.start();
                 if (this.timerContainer)
-                    this.timerContainer.style.display = "block"; // mostrar el tiempo
+                    this.timerContainer.style.display = "block";
             }
 
             this.selectedPiece = { row, col };
             this.dragging = true;
             this.board.drawBoard();
             this.highlightSelected(row, col);
-            this.drawHints({ row, col });
+            this.drawHints(this.selectedPiece);
+
+            // 🔹 Inicia animación de hints constante
+            this.startHintAnimation();
         }
     }
 
@@ -170,14 +175,52 @@ class GamePeg {
         return moves;
     }
 
+    // -------------------- HINTS --------------------
+    startHintAnimation() {
+        if (this.hintAnimId) return;
+
+        const animate = () => {
+            if (!this.selectedPiece) {
+                cancelAnimationFrame(this.hintAnimId);
+                this.hintAnimId = null;
+                return;
+            }
+
+            const moves = this.getPossibleMoves(this.selectedPiece);
+            const time = Date.now() / 200;
+
+            for (let move of moves) {
+                const cx = move.col * this.board.cellSize + this.board.cellSize/2;
+                const cy = move.row * this.board.cellSize + this.board.cellSize/2;
+
+                const radius = this.board.cellSize / 5 + Math.sin(time) * 3;
+
+                this.ctx.beginPath();
+                this.ctx.arc(cx, cy, radius, 0, 2 * Math.PI);
+                this.ctx.fillStyle = "rgba(72, 131, 6, 1)";
+                this.ctx.fill();
+                this.ctx.lineWidth = 2;
+                this.ctx.strokeStyle = "rgba(96, 212, 0, 1)";
+                this.ctx.stroke();
+            }
+
+            this.hintAnimId = requestAnimationFrame(animate);
+        };
+
+        animate();
+    }
+
     drawHints(piece) {
+        if (!piece) return;
         const moves = this.getPossibleMoves(piece);
-        this.ctx.fillStyle = "rgba(255, 255, 0, 0.45)";
         for (let move of moves) {
             const cx = move.col * this.board.cellSize + this.board.cellSize/2;
             const cy = move.row * this.board.cellSize + this.board.cellSize/2;
+            const radius = this.board.cellSize / 5;
+
             this.ctx.beginPath();
-            this.ctx.arc(cx, cy, this.board.cellSize/5, 0, 2*Math.PI);
+            this.ctx.arc(cx, cy, radius, 0, 2*Math.PI);
+            this.ctx.fillStyle = "rgba(72, 131, 6, 1)";
             this.ctx.fill();
         }
     }
@@ -188,7 +231,7 @@ class GamePeg {
         const radius = (this.board.cellSize - 6)/2;
         this.ctx.beginPath();
         this.ctx.arc(cx, cy, radius + 3, 0, Math.PI*2);
-        this.ctx.strokeStyle = "yellow";
+        this.ctx.strokeStyle = "rgba(72, 131, 6, 1)";
         this.ctx.lineWidth = 4;
         this.ctx.stroke();
     }
@@ -229,50 +272,48 @@ class GamePeg {
         return count;
     }
 
-  // -------------------- FIN DEL JUEGO --------------------
-handleTimeUp() {
-    this.timer.stop();
-
-    if (!this.overlay) return;
-
-    const overlayText = this.overlay.querySelector("h2");
-    const overlayTime = this.overlay.querySelector("p");
-
-    overlayText.textContent = "⏰ ¡Se acabó el tiempo!";
-    overlayTime.textContent = "";
-
-    this.overlay.classList.remove("hidden");
-    this.overlay.style.display = "block";
-}
-
-checkGameOver() {
-    const totalMoves = this.updateMovesCount();
-    const piecesLeft = this.countPieces();
-
-    // 🔹 Si el tiempo llegó a 0
-    if (this.timer.timeLeft <= 0) {
-        this.handleTimeUp();
-        return;
-    }
-
-    // 🔹 Sin movimientos posibles
-    if (totalMoves === 0 && this.overlay) {
+    // -------------------- FIN DEL JUEGO --------------------
+    handleTimeUp() {
         this.timer.stop();
+
+        if (!this.overlay) return;
 
         const overlayText = this.overlay.querySelector("h2");
         const overlayTime = this.overlay.querySelector("p");
 
-        if (piecesLeft === 1) {
-            overlayText.textContent = "🏆 ¡Ganaste!";
-        } else {
-            overlayText.textContent = "😢 ¡Te quedaste sin movimientos!";
-        }
-
+        overlayText.textContent = "⏰ ¡Se acabó el tiempo!";
         overlayTime.textContent = "";
+
         this.overlay.classList.remove("hidden");
         this.overlay.style.display = "block";
     }
-}
+
+    checkGameOver() {
+        const totalMoves = this.updateMovesCount();
+        const piecesLeft = this.countPieces();
+
+        if (this.timer.timeLeft <= 0) {
+            this.handleTimeUp();
+            return;
+        }
+
+        if (totalMoves === 0 && this.overlay) {
+            this.timer.stop();
+
+            const overlayText = this.overlay.querySelector("h2");
+            const overlayTime = this.overlay.querySelector("p");
+
+            if (piecesLeft === 1) {
+                overlayText.textContent = "🏆 ¡Ganaste!";
+            } else {
+                overlayText.textContent = "😢 ¡Te quedaste sin movimientos!";
+            }
+
+            overlayTime.textContent = "";
+            this.overlay.classList.remove("hidden");
+            this.overlay.style.display = "block";
+        }
+    }
 
     resetGame() {
         this.board.reset();
@@ -280,9 +321,82 @@ checkGameOver() {
         this.updateMovesCount();
         this.overlay.style.display="none";
 
-        // Reiniciar timer
         this.timer.reset();
         if (this.timerContainer)
             this.timerContainer.style.display = "block";
+
+        // Animación al reiniciar
+        this.animateFillBoard();
+    }
+
+    // -------------------- ANIMACIÓN DE LLENADO --------------------
+    animateFillBoard() {
+        const rows = this.board.rows;
+        const cols = this.board.cols;
+        let currentRow = 0;
+        let currentCol = 0;
+
+        const drawnPieces = [];
+
+        const animate = () => {
+            while (currentRow < rows) {
+                const type = this.board.matrix[currentRow][currentCol];
+                if (type >= 2 && type <= 4) {
+                    const img =
+                        type === 2 ? this.board.pieceImages[0] :
+                        type === 3 ? this.board.pieceImages[1] :
+                        this.board.pieceImages[2];
+
+                    const x = currentCol * this.board.cellSize + 5;
+                    const y = currentRow * this.board.cellSize + 5;
+                    const size = this.board.cellSize - 10;
+
+                    let scale = 0;
+                    const step = () => {
+                        scale += 0.1;
+                        if (scale > 1) scale = 1;
+
+                        // dibujar tablero hasta esta celda
+                        this.board.drawBoard(currentRow, currentCol);
+
+                        // dibujar piezas ya animadas
+                        for (const p of drawnPieces) {
+                            const t = p.type;
+                            const imgPiece = t === 2 ? this.board.pieceImages[0] :
+                                             t === 3 ? this.board.pieceImages[1] :
+                                             this.board.pieceImages[2];
+                            this.ctx.drawImage(imgPiece, p.x, p.y, size, size);
+                        }
+
+                        // dibujar la ficha actual animándose
+                        this.ctx.drawImage(img, x, y + size * (1 - scale), size, size * scale);
+
+                        if (scale < 1) {
+                            requestAnimationFrame(step);
+                        } else {
+                            drawnPieces.push({type, x, y});
+                            currentCol++;
+                            if (currentCol >= cols) {
+                                currentCol = 0;
+                                currentRow++;
+                            }
+                            requestAnimationFrame(animate);
+                        }
+                    };
+                    step();
+                    return;
+                }
+                currentCol++;
+                if (currentCol >= cols) {
+                    currentCol = 0;
+                    currentRow++;
+                }
+            }
+
+            // animación completa: dibujar tablero completo
+            this.board.drawBoard();
+        };
+
+        animate();
     }
 }

@@ -125,9 +125,12 @@ window.onload = function() {
         canvas.style.boxShadow = '0 0 10px rgba(92, 51, 23, 0.8)'; // Suaviza el borde
         overlayPeg.style.display= 'none';
 
-        // Iniciar juego con dos tipos de ficha
-        game = new GamePeg(canvas, boardImageSrc, pieceImageSrc1, pieceImageSrc2,pieceImageSrc3);
-    });
+    // Iniciar juego con tres tipos de ficha
+    game = new GamePeg(canvas, boardImageSrc, pieceImageSrc1, pieceImageSrc2, pieceImageSrc3);
+
+    // 🔹 Llamar animación de llenado de fichas
+    game.animateFillBoard();
+});
 };
  const boardImageSrc = "Assets/MADERA.png";
     const pieceImageSrc = "Assets/fichaDona.png";
