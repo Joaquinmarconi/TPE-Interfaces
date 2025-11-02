@@ -102,9 +102,10 @@ window.onload = function() {
     const timer = document.querySelector('.ui');
 
     // Rutas de imágenes
-    const boardImageSrc = "Assets/tableroDonuts.jpg";
+    const boardImageSrc = "Assets/fondoFichas.jpeg";
     const pieceImageSrc1 = "Assets/fichaDona.png";
     const pieceImageSrc2 = "Assets/donaAmarilla.png";
+
 
     let game;
 
@@ -120,5 +121,5 @@ window.onload = function() {
         game = new GamePeg(canvas, boardImageSrc, pieceImageSrc1, pieceImageSrc2);
     });
 };
- const boardImageSrc = "Assets/tableroDonuts.jpg";
+ const boardImageSrc = "Assets/fondoFichas.jpeg";
     const pieceImageSrc = "Assets/fichaDona.png";
