@@ -120,6 +120,7 @@ window.onload = function() {
         canvas.style.display = 'block';
         canvas.style.marginLeft = '250px';
         canvas.style.marginTop = '45px';
+        canvas.style.borderRadius='20px';
         overlayPeg.style.display= 'none';
 
         // Iniciar juego con dos tipos de ficha

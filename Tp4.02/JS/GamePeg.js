@@ -16,6 +16,14 @@ class GamePeg {
         this.btnReiniciar = document.getElementById("btn-reiniciar");
         this.movesContainer = document.getElementById("moves-container");
 
+        // Timer y su contenedor
+        this.timerContainer = document.querySelector(".ui");
+        this.timerDisplay = document.getElementById("timer");
+        this.timer = new Timer(this.timerDisplay, 300, () => this.handleTimeOver()); // 300 segundos = 5 min
+
+        // Escucha fin del tiempo
+        this.timer.onTimeUp = () => this.handleTimeUp();
+
         if (this.btnReiniciar)
             this.btnReiniciar.addEventListener("click", () => this.resetGame());
 
@@ -59,6 +67,13 @@ class GamePeg {
 
         const cellType = this.board.matrix[row][col];
         if (cellType >= 2 && cellType <= 4) {
+            // Inicia el timer al seleccionar la primera ficha
+            if (!this.timer.running) {
+                this.timer.start();
+                if (this.timerContainer)
+                    this.timerContainer.style.display = "block"; // mostrar el tiempo
+            }
+
             this.selectedPiece = { row, col };
             this.dragging = true;
             this.board.drawBoard();
@@ -214,14 +229,48 @@ class GamePeg {
         return count;
     }
 
-  checkGameOver() {
+  // -------------------- FIN DEL JUEGO --------------------
+handleTimeUp() {
+    this.timer.stop();
+
+    if (!this.overlay) return;
+
+    const overlayText = this.overlay.querySelector("h2");
+    const overlayTime = this.overlay.querySelector("p");
+
+    overlayText.textContent = "⏰ ¡Se acabó el tiempo!";
+    overlayTime.textContent = "";
+
+    this.overlay.classList.remove("hidden");
+    this.overlay.style.display = "block";
+}
+
+checkGameOver() {
     const totalMoves = this.updateMovesCount();
+    const piecesLeft = this.countPieces();
+
+    // 🔹 Si el tiempo llegó a 0
+    if (this.timer.timeLeft <= 0) {
+        this.handleTimeUp();
+        return;
+    }
+
+    // 🔹 Sin movimientos posibles
     if (totalMoves === 0 && this.overlay) {
+        this.timer.stop();
+
         const overlayText = this.overlay.querySelector("h2");
-        const piecesLeft = this.countPieces();
-        overlayText.textContent = piecesLeft === 0 ? "¡Ganaste!" : "¡Juego terminado!";
+        const overlayTime = this.overlay.querySelector("p");
+
+        if (piecesLeft === 1) {
+            overlayText.textContent = "🏆 ¡Ganaste!";
+        } else {
+            overlayText.textContent = "😢 ¡Te quedaste sin movimientos!";
+        }
+
+        overlayTime.textContent = "";
         this.overlay.classList.remove("hidden");
-        this.overlay.style.display= 'block';
+        this.overlay.style.display = "block";
     }
 }
 
@@ -229,5 +278,11 @@ class GamePeg {
         this.board.reset();
         if (this.overlay) this.overlay.classList.add("hidden");
         this.updateMovesCount();
+        this.overlay.style.display="none";
+
+        // Reiniciar timer
+        this.timer.reset();
+        if (this.timerContainer)
+            this.timerContainer.style.display = "block";
     }
 }
