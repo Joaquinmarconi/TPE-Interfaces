@@ -100,25 +100,30 @@ window.onload = function() {
     const botonJugar = document.querySelector('.boton-jugar');
     const canvas = document.getElementById('canva-Peg');
     const timer = document.querySelector('.ui');
+    const overlayPeg=document.getElementById('overlay-Peg');
+     const movimiento=document.getElementById('moves-container');
 
     // Rutas de imágenes
     const boardImageSrc = "Assets/fondoFichas.jpeg";
     const pieceImageSrc1 = "Assets/fichaDona.png";
     const pieceImageSrc2 = "Assets/donaAmarilla.png";
+    const pieceImageSrc3 = "Assets/donaVioleta.png";
 
 
     let game;
 
     btnJugar.addEventListener('click', () => {
+      movimiento.style.display = 'block';
         homerImg.style.display = 'none';
         botonJugar.style.display = 'none';
         timer.style.display = 'block';
         canvas.style.display = 'block';
         canvas.style.marginLeft = '250px';
         canvas.style.marginTop = '45px';
+        overlayPeg.style.display= 'none';
 
         // Iniciar juego con dos tipos de ficha
-        game = new GamePeg(canvas, boardImageSrc, pieceImageSrc1, pieceImageSrc2);
+        game = new GamePeg(canvas, boardImageSrc, pieceImageSrc1, pieceImageSrc2,pieceImageSrc3);
     });
 };
  const boardImageSrc = "Assets/fondoFichas.jpeg";

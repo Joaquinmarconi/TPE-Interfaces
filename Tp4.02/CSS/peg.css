@@ -6,8 +6,15 @@
   background: linear-gradient(145deg, #2a1b0e, #3c2411); /* marrón oscuro con profundidad */
   background-size: cover;
   background-position: center;
+  z-index: 1;
+  position: relative;
 }
-
+#canva-Peg {
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
 .ui {
   position: absolute;
   margin-top: 22px;
@@ -30,4 +37,41 @@
   font-weight: bold;
   color: #FFDD33;
   letter-spacing: 1px;
+}
+#moves-container {
+  color: white;
+  font-family: Arial, sans-serif;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+.overlay-Peg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex; /* esto es importante */
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.overlay-Peg.hidden {
+    display: hidden;
+}
+
+.overlay-content {
+    background: white;
+    padding: 2em 3em;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#btn-reiniciar {
+    padding: 0.5em 1.5em;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-top: 1em;
 }
