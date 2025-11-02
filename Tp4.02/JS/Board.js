@@ -86,7 +86,7 @@ class Board {
 
         this.ctx.beginPath();
         this.ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-        this.ctx.fillStyle = "rgba(0, 0, 0, 10)";
+        this.ctx.fillStyle = "rgba(92, 51, 23, 0.8)";
         this.ctx.fill();
     }
 

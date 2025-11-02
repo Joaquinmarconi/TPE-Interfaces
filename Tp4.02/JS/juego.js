@@ -121,6 +121,8 @@ window.onload = function() {
         canvas.style.marginLeft = '250px';
         canvas.style.marginTop = '45px';
         canvas.style.borderRadius='20px';
+        canvas.style.border = '8px solid rgba(92, 51, 23, 0.8)';
+        canvas.style.boxShadow = '0 0 10px rgba(92, 51, 23, 0.8)'; // Suaviza el borde
         overlayPeg.style.display= 'none';
 
         // Iniciar juego con dos tipos de ficha
