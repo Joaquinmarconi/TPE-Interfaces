@@ -239,3 +239,27 @@
 .popoverAyuda button:hover {
     background-color: #357ABD;
 }
+
+#btn-musica-redondo {
+    position: absolute;       /* lo puedes ajustar a la esquina que quieras */
+    bottom: 15px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;       /* lo hace circular */
+    border: none;
+    background-color: #552a16; /* color de fondo */
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+#btn-musica-redondo img {
+  margin-top: 5px;
+    width: 35px;
+    height: 35px;
+}
