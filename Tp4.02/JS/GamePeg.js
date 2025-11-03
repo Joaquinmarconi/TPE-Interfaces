@@ -361,6 +361,7 @@ class GamePeg {
 
             if (piecesLeft === 1) {
                 overlayText.textContent = "¡Ganaste!";
+                overlayText.style.color = "limegreen";
             } else {
                 overlayText.textContent = "¡Te quedaste sin movimientos!";
             }

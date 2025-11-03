@@ -106,6 +106,7 @@ window.onload = function() {
     const popover = document.getElementById('popover-ayuda');
     const btnCerrarPopover = document.getElementById('popover-close');
     const musica = document.getElementById('musicaFondo'); // <-- NUEVO
+    
 
     // Rutas de imágenes
     const boardImageSrc = "Assets/MADERA.png";
@@ -119,6 +120,7 @@ window.onload = function() {
         movimiento.style.display = 'block';
         homerImg.style.display = 'none';
         botonJugar.style.display = 'none';
+        btnMusica.style.display = 'block';
         btnReiniciarFijo.style.display = 'block';
         btnAyuda.style.display = 'block';
         timer.style.display = 'block';
@@ -144,7 +146,6 @@ window.onload = function() {
 
     //btn musica
     const btnMusica = document.getElementById('btn-musica-redondo');
-    btnMusica.style.display = 'block'; // lo mostramos al iniciar el juego
 
     let musicaActiva = true; // estado inicial
 
