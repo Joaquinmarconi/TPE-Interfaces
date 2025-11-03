@@ -93,7 +93,6 @@ function togglePopoverSus() {
 }
  
   //lamados POO
-
 window.onload = function() {
     const btnJugar = document.querySelector('#btn-jugar');
     const homerImg = document.querySelector('#img-homer');
@@ -106,6 +105,7 @@ window.onload = function() {
     const btnAyuda = document.getElementById('btn-ayuda-redondo');
     const popover = document.getElementById('popover-ayuda');
     const btnCerrarPopover = document.getElementById('popover-close');
+    const musica = document.getElementById('musicaFondo'); // <-- NUEVO
 
     // Rutas de imágenes
     const boardImageSrc = "Assets/MADERA.png";
@@ -130,6 +130,11 @@ window.onload = function() {
         canvas.style.boxShadow = '0 0 10px rgba(92, 51, 23, 0.8)';
         overlayPeg.style.display = 'none';
 
+        // Reproducir música al iniciar el juego
+        musica.play().catch(err => {
+            console.log("La reproducción automática fue bloqueada:", err);
+        });
+
         // Iniciar juego con tres tipos de ficha
         game = new GamePeg(canvas, boardImageSrc, pieceImageSrc1, pieceImageSrc2, pieceImageSrc3);
 
@@ -137,6 +142,23 @@ window.onload = function() {
         game.animateFillBoard();
     });
 
+    //btn musica
+    const btnMusica = document.getElementById('btn-musica-redondo');
+    btnMusica.style.display = 'block'; // lo mostramos al iniciar el juego
+
+    let musicaActiva = true; // estado inicial
+
+    btnMusica.addEventListener('click', () => {
+        if(musicaActiva) {
+            musica.pause();
+            btnMusica.querySelector('img').src = "Assets/silenciar-volumen.png"; // ícono apagado
+            musicaActiva = false;
+        } else {
+            musica.play();
+            btnMusica.querySelector('img').src = "Assets/audio.png"; // ícono encendido
+            musicaActiva = true;
+        }
+    });
     // --- POPUP DE AYUDA ---
     btnAyuda.addEventListener('click', () => {
         popover.classList.remove('hidden'); // Mostrar el popover
