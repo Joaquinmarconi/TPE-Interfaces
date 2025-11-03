@@ -541,15 +541,12 @@ header section {
 .home-carrusel button:last-of-type {
     right: 13px;
 }
-
-.home-carrusel button:first-of-type:hover {
+.home-carrusel button:first-of-type:hover{
     color: #ec930e;
 }
-
-.home-carrusel button:last-of-type:hover {
+.home-carrusel button:last-of-type:hover{
     color: #ec930e;
 }
-
 .home-carrusel ul {
     display: flex;
     overflow-x: auto;
@@ -563,8 +560,7 @@ header section {
     clip-path: none;
     background-color: transparent;
 }
-
-.home-carrusel li {
+.home-carrusel li{
     border-radius: 23px;
 }
 
@@ -612,22 +608,20 @@ header section {
     z-index: 1;
     /* Transición más lenta y suave */
 }
-
 .home-carrusel:first-child li:hover {
     transform: translateY(-5px) scale(1.05);
-    box-shadow: 0px 0px 10px rgb(255, 174, 0);
+     box-shadow: 0px 0px  10px rgb(255, 174, 0);
 }
-
 .home-carrusel li:hover {
     transform: translateY(-5px) scale(1);
-    box-shadow: 0px 0px 10px rgb(255, 174, 0);
+    box-shadow: 0px 0px  10px rgb(255, 174, 0);
     z-index: 5;
     /* Elevación más sutil */
 }
 
 .home-carrusel li:hover img {
     filter: brightness(45%);
-
+    
 }
 
 .home-carrusel img {
@@ -775,29 +769,32 @@ header section {
 }
 
 .juego {
-    width: 900px;
-    height: 500px;
-    background-color: #2A2A2A;
-    margin-left: 58px;
-    position: relative;
-    z-index: 1;
-
+  width: 900px;
+  height: 500px;
+  background-image: url('../Assets/nubes.png');
+  background-size: cover;         /* Rellena todo el contenedor */
+  background-position: 0% 40%;  
+  background-repeat: no-repeat;
+  margin-left: 58px;
+  position: relative;
+  z-index: 1;
 }
 
 .juego div img {
     width: 900px;
     height: 500px;
-    filter: brightness(40%);
-    object-fit: cover;
-    object-position: 0px -150px;
 }
 
 .boton-jugar {
     width: 500px;
     position: absolute;
-    top: 250px;
-    margin-left: 200px;
-    transform: translate(30%, -50%);
+    top: 50%;
+    left: 15%;
+    transform: translate(15%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
 }
 
@@ -805,7 +802,8 @@ header section {
     font-family: 'Baloo 2', sans-serif;
     font-weight: 600;
     font-size: 20px;
-    color: #B3B3B3;
+    color: #ececec;
+    margin: 0;
 
 }
 
@@ -844,11 +842,11 @@ header section {
 
 /* Posición y rotación de imagenes */
 .fire-left {
-    right: -313px;
+    right: -305px;
 }
 
 .fire-right {
-    left: -313px;
+    left: -305px;
 }
 
 .btn-fire-gif-container:hover .fire-left {
@@ -1304,55 +1302,6 @@ header section {
 }
 
 /* ===================== */
-/*    CANVAS DEL JUEGO   */
-/* ===================== */
-
-.juego {
-    position: relative;
-    /* Para poder posicionar el botón cerrar */
-}
-
-#gameCanvas {
-    width: 100%;
-    height: 100%;
-    display: block;
-    background-color: #c9c9da;
-    border-radius: 10px;
-}
-
-#btn-cerrar-juego-canvas {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 35px;
-    height: 35px;
-    background-color: #F44336;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-}
-
-#btn-cerrar-juego-canvas:hover {
-    background-color: #D32F2F;
-    transform: scale(1.1);
-}
-
-/* Ocultar elementos cuando el juego está activo */
-.juego.game-active img,
-.juego.game-active .boton-jugar {
-    display: none;
-}
-
-/* ===================== */
 /*    LOGIN Y REGISTRO   */
 /* ===================== */
 
@@ -1778,7 +1727,7 @@ header section {
     transition: opacity 0.8s ease, visibility 0.8s ease;
     font-family: 'Orbitron', sans-serif;
     color: #FFD600;
-
+    
 }
 
 .loading-contenido {
@@ -1792,7 +1741,7 @@ header section {
     font-size: 26px;
     margin-bottom: 15px;
     letter-spacing: 2px;
-    animation: girarNumero 1s ease-in-out 9s;
+    animation: girarNumero 1s ease-in-out 9s ;
 }
 
 /* Barra base */
@@ -1804,12 +1753,10 @@ header section {
     overflow: hidden;
     box-shadow: 0 0 12px #FF7904;
     margin-bottom: 15px;
-    animation: girarNumero 1s ease-in-out 9s;
-
+    animation: girarNumero 1s ease-in-out 9s ;
+    
 }
-
-.loading-bar-animar {}
-
+    
 .loading-progreso {
     width: 0%;
     height: 100%;
@@ -1817,7 +1764,7 @@ header section {
     transition: width 0.1s linear;
     border-radius: 12px 0 0 12px;
     animation: shine 2s linear infinite;
-
+   
 }
 
 .loading-texto {
@@ -1832,17 +1779,15 @@ header section {
     opacity: 0;
     visibility: hidden;
 }
-
-@keyframes girarNumero {
-    0% {
+@keyframes girarNumero{
+    0%{
         transform: rotateX(0deg);
     }
 
-    50% {
+    50%{
         transform: rotateX(0deg);
     }
-
-    80% {
+    80%{
         transform: rotateX(180deg);
     }
 
@@ -1982,9 +1927,8 @@ footer nav a:hover {
     align-items: center;
     justify-content: center;
 }
-
-.footer-social img:hover {
-    filter: brightness(70%);
+.footer-social img:hover{
+ filter: brightness(70%);
 }
 
 /* Texto legal */

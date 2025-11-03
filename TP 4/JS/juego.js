@@ -2,10 +2,10 @@
 
 /*menus*/
 let btnOpen = document.querySelector('#btn-open');
-let btnMenuUsuario = document.querySelector('#btn-usuario');
-let btnSubmenu = document.querySelector('#btn-submenu');
+let btnMenuUsuario= document.querySelector('#btn-usuario');
+let btnSubmenu= document.querySelector('#btn-submenu');
 
-btnSubmenu.addEventListener('click', toggleSubMenu);
+btnSubmenu.addEventListener('click', toggleSubMenu)
 btnOpen.addEventListener('click', toggleMenu);
 btnMenuUsuario.addEventListener('click', toggleMenu2);
 
@@ -25,51 +25,45 @@ function toggleSubMenu() {
     btnSubmenu.classList.toggle("open"); //cambiar el estilo del botón cuando el submenú está abierto
 }
 
-//animacion mouse click//
-const mouseIcon = document.getElementById("mouseIcon");
-const icons = ["Assets/left-click.png", "Assets/right-click.png"];
-let index = 0;
 
-setInterval(() => {
-    index = (index + 1) % icons.length;
-    mouseIcon.src = icons[index];
-}, 5000); // cambia cada 5 segundos
+
+
 
 //interaccion like comentario//
+
 for (let i = 1; i <= 5; i++) {
-    const likeIcon = document.getElementById(`icono-like-${i}`);
-    const contador = document.getElementById(`contador-${i}`);
-    const img = document.querySelector(`#icono-img-${i}`);
+  const likeIcon = document.getElementById(`icono-like-${i}`);
+  const contador = document.getElementById(`contador-${i}`);
+  const img=document.querySelector(`#icono-img-${i}`);
 
-    if (likeIcon) {
-        likeIcon.addEventListener('click', () => {
-            let likes = parseInt(contador.textContent);
+  likeIcon.addEventListener('click', () => {
+     
+    let likes = parseInt(contador.textContent);
 
-            if (likeIcon.classList.contains('liked')) {
-                likeIcon.classList.remove('liked');
-                img.src = 'Assets/like-sin.png';
-                contador.textContent = likes - 1;
-            } else {
-                likeIcon.classList.add('liked');
-                img.src = 'Assets/like-con.png';
-                contador.textContent = likes + 1;
-            }
-        });
-    }
-}
+        if (likeIcon.classList.contains('liked')) {
+          likeIcon.classList.remove('liked');
+          img.src = 'Assets/like-sin.png';
+          contador.textContent = likes - 1;
+        } else {
+          likeIcon.classList.add('liked');
+          img.src = 'Assets/like-con.png';
+          contador.textContent = likes + 1;
+        }
+  })
+};
+
 
 const btnComentar = document.getElementById('btn-comentar');
 
-if (btnComentar) {
-    btnComentar.addEventListener('click', () => {
-        // Reinicia la animación si ya se había hecho antes
-        btnComentar.classList.remove('animar-comentar');
-        void btnComentar.offsetWidth; // truco para forzar el reinicio
-        btnComentar.classList.add('animar-comentar');
-    });
-}
+btnComentar.addEventListener('click', () => {
+  // Reinicia la animación si ya se había hecho antes
+  btnComentar.classList.remove('animar-comentar');
+  void btnComentar.offsetWidth; // truco para forzar el reinicio
+  btnComentar.classList.add('animar-comentar');
+});
 
 //popovers
+
 const btnCom = document.getElementById('btn-compartir');
 const popcom = document.querySelector('.popover-compartir');
 const botonSus = document.querySelectorAll('.suscribirse');
@@ -77,158 +71,101 @@ const popoversus = document.querySelector('.popover-suscripcion');
 const overlay = document.querySelector('.overlayJuego');
 
 // al hacer click en el botón, mostramos o cerramos el popover + overlay
-if (btnCom) {
-    btnCom.addEventListener('click', togglePopoverCom);
-}
-
-if (botonSus) {
-    botonSus.forEach(btn => {
-        btn.addEventListener('click', togglePopoverSus);
-    });
-}
-
-// al hacer click en el overlay, cerramos todo
-if (overlay) {
-    overlay.addEventListener('click', cerrarPopovers);
-}
-
-function togglePopoverCom() {
-    popcom.classList.toggle('open');
-    overlay.classList.toggle('active');
-}
-
-function togglePopoverSus() {
-    popoversus.classList.toggle('open');
-    overlay.classList.toggle('active');
-}
-
-function cerrarPopovers() {
-    // Solo cerrar popovers si no estamos en el juego
-    if (!game || !game.isRunning) {
-        popcom.classList.remove('open');
-        popoversus.classList.remove('open');
-        overlay.classList.remove('active');
-    }
-}
-
-// ============================================
-// CÓDIGO DEL JUEGO PEG SOLITAIRE
-// ============================================
-
-let game = null;
-let gameCanvas = null;
-
-// Esperar a que el DOM esté cargado para inicializar el juego
-document.addEventListener('DOMContentLoaded', function () {
-    const btnJugar = document.getElementById('btn-jugar');
-
-    if (btnJugar) {
-        btnJugar.addEventListener('click', iniciarJuego);
-    }
-
-    // Event listener para reiniciar con la tecla R
-    document.addEventListener('keydown', function (event) {
-        if (event.key === 'r' || event.key === 'R') {
-            if (game && game.gameOver) {
-                game.restart();
-            }
-        }
-
-        // Pausa con ESC
-        if (event.key === 'Escape') {
-            if (game && !game.gameOver && game.isRunning) {
-                if (game.isPaused) {
-                    game.resume();
-                } else {
-                    game.pause();
-                }
-            } else if (game && game.isRunning) {
-                // Si ESC y el juego está corriendo, cerrar el juego
-                cerrarJuego();
-            }
-        }
-    });
+btnCom.addEventListener('click', togglePopoverCom);
+botonSus.forEach(btn => {
+  btn.addEventListener('click', togglePopoverSus);
 });
 
-/**
- * Inicializa el juego cuando se presiona el botón
- */
-function iniciarJuego() {
-    console.log('🎮 Iniciando juego...');
+// al hacer click en el overlay, cerramos todo
+ overlay.addEventListener('click', () => {
+  popcom.classList.remove('open');
+  popoversus.classList.remove('open');
+  overlay.classList.remove('active');
+});
 
-    // Crear el canvas DENTRO del recuadro del juego
-    crearCanvasEnRecuadro();
-
-    // Crear nueva instancia del juego
-    if (game) {
-        game.destroy();
-    }
-
-    game = new Game('gameCanvas', null);
-    game.init();
+function togglePopoverCom() {
+  popcom.classList.toggle('open');
+  overlay.classList.toggle('active');
 }
-/**
- * Crea el elemento canvas
- */
-function crearCanvasEnRecuadro() {
-    const contenedorJuego = document.querySelector('.juego');
-
-    if (!contenedorJuego) {
-        console.error('❌ No se encontró el contenedor .juego');
-        return;
-    }
-
-    // Marcar como activo (oculta Homer y botón via CSS)
-    contenedorJuego.classList.add('game-active');
-
-    // Crear o reutilizar el canvas
-    gameCanvas = document.getElementById('gameCanvas');
-
-    if (!gameCanvas) {
-        gameCanvas = document.createElement('canvas');
-        gameCanvas.id = 'gameCanvas';
-        gameCanvas.width = 900;
-        gameCanvas.height = 500;
-
-        contenedorJuego.appendChild(gameCanvas);
-        console.log('✅ Canvas creado en el recuadro');
-    }
-
-    // Botón para cerrar el juego
-    let btnCerrar = document.getElementById('btn-cerrar-juego-canvas');
-    if (!btnCerrar) {
-        btnCerrar = document.createElement('button');
-        btnCerrar.id = 'btn-cerrar-juego-canvas';
-        btnCerrar.innerHTML = '✕';
-        btnCerrar.addEventListener('click', cerrarJuego);
-        contenedorJuego.appendChild(btnCerrar);
-    }
+function togglePopoverSus() {
+  popoversus.classList.toggle('open');
+  overlay.classList.toggle('active');
 }
+ 
+  //lamados POO
+window.onload = function() {
+    const btnJugar = document.querySelector('#btn-jugar');
+    const homerImg = document.querySelector('#img-homer');
+    const botonJugar = document.querySelector('.boton-jugar');
+    const canvas = document.getElementById('canva-Peg');
+    const timer = document.querySelector('.ui');
+    const overlayPeg = document.getElementById('overlay-Peg');
+    const movimiento = document.getElementById('moves-container');
+    const btnReiniciarFijo = document.getElementById('btn-reiniciar-redondo');
+    const btnAyuda = document.getElementById('btn-ayuda-redondo');
+    const popover = document.getElementById('popover-ayuda');
+    const btnCerrarPopover = document.getElementById('popover-close');
+    const musica = document.getElementById('musicaFondo'); // <-- NUEVO
+    
 
-/**
- * Cierra el juego y vuelve a la página
- */
-function cerrarJuego() {
-    console.log('Cerrando juego...');
+    // Rutas de imágenes
+    const boardImageSrc = "Assets/MADERA.png";
+    const pieceImageSrc1 = "Assets/fichaDona.png";
+    const pieceImageSrc2 = "Assets/donaAmarilla.png";
+    const pieceImageSrc3 = "Assets/donaVioleta.png";
 
-    if (game) {
-        game.destroy();
-        game = null;
-    }
+    let game;
 
-    if (gameCanvas) {
-        gameCanvas.remove();
-        gameCanvas = null;
-    }
+    btnJugar.addEventListener('click', () => {
+        movimiento.style.display = 'block';
+        homerImg.style.display = 'none';
+        botonJugar.style.display = 'none';
+        btnMusica.style.display = 'block';
+        btnReiniciarFijo.style.display = 'block';
+        btnAyuda.style.display = 'block';
+        timer.style.display = 'block';
+        canvas.style.display = 'block';
+        canvas.style.marginLeft = '250px';
+        canvas.style.marginTop = '45px';
+        canvas.style.borderRadius = '20px';
+        canvas.style.border = '8px solid rgba(92, 51, 23, 0.8)';
+        canvas.style.boxShadow = '0 0 10px rgba(92, 51, 23, 0.8)';
+        overlayPeg.style.display = 'none';
 
-    const btnCerrar = document.getElementById('btn-cerrar-juego-canvas');
-    if (btnCerrar) {
-        btnCerrar.remove();
-    }
+        // Reproducir música al iniciar el juego
+        musica.play().catch(err => {
+            console.log("La reproducción automática fue bloqueada:", err);
+        });
 
-    // Quitar clase activa (muestra Homer y botón via CSS)
-    const contenedorJuego = document.querySelector('.juego');
-    if (contenedorJuego) {
-        contenedorJuego.classList.remove('game-active');
-    }
-}
+        // Iniciar juego con tres tipos de ficha
+        game = new GamePeg(canvas, boardImageSrc, pieceImageSrc1, pieceImageSrc2, pieceImageSrc3);
+
+        // Llamar animación de llenado de fichas
+        game.animateFillBoard();
+    });
+
+    //btn musica
+    const btnMusica = document.getElementById('btn-musica-redondo');
+
+    let musicaActiva = true; // estado inicial
+
+    btnMusica.addEventListener('click', () => {
+        if(musicaActiva) {
+            musica.pause();
+            btnMusica.querySelector('img').src = "Assets/silenciar-volumen.png"; // ícono apagado
+            musicaActiva = false;
+        } else {
+            musica.play();
+            btnMusica.querySelector('img').src = "Assets/audio.png"; // ícono encendido
+            musicaActiva = true;
+        }
+    });
+    // --- POPUP DE AYUDA ---
+    btnAyuda.addEventListener('click', () => {
+        popover.classList.remove('hidden'); // Mostrar el popover
+    });
+
+    btnCerrarPopover.addEventListener('click', () => {
+        popover.classList.add('hidden'); // Ocultar el popover
+    });
+};
