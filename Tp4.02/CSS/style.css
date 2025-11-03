@@ -842,11 +842,11 @@ header section {
 
 /* Posición y rotación de imagenes */
 .fire-left {
-    right: -313px;
+    right: -305px;
 }
 
 .fire-right {
-    left: -313px;
+    left: -305px;
 }
 
 .btn-fire-gif-container:hover .fire-left {

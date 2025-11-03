@@ -100,8 +100,12 @@ window.onload = function() {
     const botonJugar = document.querySelector('.boton-jugar');
     const canvas = document.getElementById('canva-Peg');
     const timer = document.querySelector('.ui');
-    const overlayPeg=document.getElementById('overlay-Peg');
-     const movimiento=document.getElementById('moves-container');
+    const overlayPeg = document.getElementById('overlay-Peg');
+    const movimiento = document.getElementById('moves-container');
+    const btnReiniciarFijo = document.getElementById('btn-reiniciar-redondo');
+    const btnAyuda = document.getElementById('btn-ayuda-redondo');
+    const popover = document.getElementById('popover-ayuda');
+    const btnCerrarPopover = document.getElementById('popover-close');
 
     // Rutas de imágenes
     const boardImageSrc = "Assets/MADERA.png";
@@ -109,28 +113,36 @@ window.onload = function() {
     const pieceImageSrc2 = "Assets/donaAmarilla.png";
     const pieceImageSrc3 = "Assets/donaVioleta.png";
 
-
     let game;
 
     btnJugar.addEventListener('click', () => {
-      movimiento.style.display = 'block';
+        movimiento.style.display = 'block';
         homerImg.style.display = 'none';
         botonJugar.style.display = 'none';
+        btnReiniciarFijo.style.display = 'block';
+        btnAyuda.style.display = 'block';
         timer.style.display = 'block';
         canvas.style.display = 'block';
         canvas.style.marginLeft = '250px';
         canvas.style.marginTop = '45px';
-        canvas.style.borderRadius='20px';
+        canvas.style.borderRadius = '20px';
         canvas.style.border = '8px solid rgba(92, 51, 23, 0.8)';
-        canvas.style.boxShadow = '0 0 10px rgba(92, 51, 23, 0.8)'; // Suaviza el borde
-        overlayPeg.style.display= 'none';
+        canvas.style.boxShadow = '0 0 10px rgba(92, 51, 23, 0.8)';
+        overlayPeg.style.display = 'none';
 
-    // Iniciar juego con tres tipos de ficha
-    game = new GamePeg(canvas, boardImageSrc, pieceImageSrc1, pieceImageSrc2, pieceImageSrc3);
+        // Iniciar juego con tres tipos de ficha
+        game = new GamePeg(canvas, boardImageSrc, pieceImageSrc1, pieceImageSrc2, pieceImageSrc3);
 
-    // 🔹 Llamar animación de llenado de fichas
-    game.animateFillBoard();
-});
+        // Llamar animación de llenado de fichas
+        game.animateFillBoard();
+    });
+
+    // --- POPUP DE AYUDA ---
+    btnAyuda.addEventListener('click', () => {
+        popover.classList.remove('hidden'); // Mostrar el popover
+    });
+
+    btnCerrarPopover.addEventListener('click', () => {
+        popover.classList.add('hidden'); // Ocultar el popover
+    });
 };
- const boardImageSrc = "Assets/MADERA.png";
-    const pieceImageSrc = "Assets/fichaDona.png";

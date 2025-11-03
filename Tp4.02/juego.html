@@ -130,11 +130,35 @@
 
     <canvas id="canva-Peg" width="400" height="400" class="canvas-contenedor"></canvas>
 
+    <button id="btn-reiniciar-redondo" title="Reiniciar juego"  style="display: none;">
+        <img src="Assets/refresh.png" alt="retry" >
+    </button>
+
     <div class="ui" style="display: none;">
         <span id="timer">05:00</span>
     </div>
 
     <div id="moves-container" style="display: none;">Movimientos posibles: 0</div>
+
+      <button id="btn-ayuda-redondo" title="Reiniciar juego"  style="display: none;">
+        <img src="Assets/helpBtn.png" alt="help" >
+    </button>
+
+
+    <!-- Overlay de ayuda -->
+            <div id="popover-ayuda" class="popoverAyuda hidden">
+                <h3>
+                    <span> <img src="Assets/fichaDona.png" alt="cerrae" ></span>
+                    Cómo jugar al Peg 
+                    <span> <img src="Assets/fichaDona.png" alt="cerrae" ></span></h3>
+                <ul>
+                    <li>Haz clic en una ficha para seleccionarla.</li>
+                    <li>Arrástrala sobre un agujero vacío saltando otra ficha.</li>
+                    <li>Solo puedes mover fichas en línea recta (horizontal o vertical) saltando exactamente una ficha.</li>
+                    <li>El objetivo es quedarte con una sola ficha.</li>
+                </ul>
+                <button id="popover-close">Cerrar</button>
+            </div>
 
     <div id="overlay-Peg" class="overlay-Peg hidden">
         <div class="overlay-content">

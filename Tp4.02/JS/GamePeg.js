@@ -1,50 +1,68 @@
 class GamePeg {
+    
     constructor(canvas, boardImageSrc, pieceImageSrc1, pieceImageSrc2, pieceImageSrc3) {
+
+          // Inicializa el canvas, el contexto de dibujo y el tablero de juego
         this.canvas = canvas;
         this.ctx = canvas.getContext("2d");
 
         // Tablero
         this.board = new Board(canvas, boardImageSrc, pieceImageSrc1, pieceImageSrc2, pieceImageSrc3);
-
+       
+         // Variables de control del arrastre
         this.selectedPiece = null;
         this.dragging = false;
 
+          // Configura los eventos de mouse para el arrastre
         this.initEvents();
 
-        // Overlay y contador
+       // Elementos visuales del overlay y el contador
         this.overlay = document.getElementById("overlay-Peg");
         this.btnReiniciar = document.getElementById("btn-reiniciar");
+         this.btnReiniciarRedondo = document.getElementById("btn-reiniciar-redondo");
         this.movesContainer = document.getElementById("moves-container");
+       this.btnAyuda= document.getElementById('btn-ayuda-redondo');
 
-        // Timer y su contenedor
+          // Configura el temporizador del juego
         this.timerContainer = document.querySelector(".ui");
         this.timerDisplay = document.getElementById("timer");
-        this.timer = new Timer(this.timerDisplay, 300, () => this.handleTimeOver()); // 5 min
-
-        // Escucha fin del tiempo
-        this.timer.onTimeUp = () => this.handleTimeUp();
-
+        this.timer = new Timer(this.timerDisplay, 300, () => this.handleTimeUp()); // 5 min
+   
+         //btn reiniciar overlay
         if (this.btnReiniciar)
             this.btnReiniciar.addEventListener("click", () => this.resetGame());
 
+        //btn reiniciar constante
+        if (this.btnReiniciarRedondo) {
+            this.btnReiniciarRedondo.addEventListener("click", () => this.resetGame());
+        }
+
+        // Muestra los movimientos posibles al iniciar
         this.updateMovesCount();
 
-        // Iniciar animación de llenado
+        // Iniciar animación para llenar el tablero
         this.animateFillBoard();
     }
 
     // -------------------- EVENTOS --------------------
+
+
+
+     // Registra los eventos del mouse sobre el canvas
     initEvents() {
         this.canvas.addEventListener("mousedown", e => this.onMouseDown(e));
         this.canvas.addEventListener("mousemove", e => this.onMouseMove(e));
         this.canvas.addEventListener("mouseup", e => this.onMouseUp(e));
     }
 
+    
+    // Obtiene la posición del mouse dentro del canvas
     getMousePos(e) {
         const rect = this.canvas.getBoundingClientRect();
         return { x: e.clientX - rect.left, y: e.clientY - rect.top };
     }
 
+    // Convierte la posición del mouse a coordenadas de celda
     getCellFromMouse(e) {
         const { x, y } = this.getMousePos(e);
         return {
@@ -53,6 +71,8 @@ class GamePeg {
         };
     }
 
+
+    // Verifica si una celda pertenece al tablero y es válida
     isValidCell(row, col) {
         return (
             row >= 0 &&
@@ -63,7 +83,12 @@ class GamePeg {
         );
     }
 
+
+
     // -------------------- MOUSE --------------------
+
+    //onMouseDown → equivalente a ondragstart (inicio del arrastre)
+    // Detecta si se hace clic sobre una ficha válida y la marca como seleccionada
     onMouseDown(e) {
         const { row, col } = this.getCellFromMouse(e);
         if (!this.isValidCell(row, col)) return;
@@ -82,11 +107,13 @@ class GamePeg {
             this.highlightSelected(row, col);
             this.drawHints(this.selectedPiece);
 
-            // 🔹 Inicia animación de hints constante
+            // Inicia animación de hints constante
             this.startHintAnimation();
         }
     }
-
+       
+     //onMouseMove → equivalente a ondrag (mientras se arrastra)
+     // Redibuja el tablero y la ficha siguiendo la posición del mouse
     onMouseMove(e) {
         if (!this.dragging || !this.selectedPiece) return;
 
@@ -107,6 +134,9 @@ class GamePeg {
         this.ctx.drawImage(img, x, y, this.board.cellSize - 10, this.board.cellSize - 10);
     }
 
+
+   //onMouseUp → equivalente a ondrop / ondragend (soltar)
+    // Verifica si el movimiento realizado es válido y lo ejecuta
     onMouseUp(e) {
         if (!this.selectedPiece || !this.dragging) return;
 
@@ -124,6 +154,9 @@ class GamePeg {
     }
 
     // -------------------- LÓGICA --------------------
+
+
+     // Determina si un movimiento entre dos celdas es valido
     validMove(from, to) {
         const dr = to.row - from.row;
         const dc = to.col - from.col;
@@ -143,6 +176,8 @@ class GamePeg {
         return (fromType >= 2 && fromType <= 4) && (midType >= 2 && midType <= 4) && toType === 1;
     }
 
+
+     // Aplica un movimiento válido en el tablero (salta una ficha)
     performMove(from, to) {
         const midRow = from.row + ((to.row - from.row) / 2 | 0);
         const midCol = from.col + ((to.col - from.col) / 2 | 0);
@@ -155,6 +190,8 @@ class GamePeg {
         this.updateMovesCount();
     }
 
+
+     // Calcula todos los movimientos posibles para una ficha
     getPossibleMoves(piece) {
         const moves = [];
         const dirs = [[-2,0],[2,0],[0,-2],[0,2]];
@@ -175,7 +212,11 @@ class GamePeg {
         return moves;
     }
 
+
+
     // -------------------- HINTS --------------------
+
+     // Crea una animación intermitente sobre los movimientos posibles
     startHintAnimation() {
         if (this.hintAnimId) return;
 
@@ -210,6 +251,8 @@ class GamePeg {
         animate();
     }
 
+
+     // Dibuja círculos fijos en las posiciones posibles de movimiento
     drawHints(piece) {
         if (!piece) return;
         const moves = this.getPossibleMoves(piece);
@@ -225,6 +268,7 @@ class GamePeg {
         }
     }
 
+     // Resalta visualmente la ficha seleccionada
     highlightSelected(row, col) {
         const cx = col * this.board.cellSize + this.board.cellSize/2;
         const cy = row * this.board.cellSize + this.board.cellSize/2;
@@ -236,17 +280,22 @@ class GamePeg {
         this.ctx.stroke();
     }
 
+
+    // Dibuja el agujero vacío cuando se mueve una ficha
     drawHole(row,col){
         const cx = col*this.board.cellSize + this.board.cellSize/2;
         const cy = row*this.board.cellSize + this.board.cellSize/2;
         const radius = (this.board.cellSize-10)/2;
         this.ctx.beginPath();
         this.ctx.arc(cx, cy, radius,0,Math.PI*2);
-        this.ctx.fillStyle = "rgba(0,0,0,0.8)";
+        this.ctx.fillStyle = "rgba(92, 73, 34, 0.8)";
         this.ctx.fill();
     }
 
-    // -------------------- ESTADO --------------------
+
+    // -------------------- ESTADO Y CONTADORES--------------------
+
+      // Actualiza y muestra la cantidad de movimientos posibles
     updateMovesCount() {
         let totalMoves = 0;
         for (let r=0;r<this.board.rows;r++){
@@ -261,6 +310,8 @@ class GamePeg {
         return totalMoves;
     }
 
+
+       // Cuenta cuántas fichas quedan en el tablero
     countPieces() {
         let count=0;
         for (let r=0;r<this.board.rows;r++){
@@ -271,8 +322,12 @@ class GamePeg {
         }
         return count;
     }
+    
 
     // -------------------- FIN DEL JUEGO --------------------
+
+
+      // Muestra el overlay cuando se acaba el tiempo del juego
     handleTimeUp() {
         this.timer.stop();
 
@@ -281,13 +336,14 @@ class GamePeg {
         const overlayText = this.overlay.querySelector("h2");
         const overlayTime = this.overlay.querySelector("p");
 
-        overlayText.textContent = "⏰ ¡Se acabó el tiempo!";
-        overlayTime.textContent = "";
+        overlayText.textContent = "¡Se acabó el tiempo!";
 
         this.overlay.classList.remove("hidden");
         this.overlay.style.display = "block";
+       
     }
 
+     // Verifica si el juego terminó por tiempo o falta de movimientos
     checkGameOver() {
         const totalMoves = this.updateMovesCount();
         const piecesLeft = this.countPieces();
@@ -304,17 +360,19 @@ class GamePeg {
             const overlayTime = this.overlay.querySelector("p");
 
             if (piecesLeft === 1) {
-                overlayText.textContent = "🏆 ¡Ganaste!";
+                overlayText.textContent = "¡Ganaste!";
             } else {
-                overlayText.textContent = "😢 ¡Te quedaste sin movimientos!";
+                overlayText.textContent = "¡Te quedaste sin movimientos!";
             }
 
-            overlayTime.textContent = "";
+            
             this.overlay.classList.remove("hidden");
             this.overlay.style.display = "block";
         }
     }
 
+
+      // Reinicia el juego: tablero, contador y animación
     resetGame() {
         this.board.reset();
         if (this.overlay) this.overlay.classList.add("hidden");
@@ -329,7 +387,11 @@ class GamePeg {
         this.animateFillBoard();
     }
 
+
+
     // -------------------- ANIMACIÓN DE LLENADO --------------------
+
+     // Crea una animación de aparición de fichas al iniciar o reiniciar
     animateFillBoard() {
         const rows = this.board.rows;
         const cols = this.board.cols;
@@ -356,10 +418,10 @@ class GamePeg {
                         scale += 0.1;
                         if (scale > 1) scale = 1;
 
-                        // dibujar tablero hasta esta celda
+                        // Dibuja progresivamente las fichas del tablero
                         this.board.drawBoard(currentRow, currentCol);
 
-                        // dibujar piezas ya animadas
+                        // dibuja piezas ya animadas
                         for (const p of drawnPieces) {
                             const t = p.type;
                             const imgPiece = t === 2 ? this.board.pieceImages[0] :
@@ -368,7 +430,7 @@ class GamePeg {
                             this.ctx.drawImage(imgPiece, p.x, p.y, size, size);
                         }
 
-                        // dibujar la ficha actual animándose
+                        // dibuja la ficha actual animándose
                         this.ctx.drawImage(img, x, y + size * (1 - scale), size, size * scale);
 
                         if (scale < 1) {

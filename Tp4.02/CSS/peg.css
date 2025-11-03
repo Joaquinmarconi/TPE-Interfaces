@@ -40,3 +40,202 @@
   font-size: 18px;
 }
 
+.overlay-Peg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-48.5%, -50%);
+    width: 60%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 50px;
+    padding: 30px 40px;
+    text-align: center;
+    color: white;
+    z-index: 100;
+    animation: fadeIn 0.6s ease-out; /* duración mayor y easing más natural */
+}
+
+.overlay-Peg.hidden {
+    display: none;
+}
+
+/* Contenido */
+.overlay-content {
+    background: #333;
+    border-radius: 20px;
+    padding: 25px 30px;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+/* Botón */
+#btn-reiniciar {
+    margin-top: 15px;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 20px;
+    background-color: #ffcc00;
+    color: #1f1e1e;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#btn-reiniciar:hover {
+    background-color: #ffd633;
+    transform: scale(1.08);
+}
+
+/* Animación más notoria */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translate(-48.5%, -55%) scale(0.85);
+    }
+    60% {
+        opacity: 1;
+        transform: translate(-48.5%, -49%) scale(1.05); /* efecto rebote leve */
+    }
+    100% {
+        transform: translate(-48.5%, -50%) scale(1);
+    }
+}
+
+#btn-reiniciar-redondo {
+    position: absolute;       /* lo puedes ajustar a la esquina que quieras */
+    top: 15px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;       /* lo hace circular */
+    border: none;
+    background-color: #552a16; /* color de fondo */
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+#btn-reiniciar-redondo img{
+  margin-top: 6px;
+}
+
+#btn-reiniciar-redondo:hover {
+    transform: scale(1.1);  /* efecto al pasar el mouse */
+}
+
+
+
+#btn-ayuda-redondo {
+    position: absolute;       /* lo puedes ajustar a la esquina que quieras */
+    bottom: 15px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;       /* lo hace circular */
+    border: none;
+    background-color: #552a16; /* color de fondo */
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+#btn-ayuda-redondo img{
+  margin-top: 6px;
+  width: 35px;
+}
+
+#btn-ayuda-redondo:hover {
+    transform: scale(1.1);  /* efecto al pasar el mouse */
+}
+
+/* Popover */
+.popoverAyuda {
+    position: absolute;
+    top: 80px; /* ajusta según tu diseño */
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 500px;
+    background-color: #fffffff8;
+    border: 8px solid #4a90e2;
+    border-radius: 12px;
+    padding: 25px 20px;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    z-index: 100;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+}
+
+.popoverAyuda span img{
+  margin-top: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+.popoverAyuda.hidden {
+    display: none;
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+}
+
+.popoverAyuda h3 {
+    display: flex;
+    align-items: center;      /* centra verticalmente el texto con las imágenes */
+    justify-content: center;  /* centra todo horizontalmente dentro del h3 */
+    gap: 10px;                /* espacio entre imágenes y texto */
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #4a90e2;
+}
+
+/* Ajuste de las imágenes dentro del h3 */
+.popoverAyuda h3 span img {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+
+.popoverAyuda ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.popoverAyuda li {
+    margin-bottom: 8px;
+}
+
+.popoverAyuda button {
+    display: block;
+    margin: 20px auto 0 auto;
+    padding: 8px 20px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
+}
+
+.popoverAyuda button:hover {
+    background-color: #357ABD;
+}
