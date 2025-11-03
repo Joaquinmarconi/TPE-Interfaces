@@ -1131,10 +1131,18 @@ header section {
     height: 168px;
     margin-bottom: 10px;
     margin-right: 21px;
+    position: relative;
+    z-index: 10;
 }
 
 .fila-img-juegos img {
     width: 286px;
+    transition: transform 0.5s ease;
+}
+
+.fila-img-juegos img:hover{
+     transform: scale(1.08);
+     box-shadow: 0 5px 15px rgba(211, 211, 211, 0.3);
 }
 
 .img-video {
