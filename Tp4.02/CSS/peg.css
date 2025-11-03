@@ -263,3 +263,6 @@
     width: 35px;
     height: 35px;
 }
+#btn-musica-redondo:hover {
+    transform: scale(1.1);  /* efecto al pasar el mouse */
+}
