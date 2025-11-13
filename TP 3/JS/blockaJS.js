@@ -90,11 +90,12 @@ window.onload = function() {
 
             if (filter === "blur") {
                 const copy = new Uint8ClampedArray(data);
-                for (let y = 1; y < height - 1; y++) {
+                for (let y = 1; y < height - 1; y++) {//ancho y alto img
                     for (let x = 1; x < width - 1; x++) {
                         let i = (y * width + x) * 4;
                         let r = 0, g = 0, b = 0;
-                        for (let dy = -1; dy <= 1; dy++) {
+
+                        for (let dy = -1; dy <= 1; dy++) {//vecinos
                             for (let dx = -1; dx <= 1; dx++) {
                                 let ni = ((y + dy) * width + (x + dx)) * 4;
                                 r += copy[ni];
@@ -102,6 +103,7 @@ window.onload = function() {
                                 b += copy[ni + 2];
                             }
                         }
+                        //valor final
                         data[i] = r / 9;
                         data[i + 1] = g / 9;
                         data[i + 2] = b / 9;
@@ -109,21 +111,22 @@ window.onload = function() {
                 }
                 return imageData;
             }
-
+          
+            //recorre todos los px de la img
             for (let i = 0; i < data.length; i += 4) {
                 let r = data[i], g = data[i + 1], b = data[i + 2];
                 
                 if (filter === "grayscale") {
                     const avg = (r + g + b) / 3;
-                    data[i] = data[i + 1] = data[i + 2] = avg;
+                    data[i] = data[i + 1] = data[i + 2] = avg;// mismo valor r.g.b
                 } 
                 else if (filter === "brightness") {
-                    data[i] = Math.min(255, r * 1.3);
+                    data[i] = Math.min(255, r * 1.3);//intensidad del canal
                     data[i + 1] = Math.min(255, g * 1.5);
                     data[i + 2] = Math.min(255, b * 1.5);
                 } 
                 else if (filter === "negative") {
-                    data[i] = 255 - r;
+                    data[i] = 255 - r;//invierte canal
                     data[i + 1] = 255 - g;
                     data[i + 2] = 255 - b;
                 }

@@ -7,7 +7,7 @@ class Board {
 
         this.rows = 7;
         this.cols = 7;
-        this.cellSize = size / 7;
+        this.cellSize = size / 7;//celda(57.14px)
 
         
         // Matriz original del tablero (0: vacío, 1: agujero central, 2-4: fichas)

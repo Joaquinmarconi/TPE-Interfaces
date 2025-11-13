@@ -142,6 +142,7 @@ window.onload = function() {
 
         // Llamar animación de llenado de fichas
         game.animateFillBoard();
+
     });
 
     //btn musica
@@ -153,6 +154,7 @@ window.onload = function() {
         if(musicaActiva) {
             musica.pause();
             btnMusica.querySelector('img').src = "Assets/silenciar-volumen.png"; // ícono apagado
+            btnMusica.title = "Activar música";
             musicaActiva = false;
         } else {
             musica.play();

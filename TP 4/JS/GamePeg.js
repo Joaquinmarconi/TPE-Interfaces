@@ -62,7 +62,7 @@ class GamePeg {
         return { x: e.clientX - rect.left, y: e.clientY - rect.top };
     }
 
-    // Convierte la posición del mouse a coordenadas de celda
+    // Convierte la posición del mouse a coordenadas de celda(devuelve columna y fila)
     getCellFromMouse(e) {
         const { x, y } = this.getMousePos(e);
         return {
@@ -90,19 +90,20 @@ class GamePeg {
     //onMouseDown → equivalente a ondragstart (inicio del arrastre)
     // Detecta si se hace clic sobre una ficha válida y la marca como seleccionada
     onMouseDown(e) {
+          //if (this.isAnimating) return; //  No permitir clics durante la animación
         const { row, col } = this.getCellFromMouse(e);
         if (!this.isValidCell(row, col)) return;
 
         const cellType = this.board.matrix[row][col];
         if (cellType >= 2 && cellType <= 4) {
             if (!this.timer.running) {
-                this.timer.start();
+                this.timer.start();//corre el tiempo
                 if (this.timerContainer)
                     this.timerContainer.style.display = "block";
             }
 
             this.selectedPiece = { row, col };
-            this.dragging = true;
+            this.dragging = true;//se empieza a arrastrar 
             this.board.drawBoard();
             this.highlightSelected(row, col);
             this.drawHints(this.selectedPiece);
@@ -115,10 +116,11 @@ class GamePeg {
      //onMouseMove → equivalente a ondrag (mientras se arrastra)
      // Redibuja el tablero y la ficha siguiendo la posición del mouse
     onMouseMove(e) {
+         // if (this.isAnimating) return; //  No permitir clics durante la animación
         if (!this.dragging || !this.selectedPiece) return;
 
         const rect = this.canvas.getBoundingClientRect();
-        const x = e.clientX - rect.left - this.board.cellSize / 2;
+        const x = e.clientX - rect.left - this.board.cellSize / 2;//centra cursor en el medio de la img
         const y = e.clientY - rect.top - this.board.cellSize / 2;
 
         this.board.drawBoard();
@@ -137,87 +139,120 @@ class GamePeg {
 
    //onMouseUp → equivalente a ondrop / ondragend (soltar)
     // Verifica si el movimiento realizado es válido y lo ejecuta
-    onMouseUp(e) {
-        if (!this.selectedPiece || !this.dragging) return;
+   onMouseUp(e) {
+    // if (this.isAnimating) return;
+    if (!this.selectedPiece || !this.dragging) return;
 
-        const from = this.selectedPiece;
-        const { row: toRow, col: toCol } = this.getCellFromMouse(e);
+    const from = this.selectedPiece;
+    const { row: toRow, col: toCol } = this.getCellFromMouse(e);
 
-        if (this.validMove(from, { row: toRow, col: toCol })) {
-            this.performMove(from, { row: toRow, col: toCol });
-        }
+    // obtener todos los movimientos posibles desde 'from'
+    const possible = this.getPossibleMoves(from);
 
-        this.dragging = false;
-        this.selectedPiece = null;
-        this.board.drawBoard();
-        this.checkGameOver();
+    // buscar un movimiento que coincida con la celda donde soltó
+    const match = possible.find(m => m.row === toRow && m.col === toCol);
+
+    if (match) {
+        // match incluye .comidas (array) según tu getPossibleMoves()
+        this.performMove(from, match);
     }
+
+    // detener hint animation si está corriendo
+    if (this.hintAnimId) {
+        cancelAnimationFrame(this.hintAnimId);
+        this.hintAnimId = null;
+    }
+
+    this.dragging = false;
+    this.selectedPiece = null;
+    this.board.drawBoard();
+    this.checkGameOver();
+} 
+
 
     // -------------------- LÓGICA --------------------
 
 
      // Determina si un movimiento entre dos celdas es valido
-    validMove(from, to) {
-        const dr = to.row - from.row;
-        const dc = to.col - from.col;
-
-        if (!(Math.abs(dr) === 2 && dc === 0) && !(Math.abs(dc) === 2 && dr === 0)) return false;
-
-        const midRow = from.row + dr / 2;
-        const midCol = from.col + dc / 2;
-
-        if (!this.isValidCell(to.row, to.col)) return false;
-        if (!this.isValidCell(midRow, midCol)) return false;
-
-        const fromType = this.board.matrix[from.row][from.col];
-        const midType = this.board.matrix[midRow][midCol];
-        const toType = this.board.matrix[to.row][to.col];
-
-        return (fromType >= 2 && fromType <= 4) && (midType >= 2 && midType <= 4) && toType === 1;
+     validMove(from, to) {
+        const possible = this.getPossibleMoves(from);
+        return possible.find(m => m.row === to.row && m.col === to.col) || null;
     }
 
 
-     // Aplica un movimiento válido en el tablero (salta una ficha)
-    performMove(from, to) {
-        const midRow = from.row + ((to.row - from.row) / 2 | 0);
-        const midCol = from.col + ((to.col - from.col) / 2 | 0);
-
+    // Aplica un movimiento válido en el tablero (salta una ficha)
+    performMove(from, move) {
         const type = this.board.matrix[from.row][from.col];
-        this.board.matrix[to.row][to.col] = type;
-        this.board.matrix[from.row][from.col] = 1;
-        this.board.matrix[midRow][midCol] = 1;
+        this.board.matrix[from.row][from.col] = 1; // deja hueco
 
+        // eliminar fichas comidas
+        if (move.comidas) {
+            for (const f of move.comidas) {
+                this.board.matrix[f.row][f.col] = 1;
+            }
+        }
+
+        // colocar ficha en el destino
+        this.board.matrix[move.row][move.col] = type;
+
+        // actualizar contadores / UI
         this.updateMovesCount();
     }
 
 
-     // Calcula todos los movimientos posibles para una ficha
-    getPossibleMoves(piece) {
+
+        // Calcula todos los movimientos posibles para una ficha
+    getPossibleMoves(piece, visitadas = []) {
         const moves = [];
-        const dirs = [[-2,0],[2,0],[0,-2],[0,2]];
+        const direcciones = [
+            [-1, 0], [1, 0], [0, -1], [0, 1] // arriba, abajo, izquierda, derecha
+        ];
 
-        for (let [dr, dc] of dirs) {
-            const r = piece.row + dr;
-            const c = piece.col + dc;
-            const midR = piece.row + dr / 2;
-            const midC = piece.col + dc / 2;
+        const posicion = `${piece.row},${piece.col}`;
 
-            if (this.isValidCell(r,c) &&
-                this.board.matrix[r][c] === 1 &&
-                this.board.matrix[midR][midC] >=2 &&
-                this.board.matrix[midR][midC] <=4) {
-                moves.push({row: r, col: c});
+        // Si ya analizamos esta celda, no seguir
+        if (visitadas.includes(posicion)) return [];
+
+        // Marcamos esta celda como visitada
+        visitadas.push(posicion);
+
+        for (let [dr, dc] of direcciones) {
+            const r1 = piece.row + dr;
+            const c1 = piece.col + dc;
+            const r2 = piece.row + 2 * dr;
+            const c2 = piece.col + 2 * dc;
+
+            if (!this.isValidCell(r2, c2)) continue;
+
+            const mid = this.board.matrix[r1][c1]; // ficha intermedia
+            const end = this.board.matrix[r2][c2]; // destino
+
+            // movimiento válido: ficha en medio + hueco al final
+            if (mid >= 2 && mid <= 4 && end === 1) {
+                const move = { row: r2, col: c2, comidas: [{ row: r1, col: c1 }] };
+                moves.push(move);
+
+                // llamada recursiva desde la nueva posición
+                const nuevosSaltos = this.getPossibleMoves({ row: r2, col: c2 }, [...visitadas]);
+
+                for (let salto of nuevosSaltos) {
+                    moves.push({
+                        row: salto.row,
+                        col: salto.col,
+                        comidas: move.comidas.concat(salto.comidas)
+                    });
+                }
             }
         }
+
         return moves;
     }
-
 
 
     // -------------------- HINTS --------------------
 
      // Crea una animación intermitente sobre los movimientos posibles
-    startHintAnimation() {
+  startHintAnimation() {
         if (this.hintAnimId) return;
 
         const animate = () => {
@@ -231,7 +266,7 @@ class GamePeg {
             const time = Date.now() / 200;
 
             for (let move of moves) {
-                const cx = move.col * this.board.cellSize + this.board.cellSize/2;
+                const cx = move.col * this.board.cellSize + this.board.cellSize/2; // calcula el centro de cada posible celda
                 const cy = move.row * this.board.cellSize + this.board.cellSize/2;
 
                 const radius = this.board.cellSize / 5 + Math.sin(time) * 3;
@@ -245,7 +280,7 @@ class GamePeg {
                 this.ctx.stroke();
             }
 
-            this.hintAnimId = requestAnimationFrame(animate);
+            this.hintAnimId = requestAnimationFrame(animate); // lo ejecuta en bucle
         };
 
         animate();
@@ -257,6 +292,7 @@ class GamePeg {
         if (!piece) return;
         const moves = this.getPossibleMoves(piece);
         for (let move of moves) {
+            // pos y tamaño de los circulos
             const cx = move.col * this.board.cellSize + this.board.cellSize/2;
             const cy = move.row * this.board.cellSize + this.board.cellSize/2;
             const radius = this.board.cellSize / 5;
@@ -267,7 +303,6 @@ class GamePeg {
             this.ctx.fill();
         }
     }
-
      // Resalta visualmente la ficha seleccionada
     highlightSelected(row, col) {
         const cx = col * this.board.cellSize + this.board.cellSize/2;
@@ -394,6 +429,7 @@ class GamePeg {
 
      // Crea una animación de aparición de fichas al iniciar o reiniciar
     animateFillBoard() {
+         // this.isAnimating = true; //  Bloquea interacción
         const rows = this.board.rows;
         const cols = this.board.cols;
         let currentRow = 0;
@@ -457,7 +493,14 @@ class GamePeg {
             }
 
             // animación completa: dibujar tablero completo
-            this.board.drawBoard();
+            
+        this.board.drawBoard();
+       // this.isAnimating = false;
+       //  if (this.timer && !this.timer.running) {
+          //  this.timer.start(); //  Inicia el tiempo al finalizar animación
+          // if (this.timerContainer)
+       // this.timerContainer.style.display = "block";
+       // }
         };
 
         animate();
