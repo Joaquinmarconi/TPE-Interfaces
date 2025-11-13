@@ -1,0 +1,81 @@
+
+@keyframes scroll {
+  0% { background-position-x: 0; }
+  100% { background-position-x: -1920px; }
+}
+
+.parallax-container {
+  position: relative;
+  width: 800px;
+  height: 450px;
+  overflow: hidden;
+  border: 2px solid #444;
+  margin: 0 auto;
+}
+
+/* Estilo base para todas las capas */
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: repeat-x;
+  background-position: 0 bottom;
+  background-size: auto 100%; /* mantiene proporción y evita cortes */
+  will-change: background-position-x;
+}
+
+/* Capa 1 */
+.layer-1 {      
+  background-image: url("../Assets/layer01_Clouds_1.png");   
+  animation: scroll 30s infinite linear;
+}
+
+/* Capa 2 */
+.layer-2 {      
+  background-image: url("../Assets/layer02_Clouds_2.png");   
+  animation: scroll 70s infinite linear;
+}
+
+/* Capa 3 */
+.layer-3 {      
+  background-image: url("../Assets/layer03_Clouds_3.png");   
+  animation: scroll 40s infinite linear;
+}
+
+/* Capa 4 */
+.layer-4 {        
+  background-image: url("../Assets/layer04_Path.png");     
+  animation: scroll 40s infinite linear;
+}
+
+/* Capa 5 */
+.layer-5 {        
+  background-image: url("../Assets/layer05_Castle.png");     
+  animation: scroll 50s infinite linear;
+}
+
+/* Capa 6 */
+.layer-6 {        
+  background-image: url("../Assets/layer06_Stars_3.png");     
+  animation: scroll 50s infinite linear;
+}
+
+/* Capa 7 */
+.layer-7 {        
+  background-image: url("../Assets/layer07_Stars_2.png");     
+  animation: scroll 50s infinite linear;
+}
+
+/* Capa 8 */
+.layer-8 {        
+  background-image: url("../Assets/layer08_Stars_1.png");     
+  animation: scroll 50s infinite linear;
+}
+
+/* Capa 9 */
+.layer-9 {        
+  background-image: url("../Assets/layer09_Sky.png");     
+  animation: scroll 50s infinite linear;
+}
