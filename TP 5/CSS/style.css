@@ -770,7 +770,7 @@ header section {
 
 .juego {
   width: 950px;
-  height: 600px;
+  height: 567px;
   background-image: url('../Assets/nubes.png');
   background-size: cover;         /* Rellena todo el contenedor */
   background-position: 0% 40%;  
@@ -782,7 +782,7 @@ header section {
 
 .juego div img {
     width: 950px;
-    height: 600px;
+    height: 567px;
 }
 
 .boton-jugar {
@@ -900,7 +900,7 @@ header section {
 
 .reglas {
     width: 300px;
-    height: 600px;
+    height: 567px;
     margin-left: 28px;
     background-color: #1c1b1b;
     padding: o;

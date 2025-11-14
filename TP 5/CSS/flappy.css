@@ -1,36 +1,48 @@
 .parallax-container {
-    display: none;
+    display: none; /* aparece al apretar Jugar */
     position: relative;
     width: 950px;
-    height: 600px;
+    height: 567px;
     overflow: hidden;
+    margin: 0 auto;
 }
 
-.layer {
+/* El canvas está por encima de las capas */
+#gameCanvas {
     position: absolute;
     top: 0;
     left: 0;
     width: 950px;
-    height: 600px;
-    background-repeat: repeat-x;
-    background-size: auto 100%;
-    
+    height: 580px;
+    z-index: 100;
+    background: transparent;
 }
 
+/* Capas del parallax */
+.layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 950px;          /* ← ahora coincide con tus imágenes */
+    height: 580px;
+    background-size: 950px 600px; /* ← sin estirar, tamaño exacto */
+    background-repeat: repeat;
+    z-index: 1;
+}
+
+
 /* Todas las capas con sus imágenes */
-.layer-1 { background-image: url("../Assets/Layer_0000_9.png"); animation: scroll 10s linear infinite; }
-.layer-2  { background-image: url("../Assets/Layer_0001_8.png"); animation: scroll 25s linear infinite; }
-.layer-3  { background-image: url("../Assets/Layer_0002_7.png"); animation: scroll 40s linear infinite; }
-.layer-4 { background-image: url("../Assets/Layer_0003_6.png"); animation: scroll 50s linear infinite; }
-.layer-5  { background-image: url("../Assets/Layer_0005_5.png"); animation: scroll 65s linear infinite; }
-.layer-6  { background-image: url("../Assets/Layer_0006_4.png"); animation: scroll 50s linear infinite; }
-.layer-7  { background-image: url("../Assets/Layer_0008_3.png"); animation: scroll 40s linear infinite; }
-.layer-8  { background-image: url("../Assets/Layer_0009_2.png"); animation: scroll 30s linear infinite; }
-.layer-9  { background-image: url("../Assets/Layer_0010_1.png"); animation: scroll 20s linear infinite; }
-.layer-10  { background-image: url("../Assets/Layer_0011_0.png"); animation: scroll 10s linear infinite; }
+.layer-1 { background-image: url("../Assets/cementerio8_950x600.png"); animation: scroll 10s linear infinite; }
+.layer-2  { background-image: url("../Assets/cementerio7.png"); animation: scroll 20s linear infinite; }
+.layer-3  { background-image: url("../Assets/cementerio6.png"); animation: scroll 30s linear infinite; }
+.layer-4 { background-image: url("../Assets/cementerio5.png"); animation: scroll 40s linear infinite; }
+.layer-5  { background-image: url("../Assets/cementerio4.png"); animation: scroll 70s linear infinite; }
+.layer-6  { background-image: url("../Assets/cementerio3.png"); animation: scroll 100s linear infinite; }
+.layer-7  { background-image: url("../Assets/cementerio2.png"); animation: scroll 110s linear infinite; }
+.layer-8 { background-image: url("../Assets/cementerio1Copia.png"); animation: scroll 120s linear infinite; }
 
 /* Keyframes */
 @keyframes scroll {
   0% { background-position-x: 0; }
-  100%   { background-position-x: -928px; }
+  100%   { background-position-x: -950px; }
 }
