@@ -46,3 +46,19 @@
   0% { background-position-x: 0; }
   100%   { background-position-x: -950px; }
 }
+#cuervo { 
+    width: 81px;               
+    height: 89px;               
+    background: url("../Assets/cuervosVolandoMejora.png") left center no-repeat;
+    position: absolute;
+    top: 50%;
+    left: 150px;
+    transform: translateY(-50%);
+    z-index: 1000;
+    animation: vuelo 0.8s steps(6) infinite;
+}
+
+@keyframes vuelo {
+    0%{ background-position: 0px 0; }
+    100% { background-position: -484px 0; } 
+}
