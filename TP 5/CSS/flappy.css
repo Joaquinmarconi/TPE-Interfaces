@@ -51,9 +51,9 @@
     height: 89px;               
     background: url("../Assets/cuervosVolandoMejora.png") left center no-repeat;
     position: absolute;
-    top: 50%;
-    left: 150px;
-    transform: translateY(-50%);
+    top: 250px;       /* posición inicial en pixeles */
+      left: 280px; /* Antes 150px */
+    transform: none;  /* 👈 IMPORTANTE: sin translateY */
     z-index: 1000;
     animation: vuelo 0.8s steps(6) infinite;
 }
@@ -61,4 +61,41 @@
 @keyframes vuelo {
     0%{ background-position: 0px 0; }
     100% { background-position: -484px 0; } 
+}
+
+.Flappyoverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 950px;       /* mismo tamaño que tu parallax */
+    height: 567px;
+    background: rgba(0,0,0,0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.hidden {
+    display: none;
+}
+
+.go-box {
+    background: #222;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    border: 2px solid #5ddcff;
+    box-shadow: 0 0 15px #00d0ff;
+}
+
+#btnReintentar {
+    padding: 10px 20px;
+    background: #5ddcff;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
 }

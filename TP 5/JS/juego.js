@@ -93,14 +93,41 @@ function togglePopoverSus() {
 }
  
   //movimiento img
-const btnJugar = document.querySelector('#btn-jugar');
-const homerImg = document.querySelector('.juego div img');
-const bloqueJugar = document.querySelector('.boton-jugar');
-const parallax= document.querySelector('#pantalla-parallax');
+let game = null;
 
-btnJugar.addEventListener('click', () => {
-       bloqueJugar.style.display = 'none';
+window.onload = function () {
+    const btnJugar = document.querySelector('#btn-jugar');
+    const homerImg = document.querySelector('.juego div img');
+    const bloqueJugar = document.querySelector('.boton-jugar');
+    const parallax = document.querySelector('#pantalla-parallax');
+    const canvas = document.getElementById("gameCanvas");
+    const btnReintentar = document.getElementById("btnReintentar");
+
+    function iniciarJuego() {
+        game = new FlappyGame(canvas);
+        game.loop();
+    }
+
+    btnJugar.addEventListener('click', () => {
+        bloqueJugar.style.display = 'none';
         homerImg.style.display = 'none';
         btnJugar.style.display = 'none';
-          parallax.style.display = "block";
-});
+        parallax.style.display = "block";
+        iniciarJuego();
+    });
+
+    // SALTO
+    window.addEventListener("keydown", e => {
+        if (!game || game.isGameOver) return;
+
+        if (e.code === "Space" || e.code === "ArrowUp") {
+            e.preventDefault();
+            game.bird.jump();
+        }
+    });
+
+    // REINTENTAR
+    btnReintentar.addEventListener("click", () => {
+        if (game) game.reset();
+    });
+};

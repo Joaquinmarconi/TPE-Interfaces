@@ -148,6 +148,15 @@
                      <div id="cuervo" class="cuervo"></div>
 
                     <canvas id="gameCanvas" width="950" height="567"></canvas>
+
+                    <div id="gameOverOverlay" class="Flappyoverlay hidden">
+                        <div class="go-box">
+                            <h2>¡GAME OVER!</h2>
+                            <button id="btnReintentar">Reintentar</button>
+                        </div>
+                    </div>
+
+                    <img id="tuboHuesos" src="Assets/columnaHuesos.png" style="display:none;">
             </div>
         </section>
         
@@ -391,7 +400,9 @@
                 href="mailto:nextplay@gmail.com">nextplay@gmail.com</a></p>
     </footer>
 
-
+<script src="JS/Bird.js"></script>
+<script src="JS/Tubo.js"></script>
+<script src="JS/FlappyGame.js"></script>
     <script src="JS/juego.js" Content-Type="text/javascript"></script>
 </body>
 </html>
