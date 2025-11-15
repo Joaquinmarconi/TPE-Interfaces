@@ -813,21 +813,19 @@ header section {
 }
 
 .btn-jugar {
-    width: 139px;
-    height: 38px;
-    border-radius: 20px;
-    background-color: #FF7904;
-    font-family: 'Baloo 2', sans-serif;
-    font-weight: bold;
+    background: #8b0f12; /* rojo oscuro similar al título */
+    color: #fff;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 25px;
     font-size: 18px;
-    color: #fafafa;
-    z-index: 8;
-    position: relative;
-    display: inline-flex;
+    font-family: 'Baloo 2', sans-serif;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 4px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    gap: 8px;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 .btn-fire-gif-container img {
