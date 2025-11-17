@@ -786,36 +786,19 @@ header section {
 }
 
 .boton-jugar {
-    width: 500px;
     position: absolute;
-    top: 50%;
-    left: 15%;
-    transform: translate(15%, -50%);
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-
-}
-
-.boton-jugar p {
-    font-family: 'Baloo 2', sans-serif;
-    font-weight: 600;
-    font-size: 20px;
-    color: #ececec;
-    margin: 0;
-
-}
-
-.btn-fire-gif-container {
-    position: relative;
-    display: inline-block;
 }
 
 .btn-jugar {
-    background: #8b0f12; /* rojo oscuro similar al título */
-    color: #fff;
-    padding: 10px 25px;
+    background: #1f1f1f; /* rojo oscuro similar al título */
+    color: #FAFAFA;
+    padding: 6px 45px;
     border: none;
     border-radius: 25px;
     font-size: 18px;
@@ -826,40 +809,18 @@ header section {
     align-items: center;
     gap: 8px;
     transition: box-shadow 0.3s ease, transform 0.2s ease;
+    animation: pulse 1.4s ease-in-out infinite; 
 }
 
-.btn-fire-gif-container img {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    top: 50%;
-    transform: translateY(-50%) scale(0);
-    /*img oculta*/
-    pointer-events: none;
-}
-
-/* Posición y rotación de imagenes */
-.fire-left {
-    right: -305px;
-}
-
-.fire-right {
-    left: -305px;
-}
-
-.btn-fire-gif-container:hover .fire-left {
-    transform: translateY(-50%) rotate(-90deg) scale(0.06);
-    filter: brightness(80%);
-}
-
-.btn-fire-gif-container:hover .fire-right {
-    transform: translateY(-50%) rotate(90deg) scale(0.06);
-    filter: brightness(80%);
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.07); }
+    100% { transform: scale(1); }
 }
 
 .btn-jugar:hover {
-    transform: scale(1);
-    box-shadow: 0 0 30px #ff8c00, 0 0 80px #ff4500;
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(25, 26, 27, 0.7), 0 0 25px rgba(41, 39, 39, 0.9);
 }
 
 @keyframes homerEnojado {

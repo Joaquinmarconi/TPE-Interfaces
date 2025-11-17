@@ -67,13 +67,13 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 950px;       /* mismo tamaño que tu parallax */
-    height: 567px;
-    background: rgba(0,0,0,0.65);
+    width: 100%;      
+    height: 100%;
+    background: rgba(10, 10, 10, 0.65); 
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2000;
+    z-index: 999;
 }
 
 .hidden {
@@ -81,21 +81,56 @@
 }
 
 .go-box {
-    background: #222;
-    padding: 30px;
-    border-radius: 15px;
+    background: rgba(20, 20, 20, 0.9);
+    padding: 30px 45px;
+    border-radius: 18px;
     text-align: center;
-    color: white;
-    border: 2px solid #5ddcff;
-    box-shadow: 0 0 15px #00d0ff;
+    color: #fff;
+    border: 3px solid #3c0f11; 
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    animation: dropIn 0.6s ease-out;
+}
+
+@keyframes dropIn {
+    0% {
+        transform: translateY(-200px) scale(0.9);
+        opacity: 0;
+    }
+    60% {
+        transform: translateY(10px) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.go-box h2 {
+    font-family: "Baloo 2", sans-serif;
+    margin: 0 0 10px;
+    font-size: 42px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #9e0f12; /* rojizo similar al título */
+    text-shadow: 0 0 8px rgba(0,0,0,0.8);
 }
 
 #btnReintentar {
-    padding: 10px 20px;
-    background: #5ddcff;
-    color: black;
+    padding: 5px 35px;
+    background: #8b0f12;
+    color: #fff;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 18px;
     border: none;
-    border-radius: 8px;
-    font-weight: bold;
+    border-radius: 30px;
     cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s ease;
+}
+
+#btnReintentar:hover {
+    transform: scale(1.05);
+    background: #a11215;
+    box-shadow: 0 0 12px rgba(255,60,60,0.4);
 }
