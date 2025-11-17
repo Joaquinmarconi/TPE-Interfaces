@@ -1,5 +1,5 @@
 .parallax-container {
-    display: none; /* aparece al apretar Jugar */
+    display: none;
     position: relative;
     width: 950px;
     height: 567px;
@@ -7,62 +7,71 @@
     margin: 0 auto;
 }
 
-/* El canvas está por encima de las capas */
 #gameCanvas {
     position: absolute;
     top: 0;
     left: 0;
     width: 950px;
-    height: 580px;
+    height: 567px;
     z-index: 100;
     background: transparent;
 }
 
-/* Capas del parallax */
 .layer {
     position: absolute;
     top: 0;
     left: 0;
-    width: 950px;          /* ← ahora coincide con tus imágenes */
+    width: 950px;
     height: 580px;
-    background-size: 950px 600px; /* ← sin estirar, tamaño exacto */
+    background-size: 950px 600px;
     background-repeat: repeat;
     z-index: 1;
 }
 
-
-/* Todas las capas con sus imágenes */
+/* Capas */
 .layer-1 { background-image: url("../Assets/cementerio8_950x600.png"); animation: scroll 10s linear infinite; }
-.layer-2  { background-image: url("../Assets/cementerio7.png"); animation: scroll 20s linear infinite; }
-.layer-3  { background-image: url("../Assets/cementerio6.png"); animation: scroll 30s linear infinite; }
+.layer-2 { background-image: url("../Assets/cementerio7.png"); animation: scroll 20s linear infinite; }
+.layer-3 { background-image: url("../Assets/cementerio6.png"); animation: scroll 30s linear infinite; }
 .layer-4 { background-image: url("../Assets/cementerio5.png"); animation: scroll 40s linear infinite; }
-.layer-5  { background-image: url("../Assets/cementerio4.png"); animation: scroll 70s linear infinite; }
-.layer-6  { background-image: url("../Assets/cementerio3.png"); animation: scroll 100s linear infinite; }
-.layer-7  { background-image: url("../Assets/cementerio2.png"); animation: scroll 110s linear infinite; }
+.layer-5 { background-image: url("../Assets/cementerio4.png"); animation: scroll 70s linear infinite; }
+.layer-6 { background-image: url("../Assets/cementerio3.png"); animation: scroll 100s linear infinite; }
+.layer-7 { background-image: url("../Assets/cementerio2.png"); animation: scroll 110s linear infinite; }
 .layer-8 { background-image: url("../Assets/cementerio1Copia.png"); animation: scroll 120s linear infinite; }
 
-/* Keyframes */
 @keyframes scroll {
-  0% { background-position-x: 0; }
-  100%   { background-position-x: -950px; }
+    0%   { background-position-x: 0; }
+    100% { background-position-x: -950px; }
 }
+
+/* ----------------------------------
+      CUERVO (sprite)
+---------------------------------- */
+
 #cuervo { 
-    width: 81px;               
-    height: 89px;               
+    width: 81px;
+    height: 89px;
     background: url("../Assets/cuervosVolandoMejora.png") left center no-repeat;
     position: absolute;
-    top: 250px;       /* posición inicial en pixeles */
-      left: 280px; /* Antes 150px */
-    transform: none;  /* 👈 IMPORTANTE: sin translateY */
+    top: 250px;
+    left: 280px;
     z-index: 1000;
+    transform: none;
+    transition: transform 0.15s linear, opacity 0.3s linear, filter 0.3s linear;
+}
+
+/* ANIMACIÓN DE VUELO — se controla por JS */
+.cuervo-vuelo {
     animation: vuelo 0.8s steps(6) infinite;
 }
 
 @keyframes vuelo {
-    0%{ background-position: 0px 0; }
-    100% { background-position: -484px 0; } 
+    0% { background-position: 0px 0; }
+    100% { background-position: -484px 0; }
 }
 
+/* ----------------------------------
+      OVERLAYS
+---------------------------------- */
 .Flappyoverlay {
     position: absolute;
     top: 0;
@@ -134,3 +143,62 @@
     background: #a11215;
     box-shadow: 0 0 12px rgba(255,60,60,0.4);
 }
+
+
+.startOverlay {
+    position: absolute;
+    width: 950px;
+    height: 567px;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.55);
+    color: white;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 300;
+}
+
+/* ----------------------------------
+      PARTICULAS DE EXPLOSIÓN
+---------------------------------- */
+
+/* CONTENEDOR DE PARTICULAS */
+#cuervoParticles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    z-index: 1500;
+}
+
+/* PARTÍCULA DE SANGRE */
+.particle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #690e0e; /* rojo sangre oscuro */
+    position: absolute;
+    animation: particleBlood 1.4s ease-out forwards;
+}
+
+/* ANIMACIÓN DE SALPICADURA */
+@keyframes particleBlood {
+    0% {
+        transform: translate(0,0) scale(0.2); /* círculo inicial bien chico */
+        opacity: 1;
+    }
+    40% {
+        transform: translate(calc(var(--dx) * 0.4), calc(var(--dy) * 0.4)) scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--dx), var(--dy)) scale(2.4); /* explosión gigante */
+        opacity: 0;
+    }
+}
+
+
