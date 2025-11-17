@@ -15,9 +15,17 @@ class FlappyGame {
 
         this.setupControls();
 
-        document.getElementById("cuervo").classList.add("cuervo-vuelo");
+        // activar animación de vuelo desde inicio
+        const c = document.getElementById("cuervo");
+        if (c) c.classList.add("cuervo-vuelo");
+
+        // referencia al score visible
+        this.scoreDisplay = document.getElementById("score");
     }
 
+    // --------------------------------------
+    // CONTROLES
+    // --------------------------------------
     setupControls() {
         document.addEventListener("keydown", e => {
             if (e.key === "ArrowUp") this.handleStartAndJump();
@@ -41,17 +49,21 @@ class FlappyGame {
         if (btnR) btnR.addEventListener("click", () => this.reset());
     }
 
+    // --------------------------------------
+    // START + JUMP
+    // --------------------------------------
     handleStartAndJump() {
         if (!this.started && !this.isGameOver) {
             this.started = true;
             const overlay = document.getElementById("startOverlay");
             if (overlay) overlay.style.display = "none";
         }
-        if (this.started && !this.isGameOver) {
-            this.bird.jump();
-        }
+        if (this.started && !this.isGameOver) this.bird.jump();
     }
 
+    // --------------------------------------
+    // TUBOS
+    // --------------------------------------
     spawnTubo() {
         if (!this.started) return;
 
@@ -65,6 +77,9 @@ class FlappyGame {
         }
     }
 
+    // --------------------------------------
+    // UPDATE
+    // --------------------------------------
     update() {
         if (this.isGameOver) return;
         if (!this.started) return;
@@ -75,42 +90,59 @@ class FlappyGame {
         this.tubos.forEach(t => t.update());
         this.tubos = this.tubos.filter(t => !t.offScreen());
 
+        // mover sprite del cuervo
         const cuervoDiv = document.getElementById("cuervo");
         cuervoDiv.style.top = this.bird.y + "px";
         cuervoDiv.style.left = this.bird.x + "px";
 
-        // COLISIÓN — explosión en el MISMO FRAME
+        // === SUMA PUNTOS ===
+        for (let t of this.tubos) {
+            if (!t.passed && t.x + t.width < this.bird.x) {
+                t.passed = true;
+                this.score++;
+
+                // *** ACTUALIZAR CONTADOR EN PANTALLA ***
+                if (this.scoreDisplay)
+                    this.scoreDisplay.textContent = this.score;
+            }
+        }
+
+        // === COLISION TUBOS ===
         for (let t of this.tubos) {
             if (t.collides(this.bird)) {
-
-                // EXPLOSION INSTANTÁNEA SIN DELAY NI FRAME EXTRA
                 this.runExplosion();
-
                 this.isGameOver = true;
                 return;
             }
         }
+
+        // === COLISION PISO ===
+        if (this.bird.y + this.bird.height >= 567) {
+            this.runExplosion();
+            this.isGameOver = true;
+            return;
+        }
     }
 
-    // 🔥 EXPLOSIÓN REAL INSTANTÁNEA — SIN PARPADEO NI FRAMES EXTRAS
+    // --------------------------------------
+    // EXPLOSION INSTANTANEA
+    // --------------------------------------
     runExplosion() {
         const cuervoDiv = document.getElementById("cuervo");
         const particles = document.getElementById("cuervoParticles");
 
-        // desaparecer cuervo YA (antes de redraw)
+        // desaparecer YA
         cuervoDiv.style.opacity = "0";
         cuervoDiv.classList.remove("cuervo-vuelo");
-
-        // cancelar animaciones CSS si hay
         cuervoDiv.getAnimations().forEach(a => a.cancel());
 
-        // generar partículas
+        // partículas
         particles.innerHTML = "";
 
         const cx = this.bird.x + this.bird.width / 2;
         const cy = this.bird.y + this.bird.height / 2;
 
-        const total = 1200;
+        const total = 1200; // explosión grande
         for (let i = 0; i < total; i++) {
             const p = document.createElement("div");
             p.classList.add("particle");
@@ -127,23 +159,33 @@ class FlappyGame {
             particles.appendChild(p);
         }
 
-        // overlay luego de animación
+        // mostrar puntaje final
+        document.getElementById("scoreFinal").textContent =
+            "Puntaje: " + this.score;
+
         setTimeout(() => {
             const overlay = document.getElementById("gameOverOverlay");
             if (overlay) overlay.classList.remove("hidden");
         }, 2400);
     }
 
+    // --------------------------------------
+    // DRAW
+    // --------------------------------------
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.tubos.forEach(t => t.draw(this.ctx));
     }
 
+    // --------------------------------------
+    // RESET
+    // --------------------------------------
     reset() {
         if (this.frameId !== null) cancelAnimationFrame(this.frameId);
 
         this.bird = new Bird();
         this.tubos = [];
+        this.score = 0;
         this.isGameOver = false;
         this.started = false;
 
@@ -152,9 +194,7 @@ class FlappyGame {
 
         cuervoDiv.style.backgroundPosition = "0px 0px";
         cuervoDiv.style.opacity = "1";
-        cuervoDiv.style.filter = "none";
-        cuervoDiv.style.transform = "rotate(0deg) scale(1)";
-
+        cuervoDiv.style.transform = "rotate(0deg)";
         cuervoDiv.classList.add("cuervo-vuelo");
 
         cuervoDiv.style.left = this.bird.x + "px";
@@ -167,10 +207,17 @@ class FlappyGame {
         const startOverlay = document.getElementById("startOverlay");
         if (startOverlay) startOverlay.style.display = "flex";
 
+        // reiniciar marcador visible
+        if (this.scoreDisplay)
+            this.scoreDisplay.textContent = 0;
+
         this.frameId = null;
         this.loop();
     }
 
+    // --------------------------------------
+    // LOOP
+    // --------------------------------------
     loop() {
         this.update();
         this.draw();

@@ -29,7 +29,7 @@
 }
 
 /* Capas */
-.layer-1 { background-image: url("../Assets/cementerio8_950x600.png"); animation: scroll 10s linear infinite; }
+.layer-1 { background-image: url("../Assets/cementerio8_950x600.png"); animation: scroll 7s linear infinite; }
 .layer-2 { background-image: url("../Assets/cementerio7.png"); animation: scroll 20s linear infinite; }
 .layer-3 { background-image: url("../Assets/cementerio6.png"); animation: scroll 30s linear infinite; }
 .layer-4 { background-image: url("../Assets/cementerio5.png"); animation: scroll 40s linear infinite; }
@@ -49,7 +49,7 @@
 
 #cuervo { 
     width: 81px;
-    height: 89px;
+    height: 79px;
     background: url("../Assets/cuervosVolandoMejora.png") left center no-repeat;
     position: absolute;
     top: 250px;
@@ -202,3 +202,23 @@
 }
 
 
+.score {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 10px black;
+    z-index: 3000;
+    user-select: none;
+}
+.scoreFinal {
+    font-size: 28px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #ffdb4d; /* dorado */
+    text-shadow: 0 0 10px black;
+    font-weight: bold;
+}
