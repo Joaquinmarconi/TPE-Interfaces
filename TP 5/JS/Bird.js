@@ -46,12 +46,12 @@ class Bird {
         cuervo.style.transform = "rotate(-22deg)";
     }
 
-    getBounds() {
-        const r = Math.min(this.width, this.height) * 0.38;
-        return {
-            cx: this.x + this.width / 2,
-            cy: this.y + this.height / 2,
-            r: r
-        };
-    }
+getBounds() {
+    return {
+        cx: this.x + this.width / 2,
+        cy: this.y + this.height / 2,
+        rx: this.width * 0.30,   // ancho real
+        ry: this.height * 0.20   // alto MUY pequeño
+    };
+}
 }
