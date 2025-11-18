@@ -134,7 +134,7 @@
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 600;
     transition: 0.2s ease;
 }
 
@@ -226,8 +226,9 @@
     left: 50%;
     transform: translateX(-50%);
     font-size: 48px;
-    font-weight: bold;
-    color: white;
+    font-weight: 600;
+    font-family: "Baloo 2", sans-serif;
+    color: #FAFAFA;
     text-shadow: 0 0 10px black;
     z-index: 3000;
     user-select: none;
