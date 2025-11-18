@@ -13,6 +13,9 @@ class FlappyGame {
 
         this.started = false;
 
+        // puntaje necesario para "ganar"
+        this.maxScore = 50;
+
         this.setupControls();
 
         // activar animación de vuelo desde inicio
@@ -21,6 +24,17 @@ class FlappyGame {
 
         // referencia al score visible
         this.scoreDisplay = document.getElementById("score");
+
+        // referencia al puntaje máximo visible
+        this.scoreMaxDisplay = document.getElementById("scoreMaximo");
+
+        // leer récord desde localStorage
+        this.bestScore = parseInt(localStorage.getItem("flappyBestScore") || "0", 10);
+
+        // mostrar récord inicial
+        if (this.scoreMaxDisplay) {
+            this.scoreMaxDisplay.textContent = "Puntaje máximo: " + this.bestScore;
+        }
     }
 
     // --------------------------------------
@@ -101,9 +115,15 @@ class FlappyGame {
                 t.passed = true;
                 this.score++;
 
-                // *** ACTUALIZAR CONTADOR EN PANTALLA ***
+                // actualizar contador en pantalla
                 if (this.scoreDisplay)
                     this.scoreDisplay.textContent = this.score;
+
+                // ¿LLEGÓ AL MÁXIMO? => GANASTE
+                if (this.score >= this.maxScore) {
+                    this.handleWin();
+                    return;
+                }
             }
         }
 
@@ -125,7 +145,50 @@ class FlappyGame {
     }
 
     // --------------------------------------
-    // EXPLOSION INSTANTANEA
+    // ACTUALIZAR RÉCORD
+    // --------------------------------------
+    updateBestScore() {
+        if (this.score > this.bestScore) {
+            this.bestScore = this.score;
+            localStorage.setItem("flappyBestScore", this.bestScore);
+        }
+
+        if (this.scoreMaxDisplay) {
+            this.scoreMaxDisplay.textContent = "Puntaje máximo: " + this.bestScore;
+        }
+    }
+
+    // --------------------------------------
+    // MODO GANASTE (50 puntos)
+    // --------------------------------------
+    handleWin() {
+        this.isGameOver = true;
+
+        // detener animación del cuervo
+        const cuervoDiv = document.getElementById("cuervo");
+        cuervoDiv.classList.remove("cuervo-vuelo");
+        cuervoDiv.getAnimations().forEach(a => a.cancel());
+
+        // actualizar textos overlay
+        const title = document.getElementById("goTitle");
+        const msg = document.getElementById("goMessage");
+
+        if (title) title.textContent = "¡GANASTE!";
+        if (msg) msg.textContent = "Superaste todos los tubos";
+
+        // mostrar puntaje final
+        const scoreFinal = document.getElementById("scoreFinal");
+        if (scoreFinal) scoreFinal.textContent = "Puntaje: " + this.score;
+
+        // actualizar récord
+        this.updateBestScore();
+
+        const overlay = document.getElementById("gameOverOverlay");
+        if (overlay) overlay.classList.remove("hidden");
+    }
+
+    // --------------------------------------
+    // EXPLOSION (GAME OVER)
     // --------------------------------------
     runExplosion() {
         const cuervoDiv = document.getElementById("cuervo");
@@ -159,9 +222,19 @@ class FlappyGame {
             particles.appendChild(p);
         }
 
+        // configurar textos como "perdiste"
+        const title = document.getElementById("goTitle");
+        const msg = document.getElementById("goMessage");
+
+        if (title) title.textContent = "¡GAME OVER!";
+        if (msg) msg.textContent = "Chocaste contra un tubo o el piso.";
+
         // mostrar puntaje final
-        document.getElementById("scoreFinal").textContent =
-            "Puntaje: " + this.score;
+        const scoreFinal = document.getElementById("scoreFinal");
+        if (scoreFinal) scoreFinal.textContent = "Puntaje: " + this.score;
+
+        // actualizar récord
+        this.updateBestScore();
 
         setTimeout(() => {
             const overlay = document.getElementById("gameOverOverlay");
@@ -202,14 +275,19 @@ class FlappyGame {
 
         particles.innerHTML = "";
 
-        document.getElementById("gameOverOverlay").classList.add("hidden");
+        const gameOverOverlay = document.getElementById("gameOverOverlay");
+        if (gameOverOverlay) gameOverOverlay.classList.add("hidden");
 
         const startOverlay = document.getElementById("startOverlay");
         if (startOverlay) startOverlay.style.display = "flex";
 
-        // reiniciar marcador visible
+        // reiniciar marcador visible (pero NO el récord)
         if (this.scoreDisplay)
             this.scoreDisplay.textContent = 0;
+
+        // volver a mostrar el récord por las dudas
+        if (this.scoreMaxDisplay)
+            this.scoreMaxDisplay.textContent = "Puntaje máximo: " + this.bestScore;
 
         this.frameId = null;
         this.loop();
