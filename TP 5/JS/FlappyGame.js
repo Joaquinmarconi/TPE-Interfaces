@@ -33,7 +33,7 @@ class FlappyGame {
 
         // mostrar récord inicial
         if (this.scoreMaxDisplay) {
-            this.scoreMaxDisplay.textContent = "Puntaje máximo: " + this.bestScore;
+            this.scoreMaxDisplay.textContent = "Record: " + this.bestScore;
         }
 
         this.soundPoint = document.getElementById("soundPoint");
@@ -162,7 +162,7 @@ class FlappyGame {
         }
 
         if (this.scoreMaxDisplay) {
-            this.scoreMaxDisplay.textContent = "Puntaje máximo: " + this.bestScore;
+            this.scoreMaxDisplay.textContent = "Record: " + this.bestScore;
         }
     }
 
@@ -303,7 +303,7 @@ class FlappyGame {
 
         // volver a mostrar el récord por las dudas
         if (this.scoreMaxDisplay)
-            this.scoreMaxDisplay.textContent = "Puntaje máximo: " + this.bestScore;
+            this.scoreMaxDisplay.textContent = "Record: " + this.bestScore;
 
         this.frameId = null;
         this.loop();

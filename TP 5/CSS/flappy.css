@@ -123,6 +123,7 @@
     letter-spacing: 2px;
     color: #9e0f12; /* rojizo similar al título */
     text-shadow: 0 0 8px rgba(0,0,0,0.8);
+    margin-bottom: 5px;
 }
 
 #btnReintentar {
@@ -134,8 +135,24 @@
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 400;
     transition: 0.2s ease;
+    animation: pulseBordo 1.3s infinite ease-in-out;
+}
+
+@keyframes pulseBordo {
+    0% {
+        background: #8b0f12;
+        box-shadow: 0 0 6px rgba(255, 60, 60, 0.25);
+    }
+    50% {
+        background: #a11215;
+        box-shadow: 0 0 14px rgba(255, 60, 60, 0.45);
+    }
+    100% {
+        background: #8b0f12;
+        box-shadow: 0 0 6px rgba(255, 60, 60, 0.25);
+    }
 }
 
 #btnReintentar:hover {
@@ -150,11 +167,11 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin: 15px 0 25px;
 }
 
 .score-row p {
-    margin: 0;
+    margin-bottom: 8px;
+    margin-top: 3px;
     font-size: 22px;
     font-family: "Baloo 2", sans-serif;
     font-weight: 400;
@@ -171,9 +188,9 @@
 }
 
 #goMessage {
-    margin: 0 0 15px;
-    font-size: 20px;
-    font-family: "Baloo 2", sans-serif;
+    margin: 5px 0 10px 0; /* mucho más compacto */
+    font-size: 16px;
+    font-family: 'Orbitron', sans-serif;
     color: #FAFAFA;
 }
 
