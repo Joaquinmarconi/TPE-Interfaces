@@ -35,6 +35,9 @@ class FlappyGame {
         if (this.scoreMaxDisplay) {
             this.scoreMaxDisplay.textContent = "Puntaje máximo: " + this.bestScore;
         }
+
+        this.soundPoint = document.getElementById("soundPoint");
+        window.flappyGame = this;
     }
 
     // --------------------------------------
@@ -118,7 +121,12 @@ class FlappyGame {
                 // actualizar contador en pantalla
                 if (this.scoreDisplay)
                     this.scoreDisplay.textContent = this.score;
-
+                 
+        // === SONIDO DE PUNTO ===
+        if (this.soundPoint) {
+            this.soundPoint.currentTime = 0;
+            this.soundPoint.play().catch(()=>{});
+        }
                 // ¿LLEGÓ AL MÁXIMO? => GANASTE
                 if (this.score >= this.maxScore) {
                     this.handleWin();
@@ -190,57 +198,65 @@ class FlappyGame {
     // --------------------------------------
     // EXPLOSION (GAME OVER)
     // --------------------------------------
-    runExplosion() {
-        const cuervoDiv = document.getElementById("cuervo");
-        const particles = document.getElementById("cuervoParticles");
+   runExplosion() {
 
-        // desaparecer YA
-        cuervoDiv.style.opacity = "0";
-        cuervoDiv.classList.remove("cuervo-vuelo");
-        cuervoDiv.getAnimations().forEach(a => a.cancel());
+    // === SONIDO DE CHOQUE ===
+    const cuervoDiv = document.getElementById("cuervo");
+    const particles = document.getElementById("cuervoParticles");
 
-        // partículas
-        particles.innerHTML = "";
-
-        const cx = this.bird.x + this.bird.width / 2;
-        const cy = this.bird.y + this.bird.height / 2;
-
-        const total = 1200; // explosión grande
-        for (let i = 0; i < total; i++) {
-            const p = document.createElement("div");
-            p.classList.add("particle");
-
-            const angle = Math.random() * Math.PI * 2;
-            const radius = Math.random() * 260;
-
-            p.style.setProperty("--dx", Math.cos(angle) * radius + "px");
-            p.style.setProperty("--dy", Math.sin(angle) * radius + "px");
-
-            p.style.left = cx + "px";
-            p.style.top = cy + "px";
-
-            particles.appendChild(p);
-        }
-
-        // configurar textos como "perdiste"
-        const title = document.getElementById("goTitle");
-        const msg = document.getElementById("goMessage");
-
-        if (title) title.textContent = "¡GAME OVER!";
-        if (msg) msg.textContent = "Chocaste contra un tubo o el piso.";
-
-        // mostrar puntaje final
-        const scoreFinal = document.getElementById("scoreFinal");
-        if (scoreFinal) scoreFinal.textContent = "Puntaje: " + this.score;
-
-        // actualizar récord
-        this.updateBestScore();
-
-        setTimeout(() => {
-            const overlay = document.getElementById("gameOverOverlay");
-            if (overlay) overlay.classList.remove("hidden");
-        }, 2400);
+    // === APAGAR SONIDO DE VUELO SI ESTABA SONANDO ===
+    const jumpSound = document.getElementById("soundJump");
+    if (jumpSound) {
+        jumpSound.pause();
+        jumpSound.currentTime = 0;
     }
+
+    // === SONIDO DE CHOQUE ===
+    const hit = document.getElementById("soundHit");
+    if (hit) {
+        hit.currentTime = 0;
+        hit.play().catch(() => {});
+    }
+
+    // desaparecer YA
+    cuervoDiv.style.opacity = "0";
+    cuervoDiv.classList.remove("cuervo-vuelo");
+    cuervoDiv.getAnimations().forEach(a => a.cancel());
+
+    // partículas
+    particles.innerHTML = "";
+
+    const cx = this.bird.x + this.bird.width / 2;
+    const cy = this.bird.y + this.bird.height / 2;
+
+    const total = 1200;
+    for (let i = 0; i < total; i++) {
+        const p = document.createElement("div");
+        p.classList.add("particle");
+
+        const angle = Math.random() * Math.PI * 2;
+        const radius = Math.random() * 260;
+
+        p.style.setProperty("--dx", Math.cos(angle) * radius + "px");
+        p.style.setProperty("--dy", Math.sin(angle) * radius + "px");
+
+        p.style.left = cx + "px";
+        p.style.top = cy + "px";
+
+        particles.appendChild(p);
+    }
+
+    // mostrar puntaje final
+    document.getElementById("scoreFinal").textContent =
+        "Puntaje: " + this.score;
+
+    // mostrar overlay
+    setTimeout(() => {
+        const overlay = document.getElementById("gameOverOverlay");
+        if (overlay) overlay.classList.remove("hidden");
+    }, 2400);
+}
+
 
     // --------------------------------------
     // DRAW

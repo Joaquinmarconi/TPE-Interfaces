@@ -8,6 +8,9 @@ class Bird {
         this.vy = 0;
         this.gravity = 0.4;
         this.jumpStrength = -7;
+
+        // === SONIDO DEL IMPULSO ===
+        this.jumpSound = document.getElementById("soundJump");
     }
 
     update() {
@@ -37,21 +40,30 @@ class Bird {
             this.vy = 0;
         }
     }
+jump() {
+    // si hay game over NO permitir saltos ni sonidos
+    if (window.flappyGame && window.flappyGame.isGameOver) return;
 
-    jump() {
-        this.vy = this.jumpStrength;
+    this.vy = this.jumpStrength;
 
-        // rotación hacia arriba
-        const cuervo = document.getElementById("cuervo");
-        cuervo.style.transform = "rotate(-22deg)";
+    // rotación hacia arriba
+    const cuervo = document.getElementById("cuervo");
+    cuervo.style.transform = "rotate(-22deg)";
+
+    // ==== SONIDO DE IMPULSO ====
+    if (this.jumpSound) {
+        this.jumpSound.pause();      // por si estaba sonando
+        this.jumpSound.currentTime = 0;
+        this.jumpSound.play().catch(() => {});
     }
-
-getBounds() {
-    return {
-        cx: this.x + this.width / 2,
-        cy: this.y + this.height / 2,
-        rx: this.width * 0.30,   // ancho real
-        ry: this.height * 0.20   // alto MUY pequeño
-    };
 }
+
+    getBounds() {
+        return {
+            cx: this.x + this.width / 2,
+            cy: this.y + this.height / 2,
+            rx: this.width * 0.30,
+            ry: this.height * 0.30
+        };
+    }
 }
