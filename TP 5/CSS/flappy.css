@@ -116,9 +116,9 @@
 }
 
 .go-box h2 {
-    font-family: "Baloo 2", sans-serif;
+    font-family: 'Orbitron', sans-serif;
     margin: 0 0 10px;
-    font-size: 42px;
+    font-size: 40px;
     font-weight: 600;
     letter-spacing: 2px;
     color: #9e0f12; /* rojizo similar al título */
@@ -144,6 +144,38 @@
     box-shadow: 0 0 12px rgba(255,60,60,0.4);
 }
 
+/* Score en una fila */
+.score-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0 25px;
+}
+
+.score-row p {
+    margin: 0;
+    font-size: 22px;
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 400;
+    color: #FAFAFA;
+    text-shadow: 0 0 6px rgba(0,0,0,0.7);
+}
+
+/* Separador vertical */
+.separator {
+    color: #aa2022;
+    font-size: 22px;
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+#goMessage {
+    margin: 0 0 15px;
+    font-size: 20px;
+    font-family: "Baloo 2", sans-serif;
+    color: #FAFAFA;
+}
 
 .startOverlay {
     position: absolute;

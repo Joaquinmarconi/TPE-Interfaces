@@ -150,11 +150,14 @@
              <div id="gameOverOverlay" class="Flappyoverlay hidden">
                     <div class="go-box">
                         <h2 id="goTitle">¡GAME OVER!</h2>
-                        <p id="goMessage">Chocaste contra un tubo o el piso.</p>
+                        <p id="goMessage">Tu aventura llegó a su fin.</p>
 
-                        <p id="scoreFinal" class="scoreFinal">Puntaje: 0</p>
-                        <p id="scoreMaximo">Puntaje máximo: 0</p>
-
+                        <div class="score-row">
+                            <p id="scoreFinal" class="scoreFinal">Puntaje: 0</p>
+                            <span class="separator">|</span>
+                            <p id="scoreMaximo">Record: 0</p>
+                        </div>
+                        
                         <button id="btnReintentar">Reintentar</button>
                     </div>
               </div>
@@ -172,22 +175,21 @@
         
        
         <section class="reglas">
-            <div>
+            <div class="bloque">
                 <h3>Reglas básicas</h3>
                 <ul>
-                    <li>Evita chocar contra los obstáculos (tumbas, cruces, ramas, murciélagos, etc.)</li>
-                    <li>No toques el suelo ni la parte superior del escenario</li>
-                    <li>El juego acelera levemente con el tiempo, aumentando la dificultad</li>
-                    <li>Si el ave choca con cualquier objeto o límite, la partida termina</li>
+                    <li>Evita chocar contra los obstáculos (tubos) mientras avanzas</li>
+                    <li>No toques el suelo ni salgas por la parte superior del escenario</li>
+                    <li>Si el cuervo impacta con un tubo o con los límites del escenario, la partida finaliza.</li>
                 </ul>
-              
-                
             </div> 
-              <p> ___________________________________</p>
-            <div>
-                 <h3>Controles</h3>
+
+            <div class="linea-div"></div>
+
+            <div class="bloque">
+                <h3>Controles</h3>
                 <ul>
-                    <li>Haz click o toca la pantalla para que el cuervo aletee y suba</li>
+                    <li>Haz click ↑ o toca la pantalla para que el cuervo aletee y suba</li>
                     <li>Suelta para que descienda de manera natural</li>
                     <li>Mantén el ritmo para avanzar entre los obstáculos</li>
                     <li>Tu objetivo es recorrer la mayor distancia posible sin morir</li>

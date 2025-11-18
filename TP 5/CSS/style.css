@@ -875,54 +875,57 @@ header section {
     height: 567px;
     margin-left: 28px;
     background-color: #1c1b1b;
-    padding: o;
-}
-
-.reglas div {
-    display: block;
-    height: 200px;
-    width: 300px;
-    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    gap: 10px;
     font-family: 'Baloo 2', sans-serif;
-    font-weight: 500;
-    color: #FFDD33;
 }
 
-.reglas div h3 {
-    margin-top: 25px;
+/* Cada bloque de reglas o controles */
+.reglas .bloque {
+    width: 100%;
+    color: #FFDD33;
     text-align: center;
 }
 
-.reglas div ul {
-    width: 250px;
-    height: 200px;
-    font-size: 16px;
-    font-weight: 200px;
-    color: #B3B3B3;
-    padding: 0px;
-    margin-left: 40px;
-    text-indent: -5px;
+/* Títulos */
+.reglas h3 {
+    margin-bottom: 8px;
+    font-size: 20px;
 }
 
-.reglas div ul li {
+/* Listas */
+.reglas ul {
+    width: 240px;
+    margin: 0 auto;
+    padding-left: 18px;
+    text-align: left;
+    color: #B3B3B3;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.reglas li {
     list-style-type: disc;
-    white-space: initial;
-    line-height: 19px;
-    text-align: start;
+    margin-bottom: 6px;
 }
 
-.reglas p {
-    color: #B3B3B3;
-    margin-left: 22px;
-    margin-top: 10px;
-
-}
-
-.reglas div img {
+/* Imagen controles */
+.reglas img {
     width: 70px;
-    height: 70px;
-    margin-top: 20px;
-    margin-left: 160px;
+    display: block;
+    margin: 15px auto 0;
+}
+
+/* Línea divisoria centrada */
+.linea-div {
+    width: 80%;
+    height: 1px;
+    background-color: #B3B3B3;
+    margin: 4px 0 0;
+    opacity: 0.5;
 }
 
 .descripcion-juego {
