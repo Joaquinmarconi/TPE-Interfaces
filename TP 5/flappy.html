@@ -146,10 +146,18 @@
                      <audio id="soundJump" src="Assets/wings-flapping.mp3"></audio>
                      <audio id="soundHit" src="Assets/falling-game-character-352287.mp3"></audio>
                      <audio id="soundPoint" src="Assets/game-bonus-02-294436.mp3"></audio>
+                     <audio id="soundSkull" src="Assets/bone-break-sfx-393835.mp3"></audio>
+                     
+                <div id="skullHUD" class="skullHUD">
+                    <img class="skullIcon" src="Assets/calaveritaContador.png" />
+                    <span id="skullCount">0</span>
+                </div>
+
 
                     <canvas id="gameCanvas" width="950" height="567"></canvas>
 
-                    
+                    <img id="skullCoin" src="Assets/calaverita.png" style="display:none;">
+
 
              <div id="gameOverOverlay" class="Flappyoverlay hidden">
                     <div class="go-box">
@@ -417,6 +425,7 @@
 
 <script src="JS/Bird.js"></script>
 <script src="JS/Tubo.js"></script>
+<script src="JS/Calavera.js"></script>
 <script src="JS/FlappyGame.js"></script>
     <script src="JS/juego.js" Content-Type="text/javascript"></script>
 </body>

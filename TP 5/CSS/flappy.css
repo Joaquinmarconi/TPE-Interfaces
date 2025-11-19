@@ -290,3 +290,34 @@
     text-shadow: 0 0 10px black;
     font-weight: bold;
 }
+.skullHUD {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 4px 8px;
+    background-color: #3c0f11;
+    border: 2px solid #ffffffaa;
+    border-radius: 15px;
+
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 2px 2px 6px black;
+
+    z-index: 300;
+}
+
+/* reset + tamaño correcto */
+.skullIcon  {
+    width: 15px;
+    height: 15px;
+    object-fit: contain;
+    image-rendering: crisp-edges;
+    filter: drop-shadow(2px 2px 4px black);
+    display: block;
+}
