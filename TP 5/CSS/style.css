@@ -780,7 +780,7 @@ header section {
   z-index: 1;
 }
 
-.juego div img {
+.juego div img:not(.skullIcon) {
     width: 950px;
     height: 567px;
 }

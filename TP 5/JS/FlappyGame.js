@@ -16,6 +16,7 @@ class FlappyGame {
         this.maxScore = 50;
 
         this.tuboCount = 0; // <<< para saber cuántos tubos van
+         this.skullCount=0;
 
         this.setupControls();
 
@@ -33,6 +34,7 @@ class FlappyGame {
             this.scoreMaxDisplay.textContent = "Puntaje máximo: " + this.bestScore;
 
         this.soundPoint = document.getElementById("soundPoint");
+        this.soundSkull = document.getElementById("soundSkull");
 
         window.flappyGame = this;
     }
@@ -145,23 +147,27 @@ class FlappyGame {
         // ===== MONEDAS =====
         this.calaveras.forEach(c => c.update());
 
-        // COLISIÓN con monedas
-        for (let c of this.calaveras) {
-            if (!c.collected && c.collides(this.bird)) {
+       
+      
+// COLISIÓN con monedas
+for (let c of this.calaveras) {
+    if (!c.collected && c.collides(this.bird)) {
 
-                c.collected = true;
+        c.collected = true;
 
-                this.score += 2;
-                this.scoreDisplay.textContent = this.score;
+        // SUMA SIN RESETEAR
+        this.skullCount++;
+        document.getElementById("skullCount").textContent = this.skullCount;
 
-                if (this.soundPoint) {
-                    this.soundPoint.currentTime = 0;
-                    this.soundPoint.play().catch(() => {});
-                }
-            }
-        }
+       if (this.soundSkull) {
+    this.soundSkull.currentTime = 0;
+    this.soundSkull.play().catch(() => {});
+}
+    }
+}
 
-        this.calaveras = this.calaveras.filter(c => !c.collected);
+// eliminar solo las recolectadas
+this.calaveras = this.calaveras.filter(c => !c.collected);
 
         // ===== PUNTOS POR PASAR TUBOS =====
         for (let t of this.tubos) {
@@ -307,7 +313,8 @@ class FlappyGame {
         this.tuboCount = 0;
         this.isGameOver = false;
         this.started = false;
-
+        this.skullCount=0;
+        document.getElementById("skullCount").textContent = 0;
         const cuervoDiv = document.getElementById("cuervo");
         cuervoDiv.style.opacity = "1";
         cuervoDiv.style.transform = "rotate(0deg)";
