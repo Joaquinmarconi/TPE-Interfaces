@@ -1,46 +1,47 @@
 class FlappyGame {
     constructor(canvas) {
-        this.canvas = canvas;
-        this.ctx = canvas.getContext("2d");
+    this.canvas = canvas;
+    this.ctx = canvas.getContext("2d");
 
-        this.bird = new Bird();
-        this.tubos = [];
-        this.calaveras = [];
+    this.bird = new Bird();
+    this.tubos = [];
+    this.calaveras = [];
 
-        this.spawnGap = 300;
-        this.score = 0;
-        this.isGameOver = false;
-        this.frameId = null;
+    this.spawnGap = 300;
+    this.score = 0;
+    this.isGameOver = false;
+    this.frameId = null;
 
-        this.started = false;
-        this.maxScore = 50;
+    this.started = false;
+    this.maxScore = 50;
 
-        this.tuboCount = 0; // <<< para saber cuántos tubos van
-         this.skullCount=0;
+    this.tuboCount = 0;
+    this.skullCount = 0;
 
-        this.setupControls();
+    this.setupControls();
 
-        // activar animación del cuervo
-        const c = document.getElementById("cuervo");
-        if (c) c.classList.add("cuervo-vuelo");
+    const cuervoDiv = document.getElementById("cuervo");
+    cuervoDiv.classList.add("cuervo-vuelo");
 
-        // puntajes visibles
-        this.scoreDisplay = document.getElementById("score");
-        this.scoreMaxDisplay = document.getElementById("scoreMaximo");
+    this.scoreDisplay = document.getElementById("score");
+    this.scoreMaxDisplay = document.getElementById("scoreMaximo");
 
-        // leer récord desde localStorage
-        this.bestScore = parseInt(localStorage.getItem("flappyBestScore") || "0", 10);
+    this.bestScore = parseInt(localStorage.getItem("flappyBestScore") || "0", 10);
 
-        // mostrar récord inicial
-        if (this.scoreMaxDisplay) {
-            this.scoreMaxDisplay.textContent = "Record: " + this.bestScore;
-        }
-
-        this.soundPoint = document.getElementById("soundPoint");
-        this.soundSkull = document.getElementById("soundSkull");
-
-        window.flappyGame = this;
+    // record inicial
+    if (this.scoreMaxDisplay) {
+        this.scoreMaxDisplay.textContent = "Record: " + this.bestScore;
     }
+
+    this.soundPoint = document.getElementById("soundPoint");
+    this.soundSkull = document.getElementById("soundSkull");
+
+    // UBICAR CUERVO APENAS SE CREA
+    cuervoDiv.style.left = this.bird.x + "px";
+    cuervoDiv.style.top = this.bird.y + "px";
+
+    window.flappyGame = this;
+}
 
     // =======================
     // CONTROLES
@@ -143,9 +144,11 @@ class FlappyGame {
         this.tubos = this.tubos.filter(t => !t.offScreen());
 
         // cuervo visual
-        const cuervoDiv = document.getElementById("cuervo");
-        cuervoDiv.style.left = this.bird.x + "px";
-        cuervoDiv.style.top = this.bird.y + "px";
+        if (this.started && !this.isGameOver) {
+    const cuervoDiv = document.getElementById("cuervo");
+    cuervoDiv.style.left = this.bird.x + "px";
+    cuervoDiv.style.top = this.bird.y + "px";
+}
 
         // ===== MONEDAS =====
         this.calaveras.forEach(c => c.update());
@@ -324,6 +327,10 @@ this.calaveras = this.calaveras.filter(c => !c.collected);
         cuervoDiv.style.opacity = "1";
         cuervoDiv.style.transform = "rotate(0deg)";
         cuervoDiv.classList.add("cuervo-vuelo");
+
+       
+        cuervoDiv.style.left = this.bird.x + "px";
+        cuervoDiv.style.top = this.bird.y + "px";
 
         document.getElementById("cuervoParticles").innerHTML = "";
 
