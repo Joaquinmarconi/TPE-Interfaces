@@ -1,17 +1,19 @@
 class Tubo {
-    constructor(x, canvasHeight) {
+    constructor(x, canvasHeight, gapSize) {
+        this.gapSize = gapSize;
         this.x = x;
-        this.width = 90;      // un poco más fino
+        this.width = 90;
         this.speed = 2;
         this.scored = false;
 
-        const gap = 150;
-        const minHeight = 80;
+        this.gapSize = gapSize;
 
-        const maxTop = canvasHeight - gap - minHeight * 2;
+        const minHeight = 80;
+        const maxTop = canvasHeight - gapSize - minHeight * 2;
+
         this.topHeight = Math.floor(Math.random() * maxTop) + minHeight;
 
-        this.bottomY = this.topHeight + gap;
+        this.bottomY = this.topHeight + gapSize;
         this.bottomHeight = canvasHeight - this.bottomY;
 
         this.canvasHeight = canvasHeight;
@@ -28,22 +30,40 @@ class Tubo {
     draw(ctx) {
         ctx.save();
 
-        const fill   = "#737786ff";
         const stroke = "#2A2A2A";
         const lipHeight = 25;
         const lipMargin = 5;
 
+        // 🎨 Degradado gótico realista (metal bruñido)
+        const grad = ctx.createLinearGradient(this.x, 0, this.x + this.width, 0);
+        grad.addColorStop(0, "#2c2d33");
+        grad.addColorStop(0.15, "#3e4048");
+        grad.addColorStop(0.35, "#4f515c");
+        grad.addColorStop(0.5, "#8a8e99");
+        grad.addColorStop(0.65, "#4f515c");
+        grad.addColorStop(0.85, "#3e4048");
+        grad.addColorStop(1, "#2c2d33");
+
+        ctx.fillStyle = grad;
+
+        // ============================
+        // TUBO SUPERIOR (solo laterales)
+        // ============================
+        ctx.fillRect(this.x, 0, this.width, this.topHeight);
+
         ctx.lineWidth = 6;
-        ctx.fillStyle = fill;
         ctx.strokeStyle = stroke;
 
-        // ===== TUBO SUPERIOR =====
         ctx.beginPath();
-        ctx.rect(this.x, 0, this.width, this.topHeight);
-        ctx.fill();
+        ctx.moveTo(this.x, 0);
+        ctx.lineTo(this.x, this.topHeight);
+        ctx.moveTo(this.x + this.width, 0);
+        ctx.lineTo(this.x + this.width, this.topHeight);
         ctx.stroke();
 
-        // labio
+        // ============================
+        // LABIO SUPERIOR (borde completo)
+        // ============================
         ctx.beginPath();
         ctx.rect(
             this.x - lipMargin,
@@ -54,13 +74,21 @@ class Tubo {
         ctx.fill();
         ctx.stroke();
 
-        // ===== TUBO INFERIOR =====
+        // ============================
+        // TUBO INFERIOR (solo laterales)
+        // ============================
+        ctx.fillRect(this.x, this.bottomY, this.width, this.bottomHeight);
+
         ctx.beginPath();
-        ctx.rect(this.x, this.bottomY, this.width, this.bottomHeight);
-        ctx.fill();
+        ctx.moveTo(this.x, this.bottomY);
+        ctx.lineTo(this.x, this.bottomY + this.bottomHeight);
+        ctx.moveTo(this.x + this.width, this.bottomY);
+        ctx.lineTo(this.x + this.width, this.bottomY + this.bottomHeight);
         ctx.stroke();
 
-        // labio
+        // ============================
+        // LABIO INFERIOR (borde completo)
+        // ============================
         ctx.beginPath();
         ctx.rect(
             this.x - lipMargin,
@@ -74,9 +102,9 @@ class Tubo {
         ctx.restore();
     }
 
-    // ⭐ AHORA Usa ELIPSE en lugar de círculo
+    // ⭐ COLISIÓN ELIPSE VS RECT
     collides(bird) {
-        const b = bird.getBounds(); // cx, cy, rx, ry
+        const b = bird.getBounds();
 
         const rectTop = {
             x: this.x,
@@ -98,16 +126,13 @@ class Tubo {
         );
     }
 
-    // ⭐ Colisión ELIPSE vs RECT
     ellipseRectCollision(b, r) {
-        // punto más cercano del rectángulo al centro de la elipse
         const closestX = Math.max(r.x, Math.min(b.cx, r.x + r.width));
         const closestY = Math.max(r.y, Math.min(b.cy, r.y + r.height));
 
         const dx = closestX - b.cx;
         const dy = closestY - b.cy;
 
-        // ecuación de la elipse: (dx² / rx²) + (dy² / ry²) < 1
         const value = (dx * dx) / (b.rx * b.rx) + (dy * dy) / (b.ry * b.ry);
         return value < 1;
     }

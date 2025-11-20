@@ -7,7 +7,7 @@ class Calavera {
         this.radius = 25;
 
         // velocidad horizontal (más lenta que los tubos que van a -3)
-        this.vx = -1.5;
+        this.vx = -1.2;
 
         // animación flotante
         this.floatSpeed = 0.004;
