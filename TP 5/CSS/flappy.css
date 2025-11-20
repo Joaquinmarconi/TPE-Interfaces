@@ -292,32 +292,28 @@
 }
 .skullHUD {
     position: absolute;
-    top: 15px;
-    left: 20px;
-
+    top: 29px;
+    left: 22px;
     display: flex;
     align-items: center;
-    gap: 6px;
-
-    padding: 4px 8px;
-    background-color: #3c0f11;
-    border: 2px solid #ffffffaa;
-    border-radius: 15px;
-
-    color: #ffffff;
+    gap: 8px;
+    padding: 3px 12px;
+    background: rgba(20, 20, 20, 0.75);
+    border: 2px solid #440809;
+    border-radius: 20px;
+    color: #FAFAFA;
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 700;
     font-size: 20px;
-    font-weight: bold;
-    text-shadow: 2px 2px 6px black;
-
+    text-shadow: 0 0 6px #000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
     z-index: 300;
 }
 
 /* reset + tamaño correcto */
-.skullIcon  {
-    width: 15px;
-    height: 15px;
+.skullIcon {
+    width: 20px;
+    height: 20px;
     object-fit: contain;
-    image-rendering: crisp-edges;
-    filter: drop-shadow(2px 2px 4px black);
-    display: block;
+    filter: drop-shadow(0 0 6px black) brightness(1.2);
 }
