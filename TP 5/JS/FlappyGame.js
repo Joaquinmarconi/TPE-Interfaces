@@ -233,11 +233,11 @@ spawnOrbita() {
                 this.skullCount++;
                 document.getElementById("skullCount").textContent = this.skullCount;
 
-                // generar una órbita cada 8 calaveras
-if (this.skullCount >= this.lastOrbitaCount + 2) {
-    this.lastOrbitaCount = this.skullCount;
-    this.spawnOrbita();
-}
+                // generar una órbita cada 6 calaveras
+                if (this.skullCount >= this.lastOrbitaCount + 6) {
+                    this.lastOrbitaCount = this.skullCount;
+                    this.spawnOrbita();
+                }
 
                 if (this.soundSkull) {
                     this.soundSkull.currentTime = 0;
