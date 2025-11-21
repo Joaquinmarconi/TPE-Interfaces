@@ -1,34 +1,29 @@
-class Calavera {
+class Orbita {
     constructor(x, y) {
         this.x = x;
         this.baseY = y;
         this.y = y;
 
-        this.radius = 25;
+        this.radius = 20;  // suficiente para la imagen 15x15
 
-        // la velocidad debe ser la misma que la que uses en FlappyGame
         this.vx = -2;  
-
-        // flotación suave (se puede sobrescribir desde afuera)
         this.floatSpeed = 0.004;
-        this.floatAmplitude = 5;
+        this.floatAmplitude = 8;
 
         this.collected = false;
     }
 
     update() {
         this.x += this.vx;
-
-        // flotación vertical suave
         this.y = this.baseY + Math.sin(Date.now() * this.floatSpeed) * this.floatAmplitude;
     }
 
     offScreen() {
-        return this.x < -50;
+        return this.x < -60;
     }
 
     draw(ctx) {
-        const img = document.getElementById("skullCoin");
+        const img = document.getElementById("powerShield");
         if (!img) return;
 
         ctx.drawImage(
@@ -41,12 +36,12 @@ class Calavera {
     }
 
     collides(bird) {
-        const cx = bird.x + bird.width / 2;
-        const cy = bird.y + bird.height / 2;
+        const bx = bird.x + bird.width / 2;
+        const by = bird.y + bird.height / 2;
 
-        const dx = cx - this.x;
-        const dy = cy - this.y;
+        const dx = bx - this.x;
+        const dy = by - this.y;
 
-        return dx * dx + dy * dy < (this.radius + 20) * (this.radius + 20);
+        return (dx*dx + dy*dy) < (this.radius + 12) ** 2;
     }
 }

@@ -7,6 +7,10 @@ class FlappyGame {
         this.tubos = [];
         this.calaveras = [];
 
+        this.orbitas = [];
+        this.lastOrbitaCount = 0;  
+        this.hasShield = false;  // ← nuevo
+
         this.spawnGap = 300;
         this.score = 0;
         this.isGameOver = false;
@@ -17,12 +21,14 @@ class FlappyGame {
 
         this.tuboCount = 0;
         this.skullCount = 0;
-        
-this.spawnGapMin = 140;   // más juntos al final
-this.spawnGapMax = 420;   // más separados al inicio
 
-this.gapMin = 85;     // hueco final más chico pero posible
-this.gapMax = 240;    // hueco inicial mucho mayor
+        // Distancias dinámicas
+        this.spawnGapMin = 140;
+        this.spawnGapMax = 420;
+
+        this.gapMin = 85;
+        this.gapMax = 240;
+
         this.setupControls();
 
         const cuervoDiv = document.getElementById("cuervo");
@@ -79,84 +85,124 @@ this.gapMax = 240;    // hueco inicial mucho mayor
     }
 
     // =======================
-    // PARALLAX CONTROL
+    // PARALLAX
     // =======================
     stopParallax() {
-        const layers = document.querySelectorAll(".layer");
-        layers.forEach(layer => {
-            layer.style.animationPlayState = "paused";
+        document.querySelectorAll(".layer").forEach(l => {
+            l.style.animationPlayState = "paused";
         });
     }
 
     startParallax() {
-        const layers = document.querySelectorAll(".layer");
-        layers.forEach(layer => {
-            layer.style.animationPlayState = "running";
+        document.querySelectorAll(".layer").forEach(l => {
+            l.style.animationPlayState = "running";
         });
     }
+
+    // ============================
+    // COIN ENTRE PARES DE TUBOS
+    // ============================
+  createCoinBetweenTubes(tuboAnterior, tuboNuevo) {
+  
+    // 1.5 significa que aparece cuando se aproxima el siguiente tubo
+    const x = tuboAnterior.x + (tuboNuevo.x - tuboAnterior.x) * 1.5;
+
+    // ============================================
+    // 2) Variación vertical fuerte (más notoria)
+    // ============================================
+    const gapTop = tuboAnterior.topHeight;
+    const gapBottom = tuboAnterior.bottomY;
+
+    // Distancia total del hueco
+    const gapHeight = gapBottom - gapTop;
+
+    // Variación vertical proporcional al tamaño del hueco
+    const verticalOffset = (gapHeight * 0.55); // 55% del hueco hacia arriba o abajo
+
+    // elegimos posición: arriba / medio / abajo
+    const choices = [-verticalOffset, 0, verticalOffset];
+    const offset = choices[Math.floor(Math.random() * choices.length)];
+
+   const safeMargin = gapHeight * 0.15; // evita que toque extremos del hueco
+
+    // coinY final con margen de seguridad
+    const coinY =
+        Math.min(gapBottom - safeMargin,
+            Math.max(gapTop + safeMargin,
+                gapTop + gapHeight / 2 + offset
+            )
+        );
+    // ============================================
+    // 3) Crear la calavera
+    // ============================================
+    const skull = new Calavera(x, coinY);
+
+    skull.vx = -2;          // misma velocidad de tubos
+    skull.floatAmplitude = 5; // fija para que no moleste visualmente
+
+    this.calaveras.push(skull);
+}
+
+
+spawnOrbita() {
+    if (this.tubos.length < 2) return;
+
+    const anterior = this.tubos[this.tubos.length - 2];
+    const ultimo = this.tubos[this.tubos.length - 1];
+
+    const x = anterior.x + (ultimo.x - anterior.x) * 1.7;
+
+    const gapTop = anterior.topHeight;
+    const gapBottom = anterior.bottomY;
+    const gapHeight = gapBottom - gapTop;
+
+    const safe = gapHeight * 0.25;
+    const yMin = gapTop + safe;
+    const yMax = gapBottom - safe;
+
+    const y = yMin + Math.random() * (yMax - yMin);
+
+    const orb = new Orbita(x, y);
+    this.orbitas.push(orb);
+}
 
     // =======================
     // CREACIÓN DE TUBOS
     // =======================
     spawnTubo() {
-    if (!this.started) return;
+        if (!this.started) return;
 
-    // ================================
-    // 1) DISTANCIA HORIZONTAL DINÁMICA
-    // ================================
-    this.spawnGap =
-        this.spawnGapMax -
-        (this.spawnGapMax - this.spawnGapMin) *
-        Math.min(this.score / 25, 1);
+        // Distancia horizontal dinámica
+        this.spawnGap =
+            this.spawnGapMax -
+            (this.spawnGapMax - this.spawnGapMin) *
+            Math.min(this.score / 50, 1);
 
-    // ================================
-    // 2) GAP VERTICAL DINÁMICO
-    // ================================
-    const dynamicGap =
-        this.gapMax -
-        (this.gapMax - this.gapMin) *
-        Math.min(this.score / 25, 1);
+        // Hueco vertical dinámico
+        const dynamicGap =
+            this.gapMax -
+            (this.gapMax - this.gapMin) *
+            Math.min(this.score / 45, 1);
 
-    let nuevoTubo = null;
+        let nuevoTubo = null;
 
-    // primer tubo
-    if (this.tubos.length === 0) {
-        nuevoTubo = new Tubo(this.canvas.width, this.canvas.height, dynamicGap);
-        this.tubos.push(nuevoTubo);
-    }
+        // Primer tubo
+        if (this.tubos.length === 0) {
+            nuevoTubo = new Tubo(this.canvas.width, this.canvas.height, dynamicGap);
+            this.tubos.push(nuevoTubo);
+            return; // no hay moneda todavía
+        }
 
-    // tubos siguientes
-    else {
         const ultimo = this.tubos[this.tubos.length - 1];
 
+        // ¿Ya entró en distancia para crear otro tubo?
         if (ultimo.x < this.canvas.width - this.spawnGap) {
             nuevoTubo = new Tubo(this.canvas.width, this.canvas.height, dynamicGap);
             this.tubos.push(nuevoTubo);
+
+            // ✔ Moneda entre este tubo y el anterior
+            this.createCoinBetweenTubes(ultimo, nuevoTubo);
         }
-    }
-
-    if (!nuevoTubo) return;
-
-    this.tuboCount++;
-
-    if (this.tuboCount % 3 === 0) {
-        this.createCoinInsideGap(nuevoTubo);
-    }
-}
-    // =======================
-    // MONEDAS
-    // =======================
-    createCoinInsideGap(tubo) {
-        const x = this.canvas.width + 40;
-
-        const gapCenterY = tubo.topHeight + (tubo.bottomY - tubo.topHeight) / 2;
-
-        const skull = new Calavera(x, gapCenterY);
-
-        this.vx = -0.150;
-        skull.floatAmplitude = 20;
-
-        this.calaveras.push(skull);
     }
 
     // =======================
@@ -171,19 +217,27 @@ this.gapMax = 240;    // hueco inicial mucho mayor
         this.tubos.forEach(t => t.update());
         this.tubos = this.tubos.filter(t => !t.offScreen());
 
+        // sincronicemos el cuervo-DIV
         const cuervoDiv = document.getElementById("cuervo");
         cuervoDiv.style.left = this.bird.x + "px";
         cuervoDiv.style.top = this.bird.y + "px";
 
+        // actualizar monedas
         this.calaveras.forEach(c => c.update());
 
-        // COLISION MONEDAS
+        // colisión monedas
         for (let c of this.calaveras) {
             if (!c.collected && c.collides(this.bird)) {
                 c.collected = true;
 
                 this.skullCount++;
                 document.getElementById("skullCount").textContent = this.skullCount;
+
+                // generar una órbita cada 8 calaveras
+if (this.skullCount >= this.lastOrbitaCount + 2) {
+    this.lastOrbitaCount = this.skullCount;
+    this.spawnOrbita();
+}
 
                 if (this.soundSkull) {
                     this.soundSkull.currentTime = 0;
@@ -193,8 +247,28 @@ this.gapMax = 240;    // hueco inicial mucho mayor
         }
 
         this.calaveras = this.calaveras.filter(c => !c.collected);
+// actualizar órbitas
+for (let o of this.orbitas) {
+    o.update();
 
-        // PUNTOS POR TUBOS
+    if (!o.collected && o.collides(this.bird)) {
+        o.collected = true;
+
+        //  activar escudo por 5 segundos
+        this.activateShield();
+
+        // efecto visual
+        document.getElementById("cuervo").classList.add("shield-effect");
+
+        // opcional: sonido
+        const snd = document.getElementById("soundOrb");
+        if (snd) { snd.currentTime = 0; snd.play().catch(() => {}); }
+    }
+}
+
+this.orbitas = this.orbitas.filter(o => !o.collected);
+
+        // puntaje por tubos pasados
         for (let t of this.tubos) {
             if (!t.passed && t.x + t.width < this.bird.x) {
                 t.passed = true;
@@ -214,21 +288,30 @@ this.gapMax = 240;    // hueco inicial mucho mayor
             }
         }
 
-        // COLISIÓN CON TUBO
-        for (let t of this.tubos) {
-            if (t.collides(this.bird)) {
-                this.runExplosion();
-                this.isGameOver = true;
-                this.stopParallax();   // << DETENER FONDO
-                return;
-            }
+        // colisión con tubos
+// colisión con tubos
+for (let t of this.tubos) {
+    if (t.collides(this.bird)) {
+
+        // 🛡 Si tiene escudo → NO muere
+        if (this.hasShield) {
+            continue;  // ignora el golpe, escudo sigue activo
         }
 
-        // COLISIÓN CON EL PISO
+        // muerte normal
+        this.runExplosion();
+        this.isGameOver = true;
+        this.stopParallax();
+        return;
+    }
+}
+
+
+        // colisión con piso
         if (this.bird.y + this.bird.height >= 567) {
             this.runExplosion();
             this.isGameOver = true;
-            this.stopParallax();   // << DETENER FONDO
+            this.stopParallax();
             return;
         }
     }
@@ -287,7 +370,6 @@ this.gapMax = 240;    // hueco inicial mucho mayor
 
         cuervoDiv.style.opacity = "0";
         cuervoDiv.classList.remove("cuervo-vuelo");
-
         particles.innerHTML = "";
 
         const cx = this.bird.x + this.bird.width / 2;
@@ -310,23 +392,44 @@ this.gapMax = 240;    // hueco inicial mucho mayor
         }
 
         this.updateBestScore();
-
-        document.getElementById("scoreFinal").textContent =
-            "Puntaje: " + this.score;
+        document.getElementById("scoreFinal").textContent = "Puntaje: " + this.score;
 
         setTimeout(() => {
             document.getElementById("gameOverOverlay").classList.remove("hidden");
         }, 2000);
     }
 
+
+
+    activateShield() {
+    // activar escudo
+    this.hasShield = true;
+
+    const cuervoDiv = document.getElementById("cuervo");
+    cuervoDiv.classList.add("shield-effect");
+
+    // si ya tenía un timeout previo → se cancela
+    if (this.shieldTimeout) clearTimeout(this.shieldTimeout);
+
+    //  Escudo dura 10 segundos
+    this.shieldTimeout = setTimeout(() => {
+
+        // apagar escudo
+        this.hasShield = false;
+
+        // quitar efecto visual
+        cuervoDiv.classList.remove("shield-effect");
+
+    }, 10000); // ← 10,000 ms = 10 segundos
+}
     // =======================
     // DRAW
     // =======================
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
         this.tubos.forEach(t => t.draw(this.ctx));
         this.calaveras.forEach(c => c.draw(this.ctx));
+        this.orbitas.forEach(o => o.draw(this.ctx));
     }
 
     // =======================
@@ -335,17 +438,20 @@ this.gapMax = 240;    // hueco inicial mucho mayor
     reset() {
         if (this.frameId !== null) cancelAnimationFrame(this.frameId);
 
-        this.startParallax();   // << REANUDAR PARALLAX
+        this.startParallax();
 
         this.bird = new Bird();
         this.tubos = [];
         this.calaveras = [];
+        this.orbitas = [];
+this.lastOrbitaCount = 0;
         this.score = 0;
         this.tuboCount = 0;
         this.isGameOver = false;
         this.started = false;
         this.skullCount = 0;
-        document.getElementById("skullCount").textContent = 0;
+
+        document.getElementById("skullCount").textContent = "0";
 
         const cuervoDiv = document.getElementById("cuervo");
         cuervoDiv.style.opacity = "1";
@@ -360,11 +466,8 @@ this.gapMax = 240;    // hueco inicial mucho mayor
         document.getElementById("gameOverOverlay").classList.add("hidden");
         document.getElementById("startOverlay").style.display = "flex";
 
-        if (this.scoreDisplay)
-            this.scoreDisplay.textContent = 0;
-
-        if (this.scoreMaxDisplay)
-            this.scoreMaxDisplay.textContent = "Record: " + this.bestScore;
+        this.scoreDisplay.textContent = 0;
+        this.scoreMaxDisplay.textContent = "Record: " + this.bestScore;
 
         this.frameId = null;
         this.loop();

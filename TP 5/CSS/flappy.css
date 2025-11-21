@@ -317,3 +317,7 @@
     object-fit: contain;
     filter: drop-shadow(0 0 6px black) brightness(1.2);
 }
+
+.shield-effect {
+    filter: drop-shadow(0 0 15px #00eaff) brightness(1.3);
+}
