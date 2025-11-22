@@ -85,7 +85,7 @@ class FlappyGame {
     }
 
     // =======================
-    // PARALLAX
+    // PARALLAX y FANTASMA
     // =======================
     stopParallax() {
         document.querySelectorAll(".layer").forEach(l => {
@@ -97,6 +97,14 @@ class FlappyGame {
         document.querySelectorAll(".layer").forEach(l => {
             l.style.animationPlayState = "running";
         });
+    }
+
+    stopFantasma() {
+     document.getElementById("fantasma").style.display="none";
+  
+}
+    startFantasma() {
+        document.getElementById("fantasma").style.display="block";
     }
 
     // ============================
@@ -302,6 +310,7 @@ for (let t of this.tubos) {
         this.runExplosion();
         this.isGameOver = true;
         this.stopParallax();
+        this.stopFantasma();
         return;
     }
 }
@@ -439,6 +448,7 @@ for (let t of this.tubos) {
         if (this.frameId !== null) cancelAnimationFrame(this.frameId);
 
         this.startParallax();
+        this.startFantasma();
 
         this.bird = new Bird();
         this.tubos = [];

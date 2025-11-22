@@ -321,3 +321,48 @@
 .shield-effect {
     filter: drop-shadow(0 0 15px #00eaff) brightness(1.3);
 }
+
+
+.fantasma {
+    will-change: left, top;
+    position: absolute;
+    width: 78px;
+    height: 79px;
+    background: url("../Assets/fantasma.png") left center no-repeat;
+
+    top: 100px;
+    left: -100px;
+
+    /* 3 animaciones:
+       1) vuelo del spritesheet
+       2) movimiento horizontal
+       3) zig-zag vertical     */
+    animation: 
+        vueloFantasma 30s steps(6) infinite,
+        moverFantasma 30s linear infinite,
+        zigzagFantasma 3s ease-in-out infinite;
+
+    z-index: 5;
+    opacity: 0.7;
+}
+
+/* Animación horizontal */
+@keyframes moverFantasma {
+    0%   { left: -100px; }
+    100% { left: 1100px; }
+}
+
+/* Animación del spritesheet */
+@keyframes vueloFantasma {
+    0% { background-position: 0 0; }
+    100% { background-position: -483px 0; }
+}
+
+/* Zig-zag vertical */
+@keyframes zigzagFantasma {
+    0%   { top: 100px; }
+    25%  { top: 140px; }
+    50%  { top: 70px; }
+    75%  { top: 140px; }
+    100% { top: 100px; }
+}
