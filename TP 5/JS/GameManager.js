@@ -34,6 +34,12 @@ class GameManager {
 
         contenedor.innerHTML = '';
 
+        // ⭐⭐⭐ AGREGAR FLAPPY SOLO EN PARA TI ⭐⭐⭐
+        if (idDelContenedor === 'parati-carrusel') {
+            contenedor.appendChild(this.crearCardFlappy());
+        }
+        // ⭐⭐⭐ FIN CAMBIO ⭐⭐⭐
+
         // Función para filtrar por género
         const filtrarPorGenero = genero => this.todosLosJuegos.filter(juego =>
             juego.genres && juego.genres.some(g =>
@@ -74,6 +80,7 @@ class GameManager {
         // Registrar cuántos juegos se mostraron
         console.log(`Carrusel ${idDelContenedor}: ${juegosFiltrados.length} juegos`);
     }
+
     crearTarjetaDeJuego(juego) {
         if (!juego || !juego.name) {
             console.warn('Datos de juego incompletos');
@@ -116,7 +123,7 @@ class GameManager {
             article.dataset.juegoId = juego.id;
             article.style.cursor = 'pointer';
 
-            // Evento click aquí con stopPropagation
+            // Evento click con stopPropagation
             article.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -130,6 +137,7 @@ class GameManager {
                 }
             });
         }
+
         figure.appendChild(img);
 
         const titulo = document.createElement('h3');
@@ -180,12 +188,45 @@ class GameManager {
         return tarjeta;
     }
 
+    crearCardFlappy() {
+        const tarjeta = document.createElement('li');
+        const article = document.createElement('article');
+        const figure = document.createElement('figure');
+        const img = document.createElement('img');
+
+        img.src = 'Assets/FlappyFondo.png';
+        img.alt = 'Flappy Bird';
+        img.loading = 'lazy';
+        img.width = 240;
+        img.height = 135;
+
+        const titulo = document.createElement('h3');
+        titulo.textContent = 'Flappy Bird';
+
+        const rating = document.createElement('p');
+        rating.textContent = '★ 4.7/5';
+
+        figure.appendChild(img);
+        article.appendChild(figure);
+        article.appendChild(titulo);
+        article.appendChild(rating);
+        tarjeta.appendChild(article);
+
+        // Redirección al juego
+        article.style.cursor = 'pointer';
+        article.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'flappy.html';
+        });
+
+        return tarjeta;
+    }
+
     esJuegoPremium(juego) {
         return juego.rating >= 4.5;
     }
 
     mostrarPopoverPremium(juego) {
-
         const overlay = document.querySelector('.overlay');
         const popup = document.getElementById('popup-premium');
         const popoversus = document.getElementById('mensaje-subscripcion');
@@ -198,32 +239,25 @@ class GameManager {
         btnCerrar.onclick = () => {
             overlay.classList.remove('visible');
             popup.classList.remove('open');
-
         };
     }
 
     configurarNavegacionCarruseles() {
-        // Obtener todos los botones de navegación
         const botones = document.querySelectorAll('button[aria-controls]');
 
-        // Asignar evento click a cada botón
         botones.forEach(boton => {
             boton.addEventListener('click', (evento) => {
-                // Prevenir comportamiento predeterminado del botón
                 evento.preventDefault();
 
-                // Obtener el ID del carrusel que controla este botón
                 const carruselId = boton.getAttribute('aria-controls');
-
-                // Determinar si es botón anterior o siguiente
                 const esAnterior = boton.getAttribute('aria-label').includes('Anterior');
 
-                // Mover el carrusel en la dirección correspondiente
                 this.moverCarrusel(carruselId, esAnterior);
             });
         });
     }
-    moverCarrusel(carruselId, esAnterior) {
+
+      moverCarrusel(carruselId, esAnterior) {
         const contenedor = document.getElementById(carruselId);
         if (!contenedor) return;
 
@@ -255,6 +289,7 @@ class GameManager {
         });
     }
 
+
     mostrarErrorEnCarruseles() {
         const contenedores = [
             'novedades-carrusel',
@@ -268,7 +303,7 @@ class GameManager {
             const contenedor = document.getElementById(id);
             if (!contenedor) return;
 
-            contenedor.innerHTML = ''; // Limpiamos el contenedor
+            contenedor.innerHTML = '';
 
             const mensajeError = document.createElement('li');
             mensajeError.className = 'error-mensaje';
@@ -292,5 +327,3 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameManager = new GameManager();
     gameManager.pedirJuegos();
 });
-
-
