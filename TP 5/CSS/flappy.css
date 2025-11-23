@@ -330,7 +330,7 @@
     height: 79px;
     background: url("../Assets/fantasma.png") left center no-repeat;
 
-    top: 100px;
+    top: 20px;
     left: -100px;
 
     /* 3 animaciones:
@@ -338,10 +338,9 @@
        2) movimiento horizontal
        3) zig-zag vertical     */
     animation: 
-        vueloFantasma 30s steps(6) infinite,
-        moverFantasma 30s linear infinite,
-        zigzagFantasma 3s ease-in-out infinite;
-
+        vueloFantasma 30s steps(6) infinite 8s,
+        moverFantasma 30s linear infinite 8s,
+      zigzagFantasma 4s ease-in-out infinite 8s;
     z-index: 5;
     opacity: 0.7;
 }
@@ -360,9 +359,45 @@
 
 /* Zig-zag vertical */
 @keyframes zigzagFantasma {
-    0%   { top: 100px; }
+    0%   { top: 20px; }
     25%  { top: 140px; }
-    50%  { top: 70px; }
+    50%  { top: 180px; }
     75%  { top: 140px; }
-    100% { top: 100px; }
+    100% { top: 20px; }
+}
+
+/* Contenedor del icono + barra */
+#shieldBox {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: none;   /* ← OCULTO por defecto */
+    align-items: center;
+    gap: 8px;
+    z-index: 999;
+}
+
+/* Icono mini */
+#shieldIcon {
+    width: 18px;
+    height: 18px;
+    opacity: 0.9;
+}
+
+/* Barra */
+#shieldBarContainer {
+    width: 180px;
+    height: 14px;
+    border: 2px solid #272727;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    display: none;  /* solo aparece cuando hay escudo */
+}
+
+#shieldBar {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #00a2ff, #06daff);
+    transition: width 0.1s linear;
 }

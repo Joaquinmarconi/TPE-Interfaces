@@ -17,16 +17,17 @@ class FlappyGame {
         this.frameId = null;
 
         this.started = false;
-        this.maxScore = 50;
+       
 
         this.tuboCount = 0;
         this.skullCount = 0;
+        this.shieldTimeLeft = 0;
 
         // Distancias dinámicas
         this.spawnGapMin = 140;
         this.spawnGapMax = 420;
 
-        this.gapMin = 85;
+        this.gapMin = 90;
         this.gapMax = 240;
 
         this.setupControls();
@@ -80,6 +81,7 @@ class FlappyGame {
         if (!this.started && !this.isGameOver) {
             this.started = true;
             document.getElementById("startOverlay").style.display = "none";
+            this.startFantasma();
         }
         if (!this.isGameOver) this.bird.jump();
     }
@@ -100,12 +102,15 @@ class FlappyGame {
     }
 
     stopFantasma() {
-     document.getElementById("fantasma").style.display="none";
-  
+    const f = document.getElementById("fantasma");
+    f.style.display = "none";
+    f.style.animationPlayState = "paused";  // ← DETENER animación
 }
     startFantasma() {
-        document.getElementById("fantasma").style.display="block";
-    }
+    const f = document.getElementById("fantasma");
+    f.style.display = "block";
+    f.style.animationPlayState = "running"; // ← REANUDAR animación
+}
 
     // ============================
     // COIN ENTRE PARES DE TUBOS
@@ -236,42 +241,43 @@ spawnOrbita() {
         // colisión monedas
         for (let c of this.calaveras) {
             if (!c.collected && c.collides(this.bird)) {
-                c.collected = true;
+            c.collected = true;
 
-                this.skullCount++;
-                document.getElementById("skullCount").textContent = this.skullCount;
+            this.skullCount++;
+            document.getElementById("skullCount").textContent = this.skullCount;
 
-                // generar una órbita cada 6 calaveras
-                if (this.skullCount >= this.lastOrbitaCount + 6) {
-                    this.lastOrbitaCount = this.skullCount;
-                    this.spawnOrbita();
-                }
-
-                if (this.soundSkull) {
-                    this.soundSkull.currentTime = 0;
-                    this.soundSkull.play().catch(() => {});
-                }
+            // Probabilidad FIJA de generación
+            const chance = 0.12; // 12% por ejemplo
+            if (Math.random() < chance) {
+                this.spawnOrbita();
             }
+
+            // sonido
+            if (this.soundSkull) {
+                this.soundSkull.currentTime = 0;
+                this.soundSkull.play().catch(() => {});
+            }
+}
         }
 
         this.calaveras = this.calaveras.filter(c => !c.collected);
-// actualizar órbitas
-for (let o of this.orbitas) {
-    o.update();
+        // actualizar órbitas
+        for (let o of this.orbitas) {
+            o.update();
 
-    if (!o.collected && o.collides(this.bird)) {
-        o.collected = true;
+            if (!o.collected && o.collides(this.bird)) {
+                o.collected = true;
 
-        //  activar escudo por 5 segundos
-        this.activateShield();
+                //  activar escudo por 10 segundos
+                this.activateShield();
 
-        // efecto visual
-        document.getElementById("cuervo").classList.add("shield-effect");
+                // efecto visual
+                document.getElementById("cuervo").classList.add("shield-effect");
 
-        // opcional: sonido
-        const snd = document.getElementById("soundOrb");
-        if (snd) { snd.currentTime = 0; snd.play().catch(() => {}); }
-    }
+                // opcional: sonido
+                const snd = document.getElementById("soundOrb");
+                if (snd) { snd.currentTime = 0; snd.play().catch(() => {}); }
+            }
 }
 
 this.orbitas = this.orbitas.filter(o => !o.collected);
@@ -289,40 +295,43 @@ this.orbitas = this.orbitas.filter(o => !o.collected);
                     this.soundPoint.play().catch(() => {});
                 }
 
-                if (this.score >= this.maxScore) {
-                    this.handleWin();
-                    return;
-                }
             }
         }
 
-        // colisión con tubos
-// colisión con tubos
-for (let t of this.tubos) {
-    if (t.collides(this.bird)) {
+            // colisión con tubos
+            for (let t of this.tubos) {
+            if (t.collides(this.bird)) {
 
-        // 🛡 Si tiene escudo → NO muere
-        if (this.hasShield) {
-            continue;  // ignora el golpe, escudo sigue activo
-        }
+                if (this.hasShield) {
+                    continue;
+                }
 
-        // muerte normal
-        this.runExplosion();
-        this.isGameOver = true;
-        this.stopParallax();
-        this.stopFantasma();
-        return;
-    }
+                // cortar escudo si estaba activo
+                this.hasShield = false;
+                document.getElementById("shieldBox").style.display = "none";
+
+                this.runExplosion();
+                this.isGameOver = true;
+                this.stopParallax();
+                this.stopFantasma();
+                return;
+            }
 }
 
 
         // colisión con piso
-        if (this.bird.y + this.bird.height >= 567) {
-            this.runExplosion();
-            this.isGameOver = true;
-            this.stopParallax();
-            return;
-        }
+            if (this.bird.y + this.bird.height >= 567) {
+
+                // cortar escudo si estaba activo
+                this.hasShield = false;
+                document.getElementById("shieldBox").style.display = "none";
+
+                this.runExplosion();
+                this.isGameOver = true;
+                this.stopParallax();
+                this.stopFantasma();
+                return;
+            }
     }
 
     // =======================
@@ -339,24 +348,6 @@ for (let t of this.tubos) {
         }
     }
 
-    // =======================
-    // GANAR
-    // =======================
-    handleWin() {
-        this.isGameOver = true;
-        this.stopParallax();
-
-        const cuervoDiv = document.getElementById("cuervo");
-        cuervoDiv.classList.remove("cuervo-vuelo");
-
-        document.getElementById("goTitle").textContent = "¡GANASTE!";
-        document.getElementById("goMessage").textContent = "Superaste todos los tubos";
-        document.getElementById("scoreFinal").textContent = "Puntaje: " + this.score;
-
-        this.updateBestScore();
-
-        document.getElementById("gameOverOverlay").classList.remove("hidden");
-    }
 
     // =======================
     // GAME OVER
@@ -409,27 +400,58 @@ for (let t of this.tubos) {
     }
 
 
-
-    activateShield() {
-    // activar escudo
+  // =======================
+    // ESCUDO
+    // =======================
+  activateShield() {
     this.hasShield = true;
 
     const cuervoDiv = document.getElementById("cuervo");
     cuervoDiv.classList.add("shield-effect");
 
-    // si ya tenía un timeout previo → se cancela
+    // Tiempo total del poder
+    this.shieldTimeLeft = 10000; // ms
+
+    const box = document.getElementById("shieldBox");
+    const barContainer = document.getElementById("shieldBarContainer");
+    const bar = document.getElementById("shieldBar");
+
+    // Mostrar icono + barra
+    box.style.display = "flex";
+    barContainer.style.display = "block";
+    bar.style.width = "100%";
+
+    // Si ya había un temporizador, lo cancelamos
     if (this.shieldTimeout) clearTimeout(this.shieldTimeout);
 
-    //  Escudo dura 10 segundos
+    const startTime = performance.now();
+
+    const updateBar = (now) => {
+        if (!this.hasShield) return;
+
+        const elapsed = now - startTime;
+        this.shieldTimeLeft = Math.max(0, 10000 - elapsed);
+
+        const percent = (this.shieldTimeLeft / 10000) * 100;
+        bar.style.width = percent + "%";
+
+        if (this.shieldTimeLeft > 0) {
+            requestAnimationFrame(updateBar);
+        }
+    };
+
+    requestAnimationFrame(updateBar);
+
+    // Escudo dura 10 segundos
     this.shieldTimeout = setTimeout(() => {
-
-        // apagar escudo
         this.hasShield = false;
-
-        // quitar efecto visual
         cuervoDiv.classList.remove("shield-effect");
 
-    }, 10000); // ← 10,000 ms = 10 segundos
+        // ocultar barra + icono
+        barContainer.style.display = "none";
+        box.style.display = "none";
+
+    }, 10000);
 }
     // =======================
     // DRAW
@@ -454,7 +476,7 @@ for (let t of this.tubos) {
         this.tubos = [];
         this.calaveras = [];
         this.orbitas = [];
-this.lastOrbitaCount = 0;
+        this.lastOrbitaCount = 0;
         this.score = 0;
         this.tuboCount = 0;
         this.isGameOver = false;
@@ -478,8 +500,13 @@ this.lastOrbitaCount = 0;
 
         this.scoreDisplay.textContent = 0;
         this.scoreMaxDisplay.textContent = "Record: " + this.bestScore;
-
+        
         this.frameId = null;
+
+        document.getElementById("shieldBarContainer").style.display = "none";
+        document.getElementById("shieldBar").style.width = "100%";
+        this.hasShield = false;
+
         this.loop();
     }
 
