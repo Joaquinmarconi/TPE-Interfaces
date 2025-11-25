@@ -6,10 +6,10 @@ class Calavera {
 
         this.radius = 25;
 
-        // la velocidad debe ser la misma que la que uses en FlappyGame
+  
         this.vx = -2;  
 
-        // flotación suave (se puede sobrescribir desde afuera)
+        // flotación suave 
         this.floatSpeed = 0.004;
         this.floatAmplitude = 5;
 

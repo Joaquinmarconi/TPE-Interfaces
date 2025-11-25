@@ -92,7 +92,7 @@ function togglePopoverSus() {
   overlay.classList.toggle('active');
 }
  
-  //movimiento img
+//juego flappy
 let game = null;
 
 window.onload = function () {
@@ -116,18 +116,4 @@ window.onload = function () {
         iniciarJuego();
     });
 
-    // SALTO
-    window.addEventListener("keydown", e => {
-        if (!game || game.isGameOver) return;
-
-        if (e.code === "Space" || e.code === "ArrowUp") {
-            e.preventDefault();
-            game.bird.jump();
-        }
-    });
-
-    // REINTENTAR
-    btnReintentar.addEventListener("click", () => {
-        if (game) game.reset();
-    });
 };
