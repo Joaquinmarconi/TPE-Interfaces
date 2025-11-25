@@ -610,11 +610,9 @@ header section {
 }
 .home-carrusel:first-child li:hover {
     transform: translateY(-5px) scale(1.05);
-     box-shadow: 0px 0px  10px rgb(255, 174, 0);
 }
 .home-carrusel li:hover {
     transform: translateY(-5px) scale(1);
-    box-shadow: 0px 0px  10px rgb(255, 174, 0);
     z-index: 5;
     /* Elevación más sutil */
 }
