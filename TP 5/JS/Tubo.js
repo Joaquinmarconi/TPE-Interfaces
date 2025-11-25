@@ -6,8 +6,6 @@ class Tubo {
         this.speed = 2;
         this.scored = false;
 
-        this.gapSize = gapSize;
-
         const minHeight = 80;
         const maxTop = canvasHeight - gapSize - minHeight * 2;
 
@@ -34,21 +32,33 @@ class Tubo {
         const lipHeight = 25;
         const lipMargin = 5;
 
-        // 🎨 Degradado gótico realista (metal bruñido)
-        const grad = ctx.createLinearGradient(this.x, 0, this.x + this.width, 0);
-        grad.addColorStop(0, "#2c2d33");
-        grad.addColorStop(0.15, "#3e4048");
-        grad.addColorStop(0.35, "#4f515c");
-        grad.addColorStop(0.5, "#8a8e99");
-        grad.addColorStop(0.65, "#4f515c");
-        grad.addColorStop(0.85, "#3e4048");
-        grad.addColorStop(1, "#2c2d33");
+        // ============================================
+        // DEGRADADO SUPERIOR (luz a la DERECHA)
+        // ============================================
+        const gradTop = ctx.createLinearGradient(this.x, 0, this.x + this.width, 0);
 
-        ctx.fillStyle = grad;
+        gradTop.addColorStop(0.0,  "#26272c");
+        gradTop.addColorStop(0.20, "#303238");
+        gradTop.addColorStop(0.45, "#44464f");
+        gradTop.addColorStop(0.70, "#7c7f8a");  // luz MUY suave
+        gradTop.addColorStop(0.85, "#44464f");
+        gradTop.addColorStop(1.0,  "#2a2b30");
+        // ============================================
+        //  DEGRADADO INFERIOR (luz a la IZQUIERDA)
+        // ============================================
+        const gradBottom = ctx.createLinearGradient(this.x + this.width, 0, this.x, 0);
+
+        gradBottom.addColorStop(0.0,  "#26272c");
+        gradBottom.addColorStop(0.20, "#303238");
+        gradBottom.addColorStop(0.45, "#44464f");
+        gradBottom.addColorStop(0.70, "#7c7f8a");  // luz suave → queda del otro lado
+        gradBottom.addColorStop(0.85, "#44464f");
+        gradBottom.addColorStop(1.0,  "#2a2b30");
 
         // ============================
-        // TUBO SUPERIOR (solo laterales)
+        // TUBO SUPERIOR
         // ============================
+        ctx.fillStyle = gradTop;
         ctx.fillRect(this.x, 0, this.width, this.topHeight);
 
         ctx.lineWidth = 6;
@@ -61,9 +71,7 @@ class Tubo {
         ctx.lineTo(this.x + this.width, this.topHeight);
         ctx.stroke();
 
-        // ============================
-        // LABIO SUPERIOR (borde completo)
-        // ============================
+        // LABIO SUPERIOR
         ctx.beginPath();
         ctx.rect(
             this.x - lipMargin,
@@ -75,8 +83,9 @@ class Tubo {
         ctx.stroke();
 
         // ============================
-        // TUBO INFERIOR (solo laterales)
+        // TUBO INFERIOR
         // ============================
+        ctx.fillStyle = gradBottom;
         ctx.fillRect(this.x, this.bottomY, this.width, this.bottomHeight);
 
         ctx.beginPath();
@@ -86,9 +95,7 @@ class Tubo {
         ctx.lineTo(this.x + this.width, this.bottomY + this.bottomHeight);
         ctx.stroke();
 
-        // ============================
-        // LABIO INFERIOR (borde completo)
-        // ============================
+        // LABIO INFERIOR
         ctx.beginPath();
         ctx.rect(
             this.x - lipMargin,
@@ -102,7 +109,7 @@ class Tubo {
         ctx.restore();
     }
 
-    // ⭐ COLISIÓN ELIPSE VS RECT
+    // COLISIÓN 
     collides(bird) {
         const b = bird.getBounds();
 

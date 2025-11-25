@@ -29,14 +29,14 @@
 }
 
 /* Capas */
-.layer-1 { background-image: url("../Assets/cementerio8_950x600.png"); animation: scroll 7s linear infinite; }
-.layer-2 { background-image: url("../Assets/cementerio7.png"); animation: scroll 20s linear infinite; }
-.layer-3 { background-image: url("../Assets/cementerio6.png"); animation: scroll 30s linear infinite; }
-.layer-4 { background-image: url("../Assets/cementerio5.png"); animation: scroll 40s linear infinite; }
-.layer-5 { background-image: url("../Assets/cementerio4.png"); animation: scroll 70s linear infinite; }
-.layer-6 { background-image: url("../Assets/cementerio3.png"); animation: scroll 100s linear infinite; }
-.layer-7 { background-image: url("../Assets/cementerio2.png"); animation: scroll 110s linear infinite; }
-.layer-8 { background-image: url("../Assets/cementerio1Copia.png"); animation: scroll 120s linear infinite; }
+.layer-1 { background-image: url("../Assets/cementerio8_950x600.png"); animation: scroll 5s linear infinite; }
+.layer-2 { background-image: url("../Assets/cementerio7.png"); animation: scroll 15s linear infinite; }
+.layer-3 { background-image: url("../Assets/cementerio6.png"); animation: scroll 25s linear infinite; }
+.layer-4 { background-image: url("../Assets/cementerio5.png"); animation: scroll 35s linear infinite; }
+.layer-5 { background-image: url("../Assets/cementerio4.png"); animation: scroll 65s linear infinite; }
+.layer-6 { background-image: url("../Assets/cementerio3.png"); animation: scroll 95s linear infinite; }
+.layer-7 { background-image: url("../Assets/cementerio2.png"); animation: scroll 105s linear infinite; }
+.layer-8 { background-image: url("../Assets/cementerio1Copia.png"); animation: scroll 115s linear infinite; }
 
 @keyframes scroll {
     0%   { background-position-x: 0; }
@@ -310,7 +310,7 @@
     z-index: 300;
 }
 
-/* reset + tamaño correcto */
+
 .skullIcon {
     width: 20px;
     height: 20px;
@@ -338,7 +338,7 @@
        2) movimiento horizontal
        3) zig-zag vertical     */
     animation: 
-        vueloFantasma 30s steps(6) infinite 8s,
+        vueloFantasma 50s steps(6) infinite 8s,
         moverFantasma 30s linear infinite 8s,
       zigzagFantasma 4s ease-in-out infinite 8s;
     z-index: 5;

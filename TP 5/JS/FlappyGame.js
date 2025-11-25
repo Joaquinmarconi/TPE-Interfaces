@@ -27,7 +27,7 @@ class FlappyGame {
         this.spawnGapMin = 140;
         this.spawnGapMax = 420;
 
-        this.gapMin = 90;
+        this.gapMin = 98;
         this.gapMax = 240;
 
         this.setupControls();
