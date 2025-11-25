@@ -247,7 +247,7 @@ spawnOrbita() {
             document.getElementById("skullCount").textContent = this.skullCount;
 
             // Probabilidad FIJA de generación
-            const chance = 0.12; // 12% por ejemplo
+            const chance = 0.12; // 12% 
             if (Math.random() < chance) {
                 this.spawnOrbita();
             }
