@@ -189,13 +189,13 @@ spawnOrbita() {
         this.spawnGap =
             this.spawnGapMax -
             (this.spawnGapMax - this.spawnGapMin) *
-            Math.min(this.score / 50, 1);
+            Math.min(this.score / 90, 1);
 
         // Hueco vertical dinámico
         const dynamicGap =
             this.gapMax -
             (this.gapMax - this.gapMin) *
-            Math.min(this.score / 45, 1);
+            Math.min(this.score / 80, 1);
 
         let nuevoTubo = null;
 
