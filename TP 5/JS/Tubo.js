@@ -3,7 +3,7 @@ class Tubo {
         this.gapSize = gapSize;
         this.x = x;
         this.width = 90;
-        this.speed = 2;
+        this.speed = 3.2;
         this.scored = false;
 
         const minHeight = 80;
@@ -11,8 +11,14 @@ class Tubo {
 
         this.topHeight = Math.floor(Math.random() * maxTop) + minHeight;
 
-        this.bottomY = this.topHeight + gapSize;
-        this.bottomHeight = canvasHeight - this.bottomY;
+       // punto donde empieza el pasto
+const sueloY = 515;
+
+// posición original del tubo inferior
+this.bottomY = this.topHeight + gapSize;
+
+// altura real del tubo evitando que invada el pasto
+this.bottomHeight = Math.max(0, sueloY - this.bottomY);
 
         this.canvasHeight = canvasHeight;
     }

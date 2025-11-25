@@ -150,7 +150,7 @@ class FlappyGame {
     // ============================================
     const skull = new Calavera(x, coinY);
 
-    skull.vx = -2;          // misma velocidad de tubos
+    skull.vx = -3.2;          // misma velocidad de tubos
     skull.floatAmplitude = 5; // fija para que no moleste visualmente
 
     this.calaveras.push(skull);

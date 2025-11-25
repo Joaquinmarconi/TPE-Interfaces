@@ -7,7 +7,7 @@ class Calavera {
         this.radius = 25;
 
   
-        this.vx = -2;  
+        this.vx = -3.2;  
 
         // flotación suave 
         this.floatSpeed = 0.004;

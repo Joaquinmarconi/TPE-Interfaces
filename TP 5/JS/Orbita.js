@@ -6,7 +6,7 @@ class Orbita {
 
         this.radius = 20;  // suficiente para la imagen 15x15
 
-        this.vx = -2;  
+        this.vx = -3.2;  
         this.floatSpeed = 0.004;
         this.floatAmplitude = 8;
 
