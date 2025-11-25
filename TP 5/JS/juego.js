@@ -95,6 +95,12 @@ function togglePopoverSus() {
 //juego flappy
 let game = null;
 
+window.addEventListener("keydown", function(e) {
+    if (e.key === "ArrowUp") {
+        e.preventDefault(); // bloquea el scroll
+    }
+}, { passive: false }); 
+
 window.onload = function () {
     const btnJugar = document.querySelector('#btn-jugar');
     const homerImg = document.querySelector('.juego div img');
